@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 1353103c024f57f4eb16f0355b667755
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - conversationController: {instanceID: 0}
+  - font0: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  - font1: {fileID: 12800000, guid: f63a3a7716de8c344a1bd2bc700c08b9, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

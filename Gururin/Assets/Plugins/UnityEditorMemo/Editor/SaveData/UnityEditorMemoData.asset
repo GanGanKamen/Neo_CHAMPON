@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ce8bdfcf897b964ba106732d7f64fcc, type: 3}
+  m_Name: UnityEditorMemoData
+  m_EditorClassIdentifier: 
+  Category:
+  - Name: default
+    MenuDepth: 0
+    Memo:
+    - m_ID: 0
+      m_Name: 
+      m_Depth: -1
+      Date: 2019/5/9 19:37
+      Memo: 
+      URL: 
+      Label: 0
+      Tex: 0
+      ObjectRef:
+        Obj: {fileID: 0}
+        ScenePath: 
+        LocalIdentifierInFile: 0
+      IsEdit: 0
+  - Name: Attention
+    MenuDepth: 0
+    Memo:
+    - m_ID: 0
+      m_Name: 
+      m_Depth: -1
+      Date: 2019/6/4 23:59
+      Memo: 
+      URL: 
+      Label: 0
+      Tex: 0
+      ObjectRef:
+        Obj: {fileID: 0}
+        ScenePath: 
+        LocalIdentifierInFile: 0
+      IsEdit: 0
+    - m_ID: 1
+      m_Name: "uGUI\u306ESetActive\u306F\u91CD\u3044?\n\u521D\u56DE\u3060\u3051\u306A\u305C\u304B\u30E9\u30B0\u308B\n\u2192CanvasGroup\u306EAlpha\u3092\u5909\u3048\u308B\u3053\u3068\u3067\u4EE3\u7528\u3059\u308B"
+      m_Depth: 0
+      Date: 2019/6/5 0:0
+      Memo: "uGUI\u306ESetActive\u306F\u91CD\u3044?\n\u521D\u56DE\u3060\u3051\u306A\u305C\u304B\u30E9\u30B0\u308B\n\u2192CanvasGroup\u306EAlpha\u3092\u5909\u3048\u308B\u3053\u3068\u3067\u4EE3\u7528\u3059\u308B"
+      URL: 
+      Label: 3
+      Tex: 0
+      ObjectRef:
+        Obj: {fileID: 0}
+        ScenePath: 
+        LocalIdentifierInFile: 0
+      IsEdit: 0
+    - m_ID: 2
+      m_Name: "TileMapCollider2D\u3092CompositeCollider2D\u3067\u5408\u4F53\u3055\u305B\u308B\u3068\u9AD8\u3055\u3084\u9032\u3080\u52E2\u3044\u306B\u3088\u3063\u3066\u3050\u308B\u308A\u3093\u304C\u57CB\u307E\u3063\u3066\u3057\u307E\u3046\n\u2192GeometryType\u3092Polygons\u306B\u3059\u308B\u3053\u3068\u3067\u30BF\u30A4\u30EB\u5185\u306B\u3082Collider\u3092\u4E0E\u3048\u308B\u3053\u3068\u3067\u57CB\u307E\u3089\u306A\u304F\u306A\u308B"
+      m_Depth: 0
+      Date: 2019/6/7 17:20
+      Memo: "TileMapCollider2D\u3092CompositeCollider2D\u3067\u5408\u4F53\u3055\u305B\u308B\u3068\u9AD8\u3055\u3084\u9032\u3080\u52E2\u3044\u306B\u3088\u3063\u3066\u3050\u308B\u308A\u3093\u304C\u57CB\u307E\u3063\u3066\u3057\u307E\u3046\n\u2192GeometryType\u3092Polygons\u306B\u3059\u308B\u3053\u3068\u3067\u30BF\u30A4\u30EB\u5185\u306B\u3082Collider\u3092\u4E0E\u3048\u308B\u3053\u3068\u3067\u57CB\u307E\u3089\u306A\u304F\u306A\u308B"
+      URL: 
+      Label: 3
+      Tex: 0
+      ObjectRef:
+        Obj: {fileID: 0}
+        ScenePath: 
+        LocalIdentifierInFile: 0
+      IsEdit: 0
+    - m_ID: 3
+      m_Name: "TileMapCollider2D\u3092Composite\u3057\u306A\u3044\u307E\u307EPlay\u3059\u308B\u3068\u30AF\u30E9\u30C3\u30B7\u30E5\u3059\u308B\n\u2192\u3084\u306F\u308ATileMapCollider2D\u3092\u5408\u4F53\u3055\u305B\u306A\u3044\u3068\u91CD\u3044?\u4E00\u5EA6\u5408\u4F53\u3055\u305B\u305F\u5F8C\u306B\u5408\u4F53\u89E3\u9664\u3059\u308B\u3068\u30AF\u30E9\u30C3\u30B7\u30E5\u3057\u306A\u304B\u3063\u305F(\u8981\u691C\u8A3C)"
+      m_Depth: 0
+      Date: 2019/6/7 17:24
+      Memo: "TileMapCollider2D\u3092Composite\u3057\u306A\u3044\u307E\u307EPlay\u3059\u308B\u3068\u30AF\u30E9\u30C3\u30B7\u30E5\u3059\u308B\n\u2192\u3084\u306F\u308ATileMapCollider2D\u3092\u5408\u4F53\u3055\u305B\u306A\u3044\u3068\u91CD\u3044?\u4E00\u5EA6\u5408\u4F53\u3055\u305B\u305F\u5F8C\u306B\u5408\u4F53\u89E3\u9664\u3059\u308B\u3068\u30AF\u30E9\u30C3\u30B7\u30E5\u3057\u306A\u304B\u3063\u305F(\u8981\u691C\u8A3C)"
+      URL: 
+      Label: 1
+      Tex: 0
+      ObjectRef:
+        Obj: {fileID: 0}
+        ScenePath: 
+        LocalIdentifierInFile: 0
+      IsEdit: 0
+    - m_ID: 4
+      m_Name: "CinemaChene\u306EOrthographicSize\u3068BoundingShape2D\u306B\u5165\u3063\u3066\u3044\u308BCameraArea\u306ECollider\u306E\u5927\u304D\u3055\u304C\u540C\u3058\u3067\u306A\u3044\u3068\u30AB\u30E1\u30E9\u304C\u7BC4\u56F2\u5916\u306B\u51FA\u3066\u3057\u307E\u3046"
+      m_Depth: 0
+      Date: 2019/6/27 16:32
+      Memo: "CinemaChene\u306EOrthographicSize\u3068BoundingShape2D\u306B\u5165\u3063\u3066\u3044\u308BCameraArea\u306ECollider\u306E\u5927\u304D\u3055\u304C\u540C\u3058\u3067\u306A\u3044\u3068\u30AB\u30E1\u30E9\u304C\u7BC4\u56F2\u5916\u306B\u51FA\u3066\u3057\u307E\u3046"
+      URL: 
+      Label: 3
+      Tex: 0
+      ObjectRef:
+        Obj: {fileID: 0}
+        ScenePath: 
+        LocalIdentifierInFile: 0
+      IsEdit: 0
+    - m_ID: 5
+      m_Name: "\u97F3\u304C\u51FA\u306A\u3044\u2192CRIAtom.cs\u306EACFFile\u3068CueSheet\u306EAWBFile\u304C\u5165\u529B\u3055\u308C\u3066\u3044\u308B\u304B\u30C1\u30A7\u30C3\u30AF"
+      m_Depth: 0
+      Date: 2019/8/3 17:26
+      Memo: "\u97F3\u304C\u51FA\u306A\u3044\u2192CRIAtom.cs\u306EACFFile\u3068CueSheet\u306EAWBFile\u304C\u5165\u529B\u3055\u308C\u3066\u3044\u308B\u304B\u30C1\u30A7\u30C3\u30AF"
+      URL: 
+      Label: 0
+      Tex: 0
+      ObjectRef:
+        Obj: {fileID: 0}
+        ScenePath: 
+        LocalIdentifierInFile: 0
+      IsEdit: 0
+  LabelTag:
+  - 
+  - 
+  - 
+  - 
+  - 
