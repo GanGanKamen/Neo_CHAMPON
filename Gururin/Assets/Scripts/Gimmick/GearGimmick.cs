@@ -147,6 +147,7 @@ public class GearGimmick : MonoBehaviour
                 break;
 
         }
+        GearCantTurn();
     }
 
     IEnumerator Col()
@@ -250,6 +251,8 @@ public class GearGimmick : MonoBehaviour
         {
             flagManager.standFirm_Face = false;
         }
+
+        
     }
 
     private void WatchAction() //時計の歯車の場合
@@ -293,6 +296,26 @@ public class GearGimmick : MonoBehaviour
         else
         {
             watch.PointerRotate(false);
+        }
+    }
+
+    private void GearCantTurn()
+    {
+        switch (categoly)
+        {
+            case Categoly.normal:
+                if(!moveGear[0] && !moveGear[1] && turnUI.moveGear)
+                {
+                    turnUI.LeaveGear(jumpDirection);
+                }
+                break;
+            case Categoly.propeller:
+                if (rotationCounter.count == rotationCounter._maxCount && turnUI.moveGear)
+                {
+                    turnUI.LeaveGear(jumpDirection);
+                }
+                break;
+
         }
     }
 }
