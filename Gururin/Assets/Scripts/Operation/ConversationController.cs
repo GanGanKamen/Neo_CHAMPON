@@ -30,6 +30,8 @@ public class ConversationController : MonoBehaviour
     public Gamecontroller gameController;
 
     private IEnumerator nowNobel;
+
+    private bool colorMode = false;
     void Start()
     {
         config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
@@ -160,9 +162,24 @@ public class ConversationController : MonoBehaviour
                     Text.text += "\n";
                 }
             }
+            else if (sentences[currentSentenceNum].TextOutPut()[wordCound] == '{')
+            {
+                if (!colorMode) colorMode = true;
+                Text.text += "";
+            }
+
+            else if (sentences[currentSentenceNum].TextOutPut()[wordCound] == '}')
+            {
+                if (colorMode) colorMode = false;
+                Text.text += "";
+            }
+
             else
             {
-                Text.text += sentences[currentSentenceNum].TextOutPut()[wordCound];
+                string textPlus = "";
+                if (colorMode) textPlus = "<color=blue>" + sentences[currentSentenceNum].TextOutPut()[wordCound] + "</color>";
+                else textPlus = sentences[currentSentenceNum].TextOutPut()[wordCound].ToString();
+                Text.text += textPlus;
                 SoundManager.PlayS(gameObject, "SE_hakaseTalk");
             }
 
@@ -182,12 +199,13 @@ public class ConversationController : MonoBehaviour
                 string finalText = "";
                 if (LanguageSwitch.language == LanguageSwitch.Language.Japanese || LanguageSwitch.language == LanguageSwitch.Language.English)
                 {
-                    finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n\n");
+                    finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n\n").Replace("{", "<color=blue>").Replace("}", "</color>");
                 }
                 else
                 {
-                    finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n");
+                    finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n").Replace("{", "<color=blue>").Replace("}", "</color>");
                 }
+                
                 if (Text.text != finalText)
                 {
                     StopCoroutine(nowNobel);

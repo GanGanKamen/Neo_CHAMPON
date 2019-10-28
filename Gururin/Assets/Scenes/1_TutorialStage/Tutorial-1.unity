@@ -2231,7 +2231,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &615757054
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23555,7 +23555,7 @@ PrefabInstance:
     - target: {fileID: 8898852195330702050, guid: e82568a93ae1b4e4eb6f57443f5e415a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 887596269, guid: e82568a93ae1b4e4eb6f57443f5e415a, type: 3}
       propertyPath: textWaitTime
@@ -23630,6 +23630,10 @@ PrefabInstance:
         2
 
         3'
+      objectReference: {fileID: 0}
+    - target: {fileID: 581169478, guid: e82568a93ae1b4e4eb6f57443f5e415a, type: 3}
+      propertyPath: messages.Array.data[0]
+      value: "\u79FB\u52D5\u3092\u3059\u308B\u306B\u306F\u3000{\u753B\u9762\u3092\u6307\u3067\u3050\u308B\u3050\u308B\u56DE\u305B}\u3070\u3044\u3044\u3088!"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e82568a93ae1b4e4eb6f57443f5e415a, type: 3}
@@ -24436,7 +24440,7 @@ PrefabInstance:
     - target: {fileID: 5573327411972211404, guid: 1fc868abe45cffa43a9525e7d01122c5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.111103
+      value: 4.111105
       objectReference: {fileID: 0}
     - target: {fileID: 5573327411972211404, guid: 1fc868abe45cffa43a9525e7d01122c5,
         type: 3}
