@@ -22,6 +22,7 @@ public class FlagManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        returnGravity = true;
         pressParm = true;
     }
 

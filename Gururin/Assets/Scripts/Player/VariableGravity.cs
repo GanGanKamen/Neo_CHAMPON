@@ -80,9 +80,10 @@ public class VariableGravity : MonoBehaviour
         {
             //重力を元に戻す
             flagManager.returnGravity = true;
-            flagManager.isMove_VG[0] = false;
-            flagManager.isMove_VG[1] = false;
-            flagManager.isMove_VG[2] = false;
+            for (int i = 0; i < flagManager.isMove_VG.Length; i++)
+            {
+                flagManager.isMove_VG[i] = false;
+            }
 
             //速度の更新
             playerMove.setSpeed = true;
