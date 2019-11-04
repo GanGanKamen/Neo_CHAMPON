@@ -34,3 +34,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Gururin/Assets/Editor/CriWare/CriAtom/saveAcfData.json
+Gururin/Assets/Editor/CriWare/CriAtom/saveAcfData.json.meta
