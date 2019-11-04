@@ -31,9 +31,10 @@ public class ActiveBalloon : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //風船が装備されていないとき
-            if (_ballonSpr.GetComponent<SpriteRenderer>().enabled == false)
+            if (other.GetComponent<PlayerMove>().balloonSet == false)
             {
                 _source.Play();
+                other.GetComponent<PlayerMove>().BalloonApp();
             }
 
             _actBal = true;
@@ -56,7 +57,7 @@ public class ActiveBalloon : MonoBehaviour
             //BallonGImmickのGravityScaleを-3にする
             _balloonCol.GetComponent<Rigidbody2D>().gravityScale = -3.0f;
             //BallonGImmickのColliderを出現
-            _balloonCol.GetComponent<CapsuleCollider2D>().enabled = true;
+            //_balloonCol.GetComponent<CapsuleCollider2D>().enabled = true;
             //BallonSpriteのSpriteを表示
             _ballonSpr.GetComponent<SpriteRenderer>().enabled = true;
 

@@ -29,9 +29,11 @@ public class BalloonBreak : MonoBehaviour
         //風船に当たったら割れるようにする
         if (other.CompareTag("Balloon"))
         {
-            if (_ballonSpr.GetComponent<SpriteRenderer>().enabled == true)
+            PlayerMove player = other.transform.parent.GetComponent<PlayerMove>();
+            if (player.balloonSet == true)
             {
                 _source.Play();
+                player.BalloonBreak();
                 //ぐるりんの顔を驚き顔にする
                 StartCoroutine("SurpriseFace");
             }

@@ -30,7 +30,8 @@ public class PlayerMove : MonoBehaviour
 
     public GanGanKamen.BossHand nowBossHand = null; //現在接触しているギミック
     public Animator animator;　//ぐるりんのアニメーター　ボスイベント用
-    public GameObject balloon;
+    public bool balloonSet = false; //バルーン装備しているかどうか
+    [SerializeField] private Animator balloonAnim;
     public bool finishMode = false; //ボスにとどめを刺す
 
 
@@ -53,6 +54,8 @@ public class PlayerMove : MonoBehaviour
         {
             transform.position = RemainingLife.startPos;
         }
+
+        balloonSet = false;
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -278,5 +281,21 @@ public class PlayerMove : MonoBehaviour
             }
             
         }
+
+    }
+
+    public void BalloonApp()
+    {
+        if (balloonSet) return;
+        balloonAnim.SetBool("App", true);
+        balloonSet = true;        
+    }
+
+    public void BalloonBreak()
+    {
+        if (balloonSet == false) return;
+        balloonSet = false;
+        balloonAnim.SetBool("App", false);
+        balloonAnim.SetTrigger("Break");
     }
 }

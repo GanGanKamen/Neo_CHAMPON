@@ -294,7 +294,7 @@ public class BossEvent : MonoBehaviour
         player.GetComponent<CriAtomSource>().enabled = false;
         player.transform.eulerAngles = new Vector3(0, 0, -90f);
         player.transform.position = new Vector3(3.5f, -1f, 0);
-        player.balloon.SetActive(false);
+        //player.balloon.SetActive(false);
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
 
         yield return null;
