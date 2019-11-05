@@ -50,6 +50,8 @@ public class BossEvent : MonoBehaviour
 
     public SpriteRenderer lifeRender;
     public Sprite newLife;
+
+    [SerializeField] private GearTurnUI[] turnUIs;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -212,10 +214,12 @@ public class BossEvent : MonoBehaviour
         {
             yield return null;
         }
+        GameObject balloonBreakFX = Instantiate(ResourcesMng.ResourcesLoad("Boss_BalloonBreak"), bossChara.ballon.transform.position, Quaternion.identity);
         lifeRender.sprite = newLife;
         SoundManager.PlayS(bossChara.gameObject, "SE_propellerBOSSnakigoe2");
         SoundManager.PlayS(bossChara.gameObject, "SE_ballonBreak");
         yield return new WaitForSeconds(3f);
+        Destroy(balloonBreakFX);
         bossChara.Recovery();
         yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < fanAnims.Length; i++)
@@ -291,12 +295,17 @@ public class BossEvent : MonoBehaviour
         fader.gameObject.SetActive(true);
         yield return new WaitForSeconds(1f);
         fadeOut = true;
+        player.transform.parent = null;
+        player.gameObject.SetActive(true);
         player.GetComponent<CriAtomSource>().enabled = false;
         player.transform.eulerAngles = new Vector3(0, 0, -90f);
         player.transform.position = new Vector3(3.5f, -1f, 0);
         player.BalloonBreak();
         player.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-
+        for (int i = 0; i < turnUIs.Length; i++)
+        {
+            turnUIs[i].SeparatePlayer();
+        }
         yield return null;
         while (fadeOut == true)
         {

@@ -8,7 +8,7 @@ public class BossChara : MonoBehaviour
     private Animator animator;
 
     public Sprite[] eyes;
-    [SerializeField] private GameObject ballon;
+    public GameObject ballon;
     [SerializeField] private SpriteRenderer eye;
     // Start is called before the first frame update
     private void Awake()

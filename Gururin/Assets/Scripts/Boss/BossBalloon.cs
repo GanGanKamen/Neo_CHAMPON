@@ -13,8 +13,10 @@ namespace GanGanKamen
         public int lifes;
         private int fullLifes;
 
-        private SpriteRenderer sprite;
-        private float recovery = 0;
+        //private SpriteRenderer sprite;
+        private Animator balloonAnim;
+        private AnimatorStateInfo balloonAnimInfo;
+        //private float recovery = 0;
 
         [SerializeField] private float attackProbability;
         [SerializeField]private float attackCount;
@@ -36,10 +38,12 @@ namespace GanGanKamen
         public Sprite[] lifeImages;
 
         public SpriteRenderer lifesprite;
+
+        private bool isDown = false;
         // Start is called before the first frame update
         void Start()
         {
-            sprite = GetComponent<SpriteRenderer>();
+            balloonAnim = GetComponent<Animator>();
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMove>();
             bosseye.sprite = eyes[0];
         }
@@ -47,8 +51,8 @@ namespace GanGanKamen
         // Update is called once per frame
         void Update()
         {
-
-            DamageHit();
+            balloonAnimInfo = balloonAnim.GetCurrentAnimatorStateInfo(0);
+            //DamageHit();
 
             StatusManager();
 
@@ -90,6 +94,7 @@ namespace GanGanKamen
             }
         }
 
+        /*
         private void DamageHit()
         {
             if (status == Status.Hit && isDead == false)
@@ -118,7 +123,7 @@ namespace GanGanKamen
                 lifesprite.color = Color.white;
             }
         }
-
+        */
 
         public bool HandCheck(BossHand.Hand hand)
         {
@@ -149,7 +154,7 @@ namespace GanGanKamen
 
         private void OnTriggerStay2D(Collider2D collision)
         {
-            if (status == Status.Hit) return;
+            if (isDown) return;
             if (collision.CompareTag("Player"))
             {
                 PlayerMove player = collision.gameObject.GetComponent<PlayerMove>();
@@ -158,6 +163,7 @@ namespace GanGanKamen
                     return;
                 }
                 status = Status.Hit;
+                Debug.Log("Stay");
                 bosseye.sprite = eyes[2];
                 lifes--;
                 SoundManager.PlayS(gameObject, "SE_ballonBreak");
@@ -168,26 +174,46 @@ namespace GanGanKamen
 
                 else
                 {
-                    bossAnim.SetTrigger("Down");
+                    StartCoroutine(Down());
                 }
 
             }
         }
-        /*
+        
         private IEnumerator Down()
         {
+            if (isDown) yield break;
+            isDown = true;
+            Debug.Log("down");
+            lifesprite.color = Color.clear;
+            for (int i = 0; i < hands.Length; i++)
+            {
+                hands[i].pattern = BossHand.Pattern.Stop;
+            }
             bossAnim.SetTrigger("Down");
+            balloonAnim.SetBool("Break",true);
             SoundManager.PlayS(gameObject, "SE_propellerBOSSnakigoe2");
-            yield return new WaitForSeconds(0.4f);
-            SoundManager.PlayS(gameObject, "SE_glassCrack");
+            yield return new WaitForSeconds(3f);
+            balloonAnim.SetBool("Break", false);
+            bosseye.sprite = eyes[1];
+            SoundManager.PlayS(gameObject, "SE_propellerBOSSnakigoe1");
+            for (int i = 0; i < hands.Length; i++)
+            {
+                hands[i].pattern = BossHand.Pattern.RandomWalk;
+            }
+            lifesprite.color = Color.white;
+            isDown = false;
             yield break;
-        }*/
+        }
 
         private IEnumerator Dead()
         {
+            if (isDown) yield break;
+            isDown = true;
             player.transform.parent = null;
             isDead = true;
-            sprite.enabled = false;
+            balloonAnim.SetBool("Break", true);
+            balloonAnim.SetBool("Death", true);
             lifesprite.enabled = false;
             bossAnim.SetTrigger("Dead");
             for(int i = 0; i < hands.Length; i++)
