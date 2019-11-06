@@ -19,6 +19,7 @@ public class TransformFixed : MonoBehaviour
     {
         _gearMesh = GetComponent<CriAtomSource>();
         flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
+        gearPos.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

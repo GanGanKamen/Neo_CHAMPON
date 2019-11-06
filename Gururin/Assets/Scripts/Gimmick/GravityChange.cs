@@ -11,6 +11,7 @@ public class GravityChange : MonoBehaviour
 
     private GameObject _gururin;
     private Rigidbody2D _gururinRb2d;
+    [SerializeField] private GameObject tooths;
 
     private float rackMoveSpeed;
 
@@ -48,6 +49,7 @@ public class GravityChange : MonoBehaviour
             {
                 traFixed.GetComponent<CapsuleCollider2D>().enabled = false;
             }
+            tooths.GetComponent<CompositeCollider2D>().isTrigger = true;
 
             _gururin = other.gameObject;
             _gururinRb2d = other.gameObject.GetComponent<Rigidbody2D>();
@@ -67,14 +69,13 @@ public class GravityChange : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Exit");
-
             //Colliderを元に戻す
             Destroy(_gururin.GetComponent<CircleCollider2D>());
             _gururin.GetComponent<PolygonCollider2D>().enabled = true;
             _gururinRb2d.angularDrag = 0.05f;
-
             _gururin = null;
+
+            tooths.GetComponent<CompositeCollider2D>().isTrigger = false;
 
             //重力を元に戻す
             _flagManager.returnGravity = true;
@@ -95,11 +96,11 @@ public class GravityChange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rackMoveSpeed = _gameController.angle * _gameController.sensitivity * 0.2f;
-
         //ぐるりんが接触したときに選択したGravityTypeによって重力を変更
         if (_gururin != null && gravityType != GravityType.None)
         {
+            rackMoveSpeed = _gameController.angle * _gameController.sensitivity * 0.2f;
+
             switch (gravityType)
             {
                 case GravityType.Up:
@@ -114,8 +115,6 @@ public class GravityChange : MonoBehaviour
                     LeftGravity();
                     break;
             }
-
-            RackJump();
         }
     }
 
@@ -138,6 +137,20 @@ public class GravityChange : MonoBehaviour
                 _playerMove.isRot[1] = true;
                 _flagManager.moveStop = false;
             }
+        }
+
+        if (_gameController.isFlick)
+        {
+            _flagManager.moveStop = false;
+
+            //下フリックで下へジャンプ
+            if (_playerMove.isMove == false && _gameController.flick_down)
+            {
+                _gururinRb2d.AddForce(Vector2.down * _playerMove.jumpSpeed);
+                //_jumpSE.Play();
+            }
+
+            _gameController.isFlick = false;
         }
     }
 
@@ -164,6 +177,21 @@ public class GravityChange : MonoBehaviour
                 _flagManager.moveStop = false;
             }
         }
+
+        if (_gameController.isFlick)
+        {
+            _flagManager.moveStop = false;
+
+            //左フリックで左へジャンプ
+            if (_playerMove.isMove == false && _gameController.flick_left)
+            {
+                Vector2 jumpForce = new Vector2(-_gameController.sensitivity, 1.0f);
+                _gururinRb2d.AddForce(jumpForce * _playerMove.jumpSpeed / 1.5f);
+                //_jumpSE.Play();
+            }
+
+            _gameController.isFlick = false;
+        }
     }
 
     //左に張り付くとき
@@ -189,12 +217,29 @@ public class GravityChange : MonoBehaviour
                 _flagManager.moveStop = false;
             }
         }
+
+        if (_gameController.isFlick)
+        {
+            _flagManager.moveStop = false;
+
+            //右フリックで右へジャンプ
+            if (_playerMove.isMove == false && _gameController.flick_right)
+            {
+                Vector2 jumpForce = new Vector2(_gameController.sensitivity, 1.0f);
+                _gururinRb2d.AddForce(jumpForce * _playerMove.jumpSpeed / 1.5f);
+                //_jumpSE.Play();
+            }
+
+            _gameController.isFlick = false;
+        }
     }
 
     //重力変化の処理
     void Gravity(float gravityX, float gravityY, float speedX, float speedY, int VGNUM)
     {
         _flagManager.returnGravity = false;
+        //重力方向の状態、0は上方向、1は右方向、2は左方向
+        _flagManager.isMove_VG[VGNUM] = true;
 
         //ぐるりんの重力を変化
         _playerMove.gravityScale[0] = gravityX;
@@ -207,44 +252,6 @@ public class GravityChange : MonoBehaviour
         //PlayerMoveによる移動を止める
         _playerMove.isMove = false;
         _playerMove.isJump = false;
-
-        //重力方向の状態、0は上方向、1は右方向、2は左方向
-        _flagManager.isMove_VG[VGNUM] = true;
-    }
-
-    public void RackJump()
-    {
-        //ジャンプしたとき
-        if (_gameController.isFlick)
-        {
-            _flagManager.moveStop = false;
-
-            if (_playerMove.isMove == false)
-            {
-                //上に張り付いているとき下方向にジャンプ
-                if (gravityType == GravityType.Up && _gameController.flick_down)
-                {
-                    _gururinRb2d.AddForce(Vector2.down * _playerMove.jumpSpeed);
-                    //_jumpSE.Play();
-                }
-                //右に張り付いているとき左方向へジャンプ
-                else if (gravityType == GravityType.Right && _gameController.flick_left)
-                {
-                    Vector2 jumpForce = new Vector2(-_gameController.sensitivity, 1.0f);
-                    _gururinRb2d.AddForce(jumpForce * _playerMove.jumpSpeed);
-                    //_jumpSE.Play();
-                }
-                //左に張り付いているとき右方向へジャンプ
-                else if (gravityType == GravityType.Left && _gameController.flick_right)
-                {
-                    Vector2 jumpForce = new Vector2(_gameController.sensitivity, 1.0f);
-                    _gururinRb2d.AddForce(jumpForce * _playerMove.jumpSpeed);
-                    //_jumpSE.Play();
-                }
-
-                _gameController.isFlick = false;
-            }
-        }
     }
 
     void RegeneTransformFixed()

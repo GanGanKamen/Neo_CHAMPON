@@ -614,9 +614,349 @@ CompositeCollider2D:
   m_GeometryType: 1
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths: []
+  m_ColliderPaths:
+  - m_Collider: {fileID: 773625494899113986}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: 211708
+      - X: -1799640
+        Y: 143196
+      - X: -1795864
+        Y: -1180350
+      - X: -1660976
+        Y: -1251742
+      - X: 1767082
+        Y: -1967265
+      - X: 1761646
+        Y: 955059
+  - m_Collider: {fileID: 773625494555658682}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: -11788290
+      - X: -1799640
+        Y: -11856802
+      - X: -1795864
+        Y: -13180349
+      - X: -1660976
+        Y: -13251741
+      - X: 1767082
+        Y: -13967264
+      - X: 1761646
+        Y: -11044939
+  - m_Collider: {fileID: 773625494284507305}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: -23788292
+      - X: -1799640
+        Y: -23856804
+      - X: -1795864
+        Y: -25180352
+      - X: -1660976
+        Y: -25251744
+      - X: 1767082
+        Y: -25967266
+      - X: 1761646
+        Y: -23044942
+  - m_Collider: {fileID: 773625494105932899}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: -15788292
+      - X: -1799640
+        Y: -15856804
+      - X: -1795864
+        Y: -17180352
+      - X: -1660976
+        Y: -17251744
+      - X: 1767082
+        Y: -17967266
+      - X: 1761646
+        Y: -15044941
+  - m_Collider: {fileID: 773625494018339289}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: -3788292
+      - X: -1799640
+        Y: -3856804
+      - X: -1795864
+        Y: -5180351
+      - X: -1660976
+        Y: -5251744
+      - X: 1767082
+        Y: -5967266
+      - X: 1761646
+        Y: -3044941
+  - m_Collider: {fileID: 773625493983990192}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: -7788292
+      - X: -1799640
+        Y: -7856804
+      - X: -1795864
+        Y: -9180351
+      - X: -1660976
+        Y: -9251744
+      - X: 1767082
+        Y: -9967266
+      - X: 1761646
+        Y: -7044941
+  - m_Collider: {fileID: 773625494001652755}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: 8211708
+      - X: -1799640
+        Y: 8143196
+      - X: -1795864
+        Y: 6819648
+      - X: -1660976
+        Y: 6748256
+      - X: 1767082
+        Y: 6032734
+      - X: 1761646
+        Y: 8955059
+  - m_Collider: {fileID: 773625493792122121}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: -19788292
+      - X: -1799640
+        Y: -19856804
+      - X: -1795864
+        Y: -21180350
+      - X: -1660976
+        Y: -21251742
+      - X: 1767082
+        Y: -21967266
+      - X: 1761646
+        Y: -19044940
+  - m_Collider: {fileID: 773625493694914090}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: -27788294
+      - X: -1799640
+        Y: -27856806
+      - X: -1795864
+        Y: -29180352
+      - X: -1660976
+        Y: -29251744
+      - X: 1767082
+        Y: -29967268
+      - X: 1761646
+        Y: -27044942
+  - m_Collider: {fileID: 773625495017774729}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: 4211707
+      - X: -1799640
+        Y: 4143195
+      - X: -1795864
+        Y: 2819647
+      - X: -1660976
+        Y: 2748255
+      - X: 1767082
+        Y: 2032733
+      - X: 1761646
+        Y: 4955058
+  - m_Collider: {fileID: 773625494839724022}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: 12211707
+      - X: -1799640
+        Y: 12143195
+      - X: -1795864
+        Y: 10819647
+      - X: -1660976
+        Y: 10748255
+      - X: 1767082
+        Y: 10032732
+      - X: 1761646
+        Y: 12955058
+  - m_Collider: {fileID: 773625494800206058}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: 16211708
+      - X: -1799640
+        Y: 16143196
+      - X: -1795864
+        Y: 14819648
+      - X: -1660976
+        Y: 14748256
+      - X: 1767082
+        Y: 14032733
+      - X: 1761646
+        Y: 16955058
+  - m_Collider: {fileID: 773625494702964412}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: 24211710
+      - X: -1799640
+        Y: 24143198
+      - X: -1795864
+        Y: 22819650
+      - X: -1660976
+        Y: 22748258
+      - X: 1767082
+        Y: 22032736
+      - X: 1761646
+        Y: 24955060
+  - m_Collider: {fileID: 773625494027782796}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: 32211712
+      - X: -1799640
+        Y: 32143200
+      - X: -1795864
+        Y: 30819652
+      - X: -1660976
+        Y: 30748260
+      - X: 1767082
+        Y: 30032738
+      - X: 1761646
+        Y: 32955062
+  - m_Collider: {fileID: 773625493901587651}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: 28211706
+      - X: -1799640
+        Y: 28143194
+      - X: -1795864
+        Y: 26819646
+      - X: -1660976
+        Y: 26748254
+      - X: 1767082
+        Y: 26032732
+      - X: 1761646
+        Y: 28955056
+  - m_Collider: {fileID: 773625493251681697}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: 36211708
+      - X: -1799640
+        Y: 36143196
+      - X: -1795864
+        Y: 34819648
+      - X: -1660976
+        Y: 34748256
+      - X: 1767082
+        Y: 34032732
+      - X: 1761646
+        Y: 36955060
+  - m_Collider: {fileID: 773625493092104701}
+    m_ColliderPaths:
+    - - X: -1723480
+        Y: 20211708
+      - X: -1799640
+        Y: 20143196
+      - X: -1795864
+        Y: 18819650
+      - X: -1660976
+        Y: 18748258
+      - X: 1767082
+        Y: 18032734
+      - X: 1761646
+        Y: 20955060
   m_CompositePaths:
-    m_Paths: []
+    m_Paths:
+    - - {x: 0.1761646, y: 3.695506}
+      - {x: -0.17234801, y: 3.6211708}
+      - {x: -0.179964, y: 3.6143196}
+      - {x: -0.1795864, y: 3.4819648}
+      - {x: -0.1660976, y: 3.4748256}
+      - {x: 0.1767082, y: 3.4032733}
+    - - {x: 0.1761646, y: 3.2955062}
+      - {x: -0.17234801, y: 3.2211711}
+      - {x: -0.179964, y: 3.21432}
+      - {x: -0.1795864, y: 3.0819652}
+      - {x: -0.1660976, y: 3.074826}
+      - {x: 0.1767082, y: 3.0032737}
+    - - {x: 0.1761646, y: 2.8955057}
+      - {x: -0.17234801, y: 2.8211706}
+      - {x: -0.179964, y: 2.8143194}
+      - {x: -0.1795864, y: 2.6819646}
+      - {x: -0.1660976, y: 2.6748254}
+      - {x: 0.1767082, y: 2.6032732}
+    - - {x: 0.1761646, y: 2.495506}
+      - {x: -0.17234801, y: 2.421171}
+      - {x: -0.179964, y: 2.4143198}
+      - {x: -0.1795864, y: 2.281965}
+      - {x: -0.1660976, y: 2.2748258}
+      - {x: 0.1767082, y: 2.2032735}
+    - - {x: 0.1761646, y: 2.095506}
+      - {x: -0.17234801, y: 2.0211709}
+      - {x: -0.179964, y: 2.0143197}
+      - {x: -0.1795864, y: 1.881965}
+      - {x: -0.1660976, y: 1.8748258}
+      - {x: 0.1767082, y: 1.8032734}
+    - - {x: 0.1761646, y: 1.6955059}
+      - {x: -0.17234801, y: 1.6211709}
+      - {x: -0.179964, y: 1.6143196}
+      - {x: -0.1795864, y: 1.4819648}
+      - {x: -0.1660976, y: 1.4748256}
+      - {x: 0.1767082, y: 1.4032733}
+    - - {x: 0.1761646, y: 1.2955058}
+      - {x: -0.17234801, y: 1.2211707}
+      - {x: -0.179964, y: 1.2143195}
+      - {x: -0.1795864, y: 1.0819647}
+      - {x: -0.1660976, y: 1.0748255}
+      - {x: 0.1767082, y: 1.0032732}
+    - - {x: 0.1761646, y: 0.8955059}
+      - {x: -0.17234801, y: 0.8211708}
+      - {x: -0.179964, y: 0.8143196}
+      - {x: -0.1795864, y: 0.6819648}
+      - {x: -0.1660976, y: 0.6748256}
+      - {x: 0.1767082, y: 0.6032734}
+    - - {x: 0.1761646, y: 0.4955058}
+      - {x: -0.17234801, y: 0.4211707}
+      - {x: -0.179964, y: 0.41431952}
+      - {x: -0.1795864, y: 0.2819647}
+      - {x: -0.1660976, y: 0.2748255}
+      - {x: 0.1767082, y: 0.2032733}
+    - - {x: 0.1761646, y: 0.0955059}
+      - {x: -0.17234801, y: 0.0211708}
+      - {x: -0.179964, y: 0.014319601}
+      - {x: -0.1795864, y: -0.118035}
+      - {x: -0.1660976, y: -0.1251742}
+      - {x: 0.1767082, y: -0.1967265}
+    - - {x: 0.1761646, y: -0.3044941}
+      - {x: -0.17234801, y: -0.3788292}
+      - {x: -0.179964, y: -0.3856804}
+      - {x: -0.1795864, y: -0.5180351}
+      - {x: -0.1660976, y: -0.5251744}
+      - {x: 0.1767082, y: -0.5967266}
+    - - {x: 0.1761646, y: -0.7044941}
+      - {x: -0.17234801, y: -0.7788292}
+      - {x: -0.179964, y: -0.7856804}
+      - {x: -0.1795864, y: -0.9180351}
+      - {x: -0.1660976, y: -0.9251744}
+      - {x: 0.1767082, y: -0.99672663}
+    - - {x: 0.1761646, y: -1.1044939}
+      - {x: -0.17234801, y: -1.178829}
+      - {x: -0.179964, y: -1.1856803}
+      - {x: -0.1795864, y: -1.3180349}
+      - {x: -0.1660976, y: -1.3251741}
+      - {x: 0.1767082, y: -1.3967264}
+    - - {x: 0.1761646, y: -1.5044941}
+      - {x: -0.17234801, y: -1.5788292}
+      - {x: -0.179964, y: -1.5856804}
+      - {x: -0.1795864, y: -1.7180352}
+      - {x: -0.1660976, y: -1.7251744}
+      - {x: 0.1767082, y: -1.7967266}
+    - - {x: 0.1761646, y: -1.904494}
+      - {x: -0.17234801, y: -1.9788293}
+      - {x: -0.179964, y: -1.9856805}
+      - {x: -0.1795864, y: -2.118035}
+      - {x: -0.1660976, y: -2.1251743}
+      - {x: 0.1767082, y: -2.1967266}
+    - - {x: 0.1761646, y: -2.3044941}
+      - {x: -0.17234801, y: -2.3788292}
+      - {x: -0.179964, y: -2.3856804}
+      - {x: -0.1795864, y: -2.5180352}
+      - {x: -0.1660976, y: -2.5251744}
+      - {x: 0.1767082, y: -2.5967267}
+    - - {x: 0.1761646, y: -2.7044942}
+      - {x: -0.17234801, y: -2.7788293}
+      - {x: -0.179964, y: -2.7856805}
+      - {x: -0.1795864, y: -2.9180353}
+      - {x: -0.1660976, y: -2.9251745}
+      - {x: 0.1767082, y: -2.9967268}
   m_VertexDistance: 0.0005
 --- !u!1 &4603235692601077527
 GameObject:
@@ -688,6 +1028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b0e47515bd6e54a9a21b22f1aec0cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tooths: {fileID: 4603235692462232631}
   gravityType: 0
 --- !u!1 &4603235692780913790
 GameObject:
@@ -1768,6 +2109,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tooth_Gray (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_RootOrder
@@ -1783,11 +2134,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.95
       objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_SortingOrder
@@ -1795,6 +2141,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5db8456709346d48b715f7c7e7f7fc6, type: 3}
+--- !u!60 &773625493092104701 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235691768233152}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296097124589460096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
@@ -1813,6 +2165,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tooth_Gray (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_RootOrder
@@ -1828,11 +2190,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 3.55
       objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_SortingOrder
@@ -1840,6 +2197,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5db8456709346d48b715f7c7e7f7fc6, type: 3}
+--- !u!60 &773625493251681697 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235691944323228}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296097124429876956 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
@@ -1888,15 +2251,15 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.75
       objectReference: {fileID: 0}
-    - target: {fileID: 1918968368904059933, guid: ec5a26f146497a5468504419ee2da2eb,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.133
-      objectReference: {fileID: 0}
     - target: {fileID: 1918968368973821138, guid: ec5a26f146497a5468504419ee2da2eb,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 1918968368904059933, guid: ec5a26f146497a5468504419ee2da2eb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.133
       objectReference: {fileID: 0}
     - target: {fileID: 1918968367539207773, guid: ec5a26f146497a5468504419ee2da2eb,
         type: 3}
@@ -2008,12 +2371,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1918968368447577339, guid: ec5a26f146497a5468504419ee2da2eb,
+    - target: {fileID: 1918968368611542640, guid: ec5a26f146497a5468504419ee2da2eb,
         type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1918968368611542640, guid: ec5a26f146497a5468504419ee2da2eb,
+    - target: {fileID: 1918968368447577339, guid: ec5a26f146497a5468504419ee2da2eb,
         type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -2038,6 +2401,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tooth_Gray
       objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2053,16 +2426,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2070,6 +2433,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5db8456709346d48b715f7c7e7f7fc6, type: 3}
+--- !u!60 &773625493694914090 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235692369238807}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296097125190909271 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
@@ -2088,6 +2457,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tooth_Gray (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2103,16 +2482,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2126,6 +2495,12 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5db8456709346d48b715f7c7e7f7fc6, type: 3}
+--- !u!60 &773625493792122121 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235692475326516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296097124963174004 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
@@ -2144,6 +2519,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tooth_Gray (15)
       objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_RootOrder
@@ -2159,11 +2544,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 2.75
       objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2171,6 +2551,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5db8456709346d48b715f7c7e7f7fc6, type: 3}
+--- !u!60 &773625493901587651 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235692569358846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296097124887238590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
@@ -2189,6 +2575,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tooth_Gray (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2204,16 +2600,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2221,6 +2607,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5db8456709346d48b715f7c7e7f7fc6, type: 3}
+--- !u!60 &773625494001652755 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235692668637486}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296097124921915246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
@@ -2239,6 +2631,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tooth_Gray (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2254,16 +2656,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2271,6 +2663,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5db8456709346d48b715f7c7e7f7fc6, type: 3}
+--- !u!60 &773625493983990192 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235692684006541}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296097124901302989 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
@@ -2289,6 +2687,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tooth_Gray (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_RootOrder
@@ -2304,11 +2712,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 3.15
       objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2319,6 +2722,12 @@ PrefabInstance:
 --- !u!4 &296097124728039921 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235692711514033}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &773625494027782796 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
     type: 3}
   m_PrefabInstance: {fileID: 4603235692711514033}
   m_PrefabAsset: {fileID: 0}
@@ -2333,6 +2742,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tooth_Gray (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
@@ -2349,16 +2768,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2366,6 +2775,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5db8456709346d48b715f7c7e7f7fc6, type: 3}
+--- !u!60 &773625494018339289 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235692718879972}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296097124737454756 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
@@ -2384,6 +2799,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tooth_Gray (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2399,16 +2824,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2419,6 +2834,12 @@ PrefabInstance:
 --- !u!4 &296097124813465374 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235692763447646}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &773625494105932899 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
     type: 3}
   m_PrefabInstance: {fileID: 4603235692763447646}
   m_PrefabAsset: {fileID: 0}
@@ -2434,6 +2855,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tooth_Gray (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2447,16 +2878,6 @@ PrefabInstance:
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_UsedByComposite
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
@@ -2478,6 +2899,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4603235692985572756}
   m_PrefabAsset: {fileID: 0}
+--- !u!60 &773625494284507305 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235692985572756}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4603235693255412871
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2489,6 +2916,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tooth_Gray (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
@@ -2505,16 +2942,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2528,6 +2955,12 @@ PrefabInstance:
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5db8456709346d48b715f7c7e7f7fc6, type: 3}
+--- !u!60 &773625494555658682 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235693255412871}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296097125273873095 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
@@ -2546,6 +2979,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tooth_Gray (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_RootOrder
@@ -2561,11 +3004,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 2.35
       objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2576,6 +3014,12 @@ PrefabInstance:
 --- !u!4 &296097126200319425 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235693378599809}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &773625494702964412 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
     type: 3}
   m_PrefabInstance: {fileID: 4603235693378599809}
   m_PrefabAsset: {fileID: 0}
@@ -2590,6 +3034,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tooth_Gray (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
@@ -2606,11 +3060,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.55
       objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2618,6 +3067,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5db8456709346d48b715f7c7e7f7fc6, type: 3}
+--- !u!60 &773625494800206058 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235693476367831}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296097126232566679 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
@@ -2636,6 +3091,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tooth_Gray (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_RootOrder
@@ -2651,11 +3116,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 1.15
       objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_SortingOrder
@@ -2663,6 +3123,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5db8456709346d48b715f7c7e7f7fc6, type: 3}
+--- !u!60 &773625494839724022 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235693506183883}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &296097126092383371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
@@ -2681,6 +3147,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tooth_Gray (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2695,16 +3171,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
@@ -2725,6 +3191,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4603235693583107391}
   m_PrefabAsset: {fileID: 0}
+--- !u!60 &773625494899113986 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235693583107391}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4603235693667687348
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2736,6 +3208,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tooth_Gray (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
+        type: 3}
+      propertyPath: m_UsedByComposite
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
@@ -2751,16 +3233,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
-        type: 3}
-      propertyPath: m_UsedByComposite
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8081327630844544684, guid: e5db8456709346d48b715f7c7e7f7fc6,
         type: 3}
@@ -2778,6 +3250,12 @@ PrefabInstance:
 --- !u!4 &296097125918572020 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4321776400711673408, guid: e5db8456709346d48b715f7c7e7f7fc6,
+    type: 3}
+  m_PrefabInstance: {fileID: 4603235693667687348}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &773625495017774729 stripped
+PolygonCollider2D:
+  m_CorrespondingSourceObject: {fileID: 3845372801692091709, guid: e5db8456709346d48b715f7c7e7f7fc6,
     type: 3}
   m_PrefabInstance: {fileID: 4603235693667687348}
   m_PrefabAsset: {fileID: 0}

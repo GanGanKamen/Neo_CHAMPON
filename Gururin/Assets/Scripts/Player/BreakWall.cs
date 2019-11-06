@@ -42,8 +42,6 @@ public class BreakWall : MonoBehaviour
             //Rigidbody2D rigidbody2D = collision.gameObject.GetComponent<Rigidbody2D>();
             //hp -= (int)rigidbody2D.velocity.magnitude;
             hp -= (int)beforeGururinSpeed;
-            Debug.Log("HP : " + hp);
-            Debug.Log("CollisionVelocity : " + beforeGururinSpeed);
             maskPosY += (int)beforeGururinSpeed * magnification;
         }
     }
