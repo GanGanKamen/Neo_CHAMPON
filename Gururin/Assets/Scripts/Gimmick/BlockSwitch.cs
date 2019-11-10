@@ -57,6 +57,12 @@ public class BlockSwitch : MonoBehaviour
         */
         if (appearBlock != null)
         {
+            var balloon = GameObject.Find("BalloonSet(Clone)");
+            if (balloon != null)
+            {
+                Destroy(balloon);
+                balloon = null;
+            }
             appearBlock.SetActive(true);
         }
 

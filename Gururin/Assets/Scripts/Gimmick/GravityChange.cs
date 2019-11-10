@@ -227,6 +227,7 @@ public class GravityChange : MonoBehaviour
             {
                 Vector2 jumpForce = new Vector2(_gameController.sensitivity, 1.0f);
                 _gururinRb2d.AddForce(jumpForce * _playerMove.jumpSpeed / 1.5f);
+                Debug.Log(jumpForce * _playerMove.jumpSpeed / 1.5f);
                 //_jumpSE.Play();
             }
 
