@@ -16,8 +16,8 @@ public class Tutorial1Description_2 : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             conversationController.feedin = true;
-            conversationController.IsDescription = true;
-            conversationController.currentSentenceNum++;
+            conversationController.IsConversation = true;
+            if(conversationController.currentSentenceNum <= 2)conversationController.currentSentenceNum++;
             conversationController.colorMode = false;
             if(!video.isPlaying) video.Play();
         }

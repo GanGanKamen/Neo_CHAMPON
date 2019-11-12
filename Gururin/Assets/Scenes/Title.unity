@@ -1207,7 +1207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nowlanguage: 0
   font0: {fileID: 12800000, guid: 73ed1fb59bd24114984152a28efeed85, type: 3}
-  font1: {fileID: 12800000, guid: bda24b8dd8a4e484e889800f20716725, type: 3}
+  font1: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb, type: 3}
 --- !u!1 &722198595
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,7 +1387,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nowlanguage: 0
   font0: {fileID: 12800000, guid: 73ed1fb59bd24114984152a28efeed85, type: 3}
-  font1: {fileID: 12800000, guid: bda24b8dd8a4e484e889800f20716725, type: 3}
+  font1: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb, type: 3}
 --- !u!1001 &894812476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2462,7 +2462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nowlanguage: 0
   font0: {fileID: 12800000, guid: 73ed1fb59bd24114984152a28efeed85, type: 3}
-  font1: {fileID: 12800000, guid: bda24b8dd8a4e484e889800f20716725, type: 3}
+  font1: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb, type: 3}
 --- !u!1 &1730463253
 GameObject:
   m_ObjectHideFlags: 0
@@ -3920,6 +3920,78 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -349.99997
       objectReference: {fileID: 0}
+    - target: {fileID: 1601417586237013537, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: font1
+      value: 
+      objectReference: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb,
+        type: 3}
+    - target: {fileID: 4168140021948802710, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: font1
+      value: 
+      objectReference: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb,
+        type: 3}
+    - target: {fileID: 4168140022018866174, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: font1
+      value: 
+      objectReference: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb,
+        type: 3}
+    - target: {fileID: 5291562138026586474, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: font1
+      value: 
+      objectReference: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb,
+        type: 3}
+    - target: {fileID: 5291562138087375755, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: font1
+      value: 
+      objectReference: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb,
+        type: 3}
+    - target: {fileID: 5291562138348087042, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: font1
+      value: 
+      objectReference: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb,
+        type: 3}
+    - target: {fileID: 5291562138480540290, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: font1
+      value: 
+      objectReference: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb,
+        type: 3}
+    - target: {fileID: 5291562138544264309, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: font1
+      value: 
+      objectReference: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb,
+        type: 3}
+    - target: {fileID: 6869686482944212306, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: font1
+      value: 
+      objectReference: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb,
+        type: 3}
+    - target: {fileID: 6869686484638668436, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: font1
+      value: 
+      objectReference: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb,
+        type: 3}
+    - target: {fileID: 4168140021720336588, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: font1
+      value: 
+      objectReference: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb,
+        type: 3}
+    - target: {fileID: 3623332273668645645, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: font1
+      value: 
+      objectReference: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c967e085e87aefc4ca5dfa42f5b40d0a, type: 3}
 --- !u!1 &5696210383234636065 stripped
