@@ -31,7 +31,7 @@ public class ConversationController : MonoBehaviour
 
     private IEnumerator nowNobel;
 
-    private bool colorMode = false;
+    public bool colorMode = false;
     void Start()
     {
         config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();

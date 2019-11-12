@@ -18,6 +18,7 @@ public class Tutorial1Description_2 : MonoBehaviour
             conversationController.feedin = true;
             conversationController.IsDescription = true;
             conversationController.currentSentenceNum++;
+            conversationController.colorMode = false;
             if(!video.isPlaying) video.Play();
         }
     }
@@ -28,6 +29,7 @@ public class Tutorial1Description_2 : MonoBehaviour
         {
             conversationController.feedout = true;
             conversationController.IsDescription = false;
+            conversationController.colorMode = false;
             this.gameObject.SetActive(false);
         }
     }
