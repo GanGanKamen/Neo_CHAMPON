@@ -15,6 +15,10 @@ public class PigeonGimmick : MonoBehaviour
     [SerializeField] private GameObject Pigeon;
     private int direction;
     [SerializeField] private GameObject nextCamera;
+
+    private int pigeonPattern = 0;
+    [SerializeField] private float pigeonRorateSpeed;
+    [SerializeField] private float pigeonMoveSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,14 +37,7 @@ public class PigeonGimmick : MonoBehaviour
     {
         TriggerOn();
         FloorsMove();
-        if(trigger == true && direction != 0)
-        {
-            Pigeon.SetActive(true);
-        }
-        else
-        {
-            Pigeon.SetActive(false);
-        }
+        PigeonAction();
     }
 
     private void TriggerOn()
@@ -58,12 +55,36 @@ public class PigeonGimmick : MonoBehaviour
         if (nextCamera != null) nextCamera.SetActive(true);
         yield return new WaitForSeconds(1f);
         trigger = true;
-        while(direction != 0)
+        pigeonPattern = 1;
+        while (direction != 0)
         {
             yield return null;
         }
+        pigeonPattern = 2;
+        yield return new WaitForSeconds(2f);
+        pigeonPattern = 3;
         if (nextCamera != null) nextCamera.SetActive(false);
         yield break;
+    }
+
+    private void PigeonAction()
+    {
+        if (trigger)
+        {
+            switch (pigeonPattern)
+            {
+                case 1:
+                    if(Pigeon.activeSelf == false) Pigeon.SetActive(true); 
+                    break;
+                case 2:
+                    Pigeon.transform.Rotate(0, 0, pigeonRorateSpeed * Time.deltaTime);
+                    Pigeon.transform.localPosition += Vector3.up * pigeonMoveSpeed * Time.deltaTime;
+                    break;
+                case 3:
+                    if (Pigeon.activeSelf) Pigeon.SetActive(false);
+                    break;
+            }
+        }
     }
 
     private void FloorsMove()
