@@ -94,9 +94,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messages:
   - "{\u30D5\u30EA\u30C3\u30AF}\u3067\u30B8\u30E3\u30F3\u30D7\u3067\u304D\u308B\u3088\uFF01"
-  - You can flick to jump over it.
-  - "\u7C21\u4F53\u5B57\u7FFB\u8A335..."
-  - "\u7E41\u4F53\u5B57\u7FFB\u8A335..."
+  - You can {flick} to jump over it.
+  - "{\u7528\u624B\u6307\u6ED1\u52A8\u5C4F\u5E55}\u53EF\u4EE5\u8DF3\u8DC3\u3002"
+  - "{\u7528\u624B\u6307\u6ED1\u52D5\u5C4F\u5E55}\u53EF\u4EE5\u8DF3\u8E8D\u3002"
   hakaseFace: {fileID: 21300000, guid: e9db97b5c4be0a44cb762d567b1b299a, type: 3}
 --- !u!1 &581169476
 GameObject:
@@ -143,9 +143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messages:
   - "\u79FB\u52D5\u3092\u3059\u308B\u306B\u306F\u3000{\u753B\u9762\u3092\u6307\u3067\u3050\u308B\u3050\u308B\u56DE\u305B}\u3070\u3044\u3044\u3088!"
-  - "Touch the screen and drawing a circle\u3000to move."
-  - "\u89E6\u6478\u753B\u9762\u5E76\u7528\u624B\u6307\u5728\u753B\u9762\u4E0A\u753B\u5708\uFF0C\u3000\u53EF\u4EE5\u5411\u524D\u79FB\u52A8\uFF01"
-  - "\u89F8\u6478\u756B\u9762\u4E26\u7528\u624B\u6307\u5728\u756B\u9762\u4E0A\u756B\u5708\uFF0C\u3000\u53EF\u4EE5\u5411\u524D\u79FB\u52D5\uFF01"
+  - "{Touch the screen and drawing a circle}\u3000to move."
+  - "\u89E6\u6478\u753B\u9762\u5E76{\u7528\u624B\u6307\u5728\u753B\u9762\u4E0A\u753B\u5708}\uFF0C\u3000\u53EF\u4EE5\u5411\u524D\u79FB\u52A8\uFF01"
+  - "\u89F8\u6478\u756B\u9762\u4E26{\u7528\u624B\u6307\u5728\u756B\u9762\u4E0A\u756B\u5708}\uFF0C\u3000\u53EF\u4EE5\u5411\u524D\u79FB\u52D5\uFF01"
   hakaseFace: {fileID: 21300000, guid: 3558c50a96f48cb45ad6662149f2743f, type: 3}
 --- !u!1 &884162261
 GameObject:

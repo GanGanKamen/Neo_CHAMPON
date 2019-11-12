@@ -47,16 +47,17 @@ public class NeoConfig : MonoBehaviour
         {
             tapGUI = Instantiate(ResourcesMng.ResourcesLoad("TAP_1"), Vector3.zero, Quaternion.identity);
         }
-
+        
         if(tapGUI != null)
         {
             Vector3 tapPosition = Input.mousePosition;
             tapPosition.z = 10f;
             tapGUI.transform.position = Camera.main.ScreenToWorldPoint(tapPosition);
         }
-
+        
         if(tapGUI != null && Input.GetMouseButtonUp(0))
         {
+            Debug.Log("tapUp");
             Destroy(tapGUI.gameObject);
             tapGUI = null;
         }
