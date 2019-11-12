@@ -26,7 +26,7 @@ public class MaskActive : MonoBehaviour
             var maskPos = new Vector2(pos.x + 10.5f, pos.y - 2.75f);
             mask.transform.position = new Vector2(maskPos.x, maskPos.y);
             //マスクを削除
-            Destroy(mask, 5.0f);
+            Destroy(mask, 7.0f);
         }
     }
 }
