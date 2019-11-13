@@ -17,6 +17,7 @@ public class NeoConfig : MonoBehaviour
     public Slider touchSlider;
 
     private GameObject tapGUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -51,16 +52,20 @@ public class NeoConfig : MonoBehaviour
         if(tapGUI != null)
         {
             Vector3 tapPosition = Input.mousePosition;
-            tapPosition.z = 10f;
+            tapPosition.z = CameraDis();
             tapGUI.transform.position = Camera.main.ScreenToWorldPoint(tapPosition);
         }
         
         if(tapGUI != null && Input.GetMouseButtonUp(0))
         {
-            Debug.Log("tapUp");
             Destroy(tapGUI.gameObject);
             tapGUI = null;
         }
+    }
+
+    private float CameraDis()
+    {
+        return GameStart.mainCamera.orthographicSize / 4f * 10f;
     }
 
     private void Volume()

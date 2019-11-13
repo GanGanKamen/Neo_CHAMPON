@@ -9,7 +9,7 @@ public class GameStart : MonoBehaviour
 
     [System.NonSerialized] public string nowSceneName;
     private string preSceneName;
-
+    static public Camera mainCamera;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +18,7 @@ public class GameStart : MonoBehaviour
         preSceneName = nowSceneName;
 
         SceneManager.LoadSceneAsync(NextSceneName);
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -33,6 +34,7 @@ public class GameStart : MonoBehaviour
         {
             Debug.Log("SceneChange");
             NeoConfig.isSoundFade = false;
+            mainCamera = Camera.main;
             preSceneName = nowSceneName;
         }
     }

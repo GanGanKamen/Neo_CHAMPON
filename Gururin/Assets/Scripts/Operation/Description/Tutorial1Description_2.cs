@@ -6,15 +6,23 @@ public class Tutorial1Description_2 : MonoBehaviour
 {
     [SerializeField] ConversationController conversationController;
     [SerializeField] VideoPlayer video;
+    private FlagManager flagManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            flagManager.velXFixed = true;
+            //ぐるりんの動きを止める
+            flagManager.moveStop = true;
+            //GameControllerを非表示にする
+            flagManager.pressParm = false;
+
             conversationController.feedin = true;
             conversationController.IsConversation = true;
             if(conversationController.currentSentenceNum <= 2)conversationController.currentSentenceNum++;
