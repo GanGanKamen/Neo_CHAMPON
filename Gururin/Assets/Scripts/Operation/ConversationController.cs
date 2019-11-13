@@ -31,7 +31,7 @@ public class ConversationController : MonoBehaviour
 
     private IEnumerator nowNobel;
 
-    private bool colorMode = false;
+    public bool colorMode = false;
     void Start()
     {
         config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
@@ -199,15 +199,17 @@ public class ConversationController : MonoBehaviour
                 string finalText = "";
                 if (LanguageSwitch.language == LanguageSwitch.Language.Japanese || LanguageSwitch.language == LanguageSwitch.Language.English)
                 {
-                    finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n\n").Replace("{", "<color=blue>").Replace("}", "</color>");
+                    finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n\n");
                 }
                 else
                 {
-                    finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n").Replace("{", "<color=blue>").Replace("}", "</color>");
+                    finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n");
                 }
-                
-                if (Text.text != finalText)
+                string comparisonText = Text.text.Replace("<color=blue>", "").Replace("</color>", "");
+                if (comparisonText != finalText.Replace("{", "").Replace("}", ""))
                 {
+                    Debug.Log("final");
+                    finalText = finalText.Replace("{", "<color=blue>").Replace("}", "</color>");
                     StopCoroutine(nowNobel);
                     nowNobel = null; nowNobel = NovelText();
                     Text.text = finalText;
@@ -219,7 +221,6 @@ public class ConversationController : MonoBehaviour
 
     public void StopAll()
     {
-        Debug.Log("stop");
         StopCoroutine(nowNobel);
         nowNobel = null; nowNobel = NovelText();
         Text.text = "";

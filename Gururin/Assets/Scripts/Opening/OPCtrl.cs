@@ -15,6 +15,10 @@ public class OPCtrl : MonoBehaviour
     [SerializeField] private Image blackBack;
     private float alpha = 1;
     private bool start = false;
+
+    private bool canSkip = false;
+    private bool gotoNextScene = false;
+    [SerializeField] private GameObject skipButton;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,8 +40,34 @@ public class OPCtrl : MonoBehaviour
                 alpha = 0;
             }
         }
+        SkipOption();
     }
 
+    private void SkipOption()
+    {
+        if (Input.GetMouseButtonDown(0) && gotoNextScene == false)
+        {
+            if(canSkip == false)
+            {
+                StartCoroutine(SkipButtonProcess());
+            }
+            else
+            {
+                gotoNextScene = true;
+                Fader.FadeInBlack(waitTime, nextSceneName);
+            }
+        }
+    }
+
+    private IEnumerator SkipButtonProcess()
+    {
+        canSkip = true;
+        skipButton.SetActive(true);
+        yield return new WaitForSeconds(waitTime + 1);
+        canSkip = false;
+        skipButton.SetActive(false);
+        yield break;
+    }
     private IEnumerator StartFade()
     {
         start = true;
@@ -67,6 +97,7 @@ public class OPCtrl : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         if(pageCtrl.nowPageNum >= pageCtrl.pageNum - 1)
         {
+            gotoNextScene = true;
             Fader.FadeInBlack(waitTime, nextSceneName);
             yield break;
         }

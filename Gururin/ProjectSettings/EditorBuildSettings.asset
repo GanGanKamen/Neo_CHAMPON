@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameStart.unity
     guid: 8187bf94c9f1d5f4bbc309e2087c07c9
   - enabled: 1
+    path: Assets/Scenes/PageOP.unity
+    guid: f98c9bf788fcb0f4ab083c29ce5ec542
+  - enabled: 1
     path: Assets/Scenes/Title.unity
     guid: bd92d34ce4abe334aae11710278cb726
   - enabled: 1
@@ -28,7 +31,7 @@ EditorBuildSettings:
     guid: 306c79cfe87c45845944ebd13c7d675b
   - enabled: 0
     path: 
-    guid: bb1c1b7fa5c76464aa6a3db10d5bb4b7
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/2_PropellerStage/Propeller-1.unity
     guid: ffe3d4bf6f568a649b786cadd050cbf6
@@ -44,9 +47,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/4_BeltConveyorStage/Belt_Proto.unity
     guid: 0f2eb6db14fdac4458e8ac0c15a0e255
-  - enabled: 1
-    path: Assets/Scenes/Test/OPTest.unity
-    guid: f98c9bf788fcb0f4ab083c29ce5ec542
   - enabled: 1
     path: Assets/Scenes/Test/OPTest2.unity
     guid: ed93efa31a8a35648b648b5feca68b7f

@@ -75,6 +75,7 @@ MonoBehaviour:
   textFeed: 00000000
   config: {fileID: 0}
   gameController: {fileID: 0}
+  colorMode: 0
 --- !u!114 &6895769888602625318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -889,7 +890,7 @@ MonoBehaviour:
   IsStart: 0
   IsDisplay: 0
   font0: {fileID: 12800000, guid: 73ed1fb59bd24114984152a28efeed85, type: 3}
-  font1: {fileID: 12800000, guid: bda24b8dd8a4e484e889800f20716725, type: 3}
+  font1: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb, type: 3}
 --- !u!1 &6961103767368310894
 GameObject:
   m_ObjectHideFlags: 0
