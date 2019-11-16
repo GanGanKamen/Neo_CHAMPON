@@ -25,7 +25,7 @@ public class Tutorial1Description_2 : MonoBehaviour
 
             conversationController.feedin = true;
             conversationController.IsConversation = true;
-            if(conversationController.currentSentenceNum <= 2)conversationController.currentSentenceNum++;
+            if(conversationController.currentSentenceNum <= 1)conversationController.currentSentenceNum++;
             conversationController.colorMode = false;
             if(!video.isPlaying) video.Play();
         }
@@ -44,6 +44,11 @@ public class Tutorial1Description_2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(conversationController.IsConversation == false && flagManager.velXFixed&& flagManager.moveStop)
+        {
+            flagManager.velXFixed = false;
+            //ぐるりんの動きを止める
+            flagManager.moveStop = false;
+        }
     }
 }
