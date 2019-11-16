@@ -149,6 +149,7 @@ public class ConversationController : MonoBehaviour
         hakaseFace.sprite = sentences[currentSentenceNum].hakaseFace;
         int wordCound = 0;
         Text.text = "";
+        while (feedin) yield return null;
         while (wordCound < sentences[currentSentenceNum].TextOutPut().Length)
         {
             if (sentences[currentSentenceNum].TextOutPut()[wordCound] == '　')

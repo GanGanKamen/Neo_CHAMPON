@@ -29,7 +29,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1098247676}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &100938619
 MonoBehaviour:
@@ -78,7 +78,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1098247676}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &568293269
 MonoBehaviour:
@@ -97,56 +97,7 @@ MonoBehaviour:
   - You can {flick} to jump over it.
   - "{\u7528\u624B\u6307\u6ED1\u52A8\u5C4F\u5E55}\u53EF\u4EE5\u8DF3\u8DC3\u3002"
   - "{\u7528\u624B\u6307\u6ED1\u52D5\u5C4F\u5E55}\u53EF\u4EE5\u8DF3\u8E8D\u3002"
-  hakaseFace: {fileID: 21300000, guid: e9db97b5c4be0a44cb762d567b1b299a, type: 3}
---- !u!1 &581169476
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 581169477}
-  - component: {fileID: 581169478}
-  m_Layer: 0
-  m_Name: Message (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &581169477
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581169476}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1098247676}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &581169478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581169476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f4deb53789a6a478a4a8133fa82140, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  messages:
-  - "\u79FB\u52D5\u3092\u3059\u308B\u306B\u306F\u3000{\u753B\u9762\u3092\u6307\u3067\u3050\u308B\u3050\u308B\u56DE\u305B}\u3070\u3044\u3044\u3088!"
-  - "{Touch the screen and drawing a circle}\u3000to move."
-  - "\u89E6\u6478\u753B\u9762\u5E76{\u7528\u624B\u6307\u5728\u753B\u9762\u4E0A\u753B\u5708}\uFF0C\u3000\u53EF\u4EE5\u5411\u524D\u79FB\u52A8\uFF01"
-  - "\u89F8\u6478\u756B\u9762\u4E26{\u7528\u624B\u6307\u5728\u756B\u9762\u4E0A\u756B\u5708}\uFF0C\u3000\u53EF\u4EE5\u5411\u524D\u79FB\u52D5\uFF01"
-  hakaseFace: {fileID: 21300000, guid: 3558c50a96f48cb45ad6662149f2743f, type: 3}
+  hakaseFace: {fileID: 21300000, guid: 8de5b13b0c96e82439b5de19493fe794, type: 3}
 --- !u!1 &884162261
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,11 +142,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messages:
-  - "\u3053\u3053\u306F\u7BB1\u306E\u4E2D\u306A\u306E\u304B\u306A?\u3000\u3068\u308A\u3042\u3048\u305A\u9032\u3093\u3067\u884C\u3053\u3046!"
-  - "I see you are in the box now.\u3000Anyway let\u2019s go ahead!"
-  - "\u4F30\u8BA1\u8FD9\u91CC\u662F\u5B9D\u7BB1\u7684\u5185\u90E8\u3002\u3000\u4E0D\u7BA1\u600E\u4E48\u6837\u5148\u524D\u8FDB\u5427\uFF01"
-  - "\u4F30\u8A08\u9019\u88CF\u662F\u5BF6\u7BB1\u7684\u5167\u90E8\u3002\u3000\u4E0D\u7BA1\u600E\u9EBC\u6A23\u5148\u524D\u9032\u5427\uFF01"
-  hakaseFace: {fileID: 21300000, guid: 3558c50a96f48cb45ad6662149f2743f, type: 3}
+  - "\u307E\u305A\u306F\u79FB\u52D5\u3057\u3088\u3046\uFF01{\u753B\u9762\u3092\u30BF\u30C3\u30C1\u3057\u3066\u3000\u30B3\u30F3\u30C8\u30ED\u30FC\u30E9\u30FC\u3092\u3050\u308B\u3050\u308B\u56DE\u305D\u3046}\uFF01"
+  - "Let\u2019s try to move!  {Touch the screen\u3000and turn the gear controller}!"
+  - "\u9996\u5148\u662F\u79FB\u52A8\uFF01 {\u89E6\u6478\u5C4F\u5E55\u7136\u540E\u8F6C\u52A8\u9F7F\u8F6E\u72B6\u3000\u7684\u63A7\u5236\u5668}\u3002"
+  - "\u9996\u5148\u662F\u79FB\u52D5\uFF01{\u89F8\u6478\u5C4F\u5E55\u7136\u5F8C\u8F49\u52D5\u9F52\u8F2A\u72C0\u3000\u7684\u63A7\u5236\u5668}\u3002"
+  hakaseFace: {fileID: 21300000, guid: e9db97b5c4be0a44cb762d567b1b299a, type: 3}
 --- !u!1 &887596266
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +178,6 @@ Transform:
   m_Children:
   - {fileID: 936835049}
   - {fileID: 884162262}
-  - {fileID: 581169477}
   - {fileID: 100938618}
   - {fileID: 1626895061}
   - {fileID: 568293268}
@@ -249,7 +199,6 @@ MonoBehaviour:
   sentences:
   - {fileID: 936835050}
   - {fileID: 884162263}
-  - {fileID: 581169478}
   - {fileID: 100938619}
   - {fileID: 1626895062}
   - {fileID: 568293269}
@@ -336,12 +285,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messages:
-  - "\u3050\u308B\u308A\u3093!\u3050\u308B\u308A\u3093!\u3000\u5927\u4E08\u592B?\u30CF\u30AB\u30BB\u3060\u3088!"
-  - "GuRu-Rin! Guru-Rin! Are you okey?\u3000This is Doctor!!"
-  - "\u5C0F\u5495\u565C\uFF01\u5C0F\u5495\u565C\uFF01\u6CA1\u4E8B\u5427\uFF1F\u6211\u662F\u535A\u58EB\uFF01\uFF01"
-  - "\u5C0F\u5495\u5695\uFF01\u5C0F\u5495\u5695\uFF01\u6C92\u4E8B\u5427\uFF1F\u6211\u662F\u535A\u58EB\uFF01
-    \uFF01"
-  hakaseFace: {fileID: 21300000, guid: 82a2fcd18e7306243b8f121da1d104dc, type: 3}
+  - "\u3053\u3053\u3067\u306F\u57FA\u672C\u7684\u306A\u64CD\u4F5C\u3092\u5B66\u3079\u308B\u3088\uFF01"
+  - You can learn how to operate here!
+  - "\u5728\u8FD9\u91CC\u53EF\u4EE5\u5B66\u4E60\u57FA\u672C\u64CD\u4F5C\u3002"
+  - "\u5728\u9019\u88E1\u53EF\u4EE5\u5B78\u7FD2\u57FA\u672C\u64CD\u4F5C\u3002"
+  hakaseFace: {fileID: 21300000, guid: 3558c50a96f48cb45ad6662149f2743f, type: 3}
 --- !u!1 &1626895060
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,7 +319,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1098247676}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1626895062
 MonoBehaviour:
@@ -390,7 +338,7 @@ MonoBehaviour:
   - "Well! You can use these\u3000slip-through floors to climb."
   - "\u90A3\u5C31\u7528\u90A3\u4E9B\u7A7F\u900F\u5730\u677F\u6765\u3000\u8DE8\u8FC7\u8FD9\u5835\u5899\u5427\uFF01"
   - "\u90A3\u5C31\u7528\u90A3\u4E9B\u7A7F\u900F\u5730\u677F\u4F86\u3000\u8DE8\u904E\u9019\u5835\u58BB\u5427\uFF01"
-  hakaseFace: {fileID: 21300000, guid: 3558c50a96f48cb45ad6662149f2743f, type: 3}
+  hakaseFace: {fileID: 21300000, guid: d847207f8789afd4abb8b663b694b821, type: 3}
 --- !u!1 &3061854120405272681
 GameObject:
   m_ObjectHideFlags: 0
