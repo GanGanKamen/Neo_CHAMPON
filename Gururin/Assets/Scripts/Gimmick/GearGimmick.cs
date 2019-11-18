@@ -266,7 +266,8 @@ public class GearGimmick : MonoBehaviour
             gear.transform.Rotate(new Vector3(0.0f, 0.0f, rotSpeed));
             _gururinRb2d.rotation += -rotSpeed;
 
-            WatchGearTurn(true);
+            if (watch.IsReadyRotate()) WatchGearTurn(true);
+            else watch.ReadyToRotate();
 
             if (playerMove.finishMode)//マスターギアを取る
             {
@@ -281,12 +282,14 @@ public class GearGimmick : MonoBehaviour
             gear.transform.Rotate(new Vector3(0.0f, 0.0f, -rotSpeed));
             _gururinRb2d.rotation += rotSpeed;
 
-            WatchGearTurn(false);
+            if (watch.IsReadyRotate()) WatchGearTurn(false);
+            else watch.ReadyToRotate();
         }
         //回転操作をしていないときは普通の顔にする
         else if (gameController.isPress == false)
         {
             flagManager.standFirm_Face = false;
+            watch.RotateCountReset();
         }
     }
 
