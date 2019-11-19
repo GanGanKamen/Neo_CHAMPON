@@ -1,54 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &169680518
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 169680519}
-  - component: {fileID: 169680520}
-  m_Layer: 0
-  m_Name: Message (3)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &169680519
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169680518}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 740377782}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &169680520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 169680518}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f4deb53789a6a478a4a8133fa82140, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  messages:
-  - "\u4E0A\u624B\uFF01...\u3093\uFF1F\u524D\u3092\u898B\u3066!\u6BB5\u5DEE\u304C\u3042\u308B\u306D!\u3000\u30D5\u30EA\u30C3\u30AF\u3057\u3066\u30B8\u30E3\u30F3\u30D7\u3067\u9032\u3082\u3046"
-  - So Let's play it immediately!
-  - "\u90A3\u4E48\u73B0\u5728\u7ACB\u523B\u5F00\u59CB\u6E38\u620F\u5427\uFF01"
-  - "\u90A3\u9EBC\u73FE\u5728\u7ACB\u523B\u958B\u59CB\u904A\u6232\u5427\uFF01"
-  hakaseFace: {fileID: 0}
 --- !u!1 &449374386
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,11 +44,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messages:
-  - "\u58C1\u306B\u30C7\u30B3\u30DC\u30B3\u304C\u3042\u308B\u306D\uFF01"
-  - "Look at the wall! It\u2019s uneven\u3000just like earlier ceiling!"
-  - "\u90A3\u5835\u5899\u5C31\u50CF\u521A\u624D\u7684\u5929\u82B1\u677F\u4E00\u6837\u6709\u3000\u51F9\u51F8\u4E0D\u5E73\u7684\u90E8\u5206\uFF01"
-  - "\u90A3\u5835\u7246\u5C31\u50CF\u525B\u624D\u7684\u5929\u82B1\u677F\u4E00\u6A23\u6709\u3000\u51F9\u51F8\u4E0D\u5E73\u7684\u90E8\u5206\uFF01"
-  hakaseFace: {fileID: 21300000, guid: 3558c50a96f48cb45ad6662149f2743f, type: 3}
+  - "\u3042\u306E\u30C7\u30B3\u30DC\u30B3\u306B\u304F\u3063\u3064\u3044\u3066\u79FB\u52D5\u3000\u3067\u304D\u308B\u3093\u3060\uFF01"
+  - You can move on that undulation.
+  - "\u53EF\u4EE5\u5229\u7528\u90A3\u4E2A\u51F9\u51F8\u4E0D\u5E73\u7684\u5899\u58C1\u6765\u79FB\u52A8\uFF01"
+  - "\u53EF\u4EE5\u5229\u7528\u90A3\u500B\u51F9\u51F8\u4E0D\u5E73\u7684\u7246\u58C1\u4F86\u79FB\u52D5\uFF01"
+  hakaseFace: {fileID: 21300000, guid: e9db97b5c4be0a44cb762d567b1b299a, type: 3}
 --- !u!1 &557105145
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,10 +188,6 @@ Transform:
   - {fileID: 449374387}
   - {fileID: 1545705060}
   - {fileID: 1297649985}
-  - {fileID: 169680519}
-  - {fileID: 1937640116}
-  - {fileID: 889524029}
-  - {fileID: 1073216488}
   m_Father: {fileID: 557105146}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -277,7 +224,7 @@ MonoBehaviour:
   textFeed: 000000
   config: {fileID: 0}
   gameController: {fileID: 0}
-  textWaitTime: 0.03
+  colorMode: 0
 --- !u!114 &740377784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,55 +359,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c573a05447d6fda47a336c669d5125f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &889524028
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 889524029}
-  - component: {fileID: 889524030}
-  m_Layer: 0
-  m_Name: Message (5)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &889524029
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 889524028}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 740377782}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &889524030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 889524028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f4deb53789a6a478a4a8133fa82140, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  messages:
-  - "\u6642\u8A08\u56DE\u308A\u306B\u3050\u308B\u3050\u308B\u3059\u308B\u3068\u53F3\u306B\u3000\u53CD\u6642\u8A08\u56DE\u308A\u306B\u3050\u308B\u3050\u308B\u3059\u308B\u3068\u3000\u5DE6\u306B\u9032\u3080\u3088\uFF01\uFF01"
-  - "\u82F1\u8A9E\u7FFB\u8A335..."
-  - "\u7C21\u4F53\u5B57\u7FFB\u8A335..."
-  - "\u7E41\u4F53\u5B57\u7FFB\u8A335..."
-  hakaseFace: {fileID: 0}
 --- !u!1 &904550945
 GameObject:
   m_ObjectHideFlags: 0
@@ -535,55 +433,6 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!1 &1073216487
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1073216488}
-  - component: {fileID: 1073216489}
-  m_Layer: 0
-  m_Name: Message (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1073216488
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1073216487}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 740377782}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1073216489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1073216487}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f4deb53789a6a478a4a8133fa82140, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  messages:
-  - "\"\u4E0A\u624B\uFF01...\u3093\uFF1F\u524D\u3092\u898B\u3066\uFF01\u3000\u6BB5\u5DEE\u304C\u3042\u308B\u306D\uFF01\u4E0A\u306B\u30D5\u30EA\u30C3\u30AF\u3057\u3066\u3000\u30B8\u30E3\u30F3\u30D7\u3067\u9032\u3082\u3046\uFF01\""
-  - "\u82F1\u8A9E\u7FFB\u8A336..."
-  - "\u7C21\u4F53\u5B57\u7FFB\u8A336..."
-  - "\u7E41\u4F53\u5B57\u7FFB\u8A336..."
-  hakaseFace: {fileID: 0}
 --- !u!1 &1274551133
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,11 +553,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messages:
-  - "\u304F\u3063\u3064\u3044\u3066\u3044\u308B\u58C1\u3068\u9006\u65B9\u5411\u306B\u30D5\u30EA\u30C3\u30AF\u3000\u3059\u308B\u3068\u30B8\u30E3\u30F3\u30D7
-    !\u4E0D\u601D\u8B70\u306A\u6249\u306F\u76EE\u306E\u524D!"
-  - "Finally, flick to leave the wall.\u3000The goal is right in front of you."
-  - "\u548C\u5899\u58C1\u8FDE\u7ED3\u5728\u4E00\u8D77\u7684\u65F6\u5019\u6ED1\u52A8\u5C4F\u5E55\u53EF\u4EE5\u3000\u5206\u79BB\u3002\u7EC8\u70B9\u5C31\u5728\u773C\u524D\u3002"
-  - "\u548C\u7246\u58C1\u9023\u7D50\u5728\u4E00\u8D77\u7684\u6642\u5019\u6ED1\u52D5\u5C4F\u5E55\u53EF\u4EE5\u3000\u5206\u96E2\u3002\u7D42\u9EDE\u5C31\u5728\u773C\u524D\u3002"
+  - "\u4E0D\u601D\u8B70\u306A\u6249\u306B\u5411\u3051\u3066\u9032\u3082\u3046\uFF01"
+  - "The wonder gate is right in\u3000front of you!"
+  - "\u5411\u7740\u4E0D\u53EF\u601D\u8BAE\u7684\u5927\u95E8\u524D\u8FDB\u5427\uFF01"
+  - "\u5411\u8457\u4E0D\u53EF\u601D\u8B70\u7684\u5927\u9580\u524D\u9032\u5427\uFF01"
   hakaseFace: {fileID: 21300000, guid: 0903374e8521719449506980b9ce87c0, type: 3}
 --- !u!1 &1337847371
 GameObject:
@@ -868,11 +716,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   messages:
-  - "\u5929\u4E95\u3068\u540C\u3058\u3088\u3046\u306B\u304F\u3063\u3064\u3044\u3066\u767B\u308C\u308B\u3093\u3060!"
-  - "Maybe you can go to the top by the\u3000wall."
-  - "\u4E5F\u5C31\u662F\u8BF4\u8FD9\u5835\u5899\u5E94\u8BE5\u53EF\u4EE5\u8FDE\u7ED3\u3002"
-  - "\u4E5F\u5C31\u662F\u8AAA\u9019\u5835\u7246\u61C9\u8A72\u53EF\u4EE5\u9023\u7D50\u3002"
-  hakaseFace: {fileID: 21300000, guid: 8de5b13b0c96e82439b5de19493fe794, type: 3}
+  - "\u304F\u3063\u3064\u3044\u3066\u3044\u308B\u58C1\u3068\u53CD\u5BFE\u306B\u30D5\u30EA\u30C3\u30AF\u3000\u3059\u308B\u3068\u30B8\u30E3\u30F3\u30D7
+    ! "
+  - "Flick in the opposite direction of\u3000the wall to leave!"
+  - "\u5411\u5899\u58C1\u7684\u76F8\u53CD\u65B9\u5411\u6ED1\u52A8\u5C4F\u5E55\u53EF\u4EE5\u5206\u79BB\uFF01"
+  - "\u5411\u7246\u58C1\u7684\u76F8\u53CD\u65B9\u5411\u6ED1\u52D5\u5C4F\u5E55\u53EF\u4EE5\u5206\u96E2\uFF01"
+  hakaseFace: {fileID: 21300000, guid: 3558c50a96f48cb45ad6662149f2743f, type: 3}
 --- !u!1 &1817393535
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,55 +896,6 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!1 &1937640115
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1937640116}
-  - component: {fileID: 1937640117}
-  m_Layer: 0
-  m_Name: Message (4)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1937640116
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1937640115}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 740377782}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1937640117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1937640115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0f4deb53789a6a478a4a8133fa82140, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  messages:
-  - "\u307E\u305A\u306F\u79FB\u52D5\u3057\u3066\u307F\u3088\u3046!\u3000\u753B\u9762\u3092\u6307\u3067\u3050\u308B\u3050\u308B\u56DE\u305B\u3070\u3000\u9032\u3081\u308B\u3088\uFF01"
-  - "\u82F1\u8A9E\u7FFB\u8A334..."
-  - "\u7C21\u4F53\u5B57\u7FFB\u8A334..."
-  - "\u7E41\u4F53\u5B57\u7FFB\u8A334..."
-  hakaseFace: {fileID: 0}
 --- !u!1 &1979308873
 GameObject:
   m_ObjectHideFlags: 0
