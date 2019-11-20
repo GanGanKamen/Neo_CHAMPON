@@ -1,2 +1,3 @@
 # Neo_CHAMPON
 gitignore設定ミスった関係でリポジトリをここに移行する
+最新状態は基本NeoGanGanかIgarashiにある
