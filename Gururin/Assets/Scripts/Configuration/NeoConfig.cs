@@ -65,7 +65,7 @@ public class NeoConfig : MonoBehaviour
 
     private float CameraDis()
     {
-        return GameStart.mainCamera.orthographicSize / 4f * 10f;
+        return Camera.main.orthographicSize / 4f * 10f;
     }
 
     private void Volume()
