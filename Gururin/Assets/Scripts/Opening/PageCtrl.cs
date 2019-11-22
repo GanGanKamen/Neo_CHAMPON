@@ -70,6 +70,7 @@ public class PageCtrl : MonoBehaviour
     public void NextPage(int nowPage)
     {
         if (nowPage >= pageNum - 1) return;
+        SoundManager.PlayS(gameObject, "SE_book_turn");
         pageChange = 1;
     }
 

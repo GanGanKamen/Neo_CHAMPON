@@ -193,7 +193,9 @@ namespace GanGanKamen
             bossAnim.SetTrigger("Down");
             balloonAnim.SetBool("Break",true);
             SoundManager.PlayS(gameObject, "SE_propellerBOSSnakigoe2");
+            //SoundManager.PlayS(gameObject, "SE_Faint");
             yield return new WaitForSeconds(3f);
+            //SoundManager.StopS(gameObject);
             balloonAnim.SetBool("Break", false);
             bosseye.sprite = eyes[1];
             SoundManager.PlayS(gameObject, "SE_propellerBOSSnakigoe1");

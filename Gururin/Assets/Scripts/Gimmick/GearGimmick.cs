@@ -174,7 +174,6 @@ public class GearGimmick : MonoBehaviour
 
         playerMove.nowBossHand = null;
         playerMove.nowGearGimiick = null;
-        if (bossHand != null) bossHand.Separate();
 
         if (turnUI != null) turnUI.SeparatePlayer();
     }
