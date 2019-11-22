@@ -16,7 +16,7 @@ public class GameStart : MonoBehaviour
     private float height = 1920f;
 
     [SerializeField] private RectTransform[] mask; //0 left,1 right,2 top,3 bottom
-
+    public string[] ignoreScenes;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,8 +25,7 @@ public class GameStart : MonoBehaviour
         preSceneName = nowSceneName;
 
         SceneManager.LoadSceneAsync(NextSceneName);
-        mainCamera = Camera.main;
-
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         ScreenSet();
     }
 
@@ -61,10 +60,21 @@ public class GameStart : MonoBehaviour
         nowSceneName = SceneManager.GetActiveScene().name;
         if (preSceneName != nowSceneName)
         {
-            Debug.Log("SceneChange");
             NeoConfig.isSoundFade = false;
-            mainCamera = Camera.main;
-            ScreenSet();
+            mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+            var isIgnore = false;
+            foreach(string name in ignoreScenes)
+            {
+                if (name == nowSceneName)
+                {
+                    isIgnore = true;
+                }
+            }
+            if (isIgnore == false)
+            {   
+                ScreenSet();
+            }
+
             preSceneName = nowSceneName;
         }
     }

@@ -460,6 +460,9 @@ MonoBehaviour:
   - {fileID: 1574831133}
   - {fileID: 1084629870}
   - {fileID: 1401077493}
+  ignoreScenes:
+  - Title
+  - Tutorial-End
 --- !u!4 &1492293835
 Transform:
   m_ObjectHideFlags: 0
