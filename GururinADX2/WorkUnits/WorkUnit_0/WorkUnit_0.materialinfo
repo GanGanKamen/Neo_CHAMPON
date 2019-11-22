@@ -2,7 +2,7 @@
 <!-- Orca XML File Format -->
 <OrcaTrees ObjectTypeExpression="Full" BinaryEncodingType="Base64" FileVersion="3" FileRevision="0">
   <OrcaTree OrcaName="(no name)">
-    <Orca OrcaName="WorkUnit_0_MaterialInfo" FormatVersion="Ver.1.02.00" MaterialRootPath="Materials" VersionInfoV3="Ver.3.41.10" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoMaterialInfoFile">
+    <Orca OrcaName="WorkUnit_0_MaterialInfo" FormatVersion="Ver.1.02.00" MaterialRootPath="Materials" VersionInfoV3="Ver.3.40.17" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoMaterialInfoFile">
       <Orca OrcaName="MaterialRootFolder" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformFolder">
         <Orca OrcaName="BGM" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
           <Orca OrcaName="BGM_tutolial.wav" BitsPerSamples="24" Channels="2" EncodeFileSize="808266" ReloopEnd="1212632" ResamplingRate="48000" SampleFrames="1212632" SamplingRate="48000" SourceFileSize="7277296" StreamType="Stream" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
@@ -38,6 +38,10 @@
           <Orca OrcaName="re_SE_hakaseWord.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="4188" ReloopEnd="12000" ResamplingRate="48000" SampleFrames="12000" SamplingRate="48000" SourceFileSize="36080" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="jinglr_flag-04.wav" BitsPerSamples="24" Channels="2" EncodeFileSize="103760" ReloopEnd="155078" ResamplingRate="48000" SampleFrames="155078" SamplingRate="48000" SourceFileSize="930548" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
           <Orca OrcaName="SE_denki_long-01.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="53633" ReloopEnd="160616" ResamplingRate="48000" SampleFrames="160616" SamplingRate="48000" SourceFileSize="481928" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="SE_Boss_Fall.wav" Channels="1" EncodeFileSize="16805" ReloopEnd="49919" ResamplingRate="44100" SampleFrames="49919" SamplingRate="44100" SourceFileSize="100572" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="SE_Faint.wav" Channels="2" EncodeFileSize="61382" ReloopEnableFlag="True" ReloopEnd="88200" ResamplingRate="44100" SampleFrames="88200" SamplingRate="44100" SourceFileSize="353534" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="SE_Woodfall.wav" Channels="1" EncodeFileSize="12031" ReloopEnd="35321" ResamplingRate="44100" SampleFrames="35321" SamplingRate="44100" SourceFileSize="70686" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
+          <Orca OrcaName="SE_book_turn.wav" Channels="2" EncodeFileSize="56020" ReloopEnd="82969" ResamplingRate="44100" SampleFrames="82969" SamplingRate="44100" SourceFileSize="331920" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>
         </Orca>
         <Orca OrcaName="retake" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveformSubFolder">
           <Orca OrcaName="re_SE_GearMesh-01.wav" BitsPerSamples="24" Channels="1" EncodeFileSize="44767" ReloopEnd="133499" ResamplingRate="48000" SampleFrames="133499" SamplingRate="48000" SourceFileSize="400577" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoWaveform"/>

@@ -1,12 +1,12 @@
 ﻿/*===========================================================================*
  *  Header file for Atom Config File
  *  Project            : Gururin
- *  Tool Ver.          : Ver.3.41.10
- *  ACF  Ver.          : Ver.1.21.01
- *  File Path          : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public
+ *  Tool Ver.          : Ver.3.40.17
+ *  ACF  Ver.          : Ver.1.20.03
+ *  File Path          : C:/Users/m011710258/Documents/champon/GururinADX2/Public
  *  File Name          : Gururin_acf.h
- *  File Size          : 5088 bytes
- *  Date Time          : 2019/09/03 23:06:35
+ *  File Size          : 5376 bytes
+ *  Date Time          : 2019/11/22 15:56:34
  *  Target             : Public
  *  Categories         : 5
  *  AISAC Controls     : 16
@@ -17,7 +17,7 @@
  *  DSP BUS Name       : 2
  *  Game Variables     : 1
  *  Selectors          : 0
- *  REACTs             : 1
+ *  REACTs             : 2
  *  Project Comment    : 
  *===========================================================================*/
 
@@ -31,7 +31,7 @@
 #define CRI_GURURIN_ACF_DSPBUSNAMENUM (2)
 #define CRI_GURURIN_ACF_GAMEVARIABLENUM (1)
 #define CRI_GURURIN_ACF_SELECTORNUM (0)
-#define CRI_GURURIN_ACF_REACTNUM (1)
+#define CRI_GURURIN_ACF_REACTNUM (2)
 
 /* Category List (Category ID) */
 #define CRI_GURURIN_ACF_CATEGORY_SE                   ( 0) /*  */

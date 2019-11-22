@@ -1,16 +1,16 @@
 ﻿/*===========================================================================*
  *  Header file for Atom CueSheet Binary
  *  Project          : Gururin
- *  Tool Ver.        : Ver.3.41.10
- *  ACB  Ver.        : Ver.1.32.00
- *  File Path        : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada
+ *  Tool Ver.        : Ver.3.40.17
+ *  ACB  Ver.        : Ver.1.31.00
+ *  File Path        : C:/Users/m011710258/Documents/champon/GururinADX2/Public/WorkUnit_Yamada
  *  File Name        : tutorial.h
  *  File Size        : 812224 bytes
- *  Date Time        : 2019/09/03 23:06:36
+ *  Date Time        : 2019/11/22 15:56:36
  *  Target           : Public
  *  Cues             : 1
  *  CueSheet Comment : 
- *  Stream Awb Path  : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada/tutorial.awb
+ *  Stream Awb Path  : C:/Users/m011710258/Documents/champon/GururinADX2/Public/WorkUnit_Yamada/tutorial.awb
  *===========================================================================*/
 
 #define CRI_TUTORIAL_CUENUM (1)
