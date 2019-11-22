@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameStart : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class GameStart : MonoBehaviour
     [System.NonSerialized] public string nowSceneName;
     private string preSceneName;
     static public Camera mainCamera;
+
+    private float width = 1080f;
+    private float height = 1920f;
+
+    [SerializeField] private RectTransform[] mask; //0 left,1 right,2 top,3 bottom
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +26,34 @@ public class GameStart : MonoBehaviour
 
         SceneManager.LoadSceneAsync(NextSceneName);
         mainCamera = Camera.main;
+
+        ScreenSet();
     }
 
     // Update is called once per frame
     void Update()
     {
         GetSceneChange();
+    }
+
+    private void ScreenSet()
+    {
+        float currentRatio = Screen.width * 1f / Screen.height;
+        float targetRatio = 16f / 9f;
+        
+        if(currentRatio < targetRatio)
+        {
+            float ratio = targetRatio / currentRatio - 1f;
+            float rectY = ratio / 2f;
+            mainCamera.rect = new Rect(0, rectY, 1f, 1f - ratio);
+        }   
+
+        else if(currentRatio > targetRatio)
+        {
+            float ratio = targetRatio / currentRatio;
+            float rectX = (1f - ratio) / 2f;
+            mainCamera.rect = new Rect(rectX, 0, ratio, 1f);
+        }
     }
 
     private void GetSceneChange()
@@ -35,6 +64,7 @@ public class GameStart : MonoBehaviour
             Debug.Log("SceneChange");
             NeoConfig.isSoundFade = false;
             mainCamera = Camera.main;
+            ScreenSet();
             preSceneName = nowSceneName;
         }
     }
