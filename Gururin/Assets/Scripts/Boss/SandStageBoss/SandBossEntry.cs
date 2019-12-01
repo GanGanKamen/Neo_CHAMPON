@@ -15,17 +15,18 @@ public class SandBossEntry : MonoBehaviour
 
     private Cinemachine.CinemachineImpulseSource _impulse;
 
+    private void Awake()
+    {
+        _impulse = GetComponent<Cinemachine.CinemachineImpulseSource>();
+        _impulse.m_ImpulseDefinition.m_AmplitudeGain = 0.0f;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         _flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
         _sandBossMove = GameObject.Find("SandBoss_Anim").GetComponent<SandBossMove>();
         _maskActive = transform.Find("SandBoss_Anim/BossMouth").GetComponent<MaskActive>();
-
-        _impulse = GetComponent<Cinemachine.CinemachineImpulseSource>();
-        _impulse.m_ImpulseDefinition.m_AmplitudeGain = 0.0f;
-
-        _entryAnim.Play("Idle");
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -33,7 +34,8 @@ public class SandBossEntry : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _flagManager.moveStop = true;
-            _entryAnim.Play("SandBoss_Entry");
+            //_entryAnim.Play("SandBoss_Entry");
+            _entryAnim.SetTrigger("EntryMove");
         }
     }
 

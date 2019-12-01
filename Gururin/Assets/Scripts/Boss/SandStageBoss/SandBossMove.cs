@@ -27,7 +27,7 @@ public class SandBossMove : MonoBehaviour
 
         _gururin = GameObject.Find("Gururin");
 
-        mouthAnim.Play("Idle");
+        //mouthAnim.Play("Idle");
         _nowBossPos = transform.position;
         _recodePos = _nowBossPos;
     }
@@ -75,15 +75,22 @@ public class SandBossMove : MonoBehaviour
         if (animPlay && _maskActive.animEnd == false)
         {
             _nowBossPos.x += 0.0f;
-            mouthAnim.Play("MouthMove");
+            //mouthAnim.Play("MouthMove");
+            //mouthAnim.SetTrigger("MouthMove");
+            mouthAnim.SetBool("MouthMove", true);
             //カメラを揺らす
-            _impulse.GenerateImpulse();
+            if (_maskActive.startImpulse)
+            {
+                _impulse.GenerateImpulse();
+            }
         }
         //Bossを移動させる
         else if (isMove)
         {
             animPlay = false;
-            mouthAnim.Play("Idle");
+            //mouthAnim.Play("Idle");
+            //mouthAnim.SetTrigger("BossMove");
+            mouthAnim.SetBool("MouthMove", false);
             //ボスをX軸方向へ一定速度で移動
             _nowBossPos.x += _bossSpeed;
             transform.position = _nowBossPos;

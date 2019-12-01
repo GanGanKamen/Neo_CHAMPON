@@ -6,7 +6,7 @@ public class MaskActive : MonoBehaviour
 {
 
     [SerializeField] GameObject _eatMask;
-    public bool maskInstance, animEnd;
+    public bool maskInstance, animEnd, startImpulse;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +14,7 @@ public class MaskActive : MonoBehaviour
         maskInstance = false;
         //Animation上で真偽を切り替え、SandBossMove.csへの継承用
         animEnd = false;
+        startImpulse = false;
     }
 
     // Update is called once per frame
