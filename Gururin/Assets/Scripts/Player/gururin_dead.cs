@@ -106,7 +106,7 @@ public class gururin_dead : MonoBehaviour
         vCam.SetActive(true);
         NeoConfig.isSoundFade = true;
         CriAtom.SetCategoryVolume("BGM", 0.0f);
-        var _rb2d = player.GetComponent<Rigidbody2D>();
+        var _rb2d = player.gameObject.GetComponent<Rigidbody2D>();
         //ぐるりんの動き(操作系・重力系)を停止
         _rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
         //顔を驚き顔に変更
