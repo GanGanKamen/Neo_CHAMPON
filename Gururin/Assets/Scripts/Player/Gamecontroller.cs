@@ -27,7 +27,7 @@ public class Gamecontroller : MonoBehaviour
     public bool touch;
 
     public Configuration config;
-    public float sensitivity, flickdistance;
+    public float sensitivity;
     public int controllerfixed, controllerposition;
 
     [SerializeField] FlagManager flagManager;
@@ -53,11 +53,10 @@ public class Gamecontroller : MonoBehaviour
         touch = false;
 
         sensitivity = config.sensitivity;
-        flickdistance = config.flickdistance;
         controllerfixed = config.controllerfixed;
         controllerposition = config.controllerposition;
 
-        flick = 0.1f + flickdistance;
+        flick = 0.2f;
     }
 
     // Update is called once per frame
@@ -73,10 +72,8 @@ public class Gamecontroller : MonoBehaviour
         }
 
         sensitivity = config.sensitivity;
-        flickdistance = config.flickdistance;
         controllerfixed = config.controllerfixed;
         controllerposition = config.controllerposition;
-        flick = 0.1f + flickdistance;
 
 
         if (flagManager.pressParm)
@@ -220,7 +217,7 @@ public class Gamecontroller : MonoBehaviour
                 prepos = mousePosition2;
             }
 
-            if(controllerfixed == 1)
+            if(controllerfixed == 1 && Input.touchCount > 1)
             {
                 if (Input.GetTouch(1).phase == TouchPhase.Began)
                 {

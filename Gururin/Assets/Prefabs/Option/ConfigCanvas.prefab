@@ -2278,7 +2278,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 6999845448663834759}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.33070865
+  m_Size: 0.2735043
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4480,6 +4480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dad3cc6cffc08a246be7952af67d4c4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  config: {fileID: 6412078159651177691}
+  fixedScrollbar: {fileID: 744612928262921015}
   steps: 0
 --- !u!1 &5594443071137906997
 GameObject:
@@ -4789,7 +4791,6 @@ MonoBehaviour:
   configwindow: {fileID: 6412078161297104687}
   titleback: {fileID: 0}
   sensitivity: 0
-  flickdistance: 0
   controllerfixed: 0
   controllerposition: 2
   configbutton: 0
@@ -6621,7 +6622,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sensitivity: {fileID: 0}
-  flickDistance: {fileID: 0}
   controllerFixed: {fileID: 0}
   controllerPosition: {fileID: 0}
   NeoConfig: {fileID: 7389899228535807652}

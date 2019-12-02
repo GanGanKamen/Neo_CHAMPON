@@ -5,15 +5,15 @@ using UnityEngine.UI;
 
 public class ControllerFixed : MonoBehaviour
 {
-    private Configuration config;
-    Scrollbar fixedScrollbar;
+    [SerializeField] private Configuration config;
+    [SerializeField] private Scrollbar fixedScrollbar;
     public int steps;
     
     // Start is called before the first frame update
     void Start()
     {
-        config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
-        fixedScrollbar = GetComponent<Scrollbar>();
+        //config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
+        //fixedScrollbar = GetComponent<Scrollbar>();
 
         //スクロールバーの現在値の設定
         fixedScrollbar.value = 0.0f;
