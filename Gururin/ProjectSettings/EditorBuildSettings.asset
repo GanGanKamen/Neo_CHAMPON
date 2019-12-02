@@ -53,4 +53,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/4_BeltConveyorStage/Belt-1.unity
     guid: 5d8c6003f66c9b74286b666253f06509
+  - enabled: 1
+    path: Assets/Scenes/3_Zi-OStage/WatchTest3.unity
+    guid: 5d40146517197a14db67a9a8c58c04af
   m_configObjects: {}
