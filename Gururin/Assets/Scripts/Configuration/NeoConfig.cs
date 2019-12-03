@@ -21,7 +21,7 @@ public class NeoConfig : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -47,12 +47,13 @@ public class NeoConfig : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && tapGUI == null)
         {
             tapGUI = Instantiate(ResourcesMng.ResourcesLoad("TAP_1"), Vector3.zero, Quaternion.identity);
+            tapGUI.transform.localScale = new Vector3(CameraDis(), CameraDis(), CameraDis());
         }
         
         if(tapGUI != null)
         {
             Vector3 tapPosition = Input.mousePosition;
-            tapPosition.z = CameraDis();
+            tapPosition.z = 10;
             tapGUI.transform.position = Camera.main.ScreenToWorldPoint(tapPosition);
         }
         
@@ -65,7 +66,7 @@ public class NeoConfig : MonoBehaviour
 
     private float CameraDis()
     {
-        return Camera.main.orthographicSize / 4f * 10f;
+        return Camera.main.orthographicSize / 5f;
     }
 
     private void Volume()
