@@ -24,6 +24,15 @@ public class SceneChange : MonoBehaviour
     private Configuration config;
 
     public bool isBackToTitle;
+
+    //プロトタイプ用
+    public enum ClearBGMType
+    {
+        Nomal,
+        Continue
+    }
+    public ClearBGMType clearBGMType;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +41,13 @@ public class SceneChange : MonoBehaviour
 
         button = false;
         _volumeDown = false;
+
+        //Contunueの時クリアSEとクリア表示を出さない
+        if (clearBGMType == ClearBGMType.Continue)
+        {
+            var gameClear = GetComponent<GameClear>();
+            Destroy(gameClear);
+        }
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -46,8 +62,8 @@ public class SceneChange : MonoBehaviour
             {
                 Invoke("Scene", 3.5f);
                 NeoConfig.isSoundFade = true;
-                _volumeBGM = NeoConfig.BGMVolume/10f;
-                _volumeSE = NeoConfig.SEVolume/10f;
+                _volumeBGM = NeoConfig.BGMVolume/15f;
+                _volumeSE = NeoConfig.SEVolume/15f;
                 bgmDecay = (NeoConfig.BGMVolume / 10 * Time.deltaTime) / 3.5f;
                 seDecay = (NeoConfig.SEVolume / 10 * Time.deltaTime) / 3.5f;
                 _volumeDown = true;

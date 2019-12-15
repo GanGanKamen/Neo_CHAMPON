@@ -223,10 +223,6 @@ public class PlayerMove : MonoBehaviour
     /// </summary>
     public void GururinJump(float jumpPowerX, float jumpPowerY, float jumpSpeed)
     {
-        Vector2 jumpForce = new Vector2(jumpPowerX, jumpPowerY);
-        _rb2d.AddForce(jumpForce * jumpSpeed);
-
-        _jumpSE.Play();
         if (nowGearGimiick == null)
         {
             isJump = false;
@@ -237,6 +233,10 @@ public class PlayerMove : MonoBehaviour
             isMove = true;
             nowGearGimiick.Separation();
         }
+
+        _jumpSE.Play();
+        Vector2 jumpForce = new Vector2(jumpPowerX, jumpPowerY);
+        _rb2d.AddForce(jumpForce * jumpSpeed);
     }
 
     private void FlickJump()
@@ -244,7 +244,7 @@ public class PlayerMove : MonoBehaviour
         //GearGimmickとくっついているとき
         if (nowGearGimiick != null)
         {
-            //フワーディアンの腕歯車とくっついているとき
+            //フワーディアンの腕歯車とくっついていないとき
             if(nowBossHand == null)
             {
                 if (!gameController.isFlick)
