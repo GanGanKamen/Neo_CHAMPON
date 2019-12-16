@@ -147,7 +147,7 @@ public class GearGimmick : MonoBehaviour
                 break;
 
         }
-        GearCantTurn();
+        if(turnUI!=null) GearCantTurn();
     }
 
     IEnumerator Col()

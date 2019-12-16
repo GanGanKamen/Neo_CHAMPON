@@ -137,6 +137,7 @@ public class PlayerMove : MonoBehaviour
             MoveCtrl();
             if (isPress)
             {
+                Debug.Log("FlickJump");
                 FlickJump();
                 isPress = false;
             }
@@ -252,7 +253,7 @@ public class PlayerMove : MonoBehaviour
                     isPress = false;
                     return;
                 }
-                if (flagManager.gururinJumpDirection)
+                if (nowGearGimiick.jumpDirection)
                 {
                     GururinJump(-150.0f, 150.0f, 1.0f);
                 }
@@ -265,6 +266,7 @@ public class PlayerMove : MonoBehaviour
             {
                 GururinJump(0.0f, -1.0f, jumpSpeed);
             }
+ 
         }
         else
         {
