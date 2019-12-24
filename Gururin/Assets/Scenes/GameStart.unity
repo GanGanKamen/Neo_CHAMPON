@@ -454,7 +454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a2342dac51124c48afca0f9944a0ff4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextSceneName: ProtoTitle
+  NextSceneName: TestSelect
   mask:
   - {fileID: 1832423481}
   - {fileID: 1574831133}
@@ -464,6 +464,7 @@ MonoBehaviour:
   - Title
   - ProtoTitle
   - Tutorial-End
+  - TestSelect
 --- !u!4 &1492293835
 Transform:
   m_ObjectHideFlags: 0

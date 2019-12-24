@@ -9,54 +9,36 @@ EditorBuildSettings:
     path: Assets/Scenes/GameStart.unity
     guid: 8187bf94c9f1d5f4bbc309e2087c07c9
   - enabled: 1
-    path: Assets/Scenes/ProtoTitle.unity
-    guid: a8d2d4435b9b7764b84fd269f631c01c
-  - enabled: 0
-    path: Assets/Scenes/PageOP.unity
-    guid: f98c9bf788fcb0f4ab083c29ce5ec542
-  - enabled: 0
-    path: Assets/Scenes/Title.unity
-    guid: bd92d34ce4abe334aae11710278cb726
+    path: Assets/Scenes/NewStages/TestSelect.unity
+    guid: 37ca9f0bc92f2d34f85628800c941172
   - enabled: 1
-    path: Assets/Scenes/1_TutorialStage/Tutorial-1.unity
-    guid: 18dd765bd21106c4dbff10647cdf7690
+    path: Assets/Scenes/NewStages/1-1.unity
+    guid: d6fb18d047e70c244bc4796cf5f80a0a
   - enabled: 1
-    path: Assets/Scenes/1_TutorialStage/Tutorial-2.unity
-    guid: 25bbb3ae0a24df44db0de4f87a5b12ad
+    path: Assets/Scenes/NewStages/1-2.unity
+    guid: 5ccc451d4bd9d5c4a9afe0822b0c79dd
   - enabled: 1
-    path: Assets/Scenes/1_TutorialStage/Tutorial-3.unity
-    guid: 8fe0ecf94c6313e4fbe9269308c83112
-  - enabled: 0
-    path: Assets/Scenes/1_TutorialStage/Tutorial-End.unity
-    guid: f43154f43b0ad454c8fd9a58a227d1ad
-  - enabled: 0
-    path: Assets/Scenes/1_TutorialStage/Old-Tutorial-4.unity
-    guid: 306c79cfe87c45845944ebd13c7d675b
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: Assets/Scenes/2_PropellerStage/Propeller-1.unity
-    guid: ffe3d4bf6f568a649b786cadd050cbf6
-  - enabled: 0
-    path: Assets/Scenes/2_PropellerStage/Propeller-2.unity
-    guid: 1055eecb5cd945046980a2ad349e1922
-  - enabled: 0
-    path: Assets/Scenes/BossScene.unity
-    guid: ad33a17ad12444f489e7a03704303081
-  - enabled: 0
-    path: Assets/Scenes/3_Zi-OStage/Watch_1.unity
-    guid: e94219d294515b244a290323621b0f9b
-  - enabled: 0
-    path: Assets/Scenes/4_BeltConveyorStage/Belt_Proto.unity
-    guid: 0f2eb6db14fdac4458e8ac0c15a0e255
-  - enabled: 0
-    path: Assets/Scenes/Test/OPTest2.unity
-    guid: ed93efa31a8a35648b648b5feca68b7f
-  - enabled: 0
-    path: Assets/Scenes/4_BeltConveyorStage/Belt-1.unity
-    guid: 5d8c6003f66c9b74286b666253f06509
-  - enabled: 0
-    path: Assets/Scenes/3_Zi-OStage/WatchTest3.unity
+    path: Assets/Scenes/NewStages/1-3.unity
+    guid: 3f851480c8c1b4b4d823ec114fa749ba
+  - enabled: 1
+    path: Assets/Scenes/NewStages/1-4.unity
+    guid: 8144d8dedeba30a418847b5d5016bc3a
+  - enabled: 1
+    path: Assets/Scenes/NewStages/1-5.unity
+    guid: 4d14c482daeb75942befddd4de7c151d
+  - enabled: 1
+    path: Assets/Scenes/NewStages/1-6.unity
+    guid: d94f9995cddd14d42afbcef16e08a3ed
+  - enabled: 1
+    path: Assets/Scenes/NewStages/2-1.unity
+    guid: 7dadcd17f373ffa4a949f9d1f116923b
+  - enabled: 1
+    path: Assets/Scenes/NewStages/2-2.unity
+    guid: 2c6ebad933f451247952784346f95673
+  - enabled: 1
+    path: Assets/Scenes/NewStages/3-1.unity
+    guid: f6c0ad3e957c62645b7df0bbfcf35988
+  - enabled: 1
+    path: Assets/Scenes/NewStages/3-2.unity
     guid: 5d40146517197a14db67a9a8c58c04af
   m_configObjects: {}

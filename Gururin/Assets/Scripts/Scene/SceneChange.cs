@@ -36,8 +36,8 @@ public class SceneChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
-        config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
+        if(GameObject.Find("FlagManager")!=null) flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
+        if (GameObject.Find("ConfigCanvas") != null) config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
 
         button = false;
         _volumeDown = false;
