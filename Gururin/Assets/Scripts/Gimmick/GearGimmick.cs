@@ -9,6 +9,7 @@ public class GearGimmick : MonoBehaviour
     {
         normal,
         propeller,
+        newFan,
         watch
     }
 
@@ -46,6 +47,8 @@ public class GearGimmick : MonoBehaviour
 
     [Header("回転方向")] [Tooltip("1:時計回り 2:反時計回り 3:両方")] [Range(1, 3)] public int turnCategory;
     [SerializeField] private GearTurnUI turnUI;
+
+    [SerializeField] private NewWind newWind;
     // Start is called before the first frame update
     void Start()
     {
@@ -142,6 +145,9 @@ public class GearGimmick : MonoBehaviour
             case Categoly.propeller:
                 PropellerAction();
                 break;
+            case Categoly.newFan:
+                NewFan();
+                break;
             case Categoly.watch:
                 WatchAction();
                 break;
@@ -198,6 +204,36 @@ public class GearGimmick : MonoBehaviour
             flagManager.standFirm_Face = true;
             gear.transform.Rotate(new Vector3(0.0f, 0.0f, -rotSpeed));
             _gururinRb2d.rotation += rotSpeed;
+        }
+        else if (gameController.isPress == false)
+        {
+            flagManager.standFirm_Face = false;
+        }
+
+    }
+
+    private void NewFan()//新しいプロペラの場合
+    {
+        if (gameController.AxB.z < 0 && gameController.isPress && playerHit && moveGear[0])
+        {
+            //ぐるりんの回転を許可
+            rotParm = true;
+            click = false;
+            flagManager.standFirm_Face = true;
+            gear.transform.Rotate(new Vector3(0.0f, 0.0f, rotSpeed));
+            _gururinRb2d.rotation += -rotSpeed;
+            newWind.PowerUp();
+        }
+        //右回転
+        else if (gameController.AxB.z > 0 && gameController.isPress && playerHit && moveGear[1])
+        {
+            //ぐるりんの回転を許可
+            rotParm = true;
+            click = false;
+            flagManager.standFirm_Face = true;
+            gear.transform.Rotate(new Vector3(0.0f, 0.0f, -rotSpeed));
+            _gururinRb2d.rotation += rotSpeed;
+            newWind.PowerDown();
         }
         else if (gameController.isPress == false)
         {
