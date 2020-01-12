@@ -17,6 +17,7 @@ public class Tutorial1Description_2 : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("des2");
             flagManager.velXFixed = true;
             //ぐるりんの動きを止める
             flagManager.moveStop = true;
