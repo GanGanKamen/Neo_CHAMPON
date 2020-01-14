@@ -671,7 +671,7 @@ PlayerSettings:
       daydreamIconBackground: {fileID: 0}
   cloudServicesEnabled:
     Build: 1
-    Collab: 0
+    Collab: 1
     ErrorHub: 0
     Hub: 0
     UNet: 1
@@ -694,9 +694,9 @@ PlayerSettings:
   facebookXfbml: 0
   facebookFrictionlessRequests: 1
   apiCompatibilityLevel: 2
-  cloudProjectId: 0b022b54-db20-4f3f-a0a8-211066050adb
+  cloudProjectId: 3d095771-7063-42b3-8b63-40032fb663bf
   framebufferDepthMemorylessMode: 0
-  projectName: GuRu-Rin (1)
+  projectName: GuRu-Rin
   organizationId: pronama
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
