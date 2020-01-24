@@ -147,6 +147,7 @@ public class GearGimmick : MonoBehaviour
                 break;
 
         }
+        if(turnUI!=null) GearCantTurn();
     }
 
     IEnumerator Col()
@@ -173,7 +174,6 @@ public class GearGimmick : MonoBehaviour
 
         playerMove.nowBossHand = null;
         playerMove.nowGearGimiick = null;
-        if (bossHand != null) bossHand.Separate();
 
         if (turnUI != null) turnUI.SeparatePlayer();
     }
@@ -250,6 +250,8 @@ public class GearGimmick : MonoBehaviour
         {
             flagManager.standFirm_Face = false;
         }
+
+        
     }
 
     private void WatchAction() //時計の歯車の場合
@@ -263,7 +265,8 @@ public class GearGimmick : MonoBehaviour
             gear.transform.Rotate(new Vector3(0.0f, 0.0f, rotSpeed));
             _gururinRb2d.rotation += -rotSpeed;
 
-            WatchGearTurn(true);
+            if (watch.IsReadyRotate()) WatchGearTurn(true);
+            else watch.ReadyToRotate();
 
             if (playerMove.finishMode)//マスターギアを取る
             {
@@ -278,12 +281,14 @@ public class GearGimmick : MonoBehaviour
             gear.transform.Rotate(new Vector3(0.0f, 0.0f, -rotSpeed));
             _gururinRb2d.rotation += rotSpeed;
 
-            WatchGearTurn(false);
+            if (watch.IsReadyRotate()) WatchGearTurn(false);
+            else watch.ReadyToRotate();
         }
         //回転操作をしていないときは普通の顔にする
         else if (gameController.isPress == false)
         {
             flagManager.standFirm_Face = false;
+            watch.RotateCountReset();
         }
     }
 
@@ -293,6 +298,26 @@ public class GearGimmick : MonoBehaviour
         else
         {
             watch.PointerRotate(false);
+        }
+    }
+
+    private void GearCantTurn()
+    {
+        switch (categoly)
+        {
+            case Categoly.normal:
+                if(!moveGear[0] && !moveGear[1] && turnUI.moveGear)
+                {
+                    turnUI.LeaveGear(jumpDirection);
+                }
+                break;
+            case Categoly.propeller:
+                if (rotationCounter.count == rotationCounter._maxCount && turnUI.moveGear)
+                {
+                    turnUI.LeaveGear(jumpDirection);
+                }
+                break;
+
         }
     }
 }

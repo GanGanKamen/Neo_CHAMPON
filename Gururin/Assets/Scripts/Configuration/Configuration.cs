@@ -12,8 +12,8 @@ public class Configuration : MonoBehaviour
     public GameObject configwindow;
     public GameObject titleback;
 
-    public float sensitivity, flickdistance;
-    public int controllerposition;
+    public float sensitivity;
+    public int controllerfixed, controllerposition;
     public bool configbutton = false;
 
     private CriAtomSource _open, _close;
@@ -60,7 +60,7 @@ public class Configuration : MonoBehaviour
         configwindow.SetActive(false);
 
         sensitivity = 1.5f;
-        flickdistance = 0.01f;
+        controllerfixed = 0;
         controllerposition = 0;
     }
 

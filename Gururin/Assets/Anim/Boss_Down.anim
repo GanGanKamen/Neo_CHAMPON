@@ -248,7 +248,21 @@ AnimationClip:
     messageOptions: 0
   - time: 0.16666667
     functionName: PlaySE
-    data: SE_glassCrack
+    data: SE_Boss_Fall
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.16666667
+    functionName: PlaySE
+    data: SE_Faint
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.6666667
+    functionName: Stop
+    data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

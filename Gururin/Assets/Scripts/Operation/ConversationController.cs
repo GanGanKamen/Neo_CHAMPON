@@ -30,6 +30,8 @@ public class ConversationController : MonoBehaviour
     public Gamecontroller gameController;
 
     private IEnumerator nowNobel;
+
+    public bool colorMode = false;
     void Start()
     {
         config = GameObject.Find("ConfigCanvas").GetComponent<Configuration>();
@@ -147,6 +149,7 @@ public class ConversationController : MonoBehaviour
         hakaseFace.sprite = sentences[currentSentenceNum].hakaseFace;
         int wordCound = 0;
         Text.text = "";
+        while (feedin) yield return null;
         while (wordCound < sentences[currentSentenceNum].TextOutPut().Length)
         {
             if (sentences[currentSentenceNum].TextOutPut()[wordCound] == '　')
@@ -160,9 +163,24 @@ public class ConversationController : MonoBehaviour
                     Text.text += "\n";
                 }
             }
+            else if (sentences[currentSentenceNum].TextOutPut()[wordCound] == '{')
+            {
+                if (!colorMode) colorMode = true;
+                Text.text += "";
+            }
+
+            else if (sentences[currentSentenceNum].TextOutPut()[wordCound] == '}')
+            {
+                if (colorMode) colorMode = false;
+                Text.text += "";
+            }
+
             else
             {
-                Text.text += sentences[currentSentenceNum].TextOutPut()[wordCound];
+                string textPlus = "";
+                if (colorMode) textPlus = "<color=blue>" + sentences[currentSentenceNum].TextOutPut()[wordCound] + "</color>";
+                else textPlus = sentences[currentSentenceNum].TextOutPut()[wordCound].ToString();
+                Text.text += textPlus;
                 SoundManager.PlayS(gameObject, "SE_hakaseTalk");
             }
 
@@ -188,8 +206,11 @@ public class ConversationController : MonoBehaviour
                 {
                     finalText = sentences[currentSentenceNum].TextOutPut().Replace("　", "\n");
                 }
-                if (Text.text != finalText)
+                string comparisonText = Text.text.Replace("<color=blue>", "").Replace("</color>", "");
+                if (comparisonText != finalText.Replace("{", "").Replace("}", ""))
                 {
+                    Debug.Log("final");
+                    finalText = finalText.Replace("{", "<color=blue>").Replace("}", "</color>");
                     StopCoroutine(nowNobel);
                     nowNobel = null; nowNobel = NovelText();
                     Text.text = finalText;
@@ -201,7 +222,6 @@ public class ConversationController : MonoBehaviour
 
     public void StopAll()
     {
-        Debug.Log("stop");
         StopCoroutine(nowNobel);
         nowNobel = null; nowNobel = NovelText();
         Text.text = "";

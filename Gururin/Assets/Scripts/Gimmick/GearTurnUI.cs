@@ -10,12 +10,19 @@ public class GearTurnUI : MonoBehaviour
     private int turnNum;
     [SerializeField] private float turnSpeed;
     private int rotateCount = 90;
+
+    private GearGimmick thisGear;
+
+    public bool moveGear = true;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
         startAnimation = false;
         direction = -1;
         turnNum = 0;
+        thisGear = transform.parent.GetComponent<GearGimmick>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -59,8 +66,33 @@ public class GearTurnUI : MonoBehaviour
         }
     }
 
+    public void LeaveGear(bool direction)
+    {
+        moveGear = false;
+        if(direction)
+        {
+            animator.SetBool("Left", true);
+            animator.SetBool("Right", false);
+        }
+        else
+        {
+            animator.SetBool("Left", false);
+            animator.SetBool("Right", true);
+        }
+        rotateCount = 0;
+        startAnimation = false;
+        sprite.flipX = false;
+        turnNum = 0;
+        sprite.gameObject.SetActive(false);
+    }
+
     public void AttachPlayer(int _turnNum)
     {
+        if (!moveGear)
+        {
+            moveGear = true;
+            return;
+        }
         rotateCount = 90;
         startAnimation = true;
         sprite.gameObject.SetActive(true);
@@ -69,6 +101,9 @@ public class GearTurnUI : MonoBehaviour
         {
             sprite.flipX = true;
         }
+        animator.SetBool("Left", false);
+        animator.SetBool("Right", false);
+        
     }
 
     public void SeparatePlayer()
@@ -78,5 +113,8 @@ public class GearTurnUI : MonoBehaviour
         sprite.flipX = false;
         turnNum = 0;
         sprite.gameObject.SetActive(false);
+        animator.SetBool("Left", false);
+        animator.SetBool("Right", false);
+        
     }
 }

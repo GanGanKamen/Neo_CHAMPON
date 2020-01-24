@@ -83,32 +83,24 @@ public class ConversationScript : MonoBehaviour
                 {
                     if (conversationController.sentences.Length - 1 > conversationController.currentSentenceNum)
                     {
+                        /*
                         //conversationController.StopAll();
                         if (SceneManager.GetActiveScene().name == "Tutorial-1")
                         {
                             if (conversationController.currentSentenceNum != 2)
                             {
                                 conversationController.currentSentenceNum++;
+                                Debug.Log("b");
                             }
                             else
                             {
                                 conversationController.feedout = false;
                             }
-                            
-                            /*
-                             if(conversationController.currentSentenceNum != 2)
-                            {
-                                conversationController.currentSentenceNum++;
-                            }
-                            else
-                            {
-                                conversationController.feedout = false;
-                                conversationController.feedin = true;
-                            }*/
                         }
 
                         else conversationController.feedout = false;
-                        Debug.Log("b");
+                        */
+                        conversationController.feedout = false; Debug.Log("b");
                     }
                     else if (conversationController.sentences.Length - 1 == conversationController.currentSentenceNum)
                     {

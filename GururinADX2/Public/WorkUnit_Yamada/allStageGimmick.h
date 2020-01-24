@@ -1,16 +1,16 @@
 ﻿/*===========================================================================*
  *  Header file for Atom CueSheet Binary
  *  Project          : Gururin
- *  Tool Ver.        : Ver.3.41.10
- *  ACB  Ver.        : Ver.1.32.00
- *  File Path        : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada
+ *  Tool Ver.        : Ver.3.40.17
+ *  ACB  Ver.        : Ver.1.31.00
+ *  File Path        : C:/Users/m011710258/Documents/champon/GururinADX2/Public/WorkUnit_Yamada
  *  File Name        : allStageGimmick.h
- *  File Size        : 400288 bytes
- *  Date Time        : 2019/09/07 23:15:37
+ *  File Size        : 436448 bytes
+ *  Date Time        : 2019/11/22 15:56:35
  *  Target           : Public
  *  Cues             : 8
  *  CueSheet Comment : 
- *  Stream Awb Path  : /Users/yamadachihiro/Documents/Sourcetree/CHAMPON/GururinADX2/Public/WorkUnit_Yamada/allStageGimmick.awb
+ *  Stream Awb Path  : C:/Users/m011710258/Documents/champon/GururinADX2/Public/WorkUnit_Yamada/allStageGimmick.awb
  *===========================================================================*/
 
 #define CRI_ALLSTAGEGIMMICK_CUENUM (8)

@@ -19,9 +19,10 @@ public class PlayerMove : MonoBehaviour
     public bool isJump; //ジャンプ許可
 
     private Rigidbody2D _rb2d;
+    //private Vector2 _gururinGravity;
+    public float[] gravityScale;
     private CriAtomSource _jumpSE; //ジャンプの効果音
 
-    //public bool gearGimmickHit; //ギミックとの接触判定
     public GearGimmick nowGearGimiick = null;
 
     private Gamecontroller gameController;
@@ -29,7 +30,8 @@ public class PlayerMove : MonoBehaviour
 
     public GanGanKamen.BossHand nowBossHand = null; //現在接触しているギミック
     public Animator animator;　//ぐるりんのアニメーター　ボスイベント用
-    public GameObject balloon;
+    public bool balloonSet = false; //バルーン装備しているかどうか
+    [SerializeField] private Animator balloonAnim;
     public bool finishMode = false; //ボスにとどめを刺す
 
 
@@ -52,6 +54,8 @@ public class PlayerMove : MonoBehaviour
         {
             transform.position = RemainingLife.startPos;
         }
+
+        balloonSet = false;
     }
 
     void OnTriggerStay2D(Collider2D other)
@@ -66,20 +70,7 @@ public class PlayerMove : MonoBehaviour
                 setSpeed = true;
             }
         }
-        /*
-        if (other.CompareTag("Right_UI"))
-        {
-            gameController.isArrowR = true;
-        }
-
-        if (other.CompareTag("Left_UI"))
-        {
-            gameController.isArrowL = true;
-        }
-        */
     }
-
-
 
     private void OnTriggerExit2D(Collider2D other)
     {
@@ -88,31 +79,8 @@ public class PlayerMove : MonoBehaviour
             isJump = false;
             gameController.isFlick = false;
         }
-
-        /*
-        if (other.CompareTag("Right_UI"))
-        {
-            gameController.isArrowR = false;
-        }
-
-        if (other.CompareTag("Left_UI"))
-        {
-            gameController.isArrowL = false;
-        }
-        */
     }
-    private void Test()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            _rb2d.isKinematic = false;
-            Vector2 force = new Vector2(-150.0f, 150.0f);
-            _rb2d.AddForce(force);
-            _jumpSE.Play();
-            isMove = true;
-            //gearGimmickHit = false;
-        }
-    }
+
     // Update is called once per frame
     void Update()
     {
@@ -123,17 +91,37 @@ public class PlayerMove : MonoBehaviour
             speed[1] = 0.0f;
         }
 
+        //returnGravityがTrueの時、重力を通常に戻す
+        if (flagManager.returnGravity)
+        {
+            /*
+            _gururinGravity = new Vector2(0.0f, -9.81f);
+            _rb2d.AddForce(_gururinGravity);
+            */
+            Physics2D.gravity = new Vector2(0.0f, -9.81f);
+            flagManager.isStick = false;
+        }
+        //それ以外の時は重力を変化
+        else if(flagManager.returnGravity == false)
+        {
+            /*
+            _gururinGravity = new Vector2(gravityScale[0], gravityScale[1]);
+            _rb2d.AddForce(_gururinGravity);
+            */
+            Physics2D.gravity = new Vector2(gravityScale[0], gravityScale[1]);
+        }
+
         //GearGimmickと接触していないとき
-        if (nowGearGimiick == null)
+        if (nowGearGimiick == null && gameController.isPress && isMove)
         {
             //右へ移動
-            if (gameController.AxB.z < 0 && gameController.isPress && isMove)
+            if (gameController.AxB.z < 0)
             {
                 isRot[0] = true;
             }
 
             //左へ移動
-            else if (gameController.AxB.z > 0 && gameController.isPress && isMove)
+            else if (gameController.AxB.z > 0)
             {
                 isRot[1] = true;
             }
@@ -144,29 +132,25 @@ public class PlayerMove : MonoBehaviour
                 speed[0] = gameController.angle * 0.4f;
             }
         }
-        /*
-        if (attach == false && nowBossHand == null)
-        {
-            gearGimmickHit = false;
-            attach = true;
-            Debug.Log("noAttach");
-        }
-        else if (attach && nowBossHand != null)
-        {
-            attach = false;
-            Debug.Log("attach");
-        }*/
         if (!finishMode)
         {
             MoveCtrl();
             if (isPress)
             {
+                Debug.Log("FlickJump");
                 FlickJump();
                 isPress = false;
             }
         }
-        
-        
+    }
+
+    /// <summary>
+    /// ぐるりんの移動速度
+    /// </summary>
+    public void GururinMove(float moveSpeedX, float moveSpeedY)
+    {
+        Vector2 force = new Vector2(moveSpeedX, moveSpeedY);
+        _rb2d.AddForce(force);
     }
 
     private void MoveCtrl()
@@ -194,8 +178,18 @@ public class PlayerMove : MonoBehaviour
         {
             if (isRot[0] && !finishMode)
             {
-                Vector2 force = new Vector2(speed[0], speed[1]);
-                _rb2d.AddForce(force);
+                //reverseDirectionがTrueならコントローラーの回転方向に対してぐるりんの移動方向を反転させる
+                switch (flagManager.reverseDirection)
+                {
+                    case true:
+                        GururinMove(-speed[0], speed[1]);
+                        break;
+
+                    case false:
+                        GururinMove(speed[0], speed[1]);
+                        break;
+                }
+
                 isRot[0] = false;
             }
             else if (isRot[1] && !finishMode)
@@ -203,26 +197,55 @@ public class PlayerMove : MonoBehaviour
                 //左右のラックに張り付いていないとき
                 if (flagManager.isMove_VG[1] == false && flagManager.isMove_VG[2] == false)
                 {
-                    Vector2 force = new Vector2(-speed[0], speed[1]);
-                    _rb2d.AddForce(force);
+                    switch (flagManager.reverseDirection)
+                    {
+                        case true:
+                            GururinMove(speed[0], speed[1]);
+                            break;
+
+                        case false:
+                            GururinMove(-speed[0], speed[1]);
+                            break;
+                    }
                 }
                 //左右のラックに張り付いているとき
                 else if (flagManager.isMove_VG[1] || flagManager.isMove_VG[2])
                 {
-                    Vector2 force = new Vector2(speed[0], -speed[1]);
-                    _rb2d.AddForce(force);
+                    GururinMove(speed[0], -speed[1]);
                 }
 
                 isRot[1] = false;
             }
-
         }
+    }
+
+    /// <summary>
+    /// ぐるりんのジャンプの強さ
+    /// </summary>
+    public void GururinJump(float jumpPowerX, float jumpPowerY, float jumpSpeed)
+    {
+        if (nowGearGimiick == null)
+        {
+            isJump = false;
+            gameController.isFlick = false;
+        }
+        else
+        {
+            isMove = true;
+            nowGearGimiick.Separation();
+        }
+
+        _jumpSE.Play();
+        Vector2 jumpForce = new Vector2(jumpPowerX, jumpPowerY);
+        _rb2d.AddForce(jumpForce * jumpSpeed);
     }
 
     private void FlickJump()
     {
+        //GearGimmickとくっついているとき
         if (nowGearGimiick != null)
         {
+            //フワーディアンの腕歯車とくっついていないとき
             if(nowBossHand == null)
             {
                 if (!gameController.isFlick)
@@ -230,31 +253,20 @@ public class PlayerMove : MonoBehaviour
                     isPress = false;
                     return;
                 }
-                if (flagManager.gururinJumpDirection)
+                if (nowGearGimiick.jumpDirection)
                 {
-                    isMove = true;
-                    nowGearGimiick.Separation();
-                    Vector2 force = new Vector2(-150.0f, 150.0f);
-                    _rb2d.AddForce(force);
-                    _jumpSE.Play();
-
+                    GururinJump(-150.0f, 150.0f, 1.0f);
                 }
                 else
                 {
-                    isMove = true;
-                    nowGearGimiick.Separation();
-                    Vector2 force = new Vector2(150.0f, 150.0f);
-                    _rb2d.AddForce(force);
-                    _jumpSE.Play();
+                    GururinJump(150.0f, 150.0f, 1.0f);
                 }
             }
             else
             {
-                isMove = true;
-                nowGearGimiick.Separation();
-                _rb2d.AddForce(-Vector2.up * jumpSpeed);
-                _jumpSE.Play();
+                GururinJump(0.0f, -1.0f, jumpSpeed);
             }
+ 
         }
         else
         {
@@ -264,206 +276,40 @@ public class PlayerMove : MonoBehaviour
                 return;
             }
             
+            //上にフリック
             if (gameController.flick_up && !gameController.flick_right && !gameController.flick_left)
             {
-                _rb2d.AddForce(Vector2.up * jumpSpeed);
-                _jumpSE.Play();
-                isJump = false;
-                gameController.isFlick = false;
+                GururinJump(0.0f, 1.0f, jumpSpeed);
             }
+            //右にフリック
             else if (gameController.flick_up && gameController.flick_right)
             {
-                Debug.Log("right");
-                Vector2 jumpforce = new Vector2(0.3f / gameController.sensitivity, 1.0f);
-                _rb2d.AddForce(jumpforce * jumpSpeed);
-                _jumpSE.Play();
-                isJump = false;
-                gameController.isFlick = false;
+                GururinJump(0.3f / gameController.sensitivity, 1.0f, jumpSpeed);
             }
+            //左にフリック
             else if (gameController.flick_up && gameController.flick_left)
             {
-                Vector2 jumpforce = new Vector2(-0.3f / gameController.sensitivity, 1.0f);
-                _rb2d.AddForce(jumpforce * jumpSpeed);
-                _jumpSE.Play();
-                isJump = false;
-                gameController.isFlick = false;
+                GururinJump(-0.3f / gameController.sensitivity, 1.0f, jumpSpeed);
             }
             else
             {
                 gameController.isFlick = false;
             }
-            
         }
     }
 
-    void FixedUpdate()
+    public void BalloonApp()
     {
-        /*
-        //ぐるりんの動きを止める
-        if (flagManager.moveStop)
-        {
-            if (flagManager.velXFixed)
-            {
-                //横方向の速度のみ0にする
-                _rb2d.velocity = new Vector2(0.0f, _rb2d.velocity.y);
-            }
-            else
-            {
-                //速度を0にする
-                _rb2d.velocity = Vector2.zero;
-            }
+        if (balloonSet) return;
+        balloonAnim.SetBool("App", true);
+        balloonSet = true;        
+    }
 
-            //加速度を0にする
-            gameController.angle = 0.0f;
-
-            //角度を固定する
-            _rb2d.angularVelocity = 0.0f;
-        }
-        else
-        {
-            if (isRot[0]&&!finishMode)
-            {
-                Vector2 force = new Vector2(speed[0], speed[1]);
-                _rb2d.AddForce(force);
-                isRot[0] = false;
-            }
-            else if (isRot[1]&&!finishMode)
-            {
-                //左右のラックに張り付いていないとき
-                if (flagManager.isMove_VG[1] == false && flagManager.isMove_VG[2] == false)
-                {
-                    Vector2 force = new Vector2(-speed[0], speed[1]);
-                    _rb2d.AddForce(force);
-                }
-                //左右のラックに張り付いているとき
-                else if (flagManager.isMove_VG[1] || flagManager.isMove_VG[2])
-                {
-                    Vector2 force = new Vector2(speed[0], -speed[1]);
-                    _rb2d.AddForce(force);
-                }
-
-                isRot[1] = false;
-            }
-
-            if (isPress && !finishMode)
-            {
-                if (nowBossHand != null)
-                {
-                    if (gearGimmickHit == false && isJump)
-                    {
-                        if (gameController.flick_right == false && gameController.flick_left == false)
-                        {
-                            _rb2d.AddForce(Vector2.up * jumpSpeed);
-                            _jumpSE.Play();
-                            isJump = false;
-                            gameController.isFlick = false;
-                        }
-                        else if (gameController.flick_right)
-                        {
-                            Vector2 jumpforce = new Vector2(0.3f / gameController.sensitivity, 1.0f);
-                            _rb2d.AddForce(jumpforce * jumpSpeed);
-                            _jumpSE.Play();
-                            isJump = false;
-                            gameController.isFlick = false;
-                        }
-                        else if (gameController.flick_left)
-                        {
-                            Vector2 jumpforce = new Vector2(-0.3f / gameController.sensitivity, 1.0f);
-                            _rb2d.AddForce(jumpforce * jumpSpeed);
-                            _jumpSE.Play();
-                            isJump = false;
-                            gameController.isFlick = false;
-                        }
-                    }
-                }
-                else
-                {
-                    if (gearGimmickHit == false && isJump)
-                    {
-                        if (gameController.flick_right == false && gameController.flick_left == false)
-                        {
-                            _rb2d.AddForce(Vector2.up * jumpSpeed);
-                            _jumpSE.Play();
-                            isJump = false;
-                            gameController.isFlick = false;
-                        }
-                        else if (gameController.flick_right)
-                        {
-                            Vector2 jumpforce = new Vector2(0.3f / gameController.sensitivity, 1.0f);
-                            _rb2d.AddForce(jumpforce * jumpSpeed);
-                            _jumpSE.Play();
-                            isJump = false;
-                            gameController.isFlick = false;
-                        }
-                        else if (gameController.flick_left)
-                        {
-                            Vector2 jumpforce = new Vector2(-0.3f / gameController.sensitivity, 1.0f);
-                            _rb2d.AddForce(jumpforce * jumpSpeed);
-                            _jumpSE.Play();
-                            isJump = false;
-                            gameController.isFlick = false;
-                        }
-                    }
-                    else if (gearGimmickHit == false && isJump == false)
-                    {
-                        if (gameController.flick_up)
-                        {
-                            _rb2d.AddForce(Vector2.up * jumpSpeed);
-                            _jumpSE.Play();
-                            isJump = false;
-                            gameController.isFlick = false;
-                        }
-                        if (gameController.flick_down)
-                        {
-                            _rb2d.AddForce(Vector2.down * jumpSpeed);
-                            _jumpSE.Play();
-                            isJump = false;
-                            gameController.isFlick = false;
-                        }
-                        if (gameController.flick_right)
-                        {
-                            _rb2d.AddForce(Vector2.right * jumpSpeed);
-                            _jumpSE.Play();
-                            isJump = false;
-                            gameController.isFlick = false;
-                        }
-                        if (gameController.flick_left)
-                        {
-                            _rb2d.AddForce(Vector2.left * jumpSpeed);
-                            _jumpSE.Play();
-                            isJump = false;
-                            gameController.isFlick = false;
-                        }
-                    }
-                }
-
-                //BossHand以外の歯車と噛み合っているとき
-                if (gearGimmickHit && attach)
-                {
-                    //左方向に離れる
-                    if (flagManager.gururinJumpDirection)
-                    {
-                        Vector2 force = new Vector2(-150.0f, 150.0f);
-                        _rb2d.AddForce(force);
-                        _jumpSE.Play();
-                        isMove = true;
-                        gearGimmickHit = false;
-                    }
-                    //右方向に離れる
-                    else
-                    {
-                        Vector2 force = new Vector2(150.0f, 150.0f);
-                        _rb2d.AddForce(force);
-                        _jumpSE.Play();
-                        isMove = true;
-                        gearGimmickHit = false;
-                    }
-                }
-
-
-                isPress = false;
-            }
-        }
-        */
+    public void BalloonBreak()
+    {
+        if (balloonSet == false) return;
+        balloonSet = false;
+        balloonAnim.SetBool("App", false);
+        balloonAnim.SetTrigger("Break");
     }
 }

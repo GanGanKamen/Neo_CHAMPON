@@ -11,6 +11,7 @@ public class WatchGimick : MonoBehaviour
     [Range(0, 59)] public int minminutes;
     public bool canRotate;
 
+    private float rotateReadyCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -65,6 +66,22 @@ public class WatchGimick : MonoBehaviour
             pointer2.transform.Rotate(new Vector3(0, 0, 1), speed / 12f * Time.deltaTime);
             direction = -1;
         }
+    }
+
+    public void ReadyToRotate()
+    {
+        rotateReadyCount += Time.deltaTime;
+    }
+
+    public bool IsReadyRotate()
+    {
+        if (rotateReadyCount >= 0.5f) return true;
+        else return false;
+    }
+
+    public void RotateCountReset()
+    {
+        rotateReadyCount = 0;
     }
 
     public int Pointer1Num()

@@ -42,10 +42,20 @@ public class Glass : MonoBehaviour
         //JumpColliderに接触したとき
         if (collision)
         {
+            //もしすでにBalloonSetがあれば削除する
+            var oldBalloon = GameObject.Find("BalloonSet(Clone)");
+            if(oldBalloon != null)
+            {
+                Destroy(oldBalloon);
+                oldBalloon = null;
+            }
+
+            //BalloonSetを出現させる
             var pos = transform.position;
             var balloon = Instantiate(balloonPrefab);
             balloon.transform.position = new Vector2(pos.x, pos.y + 0.3f);
-            gameObject.SetActive(false);
+
+            Destroy(gameObject);
         }
     }
 }

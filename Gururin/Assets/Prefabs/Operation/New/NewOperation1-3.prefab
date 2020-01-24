@@ -75,6 +75,7 @@ MonoBehaviour:
   textFeed: 00000000
   config: {fileID: 0}
   gameController: {fileID: 0}
+  colorMode: 0
 --- !u!114 &6895769888602625318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -672,7 +673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messages:
   - "\u3053\u3046\u3044\u3046\u6642\u306F\u6B6F\u8ECA\u306B\u304F\u3063\u3064\u3044\u3066\u3000\u3050\u308B\u3050\u308B\u56DE\u305B\u3070\u6B6F\u8ECA\u3082\u56DE\u308B\u3088\uFF01"
-  - "In this situation, attach to the gear\u3000then you can turn it."
+  - "In this situation, attach to this gear\u3000then you can turn it."
   - "\u8FD9\u79CD\u65F6\u5019\u5C1D\u8BD5\u53BB\u8FDE\u7ED3\u5B83\uFF0C\u7136\u540E\u5C31\u53EF\u4EE5\u3000\u7528\u624B\u6307\u8F6C\u52A8\u9F7F\u8F6E"
   - "\u9019\u7A2E\u6642\u5019\u5617\u8A66\u53BB\u9023\u7D50\u5B83\uFF0C\u7136\u5F8C\u5C31\u53EF\u4EE5\u3000\u7528\u624B\u6307\u8F49\u52D5\u9F52\u8F2A"
   hakaseFace: {fileID: 21300000, guid: 8de5b13b0c96e82439b5de19493fe794, type: 3}
@@ -889,7 +890,7 @@ MonoBehaviour:
   IsStart: 0
   IsDisplay: 0
   font0: {fileID: 12800000, guid: 73ed1fb59bd24114984152a28efeed85, type: 3}
-  font1: {fileID: 12800000, guid: bda24b8dd8a4e484e889800f20716725, type: 3}
+  font1: {fileID: 12800000, guid: 576e4f5bfed821340b478e26951b33cb, type: 3}
 --- !u!1 &6961103767368310894
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,7 +1091,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messages:
   - "\u3084\u3063\u305F\uFF01\u30D5\u30EA\u30C3\u30AF\u3067\u6B6F\u8ECA\u304B\u3089\u96E2\u308C\u3066\u3000\u5148\u3078\u9032\u3082\u3046!"
-  - "Good job! Finally flick to leave\u3000the gear and let\u2019s go on.        "
+  - "Good job! Finally flick to leave\u3000this gear and let\u2019s go on.        "
   - "\u6F02\u4EAE\uFF01\u6ED1\u52A8\u5C4F\u5E55\u53EF\u4EE5\u79BB\u5F00\u9F7F\u8F6E\uFF0C\u3000\u7EE7\u7EED\u5411\u524D\u8FDB\u5427\uFF01"
   - "\u6F02\u4EAE\uFF01\u6ED1\u52D5\u5C4F\u5E55\u53EF\u4EE5\u96E2\u958B\u9F52\u8F2A\uFF0C\u3000\u7E7C\u7E8C\u5411\u524D\u9032\u5427\uFF01"
   hakaseFace: {fileID: 21300000, guid: 3558c50a96f48cb45ad6662149f2743f, type: 3}
@@ -1139,7 +1140,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   messages:
   - "\u3042\u3063\uFF01\u3061\u3087\u3063\u3068\u5F85\u3063\u3066\uFF01\u4E0B\u306E\u6B6F\u8ECA\u3001\u3000\u58C1\u306E\u30C7\u30B3\u30DC\u30B3\u3068\u6B6F\u304C\u565B\u307F\u5408\u3063\u3066\u308B\u3088\uFF01"
-  - "Hey! Wait a second! A gear is\u3000meshing the uneven wall."
+  - "Hey! Wait a second! A gear is\u3000meshing with the bumpy wall."
   - "\u5662\uFF01\u4E0D\u8FC7\u7B49\u4E00\u7B49\uFF01\u90A3\u4E2A\u4E0B\u9762\u7684\u9F7F\u8F6E\u3000\u6216\u8BB8\u53EF\u4EE5\u6D3E\u4E0A\u7528\u573A\u3002"
   - "\u5662\uFF01\u4E0D\u904E\u7B49\u4E00\u7B49\uFF01\u90A3\u500B\u4E0B\u9762\u7684\u9F52\u8F2A\u3000\u6216\u8A31\u53EF\u4EE5\u6D3E\u4E0A\u7528\u5834\u3002"
   hakaseFace: {fileID: 21300000, guid: f0102bc2ef86c5a43ab551c56cc43060, type: 3}

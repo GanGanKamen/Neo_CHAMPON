@@ -5,20 +5,30 @@ using UnityEngine;
 public class BreakWall : MonoBehaviour
 {
     public int hp;
+    private Rigidbody2D _gururinRb2D;
     [SerializeField] private Transform mask;
     private float maskPosY;
     [SerializeField] private float maskTranslateSpeed;
     [SerializeField] private float magnification; //hpとmask position.Yの倍率
-    private bool isBreak = false;
+    private bool isCollision = false;
+    private float beforeGururinSpeed;
     // Start is called before the first frame update
     void Start()
     {
+        _gururinRb2D = GameObject.Find("Gururin").GetComponent<Rigidbody2D>();
         maskPosY = mask.transform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //毎Fぐるりんの速度を取得
+        float nowGururinSpeed = _gururinRb2D.velocity.magnitude;
+        //BreakWallと衝突していないときにbeforeGururinSpeedを更新 = 衝突したときは前のFの速度を取得する
+        if (isCollision == false) {
+            beforeGururinSpeed = nowGururinSpeed;
+        }
+
         MaskTranslate();
         //BreakUp();
     }
@@ -28,9 +38,11 @@ public class BreakWall : MonoBehaviour
         if (hp <= 0) return;
         if (collision.gameObject.CompareTag("Player"))
         {
-            Rigidbody2D rigidbody2D = collision.gameObject.GetComponent<Rigidbody2D>();
-            hp -= (int)rigidbody2D.velocity.magnitude;
-            maskPosY += (int)rigidbody2D.velocity.magnitude * magnification;
+            isCollision = true;
+            //Rigidbody2D rigidbody2D = collision.gameObject.GetComponent<Rigidbody2D>();
+            //hp -= (int)rigidbody2D.velocity.magnitude;
+            hp -= (int)beforeGururinSpeed;
+            maskPosY += (int)beforeGururinSpeed * magnification;
         }
     }
 
@@ -43,6 +55,7 @@ public class BreakWall : MonoBehaviour
         }
         else if(hp >= 0 && maskPosY > mask.transform.position.y)
         {
+            isCollision = false;
             mask.localPosition += new Vector3(0, maskTranslateSpeed * Time.deltaTime, 0);
         }
     }

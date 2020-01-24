@@ -19,9 +19,12 @@ public class FlagManager : MonoBehaviour
     public bool gururinJumpDirection; //歯車と接触時フリックのジャンプ方向
     public bool isStick; //張り付きラックとの接触判定
 
+    public bool reverseDirection;
+
     // Start is called before the first frame update
     void Start()
     {
+        returnGravity = true;
         pressParm = true;
     }
 

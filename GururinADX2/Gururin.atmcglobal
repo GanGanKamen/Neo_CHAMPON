@@ -2,7 +2,7 @@
 <!-- Orca XML File Format -->
 <OrcaTrees ObjectTypeExpression="Full" BinaryEncodingType="Base64" FileVersion="3" FileRevision="0">
   <OrcaTree OrcaName="(no name)">
-    <Orca OrcaName="GlobalSettings" DefaultDspSetting="/CriAtomCraftV2Root/GlobalSettings/DspBusSettings/DspBusSetting_0" FormatVersion="Ver.1.07.00" OoUniqId="94f0ac89-bc24-4bb2-a536-1866a7cf60fe" VersionInfoV3="Ver.3.41.10" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoGlobalFolder">
+    <Orca OrcaName="GlobalSettings" DefaultDspSetting="/CriAtomCraftV2Root/GlobalSettings/DspBusSettings/DspBusSetting_0" FormatVersion="Ver.1.05.00" OoUniqId="94f0ac89-bc24-4bb2-a536-1866a7cf60fe" VersionInfoV3="Ver.3.40.17" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoGlobalFolder">
       <Orca OrcaName="TargetConfigs" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoTargetConfigFolder">
         <Orca OrcaName="Public" EncodeType="HCA" OoUniqId="302f15b6-a46a-4ed8-819f-654242086edf" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoTargetConfigPublic"/>
         <Orca OrcaName="InGamePreview" EncodeType="HCA" OoUniqId="b1d99459-2c61-48a2-8e33-32433a1e1f14" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoTargetConfigPublic"/>
@@ -40,6 +40,7 @@
       </Orca>
       <Orca OrcaName="REACT" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoReactFolder">
         <Orca OrcaName="operation" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoReact"/>
+        <Orca OrcaName="SEDack" DecrementTime="1000" DestCategory="/CriAtomCraftV2Root/GlobalSettings/Categories/System/BGM" HoldTime="500" IncrementTime="1000" Level="0.5" SourceCategory="/CriAtomCraftV2Root/GlobalSettings/Categories/System/SE" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoReact"/>
       </Orca>
       <Orca OrcaName="VoiceLimitGroups" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoVoiceLimitGroupFolder">
         <Orca OrcaName="VoiceLimitGroup_0" VoiceLimitNum="1" OrcaType="CriMw.CriAtomCraft.AcCore.AcOoVoiceLimitGroup"/>

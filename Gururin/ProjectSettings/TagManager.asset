@@ -16,6 +16,8 @@ TagManager:
   - Wind
   - Died
   - TransformFixed
+  - Ref
+  - Spider
   layers:
   - Default
   - TransparentFX
