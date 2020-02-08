@@ -8,10 +8,6 @@ public class PlayerCtrl : GururinBase
     [SerializeField] private GameObject _gear;
     [SerializeField] private float _jumpPower;
 
-    [SerializeField] private Canvas controllerCanvas;
-    [SerializeField] private GameObject gameController;
-    private bool isPress = false;
-    private Vector3 vecA, vecB;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -28,34 +24,9 @@ public class PlayerCtrl : GururinBase
     // Update is called once per frame
     void Update()
     {
-        TestCtrl();
+        //TestCtrl();
     }
 
-    /*
-    private void Operate()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Vector2 localpoint;
-            RectTransformUtility.ScreenPointToLocalPointInRectangle(controllerCanvas.GetComponent<RectTransform>(),
-               Input.mousePosition, controllerCanvas.worldCamera, out localpoint);
-            Debug.Log(localpoint);
-            Vector2 resultPoint;
-            resultPoint = new Vector2(localpoint.x, localpoint.y - 150);
-
-            gameController.GetComponent<RectTransform>().anchoredPosition = resultPoint;
-            gameController.SetActive(true);
-            isPress = true;
-
-        }
-
-        else if(Input.GetMouseButton(0) && isPress)
-        {
-            var touchPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-
-        }
-    }
-    */
     private void TestCtrl()
     {
         if (Input.GetAxis("Horizontal") != 0)
