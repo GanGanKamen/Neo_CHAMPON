@@ -26,14 +26,16 @@ public class AerialGear : MonoBehaviour
         {
             _gururin = other.gameObject;
             _gururin.transform.parent = transform;
-
+            /*
             _gururinRb2d = _gururin.GetComponent<Rigidbody>();
             _gururinRb2d.velocity = Vector3.zero;
             _gururinRb2d.angularVelocity = Vector3.zero;
             _gururinRb2d.useGravity = false;
-
+            */
+            Destroy(_gururin.GetComponent<Rigidbody>());
             _testPlayer = _gururin.GetComponent<TestPlayer>();
             _testPlayer.gimmickHit = true;
+            Debug.Log("enter");
         }
     }
 
@@ -42,11 +44,12 @@ public class AerialGear : MonoBehaviour
         if (other.gameObject)
         {
             _gururin.transform.parent = null;
-            _gururinRb2d.useGravity = true;
+            //_gururinRb2d.useGravity = true;
             _testPlayer.gimmickHit = false;
             _gururin = null;
 
             speed = _recodeSpeed;
+            Debug.Log("Exit");
         }
     }
 

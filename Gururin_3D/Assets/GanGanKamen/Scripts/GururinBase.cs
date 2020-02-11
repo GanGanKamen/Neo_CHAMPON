@@ -7,57 +7,20 @@ public class GururinBase : MonoBehaviour
     public float speed { get; set; } 
     public GameObject gear { get; set; }
     public float jumpPower { get; set; }
-    private int preDirection;
+    private float moveAngle = 0;
 
-    public void GururinMove(float angle,bool direction)
+
+    public void SetAngle(float angle)
     {
-        var rigidbody = GetComponent<Rigidbody>();
-        var rotSpeed = angle * speed * Time.deltaTime; 
-        if (direction)
-        {
-            rigidbody.AddForce(rotSpeed, 0, 0,ForceMode.Acceleration);
-            preDirection = 1;
-        }
-        else
-        {
-            rigidbody.AddForce(-rotSpeed, 0, 0, ForceMode.Acceleration);
-            preDirection = -1;
-        }
+        moveAngle += (-angle / 10f);
     }
 
-    public void SpeedReset()
+    public void GururinMove()
     {
         var rigidbody = GetComponent<Rigidbody>();
-        var velocity = rigidbody.velocity.x;
-        Debug.Log(preDirection);
-        switch (preDirection)
-        {
-            case 1:
-                if (velocity > 0)
-                {
-                    velocity -= 5f * Time.deltaTime;
-
-                }
-                else
-                {
-                    velocity = 0;
-                }
-                break;
-            case -1:
-                if (velocity < 0)
-                {
-                    velocity += 5f * Time.deltaTime;
-
-                }
-                else
-                {
-                    velocity = 0;
-                }
-                break;
-        }
-        
-        rigidbody.velocity = new Vector3(velocity,
-   rigidbody.velocity.y, rigidbody.velocity.z);
+        var rotSpeed = moveAngle * speed * Time.deltaTime;
+        var moveVecSpeed = new Vector3(rotSpeed, 0, 0) - rigidbody.velocity;
+        rigidbody.AddForce(moveVecSpeed, ForceMode.Acceleration);
     }
 
     public void Jump()
@@ -65,5 +28,12 @@ public class GururinBase : MonoBehaviour
         var rigidbody = GetComponent<Rigidbody>();
         var force = new Vector3(0, jumpPower, 0);
         rigidbody.AddForce(force, ForceMode.VelocityChange);
+    }
+
+    public void MoveStop()
+    {
+        var rigidbody = GetComponent<Rigidbody>();
+        rigidbody.velocity = Vector3.zero;
+        moveAngle = 0;
     }
 }

@@ -8,12 +8,15 @@ public class PlayerCtrl : GururinBase
     [SerializeField] private GameObject _gear;
     [SerializeField] private float _jumpPower;
 
+    [SerializeField] private GameController gameController;
     // Start is called before the first frame update
     private void Awake()
     {
         speed = _speed;
         gear = _gear;
         jumpPower = _jumpPower;
+
+        gameController = GetComponent<GameController>();
     }
 
     void Start()
@@ -24,32 +27,14 @@ public class PlayerCtrl : GururinBase
     // Update is called once per frame
     void Update()
     {
-        //TestCtrl();
-    }
-
-    private void TestCtrl()
-    {
-        if (Input.GetAxis("Horizontal") != 0)
+        GururinMove();
+        if(gameController.InputAngle != 0)
         {
-            if (Input.GetAxis("Horizontal") > 0)
-            {
-                base.GururinMove(Input.GetAxis("Horizontal") * 360, true);
-            }
-            else if (Input.GetAxis("Horizontal") < 0)
-            {
-                base.GururinMove(-Input.GetAxis("Horizontal") * 360, false);
-            }
+            SetAngle(gameController.InputAngle);
         }
-        else
+        else if (Input.GetKeyDown(KeyCode.A))
         {
-            base.SpeedReset();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            base.Jump();
+            MoveStop();
         }
     }
-
-
 }
