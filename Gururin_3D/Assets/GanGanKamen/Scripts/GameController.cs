@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour
     private bool inputFlick_up, inputFlick_down, inputFlick_right, inputFlick_left;
     [SerializeField]private bool flick_up, flick_down, flick_right, flick_left;
     private bool isTouch = false;
+    private int timercount = 0;
     private Platform platform;
 
     private void Awake()
@@ -64,11 +65,11 @@ public class GameController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             jumpcount = 0;
+            timercount = 0;
             controllerObject.SetActive(true);
             controller.transform.rotation = Quaternion.identity;
             mousePosition1 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>()
                 .ScreenToViewportPoint(Input.mousePosition);
-            /*
             mousePosition1.y = mousePosition1.y - 0.1f;
             if (mousePosition1.x < poslimit.x)
             {
@@ -86,10 +87,9 @@ public class GameController : MonoBehaviour
             else if (mousePosition1.y > 1 - poslimit.y)
             {
                 mousePosition1.y = 1 - poslimit.y;
-            }*/
-            var controllerPosition = new Vector3(mousePosition1.x, mousePosition1.y - 0.1f, 0);
+            }
             controllerObject.transform.position =
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().ViewportToScreenPoint(controllerPosition);
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().ViewportToScreenPoint(mousePosition1);
             prepos = controllerObject.transform.position;
             isPress = true;
             isFlick = false;
@@ -97,13 +97,18 @@ public class GameController : MonoBehaviour
         if (Input.GetMouseButton(0) && isPress)
         {
             jumpcount += Time.deltaTime;
+            timercount++;
             mousePosition2 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().
                 ScreenToViewportPoint(Input.mousePosition);
             pos = mousePosition1;
             var vecA = prepos - pos;
             var vecB = mousePosition2 - pos;
-            angle = Vector3.Angle(vecA, vecB);
-            AxB = Vector3.Cross(vecA, vecB);
+            if(timercount >= 10)
+            {
+                angle = Vector3.Angle(vecA, vecB);
+                AxB = Vector3.Cross(vecA, vecB);
+            }
+            
             //外積が正の時の処理
             if (AxB.z > 0)
             {
