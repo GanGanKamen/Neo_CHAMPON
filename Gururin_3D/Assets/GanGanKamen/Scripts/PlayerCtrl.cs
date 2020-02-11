@@ -15,8 +15,6 @@ public class PlayerCtrl : GururinBase
         speed = _speed;
         gear = _gear;
         jumpPower = _jumpPower;
-
-        gameController = GetComponent<GameController>();
     }
 
     void Start()

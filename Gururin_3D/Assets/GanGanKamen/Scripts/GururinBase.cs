@@ -32,8 +32,16 @@ public class GururinBase : MonoBehaviour
 
     public void MoveStop()
     {
-        var rigidbody = GetComponent<Rigidbody>();
-        rigidbody.velocity = Vector3.zero;
+        //var rigidbody = GetComponent<Rigidbody>();
+        //rigidbody.velocity = Vector3.zero;
         moveAngle = 0;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            MoveStop();
+        }
     }
 }

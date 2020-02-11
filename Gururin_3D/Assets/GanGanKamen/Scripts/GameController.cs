@@ -11,18 +11,19 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject controller;
     [SerializeField] private float jumpInterval;
     [SerializeField] private float flickDistance;
+    [SerializeField] private Vector2 poslimit;
 
-
-    private Vector2 mousePosition1, poslimit, prepos, pos, vecA, vecB;
+    private Vector2 mousePosition1, prepos, pos;
     private Vector2 mousePosition2, mousePosition3, mousePosition4, mousePosition5;
     private float jumpcount = 0;
     private float angle = 0;
     private float preEulerAngle = 0;
-    [SerializeField]private float inputAngle = 0;
+    private float inputAngle = 0;
     private Vector3 AxB = Vector3.zero;
     private bool isPress = false;
     private bool isFlick = false;
-    private bool flick_up, flick_down, flick_right, flick_left;
+    private bool inputFlick_up, inputFlick_down, inputFlick_right, inputFlick_left;
+    [SerializeField]private bool flick_up, flick_down, flick_right, flick_left;
     private bool isTouch = false;
     private Platform platform;
 
@@ -67,7 +68,25 @@ public class GameController : MonoBehaviour
             controller.transform.rotation = Quaternion.identity;
             mousePosition1 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>()
                 .ScreenToViewportPoint(Input.mousePosition);
-            //mousePosition1.y = mousePosition1.y - 0.1f;
+            /*
+            mousePosition1.y = mousePosition1.y - 0.1f;
+            if (mousePosition1.x < poslimit.x)
+            {
+                mousePosition1.x = poslimit.x;
+            }
+            else if (mousePosition1.x > 1 - poslimit.x)
+            {
+                mousePosition1.x = 1 - poslimit.x;
+            }
+
+            if (mousePosition1.y < poslimit.y)
+            {
+                mousePosition1.y = poslimit.y;
+            }
+            else if (mousePosition1.y > 1 - poslimit.y)
+            {
+                mousePosition1.y = 1 - poslimit.y;
+            }*/
             var controllerPosition = new Vector3(mousePosition1.x, mousePosition1.y - 0.1f, 0);
             controllerObject.transform.position =
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().ViewportToScreenPoint(controllerPosition);
@@ -81,9 +100,9 @@ public class GameController : MonoBehaviour
             mousePosition2 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().
                 ScreenToViewportPoint(Input.mousePosition);
             pos = mousePosition1;
-            vecA = prepos - pos;
-            vecB = mousePosition2 - pos;
-            angle = Vector2.Angle(vecA, vecB);
+            var vecA = prepos - pos;
+            var vecB = mousePosition2 - pos;
+            angle = Vector3.Angle(vecA, vecB);
             AxB = Vector3.Cross(vecA, vecB);
             //外積が正の時の処理
             if (AxB.z > 0)
@@ -153,6 +172,8 @@ public class GameController : MonoBehaviour
             inputAngle = 0;
         }
     }
+
+    private void InputFlickUpdate() { }
 
     private void GetPlatform()
     {
