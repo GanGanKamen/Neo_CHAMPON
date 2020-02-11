@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class PlayerCtrl : GururinBase
 {
-    [SerializeField] private float _speed;
+    [SerializeField] private float _maxSpeed;
     [SerializeField] private GameObject _gear;
     [SerializeField] private float _jumpPower;
+    [SerializeField] private float _accel;
 
     [SerializeField] private GameController gameController;
     // Start is called before the first frame update
     private void Awake()
     {
-        speed = _speed;
+        maxSpeed = _maxSpeed;
         gear = _gear;
         jumpPower = _jumpPower;
+        accel = _accel;
     }
 
     void Start()
@@ -26,13 +28,18 @@ public class PlayerCtrl : GururinBase
     void Update()
     {
         GururinMove();
-        if(gameController.InputAngle != 0)
+        TouchCtrl();
+    }
+
+    private void TouchCtrl()
+    {
+        if (gameController.InputAngle != 0)
         {
             SetAngle(gameController.InputAngle);
         }
-        else if (Input.GetKeyDown(KeyCode.A))
+        if (gameController.InputFlick)
         {
-            MoveStop();
+            Jump();
         }
     }
 }

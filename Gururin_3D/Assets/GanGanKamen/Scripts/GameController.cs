@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public float InputAngle { get { return inputAngle; } }
+    public bool InputFlick { get { return InputFlickUpdate(); } }
 
     [SerializeField] private GameObject controllerObject;
     [SerializeField] private GameObject controller;
@@ -21,9 +22,8 @@ public class GameController : MonoBehaviour
     private float inputAngle = 0;
     private Vector3 AxB = Vector3.zero;
     private bool isPress = false;
-    private bool isFlick = false;
-    private bool inputFlick_up, inputFlick_down, inputFlick_right, inputFlick_left;
-    [SerializeField]private bool flick_up, flick_down, flick_right, flick_left;
+    private int flickCountPre = 0;
+    private int flickCount = 0;
     private bool isTouch = false;
     private int timercount = 0;
     private Platform platform;
@@ -92,7 +92,6 @@ public class GameController : MonoBehaviour
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().ViewportToScreenPoint(mousePosition1);
             prepos = controllerObject.transform.position;
             isPress = true;
-            isFlick = false;
         }
         if (Input.GetMouseButton(0) && isPress)
         {
@@ -106,6 +105,7 @@ public class GameController : MonoBehaviour
             if(timercount >= 10)
             {
                 angle = Vector3.Angle(vecA, vecB);
+                Debug.Log(angle);
                 AxB = Vector3.Cross(vecA, vecB);
             }
             
@@ -132,28 +132,12 @@ public class GameController : MonoBehaviour
             Vector2 flickpos = mousePosition5 - pos;
             if (jumpcount <= jumpInterval)
             {
-                if (flickpos.x > flickDistance)
-                {
-                    flick_right = true;
-                    isFlick = true;
-                }
-                else if (flickpos.x < -flickDistance)
-                {
-                    flick_left = true;
-                    isFlick = true;
-                }
-                if (flickpos.y > flickDistance)
-                {
-                    flick_up = true;
-                    isFlick = true;
-                }
-                else if (flickpos.y < -flickDistance)
-                {
-                    flick_down = true;
-                    isFlick = true;
-                }
-
+                flickCount += 1;
+                Debug.Log("flick");
             }
+            isPress = false;
+            angle = 0;
+            jumpcount = 0;
             controllerObject.SetActive(false);
         }
     }
@@ -178,7 +162,18 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void InputFlickUpdate() { }
+    private bool InputFlickUpdate()
+    {
+        if(flickCount != flickCountPre)
+        {
+            flickCountPre = flickCount;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
     private void GetPlatform()
     {
