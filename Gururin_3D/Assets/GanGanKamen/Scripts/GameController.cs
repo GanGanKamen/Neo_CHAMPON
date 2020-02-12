@@ -31,7 +31,6 @@ public class GameController : MonoBehaviour
     private Platform platform;
     private float longPressCount = 0;
 
-
     private void Awake()
     {
         preEulerAngle = controller.transform.localEulerAngles.z;
@@ -59,7 +58,7 @@ public class GameController : MonoBehaviour
                 WindowsCtrl();
                 break;
             default:
-
+                SmartPhoneCtrl();
                 break;
         }
     }
@@ -143,6 +142,99 @@ public class GameController : MonoBehaviour
         {
             mousePosition5 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().
                 ScreenToViewportPoint(Input.mousePosition);
+            var flickDis = Vector2.Distance(mousePosition5, pos);
+            if (jumpcount <= jumpInterval && flickDis >= flickDistance)
+            {
+                flickCount += 1;
+            }
+            isPress = false;
+            angle = 0;
+            jumpcount = 0;
+            longPressCount = 0;
+            controllerObject.SetActive(false);
+        }
+    }
+
+    private void SmartPhoneCtrl()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            jumpcount = 0;
+            timercount = 0;
+            longPressCount = 0;
+            controllerObject.SetActive(true);
+            controller.transform.rotation = Quaternion.identity;
+            mousePosition1 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>()
+                .ScreenToViewportPoint(Input.GetTouch(0).position);
+            mousePosition1.y = mousePosition1.y - 0.1f;
+            if (mousePosition1.x < poslimit.x)
+            {
+                mousePosition1.x = poslimit.x;
+            }
+            else if (mousePosition1.x > 1 - poslimit.x)
+            {
+                mousePosition1.x = 1 - poslimit.x;
+            }
+
+            if (mousePosition1.y < poslimit.y)
+            {
+                mousePosition1.y = poslimit.y;
+            }
+            else if (mousePosition1.y > 1 - poslimit.y)
+            {
+                mousePosition1.y = 1 - poslimit.y;
+            }
+            controllerObject.transform.position =
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().ViewportToScreenPoint(mousePosition1);
+            prepos = controllerObject.transform.position;
+            isPress = true;
+        }
+
+        if (Input.GetMouseButton(0) && isPress)
+        {
+            jumpcount += Time.deltaTime;
+            timercount++;
+            mousePosition2 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().
+                ScreenToViewportPoint(Input.GetTouch(0).position);
+            pos = mousePosition1;
+            var vecA = prepos - pos;
+            var vecB = mousePosition2 - pos;
+            if (timercount >= 10)
+            {
+                angle = Vector3.Angle(vecA, vecB);
+                Debug.Log(angle);
+                AxB = Vector3.Cross(vecA, vecB);
+            }
+
+            if (angle <= 0.5f)
+            {
+                longPressCount += Time.deltaTime;
+            }
+            else
+            {
+                longPressCount = 0;
+            }
+
+            //外積が正の時の処理
+            if (AxB.z > 0)
+            {
+                //controller.transform.rotation = controller.transform.rotation * Quaternion.Euler(0, 0, angle);
+                controller.transform.localEulerAngles += new Vector3(0, 0, angle);
+            }
+            //外積が負の時の処理
+            else if (AxB.z < 0)
+            {
+                //controller.transform.rotation = controller.transform.rotation * Quaternion.Euler(0, 0, -angle);
+                controller.transform.localEulerAngles -= new Vector3(0, 0, angle);
+            }
+            //preposにこの時点でのマウス位置を代入 camerapos2にこの時点でのカメラ位置を再代入
+            prepos = mousePosition2;
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            mousePosition5 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().
+                ScreenToViewportPoint(Input.GetTouch(0).position);
             var flickDis = Vector2.Distance(mousePosition5, pos);
             if (jumpcount <= jumpInterval && flickDis >= flickDistance)
             {
