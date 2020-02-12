@@ -6,13 +6,15 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public float InputAngle { get { return inputAngle; } }
-    public bool InputFlick { get { return InputFlickUpdate(); } }
+    public bool InputFlick { get { return InputFlickCheck(); } }
+    public bool InputLongPress { get { return InputLongPressCheck(); } }
 
     [SerializeField] private GameObject controllerObject;
     [SerializeField] private GameObject controller;
     [SerializeField] private float jumpInterval;
     [SerializeField] private float flickDistance;
     [SerializeField] private Vector2 poslimit;
+    [SerializeField] private float longPressInterval;
 
     private Vector2 mousePosition1, prepos, pos;
     private Vector2 mousePosition2, mousePosition3, mousePosition4, mousePosition5;
@@ -27,6 +29,8 @@ public class GameController : MonoBehaviour
     private bool isTouch = false;
     private int timercount = 0;
     private Platform platform;
+    private float longPressCount = 0;
+
 
     private void Awake()
     {
@@ -66,6 +70,7 @@ public class GameController : MonoBehaviour
         {
             jumpcount = 0;
             timercount = 0;
+            longPressCount = 0;
             controllerObject.SetActive(true);
             controller.transform.rotation = Quaternion.identity;
             mousePosition1 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>()
@@ -109,6 +114,15 @@ public class GameController : MonoBehaviour
                 AxB = Vector3.Cross(vecA, vecB);
             }
             
+            if(angle <= 0.5f)
+            {
+                longPressCount += Time.deltaTime;
+            }
+            else
+            {
+                longPressCount = 0;
+            }
+
             //外積が正の時の処理
             if (AxB.z > 0)
             {
@@ -129,15 +143,15 @@ public class GameController : MonoBehaviour
         {
             mousePosition5 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().
                 ScreenToViewportPoint(Input.mousePosition);
-            Vector2 flickpos = mousePosition5 - pos;
-            if (jumpcount <= jumpInterval)
+            var flickDis = Vector2.Distance(mousePosition5, pos);
+            if (jumpcount <= jumpInterval && flickDis >= flickDistance)
             {
                 flickCount += 1;
-                Debug.Log("flick");
             }
             isPress = false;
             angle = 0;
             jumpcount = 0;
+            longPressCount = 0;
             controllerObject.SetActive(false);
         }
     }
@@ -162,11 +176,23 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private bool InputFlickUpdate()
+    private bool InputFlickCheck()
     {
         if(flickCount != flickCountPre)
         {
             flickCountPre = flickCount;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    private bool InputLongPressCheck()
+    {
+        if(longPressCount >= longPressInterval)
+        {
             return true;
         }
         else

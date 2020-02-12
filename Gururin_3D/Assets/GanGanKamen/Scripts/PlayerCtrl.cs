@@ -8,6 +8,7 @@ public class PlayerCtrl : GururinBase
     [SerializeField] private GameObject _gear;
     [SerializeField] private float _jumpPower;
     [SerializeField] private float _accel;
+    [SerializeField][Range(0,10)] private float _brakePower;
 
     [SerializeField] private GameController gameController;
     // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class PlayerCtrl : GururinBase
         gear = _gear;
         jumpPower = _jumpPower;
         accel = _accel;
+        brakePower = _brakePower;
     }
 
     void Start()
@@ -37,9 +39,17 @@ public class PlayerCtrl : GururinBase
         {
             SetAngle(gameController.InputAngle);
         }
+        else
+        {
+            if (IsCollideWall) StandStill();
+        }
         if (gameController.InputFlick)
         {
             Jump();
+        }
+        else if (gameController.InputLongPress)
+        {
+            Brake();
         }
     }
 }

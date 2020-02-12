@@ -137,7 +137,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8995134417268156672}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: cd558453abec4b448ad3ae2896e17e82, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -155,10 +155,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9307704073175594aa6bcb3983e0cbd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
+  _maxSpeed: 4
   _gear: {fileID: 8995134417318438331}
   _jumpPower: 5
-  controllerCanvas: {fileID: 0}
+  _accel: 2
+  _brakePower: 5
   gameController: {fileID: 0}
 --- !u!1 &8995134417318438331
 GameObject:
