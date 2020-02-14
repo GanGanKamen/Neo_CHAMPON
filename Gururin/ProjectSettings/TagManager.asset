@@ -18,6 +18,7 @@ TagManager:
   - TransformFixed
   - Ref
   - Spider
+  - Credit
   layers:
   - Default
   - TransparentFX

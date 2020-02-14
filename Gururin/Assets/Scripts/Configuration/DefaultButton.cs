@@ -13,6 +13,7 @@ public class DefaultButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         if(sensitivity == null)
         {
             sensitivity = GameObject.Find("Sensitivity").GetComponent<Sensitivity>();
@@ -26,6 +27,7 @@ public class DefaultButton : MonoBehaviour
         {
             controllerPosition = GameObject.Find("ControllerPosition").GetComponent<ControllerPosition>();
         }
+        */
     }
 
     // Update is called once per frame
@@ -35,9 +37,9 @@ public class DefaultButton : MonoBehaviour
     }
     public void OnClick()
     {
-        sensitivity.OnClick();
-        controllerFixed.OnClick();
-        controllerPosition.OnClick();
+        //sensitivity.OnClick();
+        //controllerFixed.OnClick();
+        //controllerPosition.OnClick();
         NeoConfig.BGMSlider.value = 8;
         NeoConfig.SESlider.value = 8;
         NeoConfig.textSpeedSlider.value = 0;
