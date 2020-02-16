@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCtrl : GururinBase
+public class PlayerCtrl : GanGanKamen.GururinBase
 {
+    public bool CanCtrl { get { return canCtrl; } }
+
     [SerializeField] private float _maxSpeed;
     [SerializeField] private GameObject _gear;
     [SerializeField] private float _jumpPower;
     [SerializeField] private float _accel;
-    [SerializeField][Range(0,10)] private float _brakePower;
+    [SerializeField] [Range(0, 10)] private float _brakePower;
 
-    [SerializeField] private GameController gameController;
+    [SerializeField] private GanGanKamen.GameController gameController;
+
+    private bool canCtrl = false;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -19,6 +23,7 @@ public class PlayerCtrl : GururinBase
         jumpPower = _jumpPower;
         accel = _accel;
         brakePower = _brakePower;
+        canCtrl = true;
     }
 
     void Start()
@@ -53,3 +58,4 @@ public class PlayerCtrl : GururinBase
         }
     }
 }
+

@@ -157,7 +157,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxSpeed: 4
   _gear: {fileID: 8995134417318438331}
-  _jumpPower: 5
+  _jumpPower: 10
   _accel: 2
   _brakePower: 5
   gameController: {fileID: 0}

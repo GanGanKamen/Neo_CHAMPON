@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/GanGanKamen/Scenes/GameStart.unity
     guid: 2e78c941c0bb3054aa00cec692c3cdae
   - enabled: 1
+    path: Assets/GanGanKamen/Scenes/Title.unity
+    guid: d8d939fba07eb144fb5ca24bed4dae20
+  - enabled: 1
+    path: Assets/GanGanKamen/Scenes/Manga.unity
+    guid: e98e31ee02a64c448bdef7e892cfad10
+  - enabled: 1
     path: Assets/GanGanKamen/Scenes/PlayerTest.unity
     guid: ccfd3ae8f98bf9e4b8e31073f9c5ccae
   m_configObjects: {}
