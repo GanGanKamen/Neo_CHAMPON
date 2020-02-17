@@ -498,7 +498,9 @@ MonoBehaviour:
   menuWindowCloseNutton: {fileID: 1273663942}
   backTitleButton: {fileID: 2063334888}
   menuWindow: {fileID: 1251710192}
-  ignoreScenes: []
+  ignoreScenes:
+  - Manga
+  - StageSelect
 --- !u!1 &506446947
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +691,7 @@ MonoBehaviour:
   NextSceneName: Title
   ignoreScenes:
   - Manga
-  - StageSelect
+  - Title
 --- !u!4 &824730401
 Transform:
   m_ObjectHideFlags: 0

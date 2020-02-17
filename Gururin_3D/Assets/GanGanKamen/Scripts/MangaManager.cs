@@ -27,7 +27,7 @@ namespace GanGanKamen
             if(playOver == false && mangaDirector.state == PlayState.Paused)
             {
                 playOver = true;
-                Fader.FadeIn(1f, "PlayerTest");
+                Fader.FadeIn(5f, "StageSelect");
             }
         }
     }

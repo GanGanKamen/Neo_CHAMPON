@@ -76,7 +76,7 @@ namespace GanGanKamen
                 }
                 if(count > 0)
                 {
-                    menuWindow.SetActive(false);
+                    menubutton.gameObject.SetActive(false);
                 }
             }
         }
