@@ -33,11 +33,14 @@ public class ItemScript : MonoBehaviour
             {
                 case 0:
                     playerStatus.oil += 1;
+                    playerStatus.SpeedUp();
+                    playerStatus.Smile();
                     Destroy();
                     break;
 
                 case 1:
                     playerStatus.coin = true;
+                    playerStatus.Smile();
                     Destroy();
                     break;
 
