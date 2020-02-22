@@ -13,6 +13,7 @@ namespace GanGanKamen
         public float DefultJumpPower { get { return defultJumpPower; } }
         public float DefultBrakePower { get { return DefultBrakePower; } }
         public float DefultAccel { get { return defultAccel; } }
+        public bool IsAccelMove { get { return GetIsAccelMove(); } }
 
         public float maxSpeed { get; set; }
         public GameObject gear { get; set; }
@@ -22,6 +23,7 @@ namespace GanGanKamen
 
 
         private float moveAngle = 0;
+        private float preMoveAngle = 0;
         private bool canJump = false;
         private bool isAttachGimmick = false;
         private bool isCollideWall = false;
@@ -64,6 +66,16 @@ namespace GanGanKamen
             rigidbody.AddForce(moveVecSpeed, ForceMode.Acceleration);
         }
 
+        public bool GetIsAccelMove()
+        {
+            if (preMoveAngle != moveAngle)
+            {
+                preMoveAngle = moveAngle;
+                return true;
+            }
+            else return false;
+        }
+
         public void Jump()
         {
             if (canJump == false || isAttachGimmick) return;
@@ -91,6 +103,15 @@ namespace GanGanKamen
             var rigidbody = GetComponent<Rigidbody>();
             var velocity = Mathf.Abs(rigidbody.velocity.x);
             var brakeForce = Vector3.Scale(rigidbody.velocity, new Vector3(-0.01f * brakePower / velocity, 0, 0));
+            rigidbody.AddForce(brakeForce, ForceMode.VelocityChange);
+        }
+
+        public void Brake(float power)
+        {
+            moveAngle = 0;
+            var rigidbody = GetComponent<Rigidbody>();
+            var velocity = Mathf.Abs(rigidbody.velocity.x);
+            var brakeForce = Vector3.Scale(rigidbody.velocity, new Vector3(-0.01f * power / velocity, 0, 0));
             rigidbody.AddForce(brakeForce, ForceMode.VelocityChange);
         }
 

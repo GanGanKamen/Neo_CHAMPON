@@ -14,7 +14,7 @@ namespace GanGanKamen
         [SerializeField] private float _accel;
         [SerializeField] [Range(0, 10)] private float _brakePower;
 
-        [SerializeField] private GanGanKamen.GameController gameController;
+        public GameController gameController;
 
         private bool canCtrl = false;
         // Start is called before the first frame update
@@ -38,7 +38,6 @@ namespace GanGanKamen
         // Update is called once per frame
         void Update()
         {
-            Debug.Log(maxSpeed);
             if (IsAttachGimmick == false && canCtrl)
             {
                 GururinMove();
@@ -48,6 +47,7 @@ namespace GanGanKamen
 
         private void NormalCtrl()
         {
+            //Debug.Log(gameController.InputAngle);
             if (gameController.InputAngle != 0)
             {
                 SetAngle(gameController.InputAngle);
