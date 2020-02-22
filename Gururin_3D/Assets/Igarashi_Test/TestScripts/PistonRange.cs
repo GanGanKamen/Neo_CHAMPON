@@ -5,23 +5,27 @@ using UnityEngine;
 /// <summary>
 /// ピストンの押し出し判定
 /// </summary>
-public class PistonRange : MonoBehaviour
+
+namespace Igarashi
 {
-    [SerializeField] private Piston _piston;
-
-    private void OnTriggerEnter(Collider other)
+    public class PistonRange : MonoBehaviour
     {
-        if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
+        [SerializeField] private Piston _piston;
+
+        private void OnTriggerEnter(Collider other)
         {
-            _piston.RangeHit(true);
+            if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
+            {
+                _piston.RangeHit(true);
+            }
         }
-    }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
+        private void OnTriggerExit(Collider other)
         {
-            _piston.RangeHit(false);
+            if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
+            {
+                _piston.RangeHit(false);
+            }
         }
     }
 }
