@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GanGanKamen/Scenes/PlayerItemTest.unity
     guid: fdd98b12bf550a84dba536e391976b06
+  - enabled: 1
+    path: Assets/GanGanKamen/Scenes/PlayerTest1.unity
+    guid: a5fe1474360ca14408dfc37ea0c91a41
   m_configObjects: {}
