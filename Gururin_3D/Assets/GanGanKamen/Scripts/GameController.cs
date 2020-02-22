@@ -17,7 +17,7 @@ namespace GanGanKamen
     public class GameController : MonoBehaviour
     {
 
-
+        public bool InputIsPress { get { return isPress; } }
         public float InputAngle { get { return inputAngle; } }
         public bool InputFlick { get { return InputFlickCheck(); } }
         public bool InputLongPress { get { return InputLongPressCheck(); } }

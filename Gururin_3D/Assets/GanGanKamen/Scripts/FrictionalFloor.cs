@@ -23,8 +23,8 @@ namespace GanGanKamen
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                var gururin = collision.gameObject.GetComponent<GururinBase>();
-                if(gururin.IsAccelMove == false)
+                var gururin = collision.gameObject.GetComponent<PlayerCtrl>();
+                if(gururin.IsAccelMove == false && gururin.gameController.InputIsPress == false)
                 {
                     gururin.Brake(frictional);
                 }
