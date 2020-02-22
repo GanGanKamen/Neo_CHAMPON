@@ -9,6 +9,10 @@ namespace GanGanKamen
         public bool CanJump { get { return canJump; } }
         public bool IsAttachGimmick { get { return isAttachGimmick; } }
         public bool IsCollideWall { get { return isCollideWall; } }
+        public float DefultSpeed { get { return defultSpeed; } }
+        public float DefultJumpPower { get { return defultJumpPower; } }
+        public float DefultBrakePower { get { return DefultBrakePower; } }
+        public float DefultAccel { get { return defultAccel; } }
 
         public float maxSpeed { get; set; }
         public GameObject gear { get; set; }
@@ -21,6 +25,27 @@ namespace GanGanKamen
         private bool canJump = false;
         private bool isAttachGimmick = false;
         private bool isCollideWall = false;
+
+        private float defultSpeed = 0;
+        private float defultJumpPower = 0;
+        private float defultBrakePower = 0;
+        private float defultAccel = 0;
+
+        public void SetDefult()
+        {
+            defultSpeed = maxSpeed;
+            defultJumpPower = jumpPower;
+            defultBrakePower = brakePower;
+            defultAccel = accel;
+        }
+
+        public void StatusReset()
+        {
+            maxSpeed = defultSpeed;
+            jumpPower = defultJumpPower;
+            brakePower = defultBrakePower;
+            accel = defultAccel;
+        }
 
         public void SetAngle(float angle)
         {

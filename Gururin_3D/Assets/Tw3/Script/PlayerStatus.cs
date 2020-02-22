@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStatus : GanGanKamen.GururinBase
+public class PlayerStatus : MonoBehaviour
 {
-    private PlayerCtrl playerCtrl;
-    private PlayerFace playerFace;
+    [SerializeField] private GanGanKamen.GururinBase gururinBase;
+    [SerializeField] private PlayerFace playerFace;
 
     public int oil;
     public bool coin;
@@ -15,8 +15,6 @@ public class PlayerStatus : GanGanKamen.GururinBase
     // Start is called before the first frame update
     void Start()
     {
-        playerCtrl = GameObject.Find("Player").GetComponent<PlayerCtrl>();
-        playerFace = GameObject.Find("Face").GetComponent<PlayerFace>();
         oil = 0;
         coin = false;
 
@@ -26,26 +24,30 @@ public class PlayerStatus : GanGanKamen.GururinBase
     // Update is called once per frame
     void Update()
     {
-        if(facecount > 0)
+        if(playerFace != null)
         {
-            facecount--;
+            if (facecount > 0)
+            {
+                facecount--;
+            }
+            if (facecount == 0)
+            {
+                playerFace.Nomal();
+            }
         }
-        if(facecount == 0)
-        {
-            playerFace.Nomal();
-        }
+
     }
 
     public void SpeedUp()
     {
-        maxSpeed = playerCtrl._maxSpeed * (1f + 0.01f * (float)oil);
-        accel = playerCtrl._accel * (1f + 0.01f * (float)oil);
+        gururinBase.maxSpeed = gururinBase.DefultSpeed * (1f + 0.01f * (float)oil);
+        gururinBase.accel = gururinBase.DefultAccel * (1f + 0.01f * (float)oil);
     }
 
     public void Smile()
     {
         facecount = 150;
-        playerFace.Smile();
+        if(playerFace != null) playerFace.Smile();
         
     }
     

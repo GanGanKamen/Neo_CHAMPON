@@ -6,10 +6,10 @@ public class PlayerCtrl : GanGanKamen.GururinBase
 {
     public bool CanCtrl { get { return canCtrl; } }
 
-    [SerializeField] public float _maxSpeed;
+    [SerializeField] private float _maxSpeed;
     [SerializeField] private GameObject _gear;
     [SerializeField] private float _jumpPower;
-    [SerializeField] public float _accel;
+    [SerializeField] private float _accel;
     [SerializeField] [Range(0, 10)] private float _brakePower;
 
     [SerializeField] private GanGanKamen.GameController gameController;
@@ -24,6 +24,8 @@ public class PlayerCtrl : GanGanKamen.GururinBase
         accel = _accel;
         brakePower = _brakePower;
         canCtrl = true;
+
+        SetDefult();
     }
 
     void Start()
