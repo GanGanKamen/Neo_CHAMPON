@@ -11,7 +11,7 @@ public class PistonRange : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<PlayerCtrl>())
+        if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
         {
             _piston.RangeHit(true);
         }
@@ -19,7 +19,7 @@ public class PistonRange : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<PlayerCtrl>())
+        if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
         {
             _piston.RangeHit(false);
         }

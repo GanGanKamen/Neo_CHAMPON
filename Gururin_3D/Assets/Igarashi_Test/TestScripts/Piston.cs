@@ -49,7 +49,7 @@ public class Piston : MonoBehaviour
     // ぐるりんがPistonRangeと接触かつPistonと接触した場合に押し出し
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.GetComponent<PlayerCtrl>() && rangeHit)
+        if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>() && rangeHit)
         {
             _Gururin = other.gameObject;
 
@@ -63,7 +63,7 @@ public class Piston : MonoBehaviour
 
     private void OnCollisionExit(Collision other)
     {
-        if (other.gameObject.GetComponent<PlayerCtrl>())
+        if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
         {
             if(_Gururin != null)
             {

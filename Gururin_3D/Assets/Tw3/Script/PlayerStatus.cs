@@ -6,6 +6,7 @@ public class PlayerStatus : MonoBehaviour
 {
     [SerializeField] private GanGanKamen.GururinBase gururinBase;
     [SerializeField] private PlayerFace playerFace;
+    [SerializeField] private float delta;
 
     public int oil;
     public bool coin;
@@ -40,8 +41,8 @@ public class PlayerStatus : MonoBehaviour
 
     public void SpeedUp()
     {
-        gururinBase.maxSpeed = gururinBase.DefultSpeed * (1f + 0.01f * (float)oil);
-        gururinBase.accel = gururinBase.DefultAccel * (1f + 0.01f * (float)oil);
+        gururinBase.maxSpeed = gururinBase.DefultSpeed * (1f + delta * (float)oil);
+        gururinBase.accel = gururinBase.DefultAccel * (1f + delta * (float)oil);
     }
 
     public void Smile()

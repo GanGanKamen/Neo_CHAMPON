@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Jump
+  - UICamera
   layers:
   - Default
   - TransparentFX

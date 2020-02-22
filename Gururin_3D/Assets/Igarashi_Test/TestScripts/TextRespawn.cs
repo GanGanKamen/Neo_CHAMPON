@@ -14,7 +14,7 @@ public class TextRespawn : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<PlayerCtrl>())
+        if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
         {
             other.transform.position = _respawnPoint.transform.position;
         }

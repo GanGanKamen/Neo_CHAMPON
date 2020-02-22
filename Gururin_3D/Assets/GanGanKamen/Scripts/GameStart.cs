@@ -64,6 +64,42 @@ namespace GanGanKamen
             }
         }
 
+        private void CanvasSet()
+        {
+            float currentRatio = Screen.width * 1f / Screen.height;
+            float targetRatio = 16f / 9f;
+
+            var canvases = FindGameObjectsWithLayer(5);
+
+            if (currentRatio < targetRatio)
+            {
+                for (int i = 0; i < canvases.Length; i++)
+                {
+                    if (canvases[i].GetComponent<UnityEngine.UI.CanvasScaler>() != null)
+                    {
+                        var canvasScaler = canvases[i].GetComponent<UnityEngine.UI.CanvasScaler>();
+                        canvasScaler.screenMatchMode = UnityEngine.UI.CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+                        canvasScaler.matchWidthOrHeight = 0;
+                    }
+                }
+            }
+
+            else if (currentRatio > targetRatio)
+            {
+
+                for (int i = 0; i < canvases.Length; i++)
+                {
+                    if(canvases[i].GetComponent<UnityEngine.UI.CanvasScaler>() != null)
+                    {
+                        var canvasScaler = canvases[i].GetComponent<UnityEngine.UI.CanvasScaler>();
+                        canvasScaler.screenMatchMode = UnityEngine.UI.CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
+                        canvasScaler.matchWidthOrHeight = 1;
+                    }
+                    
+                }
+            }
+        }
+
         private void GetPlatform()
         {
             if (Application.platform == RuntimePlatform.Android)
@@ -92,6 +128,8 @@ namespace GanGanKamen
                     if (name == nowSceneName)
                     {
                         isIgnore = true;
+                        CanvasSet();
+                        break;
                     }
                 }
                 if (isIgnore == false)
@@ -115,6 +153,26 @@ namespace GanGanKamen
                 return false;
             }
         }
-    }
 
+        private GameObject[] FindGameObjectsWithLayer(int layer)
+        {
+            var goArray = UnityEngine.GameObject.FindObjectsOfType(typeof(GameObject));
+            var goList = new System.Collections.Generic.List<GameObject>();
+            foreach(GameObject obj in goArray)
+            {
+                if(obj.layer == layer)
+                {
+                    goList.Add(obj);
+                }
+            }
+            if (goList.Count == 0)
+            {
+                return null;
+            }
+            return goList.ToArray();
+        }
+
+    }
 }
+
+

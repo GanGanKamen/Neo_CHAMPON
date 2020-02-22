@@ -86,6 +86,7 @@ namespace GanGanKamen
 
         public void Brake()
         {
+            if (canJump == false||isCollideWall) return;
             moveAngle = 0;
             var rigidbody = GetComponent<Rigidbody>();
             var velocity = Mathf.Abs(rigidbody.velocity.x);

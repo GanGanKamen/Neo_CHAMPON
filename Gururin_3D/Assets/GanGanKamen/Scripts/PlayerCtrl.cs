@@ -2,65 +2,71 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCtrl : GanGanKamen.GururinBase
+namespace GanGanKamen
 {
-    public bool CanCtrl { get { return canCtrl; } }
-
-    [SerializeField] private float _maxSpeed;
-    [SerializeField] private GameObject _gear;
-    [SerializeField] private float _jumpPower;
-    [SerializeField] private float _accel;
-    [SerializeField] [Range(0, 10)] private float _brakePower;
-
-    [SerializeField] private GanGanKamen.GameController gameController;
-
-    private bool canCtrl = false;
-    // Start is called before the first frame update
-    private void Awake()
+    public class PlayerCtrl : GanGanKamen.GururinBase
     {
-        maxSpeed = _maxSpeed;
-        gear = _gear;
-        jumpPower = _jumpPower;
-        accel = _accel;
-        brakePower = _brakePower;
-        canCtrl = true;
+        public bool CanCtrl { get { return canCtrl; } }
 
-        SetDefult();
-    }
+        [SerializeField] private float _maxSpeed;
+        [SerializeField] private GameObject _gear;
+        [SerializeField] private float _jumpPower;
+        [SerializeField] private float _accel;
+        [SerializeField] [Range(0, 10)] private float _brakePower;
 
-    void Start()
-    {
+        [SerializeField] private GanGanKamen.GameController gameController;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(IsAttachGimmick == false)
+        private bool canCtrl = false;
+        // Start is called before the first frame update
+        private void Awake()
         {
-            GururinMove();
-            NormalCtrl();
+            maxSpeed = _maxSpeed;
+            gear = _gear;
+            jumpPower = _jumpPower;
+            accel = _accel;
+            brakePower = _brakePower;
+            canCtrl = true;
+
+            SetDefult();
         }
-    }
 
-    private void NormalCtrl()
-    {
-        if (gameController.InputAngle != 0)
+        void Start()
         {
-            SetAngle(gameController.InputAngle);
+
         }
-        else
+
+        // Update is called once per frame
+        void Update()
         {
-            if (IsCollideWall) StandStill();
+            Debug.Log(maxSpeed);
+            if (IsAttachGimmick == false && canCtrl)
+            {
+                GururinMove();
+                NormalCtrl();
+            }
         }
-        if (gameController.InputFlick)
+
+        private void NormalCtrl()
         {
-            Jump();
-        }
-        else if (gameController.InputLongPress)
-        {
-            Brake();
+            if (gameController.InputAngle != 0)
+            {
+                SetAngle(gameController.InputAngle);
+            }
+            else
+            {
+                if (IsCollideWall) StandStill();
+            }
+            if (gameController.InputFlick)
+            {
+                Jump();
+            }
+            else if (gameController.InputLongPress)
+            {
+                Brake();
+            }
         }
     }
 }
+
+
 

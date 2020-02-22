@@ -7,6 +7,7 @@ namespace GanGanKamen
 {
     public class StageSelect : MonoBehaviour
     {
+        [SerializeField] private GameController gameController;
         [SerializeField] private RectTransform images;
         [SerializeField] private float moveSpeed;
         [SerializeField]private bool isMove = false;
@@ -30,9 +31,33 @@ namespace GanGanKamen
             Fader.FadeIn(3f, sceneName);
         }
 
+        private void FlickAction()
+        {
+            if (isMove) return;
+            if (gameController.InputFlick)
+            {
+                switch (gameController.InputFlickDirection)
+                {
+                    case FlickDirection.Up:
+                        if(nowArea < 3)
+                        {
+                            nowArea += 1;
+                        }
+                        break;
+                    case FlickDirection.Down:
+                        if(nowArea > 1)
+                        {
+                            nowArea -= 1;
+                        }
+                        break;
+                }
+            }
+        }
+
         // Update is called once per frame
         void Update()
         {
+            FlickAction();
             SwitchArea();
         }
 
@@ -94,7 +119,6 @@ namespace GanGanKamen
                             preArea = nowArea;
                             isMove = false;
                         }
-                        break;
                         break;
                 }
             }

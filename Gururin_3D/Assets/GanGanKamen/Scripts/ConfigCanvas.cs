@@ -55,7 +55,6 @@ namespace GanGanKamen
         {
             if (GameStart.isSceneChange)
             {
-                Debug.Log(GameStart.nowSceneName);
                 MenuClose();
                 if(GameStart.nowSceneName == "Title")
                 {

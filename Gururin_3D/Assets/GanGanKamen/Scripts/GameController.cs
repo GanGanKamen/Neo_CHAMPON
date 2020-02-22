@@ -5,11 +5,23 @@ using UnityEngine.UI;
 
 namespace GanGanKamen
 {
+    public enum FlickDirection
+    {
+        Non,
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
     public class GameController : MonoBehaviour
     {
+
+
         public float InputAngle { get { return inputAngle; } }
         public bool InputFlick { get { return InputFlickCheck(); } }
         public bool InputLongPress { get { return InputLongPressCheck(); } }
+        public FlickDirection InputFlickDirection { get { return flickDirection; } }
 
         [SerializeField] private GameObject controllerObject;
         [SerializeField] private GameObject controller;
@@ -32,11 +44,17 @@ namespace GanGanKamen
         private int timercount = 0;
         private Platform platform;
         private float longPressCount = 0;
+        private FlickDirection flickDirection = FlickDirection.Non;
+
+        private Camera uiCamera;
 
         private void Awake()
         {
             preEulerAngle = controller.transform.localEulerAngles.z;
-            GetPlatform();
+            if(GameObject.FindGameObjectWithTag("UICamera") == null)
+                uiCamera = Camera.main;
+
+            else uiCamera = GameObject.FindGameObjectWithTag("UICamera").GetComponent<Camera>();
         }
 
         // Start is called before the first frame update
@@ -54,7 +72,7 @@ namespace GanGanKamen
 
         private void Controll()
         {
-            switch (platform)
+            switch (GameStart.platform)
             {
                 case Platform.Windows:
                     WindowsCtrl();
@@ -74,7 +92,7 @@ namespace GanGanKamen
                 longPressCount = 0;
                 controllerObject.SetActive(true);
                 controller.transform.rotation = Quaternion.identity;
-                mousePosition1 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>()
+                mousePosition1 = uiCamera
                     .ScreenToViewportPoint(Input.mousePosition);
                 mousePosition1.y = mousePosition1.y - 0.1f;
                 if (mousePosition1.x < poslimit.x)
@@ -95,7 +113,7 @@ namespace GanGanKamen
                     mousePosition1.y = 1 - poslimit.y;
                 }
                 controllerObject.transform.position =
-                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().ViewportToScreenPoint(mousePosition1);
+                    uiCamera.ViewportToScreenPoint(mousePosition1);
                 prepos = controllerObject.transform.position;
                 isPress = true;
             }
@@ -103,7 +121,7 @@ namespace GanGanKamen
             {
                 jumpcount += Time.deltaTime;
                 timercount++;
-                mousePosition2 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().
+                mousePosition2 = uiCamera.
                     ScreenToViewportPoint(Input.mousePosition);
                 pos = mousePosition1;
                 var vecA = prepos - pos;
@@ -141,12 +159,30 @@ namespace GanGanKamen
 
             if (Input.GetMouseButtonUp(0))
             {
-                mousePosition5 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().
+                mousePosition5 = uiCamera.
                     ScreenToViewportPoint(Input.mousePosition);
                 var flickDis = Vector2.Distance(mousePosition5, pos);
                 if (jumpcount <= jumpInterval && flickDis >= flickDistance)
                 {
                     flickCount += 1;
+                    var angle = GetAngle(pos, mousePosition5);
+                   
+                    if (angle <= 135 && angle > 45)
+                    {
+                        flickDirection = FlickDirection.Up;
+                    }
+                    else if (angle <= 45 && angle > -45)
+                    {
+                        flickDirection = FlickDirection.Right;
+                    }
+                    else if (angle <= -45 && angle > -135)
+                    {
+                        flickDirection = FlickDirection.Down;
+                    }
+                    else
+                    {
+                        flickDirection = FlickDirection.Left;
+                    }
                 }
                 isPress = false;
                 angle = 0;
@@ -165,7 +201,7 @@ namespace GanGanKamen
                 longPressCount = 0;
                 controllerObject.SetActive(true);
                 controller.transform.rotation = Quaternion.identity;
-                mousePosition1 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>()
+                mousePosition1 = uiCamera
                     .ScreenToViewportPoint(Input.GetTouch(0).position);
                 mousePosition1.y = mousePosition1.y - 0.1f;
                 if (mousePosition1.x < poslimit.x)
@@ -186,7 +222,7 @@ namespace GanGanKamen
                     mousePosition1.y = 1 - poslimit.y;
                 }
                 controllerObject.transform.position =
-                    GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().ViewportToScreenPoint(mousePosition1);
+                    uiCamera.ViewportToScreenPoint(mousePosition1);
                 prepos = controllerObject.transform.position;
                 isPress = true;
             }
@@ -195,7 +231,7 @@ namespace GanGanKamen
             {
                 jumpcount += Time.deltaTime;
                 timercount++;
-                mousePosition2 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().
+                mousePosition2 = uiCamera.
                     ScreenToViewportPoint(Input.GetTouch(0).position);
                 pos = mousePosition1;
                 var vecA = prepos - pos;
@@ -203,7 +239,7 @@ namespace GanGanKamen
                 if (timercount >= 10)
                 {
                     angle = Vector3.Angle(vecA, vecB);
-                    Debug.Log(angle);
+                   
                     AxB = Vector3.Cross(vecA, vecB);
                 }
 
@@ -234,12 +270,30 @@ namespace GanGanKamen
 
             if (Input.GetMouseButtonUp(0))
             {
-                mousePosition5 = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().
+                mousePosition5 = uiCamera.
                     ScreenToViewportPoint(Input.GetTouch(0).position);
                 var flickDis = Vector2.Distance(mousePosition5, pos);
                 if (jumpcount <= jumpInterval && flickDis >= flickDistance)
                 {
                     flickCount += 1;
+                    var angle = GetAngle(pos, mousePosition5);
+                   
+                    if(angle <= 135 && angle > 45)
+                    {
+                        flickDirection = FlickDirection.Up;
+                    }
+                    else if(angle <= 45 && angle > -45)
+                    {
+                        flickDirection = FlickDirection.Right;
+                    }
+                    else if(angle <= -45 && angle > -135)
+                    {
+                        flickDirection = FlickDirection.Down;
+                    }
+                    else
+                    {
+                        flickDirection = FlickDirection.Left;
+                    }
                 }
                 isPress = false;
                 angle = 0;
@@ -274,10 +328,12 @@ namespace GanGanKamen
             if (flickCount != flickCountPre)
             {
                 flickCountPre = flickCount;
+                Debug.Log("flick" + flickDirection);
                 return true;
             }
             else
             {
+                flickDirection = FlickDirection.Non;
                 return false;
             }
         }
@@ -294,20 +350,13 @@ namespace GanGanKamen
             }
         }
 
-        private void GetPlatform()
+        float GetAngle(Vector2 start, Vector2 target)
         {
-            if (Application.platform == RuntimePlatform.Android)
-            {
-                platform = Platform.Android;
-            }
-            else if (Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                platform = Platform.iOS;
-            }
-            else
-            {
-                platform = Platform.Windows;
-            }
+            Vector2 dt = target - start;
+            float rad = Mathf.Atan2(dt.y, dt.x);
+            float degree = rad * Mathf.Rad2Deg;
+
+            return degree;
         }
     }
 }
