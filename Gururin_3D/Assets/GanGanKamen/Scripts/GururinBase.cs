@@ -56,6 +56,7 @@ namespace GanGanKamen
         public void SeparateGimmick()
         {
             isAttachGimmick = false;
+            moveAngle = 0;
         }
 
         public void Brake()

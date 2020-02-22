@@ -34,11 +34,14 @@ public class PlayerCtrl : GanGanKamen.GururinBase
     // Update is called once per frame
     void Update()
     {
-        GururinMove();
-        TouchCtrl();
+        if(IsAttachGimmick == false)
+        {
+            GururinMove();
+            NormalCtrl();
+        }
     }
 
-    private void TouchCtrl()
+    private void NormalCtrl()
     {
         if (gameController.InputAngle != 0)
         {
