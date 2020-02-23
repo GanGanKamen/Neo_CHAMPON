@@ -215,6 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86014e2294f696f41a854e3cedda8f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 20
+  maxSpeed: 8
+  jumpPower: 5
   gearType: 0
   rotationDirection: 0
+  gururinBase: {fileID: 0}
+  gameController: {fileID: 0}
