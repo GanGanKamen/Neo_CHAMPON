@@ -10,13 +10,13 @@ namespace Igarashi
 {
     public class PistonRange : MonoBehaviour
     {
-        [SerializeField] private Piston _piston;
+        [SerializeField] private Extrusion extrusion;
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
             {
-                _piston.RangeHit(true);
+                extrusion.RangeHit(true);
             }
         }
 
@@ -24,7 +24,7 @@ namespace Igarashi
         {
             if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
             {
-                _piston.RangeHit(false);
+                extrusion.RangeHit(false);
             }
         }
     }

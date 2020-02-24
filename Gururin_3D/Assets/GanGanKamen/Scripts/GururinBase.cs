@@ -57,6 +57,7 @@ namespace GanGanKamen
         public void GururinMove()
         {
             if (isAttachGimmick) return;
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0.5f);
             var rigidbody = GetComponent<Rigidbody>();
             var rotSpeed = moveAngle * accel * Time.deltaTime;
             var realSpeed = rotSpeed;

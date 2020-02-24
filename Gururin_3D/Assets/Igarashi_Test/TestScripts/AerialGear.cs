@@ -12,27 +12,30 @@ namespace Igarashi
     {
         [SerializeField] [Header("回転移動時の速さの上限値")] private float maxSpeed;
         [SerializeField] [Header("ジャンプの強さ")] private float jumpPower;
-        public enum GearType
+       public enum GearType
         {
             Nomal,
-            Rotate
+            Rotate,
+            GearPiston
         }
-        public GearType gearType;
+        [Header("空中歯車のタイプ")] public GearType gearType;
         [SerializeField] [Header("歯車の回転方向")] private bool rotationDirection;
         [SerializeField] private GanGanKamen.GururinBase gururinBase; // PlayerCtrlから継承
         [SerializeField] private GanGanKamen.GameController gameController;
 
         private GameObject _Gururin;
+        private Vector3 _GururinPos;
         private Rigidbody _GururinRb;
         private float _moveAngle;
         private float _rotSpeed;
         private bool _speedDown; // 減速判定
         private bool _keepSpeed;
         private bool _braking; // ブレーキ判定
+        private bool _leave;
         private int _inputAngleDirection; // コントローラーの回転入力方向
         private int _rotDirection; // ぐるりんの回転方向
 
-        void Start()
+        private void Awake()
         {
             _inputAngleDirection = 0;
             _rotDirection = 0;
@@ -42,7 +45,11 @@ namespace Igarashi
         {
             if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
             {
-                CollisionSet(other.gameObject);
+                _GururinPos = other.transform.position;
+                if (_GururinPos.z == transform.position.z)
+                {
+                    CollisionSet(other.gameObject);
+                }
             }
         }
 
@@ -61,10 +68,16 @@ namespace Igarashi
                         break;
                 }
             }
+            else if (gearType == GearType.GearPiston)
+            {
+                if (_Gururin != null && _GururinPos.z != transform.position.z)
+                {
+                    _leave = true;
+                }
+            }
 
             if (_Gururin != null && gururinBase.IsAttachGimmick)
             {
-                Debug.Log(gameController.InputAngle);
                 if (_braking == false)
                 {
                     if (gameController.InputIsPress == false)
@@ -138,15 +151,17 @@ namespace Igarashi
                 var gearPos = transform.position;
 
                 // ジャンプ(歯車から離れる)時の処理
-                if (gameController.InputFlick)
+                if (gameController.InputFlick || _leave)
                 {
-                    AerialGearJump(GururinPos, gearPos);
-
+                    if (_leave == false)
+                    {
+                        AerialGearJump(GururinPos, gearPos);
+                    }
                     _Gururin.transform.parent = null;
                     _GururinRb.useGravity = true;
                     gururinBase.SeparateGimmick();
-
                     _Gururin = null;
+                    _leave = false;
                 }
             }
         }

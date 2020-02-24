@@ -5,6 +5,7 @@ using UnityEngine;
 public class TextRespawn : MonoBehaviour
 {
     [SerializeField] private GameObject _respawnPoint;
+    [SerializeField] private float fixedZPos;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +17,15 @@ public class TextRespawn : MonoBehaviour
     {
         if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
         {
-            other.transform.position = _respawnPoint.transform.position;
+            var _GururinRb = other.gameObject.GetComponent<Rigidbody>();
+            // FreezePosition、FreezeRotationを再設定
+            _GururinRb.constraints = RigidbodyConstraints.FreezePositionZ |
+                                                     RigidbodyConstraints.FreezeRotationX |
+                                                     RigidbodyConstraints.FreezeRotationY;
+
+            // 角度と位置を初期化
+            other.transform.rotation = Quaternion.Euler(Vector3.zero);
+            other.transform.position = new Vector3(_respawnPoint.transform.position.x, _respawnPoint.transform.position.y, fixedZPos);
         }
     }
 
