@@ -135,5 +135,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2721c6644aca712438bd80ea7c8df5cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _respawnPoint: {fileID: 6232442396038915215}
+  respawnPoint: {fileID: 6232442396038915215}
   fixedZPos: 0.5

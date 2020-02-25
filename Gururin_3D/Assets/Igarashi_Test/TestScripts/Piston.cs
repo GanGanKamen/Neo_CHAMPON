@@ -10,6 +10,8 @@ namespace Igarashi
 {
     public class Piston : MonoBehaviour
     {
+        public bool Pushing { get { return _pushing; } } // 押し出しているかどうかの判定
+
         [SerializeField] [Range(0.0f, 2.0f)] [Header("ピストンの押し出し速度 0.0 ~ 2.0")] private float pushSpeed;
         [SerializeField] [Range(0.0f, 2.0f)] [Header("ピストンの戻り速度 0.0 ~ 2.0")] private float pullSpeed;
         [SerializeField] [Range(0.0f, 20.0f)] [Header("ピストンの停止時間 0.0 ~ 20.0")] private float pistonStopTime;
@@ -24,7 +26,7 @@ namespace Igarashi
         private bool _pushing;
         private bool _stopping;
 
-        [SerializeField] private bool masterStop;
+        [SerializeField] private bool masterStop; // ピストンの動作を完全に停止
 
         private void Awake()
         {
@@ -76,7 +78,7 @@ namespace Igarashi
                 if (_stopTimer >= pistonStopTime)
                 {
                     _stopTimer = 0.0f;
-                    //移動方向を反転
+                    // 移動方向を反転
                     switch (_pushing)
                     {
                         case true:

@@ -10,6 +10,8 @@ namespace Igarashi
 {
     public class AerialGear : MonoBehaviour
     {
+        [SerializeField] private GanGanKamen.GururinBase gururinBase; // PlayerCtrlから継承
+        [SerializeField] private GanGanKamen.GameController gameController;
         [SerializeField] [Header("回転移動時の速さの上限値")] private float maxSpeed;
         [SerializeField] [Header("ジャンプの強さ")] private float jumpPower;
        public enum GearType
@@ -20,8 +22,6 @@ namespace Igarashi
         }
         [Header("空中歯車のタイプ")] public GearType gearType;
         [SerializeField] [Header("歯車の回転方向")] private bool rotationDirection;
-        [SerializeField] private GanGanKamen.GururinBase gururinBase; // PlayerCtrlから継承
-        [SerializeField] private GanGanKamen.GameController gameController;
 
         private GameObject _Gururin;
         private Vector3 _GururinPos;
@@ -128,7 +128,7 @@ namespace Igarashi
                     _braking = false;
                 }
 
-                // 入力がない時に最終操作入力時の速度で回転
+                // 入力がない時に最終操作時の入力速度で回転
                 if (_keepSpeed)
                 {
                     if (_rotDirection == 1)
