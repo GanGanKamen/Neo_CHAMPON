@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TextRespawn : MonoBehaviour
 {
-    [SerializeField] private GameObject _respawnPoint;
+    [SerializeField] private GameObject respawnPoint;
+    [SerializeField] [Header("ぐるりんの固定Z軸")] private float fixedZPos;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +17,22 @@ public class TextRespawn : MonoBehaviour
     {
         if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
         {
-            other.transform.position = _respawnPoint.transform.position;
+            var gururinBase = other.gameObject.GetComponent<GanGanKamen.GururinBase>();
+            // 移動操作が停止されていたら再開メソッドを呼び出し
+            if (gururinBase.IsAttachGimmick)
+            {
+                gururinBase.SeparateGimmick();
+            }
+
+            var GururinRb = other.gameObject.GetComponent<Rigidbody>();
+            // FreezePosition、FreezeRotationを再設定
+            GururinRb.constraints = RigidbodyConstraints.FreezePositionZ |
+                                                   RigidbodyConstraints.FreezeRotationX |
+                                                   RigidbodyConstraints.FreezeRotationY;
+
+            // 角度と位置を初期化
+            other.transform.rotation = Quaternion.Euler(Vector3.zero);
+            other.transform.position = new Vector3(respawnPoint.transform.position.x, respawnPoint.transform.position.y, fixedZPos);
         }
     }
 
