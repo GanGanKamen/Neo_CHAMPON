@@ -45,6 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gururinBase: {fileID: 8995134417268156700}
   playerFace: {fileID: 0}
+  delta: 0
   oil: 0
   coin: 0
   facecount: 0
@@ -177,7 +178,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 56
+  m_Constraints: 48
   m_CollisionDetection: 0
 --- !u!135 &8995134417268156675
 SphereCollider:
@@ -206,7 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxSpeed: 4
   _gear: {fileID: 8995134417318438331}
-  _jumpPower: 5
+  _jumpPower: 6
   _accel: 2
   _brakePower: 5
   gameController: {fileID: 0}
