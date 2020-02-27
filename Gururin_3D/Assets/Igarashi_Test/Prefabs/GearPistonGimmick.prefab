@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 252679148642966286}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 3.5, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8965257092665894104}
@@ -371,12 +371,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86014e2294f696f41a854e3cedda8f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gururinBase: {fileID: 0}
   gameController: {fileID: 0}
   maxSpeed: 8
-  jumpPower: 5
+  jumpPower: 2.5
   gearType: 2
-  rotationDirection: 0
+  gearRotationSpeed: 0
+  gearRotationDirection: 0
 --- !u!1 &7185729198507009748
 GameObject:
   m_ObjectHideFlags: 0

@@ -136,4 +136,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 6232442396038915215}
-  fixedZPos: 0.5
+  fixedZPos: 0
