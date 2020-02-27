@@ -17,7 +17,7 @@ public class TestFadeButton : MonoBehaviour
     }
     public void Onclick(string name)
     {
-        SoundManager.PlayS(gameObject);
+        //SoundManager.PlayS(gameObject);
         Fader.FadeIn(2f, name);
     }
 }

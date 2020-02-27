@@ -18,7 +18,7 @@ public class RotationCounter : MonoBehaviour
     public bool fanRot;
     public GameObject Wind;
 
-    private CriAtomSource _source;
+   // private CriAtomSource _source;
     private bool _sourcePlay;
     private float _sourceVolume;
     [SerializeField] Gamecontroller gameController;
@@ -26,11 +26,11 @@ public class RotationCounter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _source = GetComponent<CriAtomSource>();
+       // _source = GetComponent<CriAtomSource>();
        gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
 
         _sourcePlay = false;
-        _sourceVolume = _source.volume;
+        //_sourceVolume = _source.volume;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -59,21 +59,21 @@ public class RotationCounter : MonoBehaviour
         //Windがアクティブ化したときにSEを鳴らす
         if (Wind.activeInHierarchy && _sourcePlay == false)
         {
-            _source.Play();
+            //_source.Play();
             _sourcePlay = true;
         }
         else if (Wind.activeInHierarchy == false && _sourcePlay)
         {
-            _source.Stop();
+            //_source.Stop();
             _sourcePlay = false;
-            _source.volume = _sourceVolume;
+            //_source.volume = _sourceVolume;
         }
-
+        /*
         if (_source.volume > _sourceVolume)
         {
             _source.volume = _sourceVolume;
         }
-
+        */
         //minusCountがtrueの時、1秒ごとにカウントを-1
         if (gameController.isPress == false && count > 0 && minusCount)
         {
@@ -83,7 +83,7 @@ public class RotationCounter : MonoBehaviour
             {
                 if (_sourcePlay)
                 {
-                    _source.volume -= 0.2f;
+                    //_source.volume -= 0.2f;
                 }
                 timer = 0.0f;
                 count--;
@@ -105,12 +105,13 @@ public class RotationCounter : MonoBehaviour
         //風が出ているときに歯車を回すと風のSEの音量を上げる
         if (minusCount == false && fixedCount)
         {
+            /*
             _source.volume += 0.01f;
 
             if (_source.volume > _sourceVolume)
             {
                 _source.volume = _sourceVolume;
-            }
+            }*/
         }
 
         //limitCountを超えたらカウントストップ

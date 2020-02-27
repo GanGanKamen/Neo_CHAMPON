@@ -22,7 +22,7 @@ public class TitleBackButton : MonoBehaviour
     {
         configuration.Method();
         scrollbar.value = 1;
-        SoundManager.PlayS(gameObject);
+        //SoundManager.PlayS(gameObject);
         Fader.FadeIn(2f, "Title");
         Destroy(GameObject.Find("ConfigCanvas"), 1f);
     }

@@ -9,7 +9,7 @@ using UnityEngine;
 public class TransformFixed : MonoBehaviour
 {
 
-    private CriAtomSource _gearMesh;
+   // private CriAtomSource _gearMesh;
     public GameObject gearPos;
 
     private FlagManager flagManager;
@@ -17,7 +17,7 @@ public class TransformFixed : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _gearMesh = GetComponent<CriAtomSource>();
+       // _gearMesh = GetComponent<CriAtomSource>();
         flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
         gearPos.SetActive(false);
     }
@@ -27,7 +27,7 @@ public class TransformFixed : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //効果音
-            _gearMesh.Play();
+            //_gearMesh.Play();
             //ぐるりんのRigidBody2Dを取得
             var _gururinRb2d = other.GetComponent<Rigidbody2D>();
             //ぐるりんの位置を固定

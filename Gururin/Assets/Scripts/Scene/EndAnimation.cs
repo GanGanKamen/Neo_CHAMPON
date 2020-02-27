@@ -7,7 +7,7 @@ public class EndAnimation : MonoBehaviour
 {
 
     [SerializeField] private Animator _gururinAnim, _hakaseAnim, _textFlashing;
-    [SerializeField] CriAtomSource clear, tap;
+    //[SerializeField] CriAtomSource clear, tap;
     public bool[] _sourcePlay;
     private bool _bgmVolume, _backtoTitle;
 
@@ -40,7 +40,7 @@ public class EndAnimation : MonoBehaviour
 
         if (_sourcePlay[0])
         {
-            clear.Play();
+            //clear.Play();
             _sourcePlay[0] = false;
         }
 
@@ -59,7 +59,7 @@ public class EndAnimation : MonoBehaviour
             _bgmVolume = true;
             if (_sourcePlay[1])
             {
-                tap.Play();
+                //tap.Play();
                 _sourcePlay[1] = false;
             }
 
@@ -78,12 +78,13 @@ public class EndAnimation : MonoBehaviour
 
         if (_bgmVolume)
         {
+            /*
             Debug.Log(clear.volume);
             clear.volume -= 0.02f;
             if(clear.volume <= 0.0f)
             {
                 clear.volume = 0.0f;
-            }
+            }*/
         }
     }
 }

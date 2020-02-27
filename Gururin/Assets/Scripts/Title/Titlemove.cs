@@ -10,14 +10,14 @@ public class Titlemove : MonoBehaviour
     public bool moveactive;
 
     private Rigidbody2D _rb2d;
-    private CriAtomSource _jumpSE;
+    //private CriAtomSource _jumpSE;
 
     // Start is called before the first frame update
     void Start()
     {
         //コンポーネント読み込み
         _rb2d = GameObject.Find("Gururin").GetComponent<Rigidbody2D>();
-        _jumpSE = GameObject.Find("SE_jump(CriAtomSource)").GetComponent<CriAtomSource>();
+        //_jumpSE = GameObject.Find("SE_jump(CriAtomSource)").GetComponent<CriAtomSource>();
     }
 
     // Update is called once per frame
@@ -70,7 +70,7 @@ public class Titlemove : MonoBehaviour
                 {
                     float jump = 350.0f;
                     _rb2d.AddForce(Vector2.up * jump);
-                    _jumpSE.Play();
+                    //_jumpSE.Play();
                 }
             }
             /*else if(terms2 == 1)

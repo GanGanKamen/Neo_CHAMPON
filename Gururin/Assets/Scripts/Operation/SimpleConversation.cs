@@ -70,7 +70,7 @@ public class SimpleConversation : MonoBehaviour
             else
             {
                 Text.text += sentences[currentSentenceNum].TextOutPut()[wordCound];
-                SoundManager.PlayS(gameObject,"Operation", "SE_hakaseTalk");
+               // SoundManager.PlayS(gameObject,"Operation", "SE_hakaseTalk");
             }
 
             wordCound++;

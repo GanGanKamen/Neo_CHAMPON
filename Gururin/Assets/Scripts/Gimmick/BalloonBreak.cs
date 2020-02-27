@@ -11,7 +11,7 @@ public class BalloonBreak : MonoBehaviour
 
     private GameObject _balloonCol, _ballonSpr;
 
-    private CriAtomSource _source;
+    //private CriAtomSource _source;
     private FlagManager flagManager;
 
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class BalloonBreak : MonoBehaviour
         _balloonCol = GameObject.Find("BalloonGimmick");
         _ballonSpr = GameObject.Find("BallonSprite");
 
-        _source = GetComponent<CriAtomSource>();
+        //_source = GetComponent<CriAtomSource>();
         flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
     }
 
@@ -32,7 +32,7 @@ public class BalloonBreak : MonoBehaviour
             PlayerMove player = other.transform.parent.GetComponent<PlayerMove>();
             if (player.balloonSet == true)
             {
-                _source.Play();
+                //_source.Play();
                 player.BalloonBreak();
                 //ぐるりんの顔を驚き顔にする
                 StartCoroutine("SurpriseFace");

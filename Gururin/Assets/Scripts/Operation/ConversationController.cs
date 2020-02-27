@@ -71,7 +71,7 @@ public class ConversationController : MonoBehaviour
                 if (!(mousePosition.x > 0.94f && mousePosition.y > 0.91f ||
                     mousePosition.x < 0.19f && mousePosition.y < 0.09f))
                 {
-                    SoundManager.PlayS(gameObject, "SE_tap");
+                    //SoundManager.PlayS(gameObject, "SE_tap");
                     OnClick();
                 }
             }
@@ -181,7 +181,7 @@ public class ConversationController : MonoBehaviour
                 if (colorMode) textPlus = "<color=blue>" + sentences[currentSentenceNum].TextOutPut()[wordCound] + "</color>";
                 else textPlus = sentences[currentSentenceNum].TextOutPut()[wordCound].ToString();
                 Text.text += textPlus;
-                SoundManager.PlayS(gameObject, "SE_hakaseTalk");
+                //SoundManager.PlayS(gameObject, "SE_hakaseTalk");
             }
 
             wordCound++;

@@ -75,10 +75,12 @@ public class NeoConfig : MonoBehaviour
         {
             BGMVolume = BGMSlider.value;
             SEVolume = SESlider.value;
+            /*
             CriAtom.SetCategoryVolume("BGM", BGMVolume / 10);
             CriAtom.SetCategoryVolume("Jingle", SEVolume / 10);
             CriAtom.SetCategoryVolume("SE", SEVolume / 10);
             CriAtom.SetCategoryVolume("wind", SEVolume / 10);
+            */
         }
 
     }

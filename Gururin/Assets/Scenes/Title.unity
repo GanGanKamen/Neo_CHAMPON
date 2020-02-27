@@ -335,6 +335,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastPosition: {x: 0, y: 0, z: 0}
+  hasValidPosition: 0
   _playOnStart: 0
   _cueName: SE_GameStert
   _cueSheet: title
@@ -682,6 +684,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastPosition: {x: 0, y: 0, z: 0}
+  hasValidPosition: 0
   _playOnStart: 0
   _cueName: SE_GameStert
   _cueSheet: title
@@ -795,33 +799,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285044009}
   m_CullTransparentMesh: 0
---- !u!1 &339605727 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5142676981440566240, guid: 25ed8b065f908be4585a870f8b9a7054,
-    type: 3}
-  m_PrefabInstance: {fileID: 5142676980683110815}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &339605729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339605727}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playOnStart: 0
-  _cueName: SE_GameStert
-  _cueSheet: title
-  _use3dPositioning: 1
-  _loop: 0
-  _volume: 1
-  _pitch: 0
-  _androidUseLowLatencyVoicePool: 0
-  need_to_player_update_all: 1
 --- !u!1 &419207481
 GameObject:
   m_ObjectHideFlags: 0
@@ -1093,6 +1070,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastPosition: {x: 0, y: 0, z: 0}
+  hasValidPosition: 0
   _playOnStart: 0
   _cueName: SE_GameStert
   _cueSheet: title
@@ -1259,6 +1238,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastPosition: {x: 0, y: 0, z: 0}
+  hasValidPosition: 0
   _playOnStart: 0
   _cueName: SE_GameStert
   _cueSheet: title
@@ -1982,7 +1963,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 5142676980683110815}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339605727}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d87df9d1b09d360418a2de9b33bfb936, type: 3}
@@ -2111,7 +2092,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 1296727652}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -2333,6 +2314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acfFile: Gururin.acf
+  acfIsLoading: 0
   cueSheets:
   - name: title
     acbFile: title.acb
@@ -2687,6 +2669,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastPosition: {x: 0, y: 0, z: 0}
+  hasValidPosition: 0
   _playOnStart: 0
   _cueName: SE_GameStert
   _cueSheet: title
@@ -3617,6 +3601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1e631c3b9947b54c823c6853a05529c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastPosition: {x: 0, y: 0, z: 0}
+  hasValidPosition: 0
   _playOnStart: 0
   _cueName: SE_GameStert
   _cueSheet: title
@@ -4514,6 +4500,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 5291562138929245880, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
+        type: 3}
+      propertyPath: creditObj
+      value: 
+      objectReference: {fileID: 211667639}
     - target: {fileID: 6412078159651177690, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4779,11 +4770,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: CreditButton
       objectReference: {fileID: 0}
-    - target: {fileID: 5291562138929245880, guid: c967e085e87aefc4ca5dfa42f5b40d0a,
-        type: 3}
-      propertyPath: creditObj
-      value: 
-      objectReference: {fileID: 211667639}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c967e085e87aefc4ca5dfa42f5b40d0a, type: 3}
 --- !u!1 &5696210383234636065 stripped

@@ -91,7 +91,7 @@ namespace GanGanKamen
                     if (Vector3.Distance(handParent.transform.position, distinationPos) < 0.5f)
                     {
                         pattern = Pattern.Kill;
-                        SoundManager.PlayS(handParent, "SE_propellerBOSSnakigoe1");
+                        //SoundManager.PlayS(handParent, "SE_propellerBOSSnakigoe1");
                     }
                     ColliderCancel();
                     break;

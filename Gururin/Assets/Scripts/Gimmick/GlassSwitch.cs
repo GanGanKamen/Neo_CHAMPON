@@ -7,11 +7,11 @@ public class GlassSwitch : MonoBehaviour
 
     public GameObject door, vCam;
     public bool blocking;
-    private CriAtomSource _blockSE;
+    //private CriAtomSource _blockSE;
 
     private void Start()
     {
-        _blockSE = GetComponent<CriAtomSource>();
+        //_blockSE = GetComponent<CriAtomSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -21,7 +21,7 @@ public class GlassSwitch : MonoBehaviour
             blocking = true;
             //StartCoroutine(VCam());
             door.SetActive(false);
-            _blockSE.Play();
+            //_blockSE.Play();
             Destroy(other.gameObject);
             gameObject.SetActive(false);
         }

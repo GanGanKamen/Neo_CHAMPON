@@ -7,22 +7,22 @@ public class AreaSound : MonoBehaviour
 
     private bool _sourceStart;
     public float upVolume, maxVolume;
-    private CriAtomSource _source;
+    //private CriAtomSource _source;
 
     // Start is called before the first frame update
     void Start()
     {
-        _source = GetComponent<CriAtomSource>();
+        //_source = GetComponent<CriAtomSource>();
 
         _sourceStart = false;
-        _source.volume = 0.0f;
+        //_source.volume = 0.0f;
     }
 
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player") && _sourceStart == false)
         {
-            _source.Play();
+            //_source.Play();
             _sourceStart = true;
         }
     }
@@ -38,6 +38,7 @@ public class AreaSound : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (_sourceStart)
         {
             _source.volume += upVolume;
@@ -55,5 +56,6 @@ public class AreaSound : MonoBehaviour
                 _source.Stop();
             }
         }
+        */
     }
 }

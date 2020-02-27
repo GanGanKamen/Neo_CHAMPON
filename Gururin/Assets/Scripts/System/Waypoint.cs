@@ -9,17 +9,17 @@ public class Waypoint : MonoBehaviour
     public bool animPlay;
 
     private PlayerMove _playerMove;
-    private CriAtomSource _source;
+    //private CriAtomSource _source;
     private Animator _flagAnim;
 
     // Start is called before the first frame update
     void Awake()
     {
         _playerMove = GameObject.Find("Gururin").GetComponent<PlayerMove>();
-        _source = GetComponent<CriAtomSource>();
+        //_source = GetComponent<CriAtomSource>();
         _flagAnim = _animFlag.GetComponent<Animator>();
 
-        _source.volume = 0.5f;
+        //_source.volume = 0.5f;
 
         animPlay = false;
 
@@ -44,7 +44,7 @@ public class Waypoint : MonoBehaviour
             if (RemainingLife.waypoint == false)
             {
                 animPlay = true;
-                _source.Play();
+                //_source.Play();
 
                 //アニメーション再生
                 if (animPlay)

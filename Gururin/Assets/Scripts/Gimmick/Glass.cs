@@ -9,13 +9,13 @@ public class Glass : MonoBehaviour
     public float dropDistance;
     public bool collision;
     private Rigidbody2D _rb2d;
-    private CriAtomSource _breakSE;
+    //private CriAtomSource _breakSE;
 
     // Start is called before the first frame update
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
-        _breakSE = GetComponent<CriAtomSource>();
+        //_breakSE = GetComponent<CriAtomSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -23,7 +23,7 @@ public class Glass : MonoBehaviour
         if (other.CompareTag("Jump"))
         {
             collision = true;
-            _breakSE.Play();
+            //_breakSE.Play();
         }
     }
 

@@ -16,7 +16,7 @@ public class Configuration : MonoBehaviour
     public int controllerfixed, controllerposition;
     public bool configbutton = false;
 
-    private CriAtomSource _open, _close;
+    //private CriAtomSource _open, _close;
 
     [SerializeField] FlagManager flagManager;
 
@@ -48,8 +48,8 @@ public class Configuration : MonoBehaviour
         
 
         //SE追加
-        _open = GameObject.Find("SE_WindowOpen(CriAtomSource)").GetComponent<CriAtomSource>();
-        _close = GameObject.Find("SE_WindowClose(CriAtomSource)").GetComponent<CriAtomSource>();
+        //_open = GameObject.Find("SE_WindowOpen(CriAtomSource)").GetComponent<CriAtomSource>();
+        //_close = GameObject.Find("SE_WindowClose(CriAtomSource)").GetComponent<CriAtomSource>();
 
         // イベントにイベントハンドラーを追加
         //SceneManager.sceneLoaded += SceneLoaded;
@@ -77,7 +77,7 @@ public class Configuration : MonoBehaviour
     {
         if (configbuttonOpen.activeSelf ==false)
         {
-            _open.Play();
+            //_open.Play();
             //configbuttonClose.SetActive(false);
             configbuttonOpen.SetActive(true);
             configwindow.SetActive(true);
@@ -89,7 +89,7 @@ public class Configuration : MonoBehaviour
         }
         else
         {
-            _close.Play();
+            //_close.Play();
             //configbuttonClose.SetActive(true);
             configbuttonOpen.SetActive(false);
             configwindow.SetActive(false);

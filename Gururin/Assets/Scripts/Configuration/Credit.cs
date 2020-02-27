@@ -25,7 +25,7 @@ public class Credit : MonoBehaviour
     {
         if (creditObj == null) return;
         creditObj.SetActive(true);
-        SoundManager.PlayS(gameObject, "SE_WindowOpen");
+        //SoundManager.PlayS(gameObject, "SE_WindowOpen");
     }
 
     private void CloseCredit()
@@ -33,7 +33,7 @@ public class Credit : MonoBehaviour
         if (creditObj.activeSelf && Input.GetMouseButtonDown(0))
         {
             creditObj.SetActive(false);
-            SoundManager.PlayS(gameObject, "SE_WindowOpen");
+            //SoundManager.PlayS(gameObject, "SE_WindowOpen");
         }
     }
 }

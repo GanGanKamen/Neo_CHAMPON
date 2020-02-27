@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class WhiteHoleSE : MonoBehaviour
 {
-
+    /*
     private CriAtomSource _source;
     private GameObject _gururin;
     private float _distance;
@@ -57,4 +58,5 @@ public class WhiteHoleSE : MonoBehaviour
             _source.volume = 0.0f;
         }
     }
+    */
 }

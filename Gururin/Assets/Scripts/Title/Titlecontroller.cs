@@ -44,7 +44,7 @@ public class Titlecontroller : MonoBehaviour
     {
         if (gamestart) return;
         gamestart = true;
-        SoundManager.PlayS(gameObject);
+        //SoundManager.PlayS(gameObject);
         Fader.FadeIn(2f, "Tutorial-1");
     }
 }

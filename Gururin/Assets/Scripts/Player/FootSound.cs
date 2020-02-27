@@ -9,13 +9,13 @@ using UnityEngine;
 public class FootSound : MonoBehaviour
 {
 
-    private CriAtomSource _footStep;
+    //private CriAtomSource _footStep;
     private PlayerMove playerMove;
 
     // Start is called before the first frame update
     void Start()
     {
-        _footStep = GetComponent<CriAtomSource>();
+        //_footStep = GetComponent<CriAtomSource>();
         playerMove = GameObject.Find("Gururin").GetComponent<PlayerMove>();
     }
 
@@ -24,7 +24,7 @@ public class FootSound : MonoBehaviour
         //Groundタグと接触したときに足音を鳴らす
         if (other.CompareTag("Ground"))
         {
-            _footStep.Play();
+            //_footStep.Play();
         }
     }
 

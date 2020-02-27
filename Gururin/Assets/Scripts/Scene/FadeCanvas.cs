@@ -69,8 +69,8 @@ public class FadeCanvas : MonoBehaviour
             if (_volumeBGM < 0) _volumeBGM = 0;
             _volumeSE -= seDecay;
             if (_volumeSE < 0) _volumeSE = 0;
-            CriAtom.SetCategoryVolume("BGM", _volumeBGM);
-            CriAtom.SetCategoryVolume("SE", _volumeSE);
+            //CriAtom.SetCategoryVolume("BGM", _volumeBGM);
+            //CriAtom.SetCategoryVolume("SE", _volumeSE);
         }
     }
 

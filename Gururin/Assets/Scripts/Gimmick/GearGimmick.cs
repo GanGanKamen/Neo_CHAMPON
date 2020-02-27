@@ -24,7 +24,7 @@ public class GearGimmick : MonoBehaviour
     public bool rotFlag; //歯車の回転方向の固定、trueなら左回転、falseなら右回転
     public bool rotParm;
     public float rotSpeed; //歯車とぐるりんの回転速度
-    private static CriAtomSource source; //効果音
+    //private static CriAtomSource source; //効果音
 
     private Rigidbody2D _gururinRb2d; //ぐるりんのRigidbody
     private Quaternion _gpQuaternion; //GururinPosの角度
@@ -49,7 +49,7 @@ public class GearGimmick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        source = GetComponent<CriAtomSource>();
+       // source = GetComponent<CriAtomSource>();
         _gururinRb2d = GameObject.Find("Gururin").GetComponent<Rigidbody2D>();
         playerMove = GameObject.Find("Gururin").GetComponent<PlayerMove>();
         gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
@@ -97,7 +97,7 @@ public class GearGimmick : MonoBehaviour
             playerMove.isMove = false;
             _gururinRb2d.velocity = Vector2.zero;
             //効果音
-            source.Play();
+            //source.Play();
 
             _gururinRb2d.velocity = Vector2.zero;
 

@@ -12,7 +12,7 @@ public class ButtonScript : MonoBehaviour
     public SceneChange sceneChange;
 
     //効果音
-    private CriAtomSource _startSE;
+    //private CriAtomSource _startSE;
     private bool _fadeOut;
 
     private int _cnt;
@@ -26,7 +26,7 @@ public class ButtonScript : MonoBehaviour
     {
         //if (GameObject.Find("Data") != null) data = GameObject.Find("Data").GetComponent<Data>();
         //configCanvas = GameObject.Find("ConfigCanvas");
-        _startSE = GetComponent<CriAtomSource>();
+        //_startSE = GetComponent<CriAtomSource>();
 
         _volume = 1.0f;
         _fadeOut = false;
@@ -41,7 +41,7 @@ public class ButtonScript : MonoBehaviour
         {
             _volume -= 0.01f;
             //BGMのボリュームを段階的に下げる
-            CriAtom.SetCategoryVolume("BGM", _volume);
+            //CriAtom.SetCategoryVolume("BGM", _volume);
 
             if (_volume == 0.0f) _volume = 0.0f;
         }
@@ -53,7 +53,7 @@ public class ButtonScript : MonoBehaviour
         //一度だけStartSEを鳴らす
         if (_cnt == 1)
         {
-            _startSE.Play();
+            //_startSE.Play();
             _cnt = 0;
         }
         //_fadeOut = true;
@@ -74,7 +74,7 @@ public class ButtonScript : MonoBehaviour
 
     public void TitleOnclick(string name)
     {
-        SoundManager.PlayS(gameObject);
+        //SoundManager.PlayS(gameObject);
         Fader.FadeIn(2f, name);
     }
 }

@@ -10,7 +10,7 @@ using UnityEngine;
 public class Propeller2AisacController : MonoBehaviour
 {
 
-    private CriAtomSource source;
+    //private CriAtomSource source;
     private string aisacControllerName_B = "piopellerBGM_B";
     private string aisacControllerName_C = "piopellerBGM_C";
     private string aisacControllerName_D = "piopellerBGM_D";
@@ -21,7 +21,7 @@ public class Propeller2AisacController : MonoBehaviour
 
     private void Awake()
     {
-        source = GetComponent<CriAtomSource>();
+        //source = GetComponent<CriAtomSource>();
 
         //AISACのコントロール値を0.0fにする
         currentControlValue[0] = 0.0f;
@@ -32,16 +32,19 @@ public class Propeller2AisacController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         source.SetAisacControl(aisacControllerName_B, currentControlValue[0]);
         source.SetAisacControl(aisacControllerName_C, currentControlValue[1]);
         source.SetAisacControl(aisacControllerName_D, currentControlValue[2]);
         //ステージ開始時にBGMを鳴らす
         //source.Play();
+        */
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         if (source == null) return;
 
         //スイッチが押されたときAISACのコントロール値を上げる
@@ -65,5 +68,6 @@ public class Propeller2AisacController : MonoBehaviour
             if (1.0f < currentControlValue[2]) currentControlValue[2] = 1.0f;
             source.SetAisacControl(aisacControllerName_D, currentControlValue[2]);
         }
+        */
     }
 }

@@ -21,7 +21,7 @@ public class PlayerMove : MonoBehaviour
     private Rigidbody2D _rb2d;
     //private Vector2 _gururinGravity;
     public float[] gravityScale;
-    private CriAtomSource _jumpSE; //ジャンプの効果音
+    //private CriAtomSource _jumpSE; //ジャンプの効果音
 
     public GearGimmick nowGearGimiick = null;
 
@@ -39,7 +39,7 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         _rb2d = GameObject.Find("Gururin").GetComponent<Rigidbody2D>();
-        _jumpSE = GetComponent<CriAtomSource>();
+        //_jumpSE = GetComponent<CriAtomSource>();
         gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
         flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
 
@@ -89,7 +89,7 @@ public class PlayerMove : MonoBehaviour
             _rb2d.isKinematic = false;
             Vector2 force = new Vector2(-150.0f, 150.0f);
             _rb2d.AddForce(force);
-            _jumpSE.Play();
+            //_jumpSE.Play();
             isMove = true;
         }
     }
@@ -224,7 +224,7 @@ public class PlayerMove : MonoBehaviour
                     nowGearGimiick.Separation();
                     Vector2 force = new Vector2(-150.0f, 150.0f);
                     _rb2d.AddForce(force);
-                    _jumpSE.Play();
+                    //_jumpSE.Play();
 
                 }
                 else
@@ -233,7 +233,7 @@ public class PlayerMove : MonoBehaviour
                     nowGearGimiick.Separation();
                     Vector2 force = new Vector2(150.0f, 150.0f);
                     _rb2d.AddForce(force);
-                    _jumpSE.Play();
+                    //_jumpSE.Play();
                 }
             }
             else
@@ -241,7 +241,7 @@ public class PlayerMove : MonoBehaviour
                 isMove = true;
                 nowGearGimiick.Separation();
                 _rb2d.AddForce(-Vector2.up * jumpSpeed);
-                _jumpSE.Play();
+                //_jumpSE.Play();
             }
         }
         else
@@ -255,7 +255,7 @@ public class PlayerMove : MonoBehaviour
             if (gameController.flick_up && !gameController.flick_right && !gameController.flick_left)
             {
                 _rb2d.AddForce(Vector2.up * jumpSpeed);
-                _jumpSE.Play();
+                //_jumpSE.Play();
                 isJump = false;
                 gameController.isFlick = false;
             }
@@ -263,7 +263,7 @@ public class PlayerMove : MonoBehaviour
             {
                 Vector2 jumpForce = new Vector2(0.3f / gameController.sensitivity, 1.0f);
                 _rb2d.AddForce(jumpForce * jumpSpeed);
-                _jumpSE.Play();
+                //_jumpSE.Play();
                 isJump = false;
                 gameController.isFlick = false;
             }
@@ -271,7 +271,7 @@ public class PlayerMove : MonoBehaviour
             {
                 Vector2 jumpForce = new Vector2(-0.3f / gameController.sensitivity, 1.0f);
                 _rb2d.AddForce(jumpForce * jumpSpeed);
-                _jumpSE.Play();
+               // _jumpSE.Play();
                 isJump = false;
                 gameController.isFlick = false;
             }

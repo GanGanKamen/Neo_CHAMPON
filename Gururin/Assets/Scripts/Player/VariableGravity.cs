@@ -14,7 +14,7 @@ public class VariableGravity : MonoBehaviour
     private Rigidbody2D _rb2d;
 
     private PlayerMove playerMove;
-    private CriAtomSource _jumpSE;
+    //private CriAtomSource _jumpSE;
     private Gamecontroller gameController;
     private FlagManager flagManager;
 
@@ -23,7 +23,7 @@ public class VariableGravity : MonoBehaviour
     {
         _rb2d = GetComponent<Rigidbody2D>();
         playerMove = GetComponent<PlayerMove>();
-        _jumpSE = GetComponent<CriAtomSource>();
+        //_jumpSE = GetComponent<CriAtomSource>();
         gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
         flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
     }
@@ -162,7 +162,7 @@ public class VariableGravity : MonoBehaviour
                 {
                     Vector2 force = new Vector2(playerMove.jumpSpeed * -1.0f, playerMove.speed[1]);
                     _rb2d.AddForce(force);
-                    _jumpSE.Play();
+                    //_jumpSE.Play();
                     gameController.isFlick = false;
                 }
 
@@ -171,7 +171,7 @@ public class VariableGravity : MonoBehaviour
                 {
                     Vector2 force = new Vector2(playerMove.jumpSpeed, playerMove.speed[1]);
                     _rb2d.AddForce(force);
-                    _jumpSE.Play();
+                    //_jumpSE.Play();
                     gameController.isFlick = false;
                 }
 
@@ -182,7 +182,7 @@ public class VariableGravity : MonoBehaviour
             if (flagManager.isMove_VG[0] && gameController.flick_down)
             {
                 _rb2d.AddForce(Vector2.down * playerMove. jumpSpeed);
-                _jumpSE.Play();
+                //_jumpSE.Play();
                 gameController.isFlick = false;
             }
 

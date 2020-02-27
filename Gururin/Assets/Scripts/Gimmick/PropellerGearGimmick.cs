@@ -14,7 +14,7 @@ public class PropellerGearGimmick : MonoBehaviour
     public bool click;
     public bool rotFlag; //歯車の回転方向の固定、trueなら左回転、falseなら右回転
     private float rotSpeed = 3.0f; //歯車とぐるりんの回転速度
-    private static CriAtomSource source; //効果音
+    //private static CriAtomSource source; //効果音
 
     private Rigidbody2D _gururinRb2d; //ぐるりんのRigidbody
     private Quaternion _gpQuaternion; //GururinPosの角度
@@ -27,7 +27,7 @@ public class PropellerGearGimmick : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        source =GetComponent<CriAtomSource>();
+        //source =GetComponent<CriAtomSource>();
         playerMove = GameObject.Find("Gururin").GetComponent<PlayerMove>();
         gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
         flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
@@ -62,7 +62,7 @@ public class PropellerGearGimmick : MonoBehaviour
             playerMove.isMove = false;
 
             //効果音を鳴らす
-            source.Play();
+            //source.Play();
 
             _gururinRb2d.velocity = Vector2.zero;
 

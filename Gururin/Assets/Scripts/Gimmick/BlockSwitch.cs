@@ -9,7 +9,7 @@ public class BlockSwitch : MonoBehaviour
     public bool blocking;
     //カメラのブレンド速度
     public float blendSpeed;
-    private CriAtomSource _pushSE, _blockSE;
+    //private CriAtomSource _pushSE, _blockSE;
     private Gamecontroller _gameController;
     private FlagManager _flagManager;
 
@@ -17,8 +17,8 @@ public class BlockSwitch : MonoBehaviour
     void Start()
     {
         blocking = false;
-        _pushSE = GameObject.Find("SE_item(CriAtomSource)").GetComponent<CriAtomSource>();
-        _blockSE = GetComponent<CriAtomSource>();
+        //_pushSE = GameObject.Find("SE_item(CriAtomSource)").GetComponent<CriAtomSource>();
+        //_blockSE = GetComponent<CriAtomSource>();
         _gameController = GameObject.Find("GameController").GetComponent<Gamecontroller>();
         _flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
     }
@@ -30,7 +30,7 @@ public class BlockSwitch : MonoBehaviour
             //ぐるりんの動きを止める
             _flagManager.moveStop = true;
             transform.position = new Vector2(0.0f, -0.5f);
-            _pushSE.Play();
+            //_pushSE.Play();
             blocking = true;
             StartCoroutine(VCam());
         }
@@ -48,7 +48,7 @@ public class BlockSwitch : MonoBehaviour
         //ブロックを消す
         //hideBlock.transform.position = new Vector3(100, 0);
         hideBlock.SetActive(false);
-        _blockSE.Play();
+        //_blockSE.Play();
         /*
         if(fan != null)
         {

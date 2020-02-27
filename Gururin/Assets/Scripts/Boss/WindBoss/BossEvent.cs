@@ -159,7 +159,7 @@ public class BossEvent : MonoBehaviour
         fadeOut = false;
         gamecontroller.isCon = false;//nextFade
         boss.SetActive(true);//nextFade
-        SoundManager.PlayS(bgmObj);//nextFade
+        //SoundManager.PlayS(bgmObj);//nextFade
         yield break;
     }
     /*
@@ -209,15 +209,15 @@ public class BossEvent : MonoBehaviour
         yield return new WaitForSeconds(2f);
         Vector2 force = new Vector2(0, 300f);
         player.GetComponent<Rigidbody2D>().AddForce(force);
-        SoundManager.PlayS(player.gameObject, "SE_jump");
+        //SoundManager.PlayS(player.gameObject, "SE_jump");
         while (bossChara.hasDown == false)
         {
             yield return null;
         }
         GameObject balloonBreakFX = Instantiate(ResourcesMng.ResourcesLoad("Boss_BalloonBreak"), bossChara.ballon.transform.position, Quaternion.identity);
         lifeRender.sprite = newLife;
-        SoundManager.PlayS(bossChara.gameObject, "SE_propellerBOSSnakigoe2");
-        SoundManager.PlayS(bossChara.gameObject, "SE_ballonBreak");
+        //SoundManager.PlayS(bossChara.gameObject, "SE_propellerBOSSnakigoe2");
+        //SoundManager.PlayS(bossChara.gameObject, "SE_ballonBreak");
         yield return new WaitForSeconds(3f);
         Destroy(balloonBreakFX);
         bossChara.Recovery();
@@ -260,7 +260,7 @@ public class BossEvent : MonoBehaviour
             yield return null;
         }
         cutin = 0;
-        SoundManager.PlayS(bgmObj);
+        //SoundManager.PlayS(bgmObj);
         bossChara.gameObject.SetActive(false);
         boss.SetActive(true);
         gamecontroller.isCon = false;
@@ -280,14 +280,14 @@ public class BossEvent : MonoBehaviour
         RemainingLife.bossLife = 0;
         for (int i = 0; i < fanRotations.Length; i++)
         {
-            SoundManager.StopS(fanRotations[i]);
+            //SoundManager.StopS(fanRotations[i]);
         }
         for (int i = 0; i < deadZones.Length; i++)
         {
             deadZones[i].enabled = false;
         }
         gamecontroller.isCon = true;
-        SoundManager.StopS(bgmObj);
+        //SoundManager.StopS(bgmObj);
 
         yield return new WaitForSeconds(0.5f);
 
@@ -297,7 +297,7 @@ public class BossEvent : MonoBehaviour
         fadeOut = true;
         player.transform.parent = null;
         player.gameObject.SetActive(true);
-        player.GetComponent<CriAtomSource>().enabled = false;
+        //player.GetComponent<CriAtomSource>().enabled = false;
         player.transform.eulerAngles = new Vector3(0, 0, -90f);
         player.transform.position = new Vector3(3.5f, -1f, 0);
         player.BalloonBreak();

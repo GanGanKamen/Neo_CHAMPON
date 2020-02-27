@@ -12,7 +12,7 @@ public class GameClear : MonoBehaviour
 {
 
     private CanvasGroup _stageClear;
-    private CriAtomSource _goalSE;
+    //private CriAtomSource _goalSE;
 
     public bool[] playSE;
 
@@ -23,7 +23,7 @@ public class GameClear : MonoBehaviour
     void Start()
     {
         _stageClear = GameObject.Find("StageClear").GetComponent<CanvasGroup>();
-        _goalSE = GetComponent<CriAtomSource>();
+        //_goalSE = GetComponent<CriAtomSource>();
 
         for(int i = 0; i < playSE.Length; i++)
         {
@@ -48,7 +48,7 @@ public class GameClear : MonoBehaviour
         //一度だけゴールSEを鳴らす
         if(playSE[0] && playSE[1] == false)
         {
-            _goalSE.Play();
+            //_goalSE.Play();
             goal = true;
             playSE[1] = true;
         }

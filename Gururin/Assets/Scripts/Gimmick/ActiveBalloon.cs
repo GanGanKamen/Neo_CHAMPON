@@ -10,7 +10,7 @@ public class ActiveBalloon : MonoBehaviour
 {
 
     private GameObject _balloonCol, _ballonSpr;
-    private CriAtomSource _source;
+    //private CriAtomSource _source;
     private bool _actBal;
 
     private FlagManager flagManager;
@@ -20,7 +20,7 @@ public class ActiveBalloon : MonoBehaviour
     {
         _balloonCol = GameObject.Find("BalloonGimmick");
         _ballonSpr = GameObject.Find("BallonSprite");
-        _source = GetComponent<CriAtomSource>();
+        //_source = GetComponent<CriAtomSource>();
         flagManager = GameObject.Find("FlagManager").GetComponent<FlagManager>();
 
         _actBal = false;
@@ -33,7 +33,7 @@ public class ActiveBalloon : MonoBehaviour
             //風船が装備されていないとき
             if (other.GetComponent<PlayerMove>().balloonSet == false)
             {
-                _source.Play();
+                //_source.Play();
                 other.GetComponent<PlayerMove>().BalloonApp();
             }
 
