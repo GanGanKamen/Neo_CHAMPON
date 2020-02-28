@@ -25,8 +25,7 @@ namespace Igarashi
                 GururinRb.velocity = Vector3.zero;
                 GururinRb.angularVelocity = Vector3.zero;
                 // 押し出しされるようにする
-                GururinRb.constraints = RigidbodyConstraints.FreezeRotationX |
-                                                       RigidbodyConstraints.FreezePositionY;
+                GururinRb.constraints = RigidbodyConstraints.FreezeRotationX;
 
                 // 押し出し
                 var extrusionForce = new Vector3(0.0f, 0.0f, -extrusionPower);

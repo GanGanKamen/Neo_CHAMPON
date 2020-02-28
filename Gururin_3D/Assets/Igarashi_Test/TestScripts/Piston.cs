@@ -27,17 +27,13 @@ namespace Igarashi
         private bool _pushing;
         private bool _stopping;
 
-        [SerializeField] private bool masterStop; // ピストンの動作を完全に停止
+        [SerializeField] private bool completeStop; // ピストンの動作を完全に停止
 
         private void Awake()
         {
-            // 以下初期化
             _startPos = transform.position;
             _moveApproved = true;
             _pushing = true;
-            _stopping = false;
-            _moveTimer = 0.0f;
-            _stopTimer = 0.0f;
         }
 
         // Start is called before the first frame update
@@ -49,7 +45,7 @@ namespace Igarashi
         // Update is called once per frame
         void Update()
         {
-            if (masterStop) return;
+            if (completeStop) return;
 
             // ピストン移動
             if (_moveApproved)
@@ -58,11 +54,11 @@ namespace Igarashi
                 {
                     case true:
                         MovePiston(_startPos, pushLimitPos.position, pushSpeed);
-                        break;
+                    break;
 
                     case false:
                         MovePiston(pushLimitPos.position, _startPos, pullSpeed);
-                        break;
+                    break;
                 }
             }
 
@@ -79,11 +75,11 @@ namespace Igarashi
                     {
                         case true:
                             _pushing = false;
-                            break;
+                         break;
 
                         case false:
                             _pushing = true;
-                            break;
+                        break;
                     }
                     // 移動再開
                     _moveApproved = true;

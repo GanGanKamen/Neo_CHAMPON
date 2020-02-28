@@ -14,8 +14,8 @@ namespace Igarashi
 
         [SerializeField] private GanGanKamen.GameController gameController;
         [SerializeField] [Header("巻き上げるオブジェクト")] private GameObject hoistObject;
-        [SerializeField] [Range(_lowerSpeedLimit, Mathf.Infinity)] [Header("巻き上げ速度")] private float rollUpSpeed;
-        [SerializeField] [Range(_lowerSpeedLimit, Mathf.Infinity)] [Header("巻き下げ速度")] private float rollDownSpeed;
+        [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("巻き上げ速度 0.1~2.0")] private float rollUpSpeed;
+        [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("巻き下げ速度 0.1~2.0")] private float rollDownSpeed;
         [SerializeField] [Header("ぐるりんと歯車の回転速度")] private float rotationSpeed;
 
         private GameObject _Gururin;
@@ -52,50 +52,51 @@ namespace Igarashi
             // 噛み合っているとき
             if (_Gururin != null && _gururinBase.IsAttachGimmick)
             {
-                // 入力がなければ下げる
-                if (gameController.InputIsPress == false)
+                if (_collisionLimit == false)
                 {
-                    Hoist(false);
-
-                    if (_collisionLimit == false)
-                    {
-                        _limit = 0;
-                    }
-
-                    // 巻き上げる方向と反対に回転
-                    if (_clockwise)
-                    {
-                        Rotate(true);
-                    }
-                    else
-                    {
-                        Rotate(false);
-                    }
+                    _limit = 0;
                 }
-                else
+
+                switch (gameController.InputIsPress)
                 {
-                    if (_collisionLimit == false)
-                    {
-                        _limit = 0;
-                    }
-                    // 左回転
-                    if (gameController.InputAngle > 0)
-                    {
-                        Rotate(true);
-                        if (_clockwise == false)
+                    // 操作入力時
+                    case true:
+                        // 左回転
+                        if (gameController.InputAngle > 0)
                         {
-                            Hoist(true);
+                            Rotate(true);
+                            if (_clockwise == false)
+                            {
+                                Hoist(true);
+                            }
                         }
-                    }
-                    // 右回転
-                    else if (gameController.InputAngle < 0)
-                    {
-                        Rotate(false);
-                        if (_clockwise)
+                        // 右回転
+                        else if (gameController.InputAngle < 0)
                         {
-                            Hoist(true);
+                            Rotate(false);
+                            if (_clockwise)
+                            {
+                                Hoist(true);
+                            }
                         }
-                    }
+                    break;
+
+                    // 操作入力がなければ下げる
+                    case false:
+                        Hoist(false);
+
+                        // 巻き上げる方向と反対に回転
+                        switch (_clockwise)
+                        {
+                            case true:
+                                Rotate(true);
+                            break;
+
+                            case false:
+                                Rotate(false);
+                            break;
+                        }
+                    break;
                 }
             }
             // 噛み合っていないとき下限でなければ下げる
@@ -104,13 +105,15 @@ namespace Igarashi
                 Hoist(false);
 
                 // 巻き上げる方向と反対に回転
-                if (_clockwise)
+                switch (_clockwise)
                 {
-                    Rotate(true);
-                }
-                else
-                {
-                    Rotate(false);
+                    case true:
+                        Rotate(true);
+                    break;
+
+                    case false:
+                        Rotate(false);
+                    break;
                 }
             }
         }
@@ -169,7 +172,6 @@ namespace Igarashi
 
             _gururinBase = _Gururin.GetComponent<GanGanKamen.GururinBase>();
             _gururinBase.AttackToGimmick();
-            //_moveAngle = 0.0f;
         }
 
         // 巻き上げ
@@ -178,7 +180,6 @@ namespace Igarashi
             var hoistObjPos = hoistObject.transform.position;
             switch (hangingDirection)
             {
-                // 巻き上げる
                 case true:
                     _hoisting = true;
                     // 上限じゃなければ巻き上げ
@@ -188,26 +189,26 @@ namespace Igarashi
                         var rollUp = new Vector3(hoistObjPos.x, hoistObjPos.y, hoistObjPos.z);
                         _hoistObjRb.MovePosition(rollUp);
                     }
-                    break;
+                break;
 
-                // 巻き下げる
                 case false:
                     _hoisting = false;
                     // 下限じゃなければ巻き下げ
                     if (_limit != -1)
                     {
+                        // 噛み合っているときと噛み合っていないときで落下速度を変化
                         if (_gururinBase != null)
                         {
-                            hoistObjPos.y -= Time.deltaTime * rollDownSpeed;
+                            hoistObjPos.y -= Time.deltaTime * rollDownSpeed / 2.0f;
                         }
                         else
                         {
-                            hoistObjPos.y -= Time.deltaTime * rollDownSpeed * 2.0f;
+                            hoistObjPos.y -= Time.deltaTime * rollDownSpeed;
                         }
                         var rollDown = new Vector3(hoistObjPos.x, hoistObjPos.y, hoistObjPos.z);
                         _hoistObjRb.MovePosition(rollDown);
                     }
-                    break;
+                break;
             }
         }
 
@@ -219,16 +220,28 @@ namespace Igarashi
                 switch (rotationDirection)
                 {
                     case true:
-                        transform.Rotate(0.0f, 0.0f, -rotationSpeed);
-                        if (_Gururin == null) return;
-                        _Gururin.transform.Rotate(0.0f, 0.0f, rotationSpeed);
-                        break;
+                        if (_Gururin == null)
+                        {
+                            transform.Rotate(0.0f, 0.0f, -rotationSpeed * 2.0f);
+                        }
+                        else
+                        {
+                            transform.Rotate(0.0f, 0.0f, -rotationSpeed);
+                            _Gururin.transform.Rotate(0.0f, 0.0f, rotationSpeed);
+                        }
+                    break;
 
                     case false:
-                        transform.Rotate(0.0f, 0.0f, rotationSpeed);
-                        if (_Gururin == null) return;
-                        _Gururin.transform.Rotate(0.0f, 0.0f, -rotationSpeed);
-                        break;
+                        if (_Gururin == null)
+                        {
+                            transform.Rotate(0.0f, 0.0f, rotationSpeed * 2.0f);
+                        }
+                        else
+                        {
+                            transform.Rotate(0.0f, 0.0f, rotationSpeed);
+                            _Gururin.transform.Rotate(0.0f, 0.0f, -rotationSpeed);
+                        }
+                    break;
                 }
             }
         }
@@ -266,11 +279,11 @@ namespace Igarashi
             {
                 case true:
                     _limit = 1;
-                    break;
+                break;
 
                 case false:
                     _limit = -1;
-                    break;
+                break;
             }
             _collisionLimit = true;
         }

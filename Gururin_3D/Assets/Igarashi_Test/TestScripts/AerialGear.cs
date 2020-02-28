@@ -62,11 +62,11 @@ namespace Igarashi
                 {
                     case true:
                         transform.Rotate(0.0f, 0.0f, gearRotationSpeed);
-                        break;
+                    break;
 
                     case false:
                         transform.Rotate(0.0f, 0.0f, -gearRotationSpeed);
-                        break;
+                    break;
                 }
             }
             else if (gearType == GearType.GearPiston)
@@ -82,52 +82,57 @@ namespace Igarashi
             {
                 if (_braking == false)
                 {
-                    if (gameController.InputIsPress == false)
+                    switch (gameController.InputIsPress)
                     {
-                        _keepSpeed = true;
-                    }
-                    // 回転操作
-                    else
-                    {
-                        // 左回転
-                        if (gameController.InputAngle > 0)
-                        {
-                            if (_inputAngleDirection == -1)
+                        // 操作入力時
+                        case true:
+                            // 左回転
+                            if (gameController.InputAngle > 0)
                             {
-                                AerialGearSpeedDown();
+                                if (_inputAngleDirection == -1)
+                                {
+                                    AerialGearSpeedDown();
+                                }
+                                else
+                                {
+                                    _keepSpeed = false;
+                                    _inputAngleDirection = 1;
+                                    CircularMotion(Vector3.forward);
+                                }
                             }
-                            else
+                            // 右回転
+                            else if (gameController.InputAngle < 0)
                             {
-                                _keepSpeed = false;
-                                _inputAngleDirection = 1;
-                                CircularMotion(Vector3.forward);
+                                if (_inputAngleDirection == 1)
+                                {
+                                    AerialGearSpeedDown();
+                                }
+                                else
+                                {
+                                    _keepSpeed = false;
+                                    _inputAngleDirection = -1;
+                                    CircularMotion(Vector3.back);
+                                }
                             }
-                        }
-                        // 右回転
-                        else if (gameController.InputAngle < 0)
-                        {
-                            if (_inputAngleDirection == 1)
-                            {
-                                AerialGearSpeedDown();
-                            }
-                            else
-                            {
-                                _keepSpeed = false;
-                                _inputAngleDirection = -1;
-                                CircularMotion(Vector3.back);
-                            }
-                        }
+                        break;
+
+                        // 操作入力なし
+                        case false:
+                            _keepSpeed = true;
+                        break;
                     }
                 }
 
                 // ブレーキ操作
-                if (gameController.InputLongPress)
+                switch (gameController.InputLongPress)
                 {
-                    AerialGearBrake();
-                }
-                else
-                {
-                    _braking = false;
+                    case true:
+                        AerialGearBrake();
+                    break;
+
+                    case false:
+                        _braking = false;
+                    break;
                 }
 
                 // 入力がない時に最終操作時の入力速度で回転
@@ -204,7 +209,7 @@ namespace Igarashi
             _moveAngle += -gameController.InputAngle / 10.0f;
             if (_braking == false)
             {
-                _rotSpeed = Mathf.Abs(_moveAngle / 2.0f * Time.deltaTime);
+                _rotSpeed = Mathf.Abs(_moveAngle / _gururinBase.accel * Time.deltaTime);
                 if (_rotSpeed >= maxSpeed)
                 {
                     _rotSpeed = maxSpeed;
@@ -222,6 +227,7 @@ namespace Igarashi
             {
                 _keepSpeed = true;
                 _rotSpeed -= Time.deltaTime;
+                // 回転方向を反転
                 if (_rotSpeed <= 0.1f)
                 {
                     _inputAngleDirection *= -1;
@@ -234,7 +240,7 @@ namespace Igarashi
         void AerialGearBrake()
         {
             _inputAngleDirection = 0;
-            _rotSpeed -= Time.deltaTime * 5.0f;
+            _rotSpeed -= Time.deltaTime * _gururinBase.brakePower;
             _moveAngle = _rotSpeed * 10.0f;
             if (_rotSpeed >= 0.1f)
             {

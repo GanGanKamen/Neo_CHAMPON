@@ -25,9 +25,8 @@ public class TextRespawn : MonoBehaviour
             }
 
             var GururinRb = other.gameObject.GetComponent<Rigidbody>();
-            // FreezePosition、FreezeRotationを再設定
-            GururinRb.constraints = RigidbodyConstraints.FreezePositionZ |
-                                                   RigidbodyConstraints.FreezeRotationX |
+            // FreezeRotationを再設定
+            GururinRb.constraints = RigidbodyConstraints.FreezeRotationX |
                                                    RigidbodyConstraints.FreezeRotationY;
 
             // 角度と位置を初期化

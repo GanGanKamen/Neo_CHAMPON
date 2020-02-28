@@ -16,13 +16,15 @@ namespace Igarashi
         {
             if (other.gameObject.GetComponent<HoistLimit>())
             {
-                if (hoistCrane.Hoisting)
+                switch (hoistCrane.Hoisting)
                 {
-                    hoistCrane.CollisionLimitEnter(true);
-                }
-                else
-                {
-                    hoistCrane.CollisionLimitEnter(false);
+                    case true:
+                        hoistCrane.CollisionLimitEnter(true);
+                    break;
+
+                    case false:
+                        hoistCrane.CollisionLimitEnter(false);
+                    break;
                 }
             }
         }
