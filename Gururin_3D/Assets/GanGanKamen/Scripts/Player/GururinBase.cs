@@ -57,7 +57,7 @@ namespace GanGanKamen
         public void GururinMove()
         {
             if (isAttachGimmick) return;
-            // Z軸を固定(Position.z = 0.0以外になったら(多分なる)修正)
+            // ぐるりんのZ軸を0で固定する
             transform.position = new Vector3(transform.position.x, transform.position.y, 0.0f);
             var rigidbody = GetComponent<Rigidbody>();
             var rotSpeed = moveAngle * accel * Time.deltaTime;
@@ -88,12 +88,14 @@ namespace GanGanKamen
 
         public void AttackToGimmick()
         {
+            Debug.Log("attach");
             isAttachGimmick = true;
             moveAngle = 0;
         }
 
         public void SeparateGimmick()
         {
+            Debug.Log("Separate");
             isAttachGimmick = false;
             moveAngle = 0;
         }
