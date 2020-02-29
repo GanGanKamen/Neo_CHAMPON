@@ -45,6 +45,7 @@ namespace Igarashi
             if (respawnPoint != _respawnPoint)
             {
                 _respawnPoint = respawnPoint;
+                Debug.Log("RespawnPointSet" + _respawnPoint.transform.position);
             }
         }
     }

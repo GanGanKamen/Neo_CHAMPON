@@ -15,7 +15,7 @@ namespace Igarashi
         // Start is called before the first frame update
         void Start()
         {
-            _respawn = GameObject.Find("RespawnSet").GetComponent<Respawn>();
+            _respawn = GameObject.Find("RespawnManager").GetComponent<Respawn>();
         }
 
         private void OnTriggerEnter(Collider other)
