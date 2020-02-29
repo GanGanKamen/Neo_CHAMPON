@@ -93,7 +93,7 @@ namespace GanGanKamen
                     {
                         var canvasScaler = canvases[i].GetComponent<UnityEngine.UI.CanvasScaler>();
                         canvasScaler.screenMatchMode = UnityEngine.UI.CanvasScaler.ScreenMatchMode.MatchWidthOrHeight;
-                        canvasScaler.matchWidthOrHeight = 1;
+                        canvasScaler.matchWidthOrHeight = 0.5f;
                     }
                     
                 }
