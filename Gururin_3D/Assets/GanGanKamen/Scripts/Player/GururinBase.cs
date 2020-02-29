@@ -97,7 +97,6 @@ namespace GanGanKamen
         {
             Debug.Log("Separate");
             isAttachGimmick = false;
-            moveAngle = 0;
         }
 
         public void Brake()
@@ -106,6 +105,7 @@ namespace GanGanKamen
             moveAngle = 0;
             var rigidbody = GetComponent<Rigidbody>();
             var velocity = Mathf.Abs(rigidbody.velocity.x);
+            if (velocity <= 0) return;
             var brakeForce = Vector3.Scale(rigidbody.velocity, new Vector3(-0.01f * brakePower / velocity, 0, 0));
             rigidbody.AddForce(brakeForce, ForceMode.VelocityChange);
         }
