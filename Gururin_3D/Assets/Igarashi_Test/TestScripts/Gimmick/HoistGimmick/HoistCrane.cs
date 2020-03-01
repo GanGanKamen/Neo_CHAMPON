@@ -12,7 +12,6 @@ namespace Igarashi
     {
         public bool Hoisting { get { return _hoisting; } } // 巻き上げているかどうかの判定
 
-        [SerializeField] private GanGanKamen.GameController gameController;
         [SerializeField] [Header("巻き上げるオブジェクト")] private GameObject hoistObject;
         [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("巻き上げ速度 0.1~2.0")] private float rollUpSpeed;
         [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("巻き下げ速度 0.1~2.0")] private float rollDownSpeed;
@@ -22,6 +21,7 @@ namespace Igarashi
         private Rigidbody _GururinRb;
         private Rigidbody _hoistObjRb;
         private GanGanKamen.GururinBase _gururinBase;
+        private GanGanKamen.GameController _gameController;
         private int _limit; // 1:UpperLimit、-1:LowerLimit、0:NotLimit
         private const float _lowerSpeedLimit = 0.1f;
         private bool _clockwise; // コントローラーの回転方向
@@ -32,6 +32,8 @@ namespace Igarashi
         // Start is called before the first frame update
         void Start()
         {
+            _gameController = GameObject.Find("GameController").GetComponent<GanGanKamen.GameController>();
+
             if (hoistObject != null)
             {
                 HoistObjectSet();
@@ -57,12 +59,12 @@ namespace Igarashi
                     _limit = 0;
                 }
 
-                switch (gameController.InputIsPress)
+                switch (_gameController.InputIsPress)
                 {
                     // 操作入力時
                     case true:
                         // 左回転
-                        if (gameController.InputAngle > 0)
+                        if (_gameController.InputAngle > 0)
                         {
                             Rotate(true);
                             if (_clockwise == false)
@@ -71,7 +73,7 @@ namespace Igarashi
                             }
                         }
                         // 右回転
-                        else if (gameController.InputAngle < 0)
+                        else if (_gameController.InputAngle < 0)
                         {
                             Rotate(false);
                             if (_clockwise)
@@ -126,7 +128,7 @@ namespace Igarashi
                 var gearPos = transform.position;
 
                 // ジャンプ(歯車から離れる)時の処理
-                if (gameController.InputFlick)
+                if (_gameController.InputFlick)
                 {
                     Jump(GururinPos, gearPos);
                     _GururinRb.useGravity = true;
