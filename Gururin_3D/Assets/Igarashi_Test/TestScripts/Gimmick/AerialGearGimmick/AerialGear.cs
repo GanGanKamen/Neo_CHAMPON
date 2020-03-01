@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 空中歯車ギミック
+/// 空中歯車ギミックの動作処理
 /// </summary>
 
 namespace Igarashi
@@ -40,6 +40,7 @@ namespace Igarashi
             _inputAngleDirection = 0;
             _rotDirection = 0;
         }
+
         // Start is called before the first frame update
         void Start()
         {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 巻き上げ機ギミック
+/// 巻き上げ機ギミックの動作処理
 /// </summary>
 
 namespace Igarashi

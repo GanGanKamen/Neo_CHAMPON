@@ -136,7 +136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decelerationValue: 0.5
-  maxSpeed: 4
   gravityType: 2
 --- !u!1 &7866943888814684996
 GameObject:
@@ -243,7 +242,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decelerationValue: 0.5
-  maxSpeed: 4
   gravityType: 0
 --- !u!1 &7866943888917875141
 GameObject:
@@ -350,7 +348,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decelerationValue: 0.5
-  maxSpeed: 4
   gravityType: 1
 --- !u!1 &7866943889432588323
 GameObject:
@@ -365,7 +362,7 @@ GameObject:
   - component: {fileID: 7866943889432588325}
   - component: {fileID: 7866943889432588324}
   m_Layer: 0
-  m_Name: Rack
+  m_Name: RackCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

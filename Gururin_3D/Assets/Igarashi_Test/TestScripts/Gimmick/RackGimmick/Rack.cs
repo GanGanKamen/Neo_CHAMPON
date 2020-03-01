@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ラックギミック
+/// ラックギミックの動作処理
 /// </summary>
 
 namespace Igarashi
@@ -11,7 +11,6 @@ namespace Igarashi
     public class Rack : MonoBehaviour
     {
         [SerializeField] [Header("減速値")] [Range(_lowerSpeedLimit, 1.0f)] private float decelerationValue;
-        [SerializeField] [Header("最大速度")] private float maxSpeed;
         public enum GravityType
         {
             Up,
@@ -27,7 +26,6 @@ namespace Igarashi
         private float _moveAngle;
         private const float _lowerSpeedLimit = 0.1f;
         private bool _gravityChange; // 重力方向が変化しているかの判定
-        private bool _stopping;
 
         // Start is called before the first frame update
         void Start()
@@ -99,14 +97,6 @@ namespace Igarashi
                     }
                     _GururinRb.velocity = Vector3.zero;
                 }
-
-                /*
-                // 油を取ると最大速度上昇
-                if ()
-                {
-                    maxSpeed += ;
-                }
-                */
             }
         }
 
@@ -175,13 +165,13 @@ namespace Igarashi
             var rotSpeed = _moveAngle * _gururinBase.accel * Time.deltaTime;
             // 通常時より減速した状態で移動
             var realSpeed = rotSpeed * decelerationValue;
-            if (realSpeed >= maxSpeed)
+            if (realSpeed >= _gururinBase.maxSpeed)
             {
-                realSpeed = maxSpeed;
+                realSpeed = _gururinBase.maxSpeed;
             }
-            else if (realSpeed <= -maxSpeed)
+            else if (realSpeed <= -_gururinBase.maxSpeed)
             {
-                realSpeed = -maxSpeed;
+                realSpeed = -_gururinBase.maxSpeed;
             }
 
             // GravityTypeに応じて移動方向を変化
@@ -214,12 +204,12 @@ namespace Igarashi
                     break;
 
                 case GravityType.Left:
-                    var rightForce = new Vector3(_gururinBase.jumpPower, 0.0f);
+                    var rightForce = new Vector3(_gururinBase.jumpPower, _gururinBase.jumpPower);
                     _GururinRb.AddForce(rightForce, ForceMode.VelocityChange);
                     break;
 
                 case GravityType.Right:
-                    var leftForce = new Vector3(-_gururinBase.jumpPower, 0.0f);
+                    var leftForce = new Vector3(-_gururinBase.jumpPower, _gururinBase.jumpPower);
                     _GururinRb.AddForce(leftForce, ForceMode.VelocityChange);
                     break;
             }
