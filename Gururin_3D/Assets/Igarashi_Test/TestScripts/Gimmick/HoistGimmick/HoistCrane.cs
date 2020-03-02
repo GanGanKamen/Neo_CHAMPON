@@ -102,8 +102,10 @@ namespace Igarashi
                 }
             }
             // 噛み合っていないとき下限でなければ下げる
-            else if (_limit != -1)
+            else
             {
+                if (_limit == -1) return;
+
                 Hoist(false);
 
                 // 巻き上げる方向と反対に回転
@@ -201,11 +203,11 @@ namespace Igarashi
                         // 噛み合っているときと噛み合っていないときで落下速度を変化
                         if (_gururinBase != null)
                         {
-                            hoistObjPos.y -= Time.deltaTime * rollDownSpeed / 2.0f;
+                            hoistObjPos.y -= Time.deltaTime * rollDownSpeed / 4.0f;
                         }
                         else
                         {
-                            hoistObjPos.y -= Time.deltaTime * rollDownSpeed;
+                            hoistObjPos.y -= Time.deltaTime * rollDownSpeed / 2.0f;
                         }
                         var rollDown = new Vector3(hoistObjPos.x, hoistObjPos.y, hoistObjPos.z);
                         _hoistObjRb.MovePosition(rollDown);
