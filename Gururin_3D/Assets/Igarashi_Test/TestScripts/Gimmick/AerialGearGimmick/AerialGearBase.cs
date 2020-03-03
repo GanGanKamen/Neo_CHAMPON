@@ -3,25 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 空中歯車ギミックの動作処理
+/// 空中歯車ギミック関係の動作処理
 /// </summary>
 
 namespace Igarashi
 {
-    public class AerialGear : MonoBehaviour
+    public class AerialGearBase : MonoBehaviour
     {
+        [SerializeField] private AerialRotatingGear _aerialRotatingGear;
+        [SerializeField] private AerialFreeGear _aerialFreeGear;
+        public bool IsCollision { get { return _isCollision; } }
+
         [SerializeField] [Header("回転移動時の速さの上限値")] private float maxSpeed;
        public enum GearType
         {
             Nomal,
-            Rotate,
-            GearPiston,
+            Rotating,
+            Free,
+            GearPiston
         }
         [Header("空中歯車のタイプ")] public GearType gearType;
-        [SerializeField] [Header("歯車の回転速度")] private float gearRotationSpeed;
-        [SerializeField] [Header("歯車の回転方向")] private bool gearRotationDirection;
 
         private GameObject _Gururin;
+        private Rigidbody _rigidbody;
         private Rigidbody _GururinRb;
         private GanGanKamen.GururinBase _gururinBase;
         private GanGanKamen.GameController _gameController;
@@ -33,6 +37,7 @@ namespace Igarashi
         private bool _speedDown; // 減速判定
         private bool _keepSpeed;
         private bool _braking; // ブレーキ判定
+        private bool _isCollision;
         private bool _leave;
 
         private void Awake()
@@ -45,6 +50,14 @@ namespace Igarashi
         void Start()
         {
             _gameController = GameObject.Find("GameController").GetComponent<GanGanKamen.GameController>();
+
+            if(gearType == GearType.Free)
+            {
+                _GururinRb = GameObject.Find("Player").GetComponent<Rigidbody>();
+                gameObject.AddComponent<Rigidbody>();
+                _rigidbody = GetComponent<Rigidbody>();
+                _rigidbody.isKinematic = true;
+            }
         }
 
         private void OnCollisionEnter(Collision other)
@@ -66,18 +79,18 @@ namespace Igarashi
 
         void Update()
         {
-            if (gearType == GearType.Rotate)
+            if (gearType == GearType.Rotating)
             {
-                switch (gearRotationDirection)
+                _aerialRotatingGear.RotatingGear(gameObject);
+            }
+            else if (gearType == GearType.Free)
+            {
+                _aerialFreeGear.GetGururinVelocity(_GururinRb);
+                if(_Gururin != null)
                 {
-                    case true:
-                        transform.Rotate(0.0f, 0.0f, gearRotationSpeed);
-                    break;
-
-                    case false:
-                        transform.Rotate(0.0f, 0.0f, -gearRotationSpeed);
-                    break;
+                    _aerialFreeGear.RotatingGear(gameObject);
                 }
+                return;
             }
             else if (gearType == GearType.GearPiston)
             {
@@ -160,6 +173,14 @@ namespace Igarashi
             }
         }
 
+        private void FixedUpdate()
+        {
+            if (_Gururin != null && gearType == GearType.Free)
+            {
+                _aerialFreeGear.Gravitation(_Gururin, gameObject, _GururinRb, _rigidbody);
+            }
+        }
+
         private void LateUpdate()
         {
             if (_Gururin != null && _gururinBase.IsAttachGimmick)
@@ -174,11 +195,20 @@ namespace Igarashi
                     {
                         AerialGearJump(GururinPos, gearPos);
                     }
-                    _Gururin.transform.parent = null;
+
+                    if(gearType == GearType.Free)
+                    {
+                        _isCollision = false;
+                    }
+
                     _GururinRb.useGravity = true;
+
                     _gururinBase.SeparateGimmick();
                     _gururinBase = null;
+
+                    _Gururin.transform.parent = null;
                     _Gururin = null;
+
                     _leave = false;
                 }
             }
@@ -187,10 +217,18 @@ namespace Igarashi
         // 接触時にぐるりんのコンポーネント取得等あれこれ
         void CollisionSet(GameObject colObj)
         {
+            if(gearType == GearType.Free)
+            {
+                _isCollision = true;
+            }
+
             _Gururin = colObj.gameObject;
             _Gururin.transform.parent = transform;
 
-            _GururinRb = _Gururin.GetComponent<Rigidbody>();
+            if (_GururinRb == null)
+            {
+                _GururinRb = _Gururin.GetComponent<Rigidbody>();
+            }
             _GururinRb.velocity = Vector3.zero;
             _GururinRb.angularVelocity = Vector3.zero;
             _GururinRb.useGravity = false;
