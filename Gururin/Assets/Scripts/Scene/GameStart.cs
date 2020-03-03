@@ -24,15 +24,36 @@ public class GameStart : MonoBehaviour
         nowSceneName = SceneManager.GetActiveScene().name;
         preSceneName = nowSceneName;
 
-        SceneManager.LoadSceneAsync(NextSceneName);
         mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         ScreenSet();
+        GetLanguage();
+        SceneManager.LoadSceneAsync(NextSceneName);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         GetSceneChange();
+    }
+
+    private void GetLanguage()
+    {
+        switch (Application.systemLanguage)
+        {
+            case SystemLanguage.Japanese:
+                LanguageSwitch.language = LanguageSwitch.Language.Japanese;
+                break;
+            case SystemLanguage.ChineseSimplified:
+                LanguageSwitch.language = LanguageSwitch.Language.ChineseHans;
+                break;
+            case SystemLanguage.ChineseTraditional:
+                LanguageSwitch.language = LanguageSwitch.Language.ChineseHant;
+                break;
+            default:
+                LanguageSwitch.language = LanguageSwitch.Language.English;
+                break;
+        }
     }
 
     private void ScreenSet()

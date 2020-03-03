@@ -125,7 +125,6 @@ public class FadeCanvas : MonoBehaviour
                 isBoss = true;
             }
         }
-        Debug.Log(isBoss);
         if (isBoss) RemainingLife.beforeBossLife = RemainingLife.life;
         async = SceneManager.LoadSceneAsync(sceneName);
         while (!async.isDone)
