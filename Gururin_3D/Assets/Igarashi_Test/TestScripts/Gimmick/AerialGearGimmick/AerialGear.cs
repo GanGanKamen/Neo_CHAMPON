@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// 空中歯車ギミック
+/// 空中歯車ギミックの動作処理
 /// </summary>
 
 namespace Igarashi
 {
     public class AerialGear : MonoBehaviour
     {
-        [SerializeField] private GanGanKamen.GameController gameController;
         [SerializeField] [Header("回転移動時の速さの上限値")] private float maxSpeed;
        public enum GearType
         {
@@ -25,6 +24,7 @@ namespace Igarashi
         private GameObject _Gururin;
         private Rigidbody _GururinRb;
         private GanGanKamen.GururinBase _gururinBase;
+        private GanGanKamen.GameController _gameController;
         private Vector3 _GururinPos;
         private int _inputAngleDirection; // コントローラーの回転入力方向
         private int _rotDirection; // ぐるりんの回転方向
@@ -41,6 +41,12 @@ namespace Igarashi
             _rotDirection = 0;
         }
 
+        // Start is called before the first frame update
+        void Start()
+        {
+            _gameController = GameObject.Find("GameController").GetComponent<GanGanKamen.GameController>();
+        }
+
         private void OnCollisionEnter(Collision other)
         {
             if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
@@ -50,6 +56,10 @@ namespace Igarashi
                 if (_GururinPos.z == transform.position.z)
                 {
                     CollisionSet(other.gameObject);
+                    _moveAngle = 0.0f;
+                    _inputAngleDirection = 0;
+                    _rotDirection = 0;
+                    _speedDown = false;
                 }
             }
         }
@@ -82,12 +92,12 @@ namespace Igarashi
             {
                 if (_braking == false)
                 {
-                    switch (gameController.InputIsPress)
+                    switch (_gameController.InputIsPress)
                     {
                         // 操作入力時
                         case true:
                             // 左回転
-                            if (gameController.InputAngle > 0)
+                            if (_gameController.InputAngle > 0)
                             {
                                 if (_inputAngleDirection == -1)
                                 {
@@ -101,7 +111,7 @@ namespace Igarashi
                                 }
                             }
                             // 右回転
-                            else if (gameController.InputAngle < 0)
+                            else if (_gameController.InputAngle < 0)
                             {
                                 if (_inputAngleDirection == 1)
                                 {
@@ -124,7 +134,7 @@ namespace Igarashi
                 }
 
                 // ブレーキ操作
-                switch (gameController.InputLongPress)
+                switch (_gameController.InputLongPress)
                 {
                     case true:
                         AerialGearBrake();
@@ -158,7 +168,7 @@ namespace Igarashi
                 var gearPos = transform.position;
 
                 // ジャンプ(歯車から離れる)時の処理
-                if (gameController.InputFlick || _leave)
+                if (_gameController.InputFlick || _leave)
                 {
                     if (_leave == false)
                     {
@@ -187,11 +197,6 @@ namespace Igarashi
 
             _gururinBase = _Gururin.GetComponent<GanGanKamen.GururinBase>();
             _gururinBase.AttackToGimmick();
-
-            _moveAngle = 0.0f;
-            _inputAngleDirection = 0;
-            _rotDirection = 0;
-            _speedDown = false;
         }
 
         // 円運動
@@ -206,7 +211,7 @@ namespace Igarashi
                 _rotDirection = -1;
             }
 
-            _moveAngle += -gameController.InputAngle / 10.0f;
+            _moveAngle += -_gameController.InputAngle / 10.0f;
             if (_braking == false)
             {
                 _rotSpeed = Mathf.Abs(_moveAngle / _gururinBase.accel * Time.deltaTime);

@@ -30,9 +30,6 @@ namespace Igarashi
             }
 
             var GururinRb = _Gururin.gameObject.GetComponent<Rigidbody>();
-            // FreezeRotationを再設定
-            GururinRb.constraints = RigidbodyConstraints.FreezeRotationX |
-                                                   RigidbodyConstraints.FreezeRotationY;
 
             // 角度と位置を初期化
             _Gururin.transform.rotation = Quaternion.Euler(Vector3.zero);
@@ -45,6 +42,7 @@ namespace Igarashi
             if (respawnPoint != _respawnPoint)
             {
                 _respawnPoint = respawnPoint;
+                Debug.Log("RespawnPointSet" + _respawnPoint.transform.position);
             }
         }
     }
