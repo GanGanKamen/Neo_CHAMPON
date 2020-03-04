@@ -4,7 +4,9 @@
  *
  ****************************************************************************/
 
+#if !(UNITY_2019_3_OR_NEWER && ENABLE_IL2CPP)
 #define CRIWARE_DISPOSABLEOBJECTMANAGER_USE_WEAKREF
+#endif
 
 using System;
 using System.Collections.Generic;
