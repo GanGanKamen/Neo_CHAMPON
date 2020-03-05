@@ -3,7 +3,10 @@ guid: a5f862f56f7e8b04684c0472f4d4ebdf
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - tapUI: {instanceID: 0}
+  - controllerObject: {instanceID: 0}
+  - controller: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
