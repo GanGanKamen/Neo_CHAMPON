@@ -122,7 +122,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.3
+  bundleVersion: 1.1
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -160,8 +160,8 @@ PlayerSettings:
     Android: com.CHAMPON.Gururin
     Standalone: com.Company.ProductName
   buildNumber:
-    iOS: 5
-  AndroidBundleVersionCode: 2
+    iOS: 6
+  AndroidBundleVersionCode: 3
   AndroidMinSdkVersion: 24
   AndroidTargetSdkVersion: 0
   AndroidPreferredInstallLocation: 1
@@ -172,7 +172,7 @@ PlayerSettings:
   ForceInternetPermission: 0
   ForceSDCardPermission: 0
   CreateWallpaper: 0
-  APKExpansionFiles: 1
+  APKExpansionFiles: 0
   keepLoadedShadersAlive: 0
   StripUnusedMeshComponents: 1
   VertexChannelCompressionMask: 4054
@@ -249,8 +249,8 @@ PlayerSettings:
   AndroidTargetArchitectures: 7
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/GanGanKamen/Desktop/gururin.keystore
-  AndroidKeyaliasName: gururin
+  AndroidKeystoreName: "C:/Users/GanGanKamen/Desktop/\u3050\u308B\u308A\u3093_\u30EA\u30EA\u30FC\u30B9/Android/gururin1.1.keystore"
+  AndroidKeyaliasName: gururin1.1
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 1
   AndroidIsGame: 1
