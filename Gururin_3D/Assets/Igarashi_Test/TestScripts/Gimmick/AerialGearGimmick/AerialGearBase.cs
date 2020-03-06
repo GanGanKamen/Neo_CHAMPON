@@ -10,10 +10,10 @@ namespace Igarashi
 {
     public class AerialGearBase : MonoBehaviour
     {
-        [SerializeField] private AerialRotatingGear _aerialRotatingGear;
-        [SerializeField] private AerialFreeGear _aerialFreeGear;
         public bool IsCollision { get { return _isCollision; } }
 
+        [SerializeField] private AerialRotatingGear _aerialRotatingGear;
+        [SerializeField] private AerialFreeGear _aerialFreeGear;
         [SerializeField] [Header("回転移動時の速さの上限値")] private float maxSpeed;
        public enum GearType
         {
@@ -53,7 +53,7 @@ namespace Igarashi
 
             if(gearType == GearType.Free)
             {
-                _GururinRb = GameObject.Find("Player").GetComponent<Rigidbody>();
+                _GururinRb = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
                 gameObject.AddComponent<Rigidbody>();
                 _rigidbody = GetComponent<Rigidbody>();
                 _rigidbody.isKinematic = true;
@@ -73,6 +73,11 @@ namespace Igarashi
                     _inputAngleDirection = 0;
                     _rotDirection = 0;
                     _speedDown = false;
+
+                    if(gearType == GearType.Free)
+                    {
+                        _aerialFreeGear.FreeGearInit();
+                    }
                 }
             }
         }
@@ -89,6 +94,7 @@ namespace Igarashi
                 if(_Gururin != null)
                 {
                     _aerialFreeGear.RotatingGear(gameObject);
+                    _aerialFreeGear.RaySkip(_Gururin, gameObject);
                 }
                 return;
             }

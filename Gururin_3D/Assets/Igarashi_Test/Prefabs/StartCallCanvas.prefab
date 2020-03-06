@@ -202,9 +202,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ready: {fileID: 7296901025368888213}
   start: {fileID: 7296901023735759501}
+  mainCamera: {fileID: 0}
+  startCamera: {fileID: 0}
   waitDisplayTime: 2
   startTime: 3
   endDisplayTime: 2
+  zoomOutSpeed: 10
 --- !u!1 &7296901025368888213
 GameObject:
   m_ObjectHideFlags: 0
