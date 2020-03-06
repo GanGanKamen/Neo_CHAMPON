@@ -16,11 +16,11 @@ namespace Igarashi
         // Start is called before the first frame update
         void Start()
         {
-            _Gururin = GameObject.Find("Player");
+            _Gururin = GameObject.FindWithTag("Player");
         }
 
         // ぐるりんをリスポーンしたいときに呼ぶ(仮)
-        public void RespawnSet()
+        public void RespawnSetting()
         {
             var gururinBase = _Gururin.gameObject.GetComponent<GanGanKamen.GururinBase>();
             // 移動操作が停止されていたら再開メソッドを呼び出し
@@ -37,7 +37,7 @@ namespace Igarashi
         }
 
         // リスポーン地点を設定
-        public void RespawnPointSet(GameObject respawnPoint)
+        public void RespawnPointSetting(GameObject respawnPoint)
         {
             if (respawnPoint != _respawnPoint)
             {

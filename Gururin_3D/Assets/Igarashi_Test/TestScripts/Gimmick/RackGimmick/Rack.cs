@@ -37,7 +37,7 @@ namespace Igarashi
         {
             if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
             {
-                CollisionSet(other.gameObject);
+                CollisionSettings(other.gameObject);
                 _gravityChange = true;
             }
         }
@@ -77,7 +77,7 @@ namespace Igarashi
                 {
                     _moveAngle = 0.0f;
                     // GravityTypeがLeft or Rightの時
-                    if (gravityType == GravityType.Left || gravityType == GravityType.Right)
+                    if (gravityType != GravityType.Up)
                     {
                         switch (_gameController.InputLongPress)
                         {
@@ -121,7 +121,7 @@ namespace Igarashi
         }
 
         // 接触時にぐるりんのコンポーネント取得等あれこれ
-        void CollisionSet(GameObject colObj)
+        void CollisionSettings(GameObject colObj)
         {
             _Gururin = colObj.gameObject;
 

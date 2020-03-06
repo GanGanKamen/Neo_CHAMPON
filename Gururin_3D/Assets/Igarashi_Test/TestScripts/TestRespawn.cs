@@ -23,7 +23,7 @@ namespace Igarashi
             // 接触したらリスポーン地点にリスポーン
             if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
             {
-                _respawn.RespawnSet();
+                _respawn.RespawnSetting();
             }
         }
     }

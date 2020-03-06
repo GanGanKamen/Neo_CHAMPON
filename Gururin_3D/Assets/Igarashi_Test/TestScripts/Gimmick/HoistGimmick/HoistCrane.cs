@@ -36,7 +36,7 @@ namespace Igarashi
 
             if (hoistObject != null)
             {
-                HoistObjectSet();
+                HoistObjectSettings();
             }
         }
 
@@ -44,7 +44,7 @@ namespace Igarashi
         {
             if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
             {
-                CollisionSet(other.gameObject);
+                CollisionSettings(other.gameObject);
             }
         }
 
@@ -142,7 +142,7 @@ namespace Igarashi
         }
 
         // 巻き上げるオブジェクトの設定
-        void HoistObjectSet()
+        void HoistObjectSettings()
         {
             // 巻き上げるオブジェクトの位置確認 巻き上げ機より右なら時計回りで巻き上げ
             if (hoistObject.transform.position.x > transform.position.x)
@@ -165,7 +165,7 @@ namespace Igarashi
         }
 
         // 接触時にぐるりんのコンポーネント取得等あれこれ
-        void CollisionSet(GameObject colObj)
+        void CollisionSettings(GameObject colObj)
         {
             _Gururin = colObj.gameObject;
 
