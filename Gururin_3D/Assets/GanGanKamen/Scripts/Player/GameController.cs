@@ -22,6 +22,7 @@ namespace GanGanKamen
         public bool InputFlick { get { return InputFlickCheck(); } }
         public bool InputLongPress { get { return InputLongPressCheck(); } }
         public FlickDirection InputFlickDirection { get { return flickDirection; } }
+        public bool Enable { get; set; }
 
         [SerializeField] private GameObject tapUI;
         [SerializeField] private GameObject controllerObject;
@@ -67,7 +68,20 @@ namespace GanGanKamen
         // Update is called once per frame
         void Update()
         {
-            Controll();
+            if (Enable)
+            {
+                Controll();
+            }
+            else
+            {
+                isPress = false;
+                angle = 0;
+                jumpcount = 0;
+                longPressCount = 0;
+                controllerObject.SetActive(false);
+                flickDirection = FlickDirection.Non;
+                if (tapUI != null) tapUI.SetActive(false);
+            }
             InputAngleUpdate();
         }
 
@@ -236,6 +250,7 @@ namespace GanGanKamen
                     uiCamera.ViewportToScreenPoint(mousePosition1);
                 prepos = controllerObject.transform.position;
                 isPress = true;
+                if (tapUI != null) tapUI.SetActive(true);
             }
 
             if (Input.GetMouseButton(0) && isPress)
@@ -277,6 +292,12 @@ namespace GanGanKamen
                 }
                 //preposにこの時点でのマウス位置を代入 camerapos2にこの時点でのカメラ位置を再代入
                 prepos = mousePosition2;
+                if (tapUI != null)
+                {
+                    Vector3 tapPosition = Input.mousePosition;
+                    tapPosition.z = 10;
+                    tapUI.transform.position = uiCamera.ScreenToWorldPoint(tapPosition);
+                }
             }
 
             if (Input.GetMouseButtonUp(0))
@@ -311,6 +332,7 @@ namespace GanGanKamen
                 jumpcount = 0;
                 longPressCount = 0;
                 controllerObject.SetActive(false);
+                if (tapUI != null) tapUI.SetActive(false);
             }
         }
 

@@ -17,6 +17,20 @@ namespace GanGanKamen
         public GameController gameController;
 
         private bool canCtrl = false;
+
+
+        public void PermitControll()
+        {
+            canCtrl = true;
+            gameController.Enable = true;
+        }
+
+        public void ProhibitControll()
+        {
+            canCtrl = false;
+            gameController.Enable = false;
+        }
+
         // Start is called before the first frame update
         private void Awake()
         {
@@ -25,7 +39,6 @@ namespace GanGanKamen
             jumpPower = _jumpPower;
             accel = _accel;
             brakePower = _brakePower;
-            canCtrl = true;
 
             SetDefult();
         }
@@ -42,6 +55,10 @@ namespace GanGanKamen
             {
                 GururinMove();
                 NormalCtrl();
+            }
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                PermitControll();
             }
         }
 

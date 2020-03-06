@@ -27,8 +27,11 @@ namespace GanGanKamen
 
         private void GameStart()
         {
+            Fader.FadeIn(1f, "StageSelect");
+            /*
             if (GanGanKamen.GameStart.StartUpCount <= 1) Fader.FadeIn(2f, "Manga");
             else Fader.FadeIn(1f, "StageSelect");
+            */
         }
     }
 }

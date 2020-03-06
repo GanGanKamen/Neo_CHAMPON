@@ -50,10 +50,10 @@ public class StartCall : MonoBehaviour
     IEnumerator StartCalling(CanvasGroup readyCanvasGroup, CanvasGroup startCanvasGroup,
                                             CinemachineVirtualCamera mainCameraCVC, CinemachineVirtualCamera startCameraCVC)
     {
-        var gururinBase = _Gururin.GetComponent<GanGanKamen.GururinBase>();
+        var playerCtrl = _Gururin.GetComponent<GanGanKamen.PlayerCtrl>();
 
         // 操作不許可
-        gururinBase.AttackToGimmick();
+        playerCtrl.ProhibitControll();
 
         // フェードイン後n秒待つ(待つ必要が無ければ消してretune)
         yield return new WaitForSeconds(waitDisplayTime);
@@ -77,7 +77,7 @@ public class StartCall : MonoBehaviour
         yield return new WaitForSeconds(startTime);
 
         // 操作許可
-        gururinBase.SeparateGimmick();
+        playerCtrl.PermitControll();
 
         // Start画像を表示
         readyCanvasGroup.alpha = 0.0f;

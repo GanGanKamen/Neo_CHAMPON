@@ -55,9 +55,9 @@ public class GoalDirecting : MonoBehaviour
         GururinRb.velocity = Vector3.zero;
         GururinRb.angularVelocity = Vector3.zero;
 
-        var gururinBase = _Gururin.GetComponent<GanGanKamen.GururinBase>();
+        var playerCtrl = _Gururin.GetComponent<GanGanKamen.PlayerCtrl>();
         // 操作不許可(リスタート時どこかでSeparateGimmickを呼ぶ必要がある)
-        gururinBase.AttackToGimmick();
+        playerCtrl.ProhibitControll();
 
         var mainCameraHalfView = mainCameraCVC.m_Lens.FieldOfView / 2.0f;
         // カメラをズームイン
