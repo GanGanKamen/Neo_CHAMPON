@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/GanGanKamen/Scenes/Title.unity
     guid: d8d939fba07eb144fb5ca24bed4dae20
   - enabled: 1
-    path: Assets/GanGanKamen/Scenes/Manga.unity
-    guid: e98e31ee02a64c448bdef7e892cfad10
-  - enabled: 1
     path: Assets/GanGanKamen/Scenes/StageSelect.unity
     guid: 0d365cb4aea5c2345a2e6de46f2da589
   - enabled: 1

@@ -16,7 +16,7 @@ namespace Igarashi
         // Start is called before the first frame update
         void Start()
         {
-            _Gururin = GameObject.FindWithTag("Player");
+            _Gururin = GameObject.FindGameObjectWithTag("Player");
         }
 
         // ぐるりんをリスポーンしたいときに呼ぶ(仮)

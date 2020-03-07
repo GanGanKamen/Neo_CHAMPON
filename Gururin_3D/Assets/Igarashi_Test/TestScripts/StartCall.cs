@@ -27,7 +27,7 @@ public class StartCall : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _Gururin = GameObject.FindWithTag("Player");
+        _Gururin = GameObject.FindGameObjectWithTag("Player");
 
         switch (startCallSkip)
         {

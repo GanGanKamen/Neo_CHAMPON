@@ -24,7 +24,7 @@ public class GoalDirecting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _Gururin = GameObject.FindWithTag("Player");
+        _Gururin = GameObject.FindGameObjectWithTag("Player");
         _goalDirecting = GameObject.Find("StartGoalDirectingCanvas/GoalDirecting");
 
         var goalCameraCVC = cameraSet.goalCamera.GetComponent<CinemachineVirtualCamera>();
