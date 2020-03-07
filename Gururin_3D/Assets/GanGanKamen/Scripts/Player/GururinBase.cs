@@ -14,6 +14,7 @@ namespace GanGanKamen
         public float DefultBrakePower { get { return DefultBrakePower; } }
         public float DefultAccel { get { return defultAccel; } }
         public bool IsAccelMove { get { return GetIsAccelMove(); } }
+        public float MoveAngle { get { return moveAngle; } }
 
         public float maxSpeed { get; set; }
         public GameObject gear { get; set; }
@@ -32,6 +33,9 @@ namespace GanGanKamen
         private float defultJumpPower = 0;
         private float defultBrakePower = 0;
         private float defultAccel = 0;
+
+        public float debugRotSpeed;
+        public Vector3 debugMoveVecSpeed;
 
         public void SetDefult()
         {
@@ -66,6 +70,8 @@ namespace GanGanKamen
             else if (realSpeed <= -maxSpeed) realSpeed = -maxSpeed;
             var moveVecSpeed = new Vector3(realSpeed, 0, 0) - rigidbody.velocity;
             rigidbody.AddForce(moveVecSpeed, ForceMode.Acceleration);
+            debugRotSpeed = rotSpeed;
+            debugMoveVecSpeed = moveVecSpeed;
         }
 
         public bool GetIsAccelMove()

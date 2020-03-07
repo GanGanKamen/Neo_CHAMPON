@@ -23,14 +23,12 @@ namespace GanGanKamen
         {
             canCtrl = true;
             gameController.Enable = true;
-            Debug.Log("操作可能");
         }
 
         public void ProhibitControll()
         {
             canCtrl = false;
             gameController.Enable = false;
-            Debug.Log("操作不可");
         }
 
         // Start is called before the first frame update
@@ -58,10 +56,12 @@ namespace GanGanKamen
                 GururinMove();
                 NormalCtrl();
             }
+            /*
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 PermitControll();
             }
+            */
         }
 
         private void NormalCtrl()
