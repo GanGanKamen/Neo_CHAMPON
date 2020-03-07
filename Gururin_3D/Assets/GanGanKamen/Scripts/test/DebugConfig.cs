@@ -34,7 +34,10 @@ namespace GanGanKamen
                     + "\n" + "debugRotSpeed: " + player.debugRotSpeed
                     + "\n" + "debugMoveVecSpeed" + player.debugMoveVecSpeed
                     + "\n" + "velocity: " + player.GetComponent<Rigidbody>().velocity
-                    + "\n" + "MoveAngle: " + player.MoveAngle;
+                    + "\n" + "MoveAngle: " + player.MoveAngle
+                    + "\n" + "maxSpeed" + player.maxSpeed
+                    + "\n" + "accel" + player.accel
+                     + "\n" + "defultSpeed" + player.defultSpeed;
             }
         }
 

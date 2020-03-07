@@ -16,11 +16,11 @@ namespace GanGanKamen
         public bool IsAccelMove { get { return GetIsAccelMove(); } }
         public float MoveAngle { get { return moveAngle; } }
 
-        public float maxSpeed { get; set; }
-        public GameObject gear { get; set; }
-        public float jumpPower { get; set; }
-        public float brakePower { get; set; }
-        public float accel { get; set; }
+        public float maxSpeed;
+        public GameObject gear;
+        public float jumpPower;
+        public float brakePower;
+        public float accel;
 
 
         private float moveAngle = 0;
@@ -29,7 +29,7 @@ namespace GanGanKamen
         private bool isAttachGimmick = false;
         private bool isCollideWall = false;
 
-        private float defultSpeed = 0;
+        public float defultSpeed = 0;
         private float defultJumpPower = 0;
         private float defultBrakePower = 0;
         private float defultAccel = 0;

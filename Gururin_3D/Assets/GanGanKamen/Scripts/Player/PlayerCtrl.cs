@@ -7,13 +7,6 @@ namespace GanGanKamen
     public class PlayerCtrl : GanGanKamen.GururinBase
     {
         public bool CanCtrl { get { return canCtrl; } }
-
-        [SerializeField] private float _maxSpeed;
-        [SerializeField] private GameObject _gear;
-        [SerializeField] private float _jumpPower;
-        [SerializeField] private float _accel;
-        [SerializeField] [Range(0, 10)] private float _brakePower;
-
         public GameController gameController;
 
         private bool canCtrl = false;
@@ -32,20 +25,9 @@ namespace GanGanKamen
         }
 
         // Start is called before the first frame update
-        private void Awake()
-        {
-            maxSpeed = _maxSpeed;
-            gear = _gear;
-            jumpPower = _jumpPower;
-            accel = _accel;
-            brakePower = _brakePower;
-
-            SetDefult();
-        }
-
         void Start()
         {
-
+            SetDefult();
         }
 
         // Update is called once per frame
