@@ -82,7 +82,6 @@ public class GoalDirecting : MonoBehaviour
         _stageClearCanvasGroup.alpha = 1.0f;
 
         // ☆リザルト画面表示
-        Debug.Log("リザルト画面表示");
     }
 
     // 画像の設定

@@ -88,14 +88,12 @@ namespace GanGanKamen
 
         public void AttackToGimmick()
         {
-            Debug.Log("attach");
             isAttachGimmick = true;
             moveAngle = 0;
         }
 
         public void SeparateGimmick()
         {
-            Debug.Log("Separate");
             isAttachGimmick = false;
         }
 

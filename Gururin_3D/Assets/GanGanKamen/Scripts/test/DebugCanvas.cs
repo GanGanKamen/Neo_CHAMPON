@@ -20,6 +20,7 @@ public class DebugCanvas : MonoBehaviour
 
     void OnDisable()
     {
+
         Application.logMessageReceived -= HandleLog;
     }
 

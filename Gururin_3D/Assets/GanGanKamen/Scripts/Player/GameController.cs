@@ -361,7 +361,6 @@ namespace GanGanKamen
             if (flickCount != flickCountPre)
             {
                 flickCountPre = flickCount;
-                Debug.Log("flick" + flickDirection);
                 return true;
             }
             else
