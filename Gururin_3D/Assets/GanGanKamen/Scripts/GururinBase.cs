@@ -27,6 +27,8 @@ namespace GanGanKamen
         private bool canJump = false;
         private bool isAttachGimmick = false;
         private bool isCollideWall = false;
+        public bool isLift = false;
+        public float liftSpeed = 0;
 
         private float defultSpeed = 0;
         private float defultJumpPower = 0;
@@ -104,6 +106,12 @@ namespace GanGanKamen
             var velocity = Mathf.Abs(rigidbody.velocity.x);
             var brakeForce = Vector3.Scale(rigidbody.velocity, new Vector3(-0.01f * brakePower / velocity, 0, 0));
             rigidbody.AddForce(brakeForce, ForceMode.VelocityChange);
+
+            if(isLift) //&& rigidbody.velocity.x > -3 && rigidbody.velocity.x < 3)
+            {
+                MoveStop();
+                this.gameObject.transform.Translate(liftSpeed, 0, 0);
+            }
         }
 
         public void Brake(float power)
