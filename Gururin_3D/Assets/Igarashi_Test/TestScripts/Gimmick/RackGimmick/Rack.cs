@@ -86,12 +86,12 @@ namespace Igarashi
                                 _GururinRb.velocity = Vector3.zero;
                                 _GururinRb.angularVelocity = Vector3.zero;
                                 _GururinRb.useGravity = false;
-                            break;
+                                break;
 
                             // 踏ん張らなければ落下
                             case false:
                                 _GururinRb.useGravity = true;
-                            break;
+                                break;
                         }
                         return;
                     }
@@ -142,17 +142,17 @@ namespace Igarashi
                 case GravityType.Up:
                     var upForce = new Vector3(0.0f, 9.81f);
                     _GururinRb.AddForce(upForce, ForceMode.Acceleration);
-                break;
+                    break;
 
                 case GravityType.Left:
                     var leftForce = new Vector3(-9.81f, 0.0f);
                     _GururinRb.AddForce(leftForce, ForceMode.Acceleration);
-                break;
+                    break;
 
                 case GravityType.Right:
                     var rightForce = new Vector3(9.81f, 0.0f);
                     _GururinRb.AddForce(rightForce, ForceMode.Acceleration);
-                break;
+                    break;
             }
         }
 
@@ -180,17 +180,17 @@ namespace Igarashi
                 case GravityType.Up:
                     var moveUpVecSpeed = new Vector3(-realSpeed, 0.0f) - _GururinRb.velocity;
                     _GururinRb.AddForce(moveUpVecSpeed, ForceMode.Acceleration);
-                break;
+                    break;
 
                 case GravityType.Left:
                     var moveLeftVecSpeed = new Vector3(0.0f, -realSpeed) - _GururinRb.velocity;
                     _GururinRb.AddForce(moveLeftVecSpeed, ForceMode.Acceleration);
-                break;
+                    break;
 
                 case GravityType.Right:
                     var moveRightVecSpeed = new Vector3(0.0f, realSpeed) - _GururinRb.velocity;
                     _GururinRb.AddForce(moveRightVecSpeed, ForceMode.Acceleration);
-                break;
+                    break;
             }
         }
 
@@ -201,17 +201,17 @@ namespace Igarashi
                 case GravityType.Up:
                     var downForce = new Vector3(0.0f, -_gururinBase.jumpPower);
                     _GururinRb.AddForce(downForce, ForceMode.VelocityChange);
-                break;
+                    break;
 
                 case GravityType.Left:
                     var rightForce = new Vector3(_gururinBase.jumpPower, _gururinBase.jumpPower);
                     _GururinRb.AddForce(rightForce, ForceMode.VelocityChange);
-                break;
+                    break;
 
                 case GravityType.Right:
                     var leftForce = new Vector3(-_gururinBase.jumpPower, _gururinBase.jumpPower);
                     _GururinRb.AddForce(leftForce, ForceMode.VelocityChange);
-                break;
+                    break;
             }
         }
     }

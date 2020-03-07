@@ -104,7 +104,7 @@ namespace Igarashi
             {
                 case true:
                     Pendulum(baseGear, Gururin.transform.position.x);
-                break;
+                    break;
 
                 case false:
                     if (_pendulumTime < 0.0f) return;
@@ -133,7 +133,7 @@ namespace Igarashi
                             }
                         }
                     }
-                break;
+                    break;
             }
         }
 

@@ -12,12 +12,13 @@ using Cinemachine;
 public class GoalDirecting : MonoBehaviour
 {
     [SerializeField] private GameObject stageClearPrefab;
-    [SerializeField] private GameObject mainVCam;
+    [SerializeField] private GameObject mainVCamera;
     [SerializeField] private GameObject goalCamera;
     [SerializeField] [Header("カメラが近づく速度 1.0~30.0")] [Range(_limitLowerSpeed, 30.0f)] private float zoomInSpeed;
 
     private GameObject _Gururin;
     private GameObject _goalDirecting;
+    private GameObject _stageClearImage;
     private CanvasGroup _stageClearCanvasGroup;
     private const float _limitLowerSpeed = 1.0f;
 
@@ -27,23 +28,32 @@ public class GoalDirecting : MonoBehaviour
         _Gururin = GameObject.FindWithTag("Player");
         _goalDirecting = GameObject.Find("StartGoalDirectingCanvas/GoalDirecting");
 
-        var stageClearImage = Instantiate(stageClearPrefab);
-        ImageSetting(stageClearImage);
-
-        _stageClearCanvasGroup = stageClearImage.GetComponent<CanvasGroup>();
-        _stageClearCanvasGroup.alpha = 0.0f;
-
         var goalCameraCVC = goalCamera.GetComponent<CinemachineVirtualCamera>();
         goalCameraCVC.m_Priority = 0;
     }
 
     private void OnTriggerEnter(Collider other)
     {
+        _stageClearCanvasGroup = ImageSetting(stageClearPrefab);
+
         // ☆もしメインカメラが切り替わっていたらどうするかは後で考える
-        var mainCameraCVC = mainVCam.GetComponent<CinemachineVirtualCamera>();
+        var mainCameraCVC = mainVCamera.GetComponent<CinemachineVirtualCamera>();
         var goalCameraCVC = GoalCameraSetting(mainCameraCVC);
 
         StartCoroutine(Goal(mainCameraCVC, goalCameraCVC));
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // ゴール後、「3！」でゴール演出削除
+        if (Input.GetKeyDown(KeyCode.Alpha3) && _stageClearImage != null)
+        {
+            var goalCameraCVC = goalCamera.GetComponent<CinemachineVirtualCamera>();
+            goalCameraCVC.m_Priority = 0;
+
+            Destroy(_stageClearImage);
+        }
     }
 
     IEnumerator Goal(CinemachineVirtualCamera mainCameraCVC, CinemachineVirtualCamera goalCameraCVC)
@@ -69,6 +79,7 @@ public class GoalDirecting : MonoBehaviour
 
         yield return null;
 
+        // StageClear画像を表示
         _stageClearCanvasGroup.alpha = 1.0f;
 
         // ☆リザルト画面表示
@@ -76,11 +87,18 @@ public class GoalDirecting : MonoBehaviour
     }
 
     // 画像の設定
-    private void ImageSetting(GameObject image)
+    private CanvasGroup ImageSetting(GameObject imagePrefab)
     {
+        var image = Instantiate(imagePrefab);
         image.transform.SetParent(_goalDirecting.transform);
         image.transform.localPosition = Vector3.zero;
         image.transform.localScale = Vector3.one;
+        _stageClearImage = image;
+
+        var canvasGroup = image.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0.0f;
+
+        return canvasGroup;
     }
 
     // ゴールカメラの設定

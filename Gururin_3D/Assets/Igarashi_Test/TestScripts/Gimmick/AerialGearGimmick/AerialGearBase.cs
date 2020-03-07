@@ -143,12 +143,12 @@ namespace Igarashi
                                     CircularMotion(Vector3.back);
                                 }
                             }
-                        break;
+                            break;
 
                         // 操作入力なし
                         case false:
                             _keepSpeed = true;
-                        break;
+                            break;
                     }
                 }
 
@@ -157,11 +157,11 @@ namespace Igarashi
                 {
                     case true:
                         AerialGearBrake();
-                    break;
+                        break;
 
                     case false:
                         _braking = false;
-                    break;
+                        break;
                 }
 
                 // 入力がない時に最終操作時の入力速度で回転

@@ -54,11 +54,11 @@ namespace Igarashi
                 {
                     case true:
                         MovePiston(_startPos, pushLimitPos.position, pushSpeed);
-                    break;
+                        break;
 
                     case false:
                         MovePiston(pushLimitPos.position, _startPos, pullSpeed);
-                    break;
+                        break;
                 }
             }
 
@@ -75,11 +75,11 @@ namespace Igarashi
                     {
                         case true:
                             _pushing = false;
-                         break;
+                            break;
 
                         case false:
                             _pushing = true;
-                        break;
+                            break;
                     }
                     // 移動再開
                     _moveApproved = true;

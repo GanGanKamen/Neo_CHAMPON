@@ -13,15 +13,16 @@ public class StartCall : MonoBehaviour
 {
     [SerializeField] private GameObject readyPrefab;
     [SerializeField] private GameObject startPrefab;
-    [SerializeField] private GameObject mainVCam;
+    [SerializeField] private GameObject mainVCamera;
     [SerializeField] private GameObject startCamera;
     [SerializeField] [Header("スタートコールの表示待機時間")] private float waitDisplayTime;
     [SerializeField] [Header("スタートまでの時間")] private float startTime;
     [SerializeField] [Header("スタートコールの表示終了時間")] private float endDisplayTime;
     [SerializeField] [Header("カメラが引く速度 1.0~30.0")] [Range(_limitLowerSpeed, 30.0f)] private float zoomOutSpeed;
+    [SerializeField] [Header("スタートコール演出をスキップ")] private bool startCallSkip;
 
     private GameObject _Gururin;
-    private GameObject[] _images;
+    private List<GameObject> _images = new List<GameObject>(2); // 画像を一括で削除するために格納
     private const float _limitLowerSpeed = 1.0f;
 
     // Start is called before the first frame update
@@ -29,31 +30,35 @@ public class StartCall : MonoBehaviour
     {
         _Gururin = GameObject.FindWithTag("Player");
 
-        var readyImage = Instantiate(readyPrefab);
-        ImageSetting(readyImage);
-        var startImage = Instantiate(startPrefab);
-        ImageSetting(startImage);
-        _images = new GameObject[] { readyImage, startImage };
+        switch (startCallSkip)
+        {
+            case true:
+                var playerCtrl = _Gururin.GetComponent<GanGanKamen.PlayerCtrl>();
+                playerCtrl.PermitControll();
 
-        var readyCanvasGroup = readyImage.GetComponent<CanvasGroup>();
-        readyCanvasGroup.alpha = 0.0f;
-        var startCanvasGroup = startImage.GetComponent<CanvasGroup>();
-        startCanvasGroup.alpha = 0.0f;
+                var skipStartCameraCVC = startCamera.GetComponent<CinemachineVirtualCamera>();
+                skipStartCameraCVC.m_Priority = 0;
+                return;
 
-        var mainCameraCVC = mainVCam.GetComponent<CinemachineVirtualCamera>();
-        var startCameraCVC = StartCameraSetting(mainCameraCVC);
+            case false:
+                var readyCanvasGroup = ImageSetting(readyPrefab);
+                var startCanvasGroup = ImageSetting(startPrefab);
 
-        // ☆フェードイン終了通知を受ける
+                var mainCameraCVC = mainVCamera.GetComponent<CinemachineVirtualCamera>();
+                var startCameraCVC = StartCameraSetting(mainCameraCVC);
 
-        // (終了通知を受けたら)コルーチン起動
-        StartCoroutine(StartCalling(readyCanvasGroup, startCanvasGroup, mainCameraCVC, startCameraCVC));
+                // ☆フェードイン終了通知を受ける
+
+                // (終了通知を受けたら)コルーチン起動
+                StartCoroutine(StartCalling(readyCanvasGroup, startCanvasGroup, mainCameraCVC, startCameraCVC));
+                break;
+        }
     }
 
     IEnumerator StartCalling(CanvasGroup readyCanvasGroup, CanvasGroup startCanvasGroup,
                                             CinemachineVirtualCamera mainCameraCVC, CinemachineVirtualCamera startCameraCVC)
     {
         var playerCtrl = _Gururin.GetComponent<GanGanKamen.PlayerCtrl>();
-
         // 操作不許可
         playerCtrl.ProhibitControll();
 
@@ -88,18 +93,25 @@ public class StartCall : MonoBehaviour
         yield return new WaitForSeconds(endDisplayTime);
 
         // 画像を削除
-        for(int i = 0; i < _images.Length; i++)
+        for(int i = 0; i < _images.Count; i++)
         {
             Destroy(_images[i]);
         }
     }
 
     // 画像の設定
-    private void ImageSetting(GameObject image)
+    private CanvasGroup ImageSetting(GameObject imagePrefab)
     {
+        var image = Instantiate(imagePrefab);
         image.transform.SetParent(transform);
         image.transform.localPosition = Vector3.zero;
         image.transform.localScale = Vector3.one;
+        _images.Add(image);
+
+        var canvasGroup = image.GetComponent<CanvasGroup>();
+        canvasGroup.alpha = 0.0f;
+
+        return canvasGroup;
     }
 
     // スタートカメラの設定

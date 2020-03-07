@@ -20,11 +20,11 @@ namespace Igarashi
                 {
                     case true:
                         hoistCrane.CollisionLimitEnter(true);
-                    break;
+                        break;
 
                     case false:
                         hoistCrane.CollisionLimitEnter(false);
-                    break;
+                        break;
                 }
             }
         }

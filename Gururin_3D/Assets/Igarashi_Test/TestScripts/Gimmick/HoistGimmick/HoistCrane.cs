@@ -81,7 +81,7 @@ namespace Igarashi
                                 Hoist(true);
                             }
                         }
-                    break;
+                        break;
 
                     // 操作入力がなければ下げる
                     case false:
@@ -92,13 +92,13 @@ namespace Igarashi
                         {
                             case true:
                                 Rotate(true);
-                            break;
+                                break;
 
                             case false:
                                 Rotate(false);
-                            break;
+                                break;
                         }
-                    break;
+                        break;
                 }
             }
             // 噛み合っていないとき下限でなければ下げる
@@ -113,11 +113,11 @@ namespace Igarashi
                 {
                     case true:
                         Rotate(true);
-                    break;
+                        break;
 
                     case false:
                         Rotate(false);
-                    break;
+                        break;
                 }
             }
         }
@@ -193,7 +193,7 @@ namespace Igarashi
                         var rollUp = new Vector3(hoistObjPos.x, hoistObjPos.y, hoistObjPos.z);
                         _hoistObjRb.MovePosition(rollUp);
                     }
-                break;
+                    break;
 
                 case false:
                     _hoisting = false;
@@ -212,7 +212,7 @@ namespace Igarashi
                         var rollDown = new Vector3(hoistObjPos.x, hoistObjPos.y, hoistObjPos.z);
                         _hoistObjRb.MovePosition(rollDown);
                     }
-                break;
+                    break;
             }
         }
 
@@ -233,7 +233,7 @@ namespace Igarashi
                             transform.Rotate(0.0f, 0.0f, -rotationSpeed);
                             _Gururin.transform.Rotate(0.0f, 0.0f, rotationSpeed);
                         }
-                    break;
+                        break;
 
                     case false:
                         if (_Gururin == null)
@@ -245,7 +245,7 @@ namespace Igarashi
                             transform.Rotate(0.0f, 0.0f, rotationSpeed);
                             _Gururin.transform.Rotate(0.0f, 0.0f, -rotationSpeed);
                         }
-                    break;
+                        break;
                 }
             }
         }
@@ -283,11 +283,11 @@ namespace Igarashi
             {
                 case true:
                     _limit = 1;
-                break;
+                    break;
 
                 case false:
                     _limit = -1;
-                break;
+                    break;
             }
             _collisionLimit = true;
         }
