@@ -7,13 +7,13 @@ public class Fader : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     static public void FadeOut(float time)
@@ -22,10 +22,14 @@ public class Fader : MonoBehaviour
         fader.GetComponent<FadeCanvas>().FadeOut(time);
     }
 
-    static public void FadeIn(float time,string sceneName)
+    static public void FadeIn(float time, string sceneName)
     {
+        if (Resources.Load<GameObject>("FadeCanvas").GetComponent<FadeCanvas>() == null)
+        {
+            Debug.Log("FadeCanvas_Null");
+        }
         GameObject fader = Instantiate(Resources.Load<GameObject>("FadeCanvas"));
-        fader.GetComponent<FadeCanvas>().FadeIn(time,sceneName);
+        fader.GetComponent<FadeCanvas>().FadeIn(time, sceneName);
     }
 
     static public void FadeInBlack(float time, string sceneName)

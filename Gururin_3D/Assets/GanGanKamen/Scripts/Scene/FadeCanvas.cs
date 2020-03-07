@@ -25,7 +25,7 @@ public class FadeCanvas : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        faderImg.color = new Color(faderImg.color.r, faderImg.color.g, faderImg.color.b, alpha);
+        if(faderImg != null)faderImg.color = new Color(faderImg.color.r, faderImg.color.g, faderImg.color.b, alpha);
         switch (fadeSwitch)
         {
             default:
@@ -90,11 +90,11 @@ public class FadeCanvas : MonoBehaviour
             yield return null;
         }
 
-        load.SetActive(true);
+        if(load != null) load.SetActive(true);
         async = SceneManager.LoadSceneAsync(sceneName);
         while (!async.isDone)
         {
-            loadSlider.value = async.progress;
+            if(loadSlider!=null) loadSlider.value = async.progress;
             if(icon !=null)icon.rectTransform.Rotate(0, 0, 60f * Time.deltaTime);
             yield return null;
         }
