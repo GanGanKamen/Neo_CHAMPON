@@ -12,8 +12,7 @@ using Cinemachine;
 public class GoalDirecting : MonoBehaviour
 {
     [SerializeField] private GameObject stageClearPrefab;
-    [SerializeField] private GameObject mainVCamera;
-    [SerializeField] private GameObject goalCamera;
+    [SerializeField] private CameraManager cameraSet;
     [SerializeField] [Header("カメラが近づく速度 1.0~30.0")] [Range(_limitLowerSpeed, 30.0f)] private float zoomInSpeed;
 
     private GameObject _Gururin;
@@ -28,7 +27,7 @@ public class GoalDirecting : MonoBehaviour
         _Gururin = GameObject.FindWithTag("Player");
         _goalDirecting = GameObject.Find("StartGoalDirectingCanvas/GoalDirecting");
 
-        var goalCameraCVC = goalCamera.GetComponent<CinemachineVirtualCamera>();
+        var goalCameraCVC = cameraSet.goalCamera.GetComponent<CinemachineVirtualCamera>();
         goalCameraCVC.m_Priority = 0;
     }
 
@@ -37,7 +36,7 @@ public class GoalDirecting : MonoBehaviour
         _stageClearCanvasGroup = ImageSetting(stageClearPrefab);
 
         // ☆もしメインカメラが切り替わっていたらどうするかは後で考える
-        var mainCameraCVC = mainVCamera.GetComponent<CinemachineVirtualCamera>();
+        var mainCameraCVC = cameraSet.mainVCamera.GetComponent<CinemachineVirtualCamera>();
         var goalCameraCVC = GoalCameraSetting(mainCameraCVC);
 
         StartCoroutine(Goal(mainCameraCVC, goalCameraCVC));
@@ -49,7 +48,7 @@ public class GoalDirecting : MonoBehaviour
         // ゴール後、「3！」でゴール演出削除
         if (Input.GetKeyDown(KeyCode.Alpha3) && _stageClearImage != null)
         {
-            var goalCameraCVC = goalCamera.GetComponent<CinemachineVirtualCamera>();
+            var goalCameraCVC = cameraSet.goalCamera.GetComponent<CinemachineVirtualCamera>();
             goalCameraCVC.m_Priority = 0;
 
             Destroy(_stageClearImage);
@@ -104,7 +103,7 @@ public class GoalDirecting : MonoBehaviour
     // ゴールカメラの設定
     private CinemachineVirtualCamera GoalCameraSetting(CinemachineVirtualCamera mainCameraCVC)
     {
-        var goalCameraCVC = goalCamera.GetComponent<CinemachineVirtualCamera>();
+        var goalCameraCVC = cameraSet.goalCamera.GetComponent<CinemachineVirtualCamera>();
         goalCameraCVC.m_Follow = _Gururin.transform;
         // goalCameraのPriorityをmainCameraより1高くする
         goalCameraCVC.m_Priority = mainCameraCVC.m_Priority + 1;

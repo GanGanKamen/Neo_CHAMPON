@@ -13,8 +13,7 @@ public class StartCall : MonoBehaviour
 {
     [SerializeField] private GameObject readyPrefab;
     [SerializeField] private GameObject startPrefab;
-    [SerializeField] private GameObject mainVCamera;
-    [SerializeField] private GameObject startCamera;
+    [SerializeField] private CameraManager cameraSet;
     [SerializeField] [Header("スタートコールの表示待機時間")] private float waitDisplayTime;
     [SerializeField] [Header("スタートまでの時間")] private float startTime;
     [SerializeField] [Header("スタートコールの表示終了時間")] private float endDisplayTime;
@@ -36,7 +35,7 @@ public class StartCall : MonoBehaviour
                 var playerCtrl = _Gururin.GetComponent<GanGanKamen.PlayerCtrl>();
                 playerCtrl.PermitControll();
 
-                var skipStartCameraCVC = startCamera.GetComponent<CinemachineVirtualCamera>();
+                var skipStartCameraCVC = cameraSet.startCamera.GetComponent<CinemachineVirtualCamera>();
                 skipStartCameraCVC.m_Priority = 0;
                 return;
 
@@ -44,7 +43,7 @@ public class StartCall : MonoBehaviour
                 var readyCanvasGroup = ImageSetting(readyPrefab);
                 var startCanvasGroup = ImageSetting(startPrefab);
 
-                var mainCameraCVC = mainVCamera.GetComponent<CinemachineVirtualCamera>();
+                var mainCameraCVC = cameraSet.mainVCamera.GetComponent<CinemachineVirtualCamera>();
                 var startCameraCVC = StartCameraSetting(mainCameraCVC);
 
                 // ☆フェードイン終了通知を受ける
@@ -77,7 +76,7 @@ public class StartCall : MonoBehaviour
         }
         if (startCameraCVC.m_Lens.FieldOfView >= mainCameraView)
         {
-            startCamera.SetActive(false);
+            cameraSet.startCamera.SetActive(false);
         }
 
         // カメラが引き終わってからn秒待つ(待つ必要が無ければ消してretune)
@@ -117,7 +116,7 @@ public class StartCall : MonoBehaviour
     // スタートカメラの設定
     private CinemachineVirtualCamera StartCameraSetting(CinemachineVirtualCamera mainCameraCVC)
     {
-        var startCameraCVC = startCamera.GetComponent<CinemachineVirtualCamera>();
+        var startCameraCVC = cameraSet.startCamera.GetComponent<CinemachineVirtualCamera>();
         startCameraCVC.m_Follow = _Gururin.transform;
         // startCameraのPriorityをmainCameraより1高くする
         startCameraCVC.m_Priority = mainCameraCVC.m_Priority + 1;

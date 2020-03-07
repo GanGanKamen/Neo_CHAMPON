@@ -1135,7 +1135,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "2-1(\u4EEE)"
+  m_Text: "2-2(\u4EEE)"
 --- !u!222 &690486037
 CanvasRenderer:
   m_ObjectHideFlags: 0
