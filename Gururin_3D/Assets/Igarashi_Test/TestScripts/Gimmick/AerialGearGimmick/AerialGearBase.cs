@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Igarashi;
 
 /// <summary>
 /// 空中歯車ギミック関係の動作処理
@@ -40,15 +41,11 @@ namespace Igarashi
         private bool _isCollision;
         private bool _leave;
 
-        private void Awake()
-        {
-            _inputAngleDirection = 0;
-            _rotDirection = 0;
-        }
-
         // Start is called before the first frame update
         void Start()
         {
+            _inputAngleDirection = 0;
+            _rotDirection = 0;
             _gameController = GameObject.Find("GameController").GetComponent<GanGanKamen.GameController>();
 
             if(gearType == GearType.Free)

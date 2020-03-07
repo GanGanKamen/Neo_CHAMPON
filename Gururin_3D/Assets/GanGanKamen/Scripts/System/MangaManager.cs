@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
+using GanGanKamen;
 
 namespace GanGanKamen
 {

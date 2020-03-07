@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Igarashi;
 /// <summary>
 /// 空中自由歯車ギミックの動作処理
 /// </summary>

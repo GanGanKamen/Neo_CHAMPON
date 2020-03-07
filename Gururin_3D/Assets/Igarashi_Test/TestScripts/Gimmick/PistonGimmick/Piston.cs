@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Igarashi;
 
 /// <summary>
 /// ピストンギミック
@@ -17,7 +18,6 @@ namespace Igarashi
         [SerializeField] [Range(_lowerSpeedLimit, 20.0f)] [Header("ピストンの停止時間 0.0~20.0")] private float pistonStopTime;
         [SerializeField] [Header("押し出し限界地点")] private Transform pushLimitPos;
 
-        private GameObject _Gururin;
         private Rigidbody _rigidbody;
         private Vector3 _startPos;
         private float _moveTimer; // 移動所要時間
@@ -29,16 +29,12 @@ namespace Igarashi
 
         [SerializeField] private bool completeStop; // ピストンの動作を完全に停止
 
-        private void Awake()
+        // Start is called before the first frame update
+        void Start()
         {
             _startPos = transform.position;
             _moveApproved = true;
             _pushing = true;
-        }
-
-        // Start is called before the first frame update
-        void Start()
-        {
             _rigidbody = GetComponent<Rigidbody>();
         }
 

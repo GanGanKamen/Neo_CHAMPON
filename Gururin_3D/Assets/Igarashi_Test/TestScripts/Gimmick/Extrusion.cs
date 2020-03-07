@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Igarashi;
 
 /// <summary>
 /// 押し出し動作処理
