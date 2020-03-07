@@ -11,12 +11,13 @@ using Cinemachine;
 
 public class GoalDirecting : MonoBehaviour
 {
-    [SerializeField] private GameObject stageClear;
+    [SerializeField] private GameObject stageClearPrefab;
     [SerializeField] private GameObject mainVCam;
     [SerializeField] private GameObject goalCamera;
     [SerializeField] [Header("カメラが近づく速度 1.0~30.0")] [Range(_limitLowerSpeed, 30.0f)] private float zoomInSpeed;
 
     private GameObject _Gururin;
+    private GameObject _goalDirecting;
     private CanvasGroup _stageClearCanvasGroup;
     private const float _limitLowerSpeed = 1.0f;
 
@@ -24,8 +25,12 @@ public class GoalDirecting : MonoBehaviour
     void Start()
     {
         _Gururin = GameObject.FindWithTag("Player");
+        _goalDirecting = GameObject.Find("StartGoalDirectingCanvas/GoalDirecting");
 
-        _stageClearCanvasGroup = stageClear.GetComponent<CanvasGroup>();
+        var stageClearImage = Instantiate(stageClearPrefab);
+        ImageSetting(stageClearImage);
+
+        _stageClearCanvasGroup = stageClearImage.GetComponent<CanvasGroup>();
         _stageClearCanvasGroup.alpha = 0.0f;
 
         var goalCameraCVC = goalCamera.GetComponent<CinemachineVirtualCamera>();
@@ -36,12 +41,7 @@ public class GoalDirecting : MonoBehaviour
     {
         // ☆もしメインカメラが切り替わっていたらどうするかは後で考える
         var mainCameraCVC = mainVCam.GetComponent<CinemachineVirtualCamera>();
-        var mainCameraView = mainCameraCVC.m_Lens.FieldOfView;
-        var goalCameraCVC = goalCamera.GetComponent<CinemachineVirtualCamera>();
-        goalCameraCVC.m_Follow = _Gururin.transform;
-        // goalCameraのPriorityをmainCameraより1高くする
-        goalCameraCVC.m_Priority = mainCameraCVC.m_Priority + 1;
-        goalCameraCVC.m_Lens.FieldOfView = mainCameraView;
+        var goalCameraCVC = GoalCameraSetting(mainCameraCVC);
 
         StartCoroutine(Goal(mainCameraCVC, goalCameraCVC));
     }
@@ -56,7 +56,7 @@ public class GoalDirecting : MonoBehaviour
         GururinRb.angularVelocity = Vector3.zero;
 
         var playerCtrl = _Gururin.GetComponent<GanGanKamen.PlayerCtrl>();
-        // 操作不許可(リスタート時どこかでSeparateGimmickを呼ぶ必要がある)
+        // 操作不許可(リスタート時どこかでPlayerCtrl.PermitControll()を呼ぶ必要がある)
         playerCtrl.ProhibitControll();
 
         var mainCameraHalfView = mainCameraCVC.m_Lens.FieldOfView / 2.0f;
@@ -73,5 +73,25 @@ public class GoalDirecting : MonoBehaviour
 
         // ☆リザルト画面表示
         Debug.Log("リザルト画面表示");
+    }
+
+    // 画像の設定
+    private void ImageSetting(GameObject image)
+    {
+        image.transform.SetParent(_goalDirecting.transform);
+        image.transform.localPosition = Vector3.zero;
+        image.transform.localScale = Vector3.one;
+    }
+
+    // ゴールカメラの設定
+    private CinemachineVirtualCamera GoalCameraSetting(CinemachineVirtualCamera mainCameraCVC)
+    {
+        var goalCameraCVC = goalCamera.GetComponent<CinemachineVirtualCamera>();
+        goalCameraCVC.m_Follow = _Gururin.transform;
+        // goalCameraのPriorityをmainCameraより1高くする
+        goalCameraCVC.m_Priority = mainCameraCVC.m_Priority + 1;
+        goalCameraCVC.m_Lens.FieldOfView = mainCameraCVC.m_Lens.FieldOfView;
+
+        return goalCameraCVC;
     }
 }

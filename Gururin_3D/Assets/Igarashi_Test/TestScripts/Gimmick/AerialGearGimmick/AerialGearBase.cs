@@ -68,7 +68,7 @@ namespace Igarashi
                 // ぐるりんのposition.zと空中歯車のPosition.zが同じときに噛み合い
                 if (_GururinPos.z == transform.position.z)
                 {
-                    CollisionSet(other.gameObject);
+                    CollisionSettings(other.gameObject);
                     _moveAngle = 0.0f;
                     _inputAngleDirection = 0;
                     _rotDirection = 0;
@@ -221,7 +221,7 @@ namespace Igarashi
         }
 
         // 接触時にぐるりんのコンポーネント取得等あれこれ
-        void CollisionSet(GameObject colObj)
+        void CollisionSettings(GameObject colObj)
         {
             if(gearType == GearType.Free)
             {
@@ -302,7 +302,7 @@ namespace Igarashi
         // ジャンプの方向
         void AerialGearJump(Vector3 GururinPos, Vector3 gearPos)
         {
-            var jumpPower = _gururinBase.jumpPower / 2.0f;
+            var jumpPower = _gururinBase.jumpPower;
             // 第一象限(右上)
             if (GururinPos.x > gearPos.x && GururinPos.y > gearPos.y)
             {
