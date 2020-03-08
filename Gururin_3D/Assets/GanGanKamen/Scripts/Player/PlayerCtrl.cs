@@ -14,7 +14,7 @@ namespace GanGanKamen
         [SerializeField] private float _accel;
         [SerializeField] [Range(0, 10)] private float _brakePower;
 
-        public GameController gameController;
+        private GameController gameController;
 
         private bool canCtrl = false;
 
@@ -39,7 +39,7 @@ namespace GanGanKamen
             jumpPower = _jumpPower;
             accel = _accel;
             brakePower = _brakePower;
-
+            gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
             SetDefult();
         }
 
