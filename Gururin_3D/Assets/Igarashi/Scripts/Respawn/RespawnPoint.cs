@@ -33,7 +33,7 @@ namespace Igarashi
             if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
             {
                 // ぐるりんと接触したらリスポーン地点に設定
-                _respawn.RespawnPointSetting(respawnPos);
+                _respawn.RespawnPointSetting(respawnPos.transform);
             }
         }
     }

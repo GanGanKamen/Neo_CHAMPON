@@ -11,6 +11,8 @@ using Cinemachine;
 
 public class GoalDirecting : MonoBehaviour
 {
+    public bool IsGoal { get { return _isGoal; } } // ゴールしたかどうかの判定
+
     [SerializeField] private GameObject stageClearPrefab;
     [SerializeField] private CameraManager cameraSet;
     [SerializeField] [Header("カメラが近づく速度 1.0~30.0")] [Range(_limitLowerSpeed, 30.0f)] private float zoomInSpeed;
@@ -20,6 +22,7 @@ public class GoalDirecting : MonoBehaviour
     private GameObject _stageClearImage;
     private CanvasGroup _stageClearCanvasGroup;
     private const float _limitLowerSpeed = 1.0f;
+    private bool _isGoal;
 
     // Start is called before the first frame update
     void Start()
@@ -33,13 +36,18 @@ public class GoalDirecting : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        _stageClearCanvasGroup = ImageSetting(stageClearPrefab);
+        if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
+        {
+            _isGoal = true;
 
-        // ☆もしメインカメラが切り替わっていたらどうするかは後で考える
-        var mainCameraCVC = cameraSet.mainVCamera.GetComponent<CinemachineVirtualCamera>();
-        var goalCameraCVC = GoalCameraSetting(mainCameraCVC);
+            _stageClearCanvasGroup = ImageSetting(stageClearPrefab);
 
-        StartCoroutine(Goal(mainCameraCVC, goalCameraCVC));
+            // ☆もしメインカメラが切り替わっていたらどうするかは後で考える
+            var mainCameraCVC = cameraSet.mainVCamera.GetComponent<CinemachineVirtualCamera>();
+            var goalCameraCVC = GoalCameraSetting(mainCameraCVC);
+
+            StartCoroutine(Goal(mainCameraCVC, goalCameraCVC));
+        }
     }
 
     // Update is called once per frame
@@ -48,6 +56,8 @@ public class GoalDirecting : MonoBehaviour
         // ゴール後、「3 !」でゴール演出削除
         if (Input.GetKeyDown(KeyCode.Alpha3) && _stageClearImage != null)
         {
+            _isGoal = false;
+
             var goalCameraCVC = cameraSet.goalCamera.GetComponent<CinemachineVirtualCamera>();
             goalCameraCVC.m_Priority = 0;
 

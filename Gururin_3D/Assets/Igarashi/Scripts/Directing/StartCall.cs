@@ -11,6 +11,8 @@ using Cinemachine;
 
 public class StartCall : MonoBehaviour
 {
+    public bool IsStartCall { get { return _isStartCall; } } // スタートコール中かどうかの判定
+
     [SerializeField] private GameObject readyPrefab;
     [SerializeField] private GameObject startPrefab;
     [SerializeField] private CameraManager cameraSet;
@@ -23,6 +25,7 @@ public class StartCall : MonoBehaviour
     private GameObject _Gururin;
     private List<GameObject> _images = new List<GameObject>(2); // 画像を一括で削除するために格納
     private const float _limitLowerSpeed = 1.0f;
+    private bool _isStartCall;
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +35,8 @@ public class StartCall : MonoBehaviour
         switch (startCallSkip)
         {
             case true:
+                _isStartCall = false;
+
                 var playerCtrl = _Gururin.GetComponent<GanGanKamen.PlayerCtrl>();
                 playerCtrl.PermitControll();
 
@@ -40,6 +45,8 @@ public class StartCall : MonoBehaviour
                 break;
 
             case false:
+                _isStartCall = true;
+
                 var readyCanvasGroup = ImageSetting(readyPrefab);
                 var startCanvasGroup = ImageSetting(startPrefab);
 
@@ -84,6 +91,7 @@ public class StartCall : MonoBehaviour
 
         // 操作許可
         playerCtrl.PermitControll();
+        _isStartCall = false;
 
         // Start画像を表示
         readyCanvasGroup.alpha = 0.0f;

@@ -11,12 +11,15 @@ namespace Igarashi
     public class Respawn : MonoBehaviour
     {
         private GameObject _Gururin;
-        [SerializeField] [Header("リスポーン地点(アタッチしなくてOK)")] private GameObject _respawnPoint;
+        [SerializeField] [Header("リスポーン地点(アタッチしなくてOK)")] private Transform _respawnPoint;
 
         // Start is called before the first frame update
         void Start()
         {
             _Gururin = GameObject.FindWithTag("Player");
+
+            // 初期リスポーン地点を設定
+            RespawnPointSetting(_Gururin.transform);
         }
 
         // ぐるりんをリスポーンしたいときに呼ぶ(仮)
@@ -37,12 +40,12 @@ namespace Igarashi
         }
 
         // リスポーン地点を設定
-        public void RespawnPointSetting(GameObject respawnPoint)
+        public void RespawnPointSetting(Transform respawnPoint)
         {
             if (respawnPoint != _respawnPoint)
             {
                 _respawnPoint = respawnPoint;
-                Debug.Log("RespawnPointSet" + _respawnPoint.transform.position);
+                Debug.Log("RespawnPointSet" + _respawnPoint.position);
             }
         }
     }
