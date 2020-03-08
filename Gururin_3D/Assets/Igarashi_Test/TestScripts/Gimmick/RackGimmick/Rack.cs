@@ -10,12 +10,12 @@ namespace Igarashi
 {
     public class Rack : MonoBehaviour
     {
-        [SerializeField] [Header("減速値")] [Range(_lowerSpeedLimit, 1.0f)] private float deceleration;
+        [SerializeField] [Header("減速値 0.1~1.0")] [Range(_lowerSpeedLimit, 1.0f)] private float deceleration;
         public enum GravityType
         {
             Up,
-            Right,
-            Left
+            Left,
+            Right
         }
         [Header("重力の方向")] public GravityType gravityType;
 

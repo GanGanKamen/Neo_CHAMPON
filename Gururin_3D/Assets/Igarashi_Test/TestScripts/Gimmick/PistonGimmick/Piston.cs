@@ -12,9 +12,9 @@ namespace Igarashi
     {
         public bool Pushing { get { return _pushing; } } // 押し出しているかどうかの判定
 
-        [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("ピストンの押し出し速度 0.0~2.0")] private float pushSpeed;
-        [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("ピストンの戻り速度 0.0~2.0")] private float pullSpeed;
-        [SerializeField] [Range(_lowerSpeedLimit, 20.0f)] [Header("ピストンの停止時間 0.0~20.0")] private float pistonStopTime;
+        [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("ピストンの押し出し速度 0.1~2.0")] private float pushSpeed;
+        [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("ピストンの戻り速度 0.1~2.0")] private float pullSpeed;
+        [SerializeField] [Range(_lowerSpeedLimit, 20.0f)] [Header("ピストンの停止時間 0.1~20.0")] private float pistonStopTime;
         [SerializeField] [Header("押し出し限界地点")] private Transform pushLimitPos;
 
         private GameObject _Gururin;

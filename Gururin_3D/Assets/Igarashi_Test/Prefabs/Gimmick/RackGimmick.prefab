@@ -63,7 +63,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7866943889432588327}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7866943887915720226
 MeshFilter:
@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a05d4f3249d1a4ca2ba74bfea017ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decelerationValue: 0.5
-  gravityType: 2
+  deceleration: 0.5
+  gravityType: 1
 --- !u!1 &7866943888814684996
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a05d4f3249d1a4ca2ba74bfea017ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decelerationValue: 0.5
+  deceleration: 0.5
   gravityType: 0
 --- !u!1 &7866943888917875141
 GameObject:
@@ -275,7 +275,7 @@ Transform:
   m_LocalScale: {x: 0.2, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7866943889432588327}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7866943888917875145
 MeshFilter:
@@ -347,8 +347,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a05d4f3249d1a4ca2ba74bfea017ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decelerationValue: 0.5
-  gravityType: 1
+  deceleration: 0.5
+  gravityType: 2
 --- !u!1 &7866943889432588323
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,8 +380,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7866943888814684997}
-  - {fileID: 7866943888917875146}
   - {fileID: 7866943887915720254}
+  - {fileID: 7866943888917875146}
   m_Father: {fileID: 2908755386770689479}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

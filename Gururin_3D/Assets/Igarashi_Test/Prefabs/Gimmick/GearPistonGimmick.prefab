@@ -188,7 +188,7 @@ MonoBehaviour:
   pullSpeed: 0.5
   pistonStopTime: 10
   pushLimitPos: {fileID: 252679148083531572}
-  masterStop: 0
+  completeStop: 0
 --- !u!1 &3691300714634192869
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,12 +371,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86014e2294f696f41a854e3cedda8f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameController: {fileID: 0}
+  _aerialRotatingGear: {fileID: 0}
+  _aerialFreeGear: {fileID: 0}
   maxSpeed: 8
-  jumpPower: 2.5
-  gearType: 2
-  gearRotationSpeed: 0
-  gearRotationDirection: 0
+  gearType: 3
 --- !u!1 &7185729198507009748
 GameObject:
   m_ObjectHideFlags: 0

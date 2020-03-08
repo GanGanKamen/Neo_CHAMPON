@@ -37,7 +37,7 @@ public class StartCall : MonoBehaviour
 
                 var skipStartCameraCVC = cameraSet.startCamera.GetComponent<CinemachineVirtualCamera>();
                 skipStartCameraCVC.m_Priority = 0;
-                return;
+                break;
 
             case false:
                 var readyCanvasGroup = ImageSetting(readyPrefab);

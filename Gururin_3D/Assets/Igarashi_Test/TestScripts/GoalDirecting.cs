@@ -45,7 +45,7 @@ public class GoalDirecting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ゴール後、「3！」でゴール演出削除
+        // ゴール後、「3 !」でゴール演出削除
         if (Input.GetKeyDown(KeyCode.Alpha3) && _stageClearImage != null)
         {
             var goalCameraCVC = cameraSet.goalCamera.GetComponent<CinemachineVirtualCamera>();
