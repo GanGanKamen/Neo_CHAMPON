@@ -10,12 +10,13 @@ namespace Igarashi
 {
     public class Piston : MonoBehaviour
     {
-        public bool Pushing { get { return _pushing; } } // 押し出しているかどうかの判定
+        public bool HasPushed { get { return _hasPushed; } }
 
+        [SerializeField] [Header("押し出し限界地点")] private Transform pushLimitPos;
         [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("ピストンの押し出し速度 0.1~2.0")] private float pushSpeed;
         [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("ピストンの戻り速度 0.1~2.0")] private float pullSpeed;
         [SerializeField] [Range(_lowerSpeedLimit, 20.0f)] [Header("ピストンの停止時間 0.1~20.0")] private float pistonStopTime;
-        [SerializeField] [Header("押し出し限界地点")] private Transform pushLimitPos;
+        [SerializeField] [Header("ピストンの動作を停止")] private bool canStop;
 
         private GameObject _Gururin;
         private Rigidbody _rigidbody;
@@ -23,17 +24,15 @@ namespace Igarashi
         private float _moveTimer; // 移動所要時間
         private float _stopTimer; // 停止時間用タイマー
         private const float _lowerSpeedLimit = 0.1f; // 各速度の下限値
-        private bool _moveApproved; // 移動許可
-        private bool _pushing;
-        private bool _stopping;
-
-        [SerializeField] private bool completeStop; // ピストンの動作を完全に停止
+        private bool _canMove; // 移動許可
+        private bool _hasPushed;
+        private bool  _hasStopped;
 
         private void Awake()
         {
             _startPos = transform.position;
-            _moveApproved = true;
-            _pushing = true;
+            _canMove = true;
+             _hasPushed = true;
         }
 
         // Start is called before the first frame update
@@ -45,12 +44,12 @@ namespace Igarashi
         // Update is called once per frame
         void Update()
         {
-            if (completeStop) return;
+            if (canStop) return;
 
             // ピストン移動
-            if (_moveApproved)
+            if (_canMove)
             {
-                switch (_pushing)
+                switch ( _hasPushed)
                 {
                     case true:
                         MovePiston(_startPos, pushLimitPos.position, pushSpeed);
@@ -63,7 +62,7 @@ namespace Igarashi
             }
 
             // ピストン停止
-            if (_stopping)
+            if ( _hasStopped)
             {
                 _stopTimer += Time.deltaTime;
 
@@ -71,19 +70,19 @@ namespace Igarashi
                 {
                     _stopTimer = 0.0f;
                     // 移動方向を反転
-                    switch (_pushing)
+                    switch ( _hasPushed)
                     {
                         case true:
-                            _pushing = false;
+                             _hasPushed = false;
                             break;
 
                         case false:
-                            _pushing = true;
+                             _hasPushed = true;
                             break;
                     }
                     // 移動再開
-                    _moveApproved = true;
-                    _stopping = false;
+                    _canMove = true;
+                     _hasStopped = false;
                 }
             }
         }
@@ -97,8 +96,8 @@ namespace Igarashi
             // ピストンがtargetPosに着いたらタイマーを初期化、ピストンを一時停止
             if (transform.position == targetPos)
             {
-                _stopping = true;
-                _moveApproved = false;
+                 _hasStopped = true;
+                _canMove = false;
                 _moveTimer = 0.0f;
             }
             else

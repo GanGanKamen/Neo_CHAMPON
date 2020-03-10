@@ -10,7 +10,6 @@ namespace Igarashi
 {
     public class Rack : MonoBehaviour
     {
-        [SerializeField] [Header("減速値 0.1~1.0")] [Range(_lowerSpeedLimit, 1.0f)] private float deceleration;
         public enum GravityType
         {
             Up,
@@ -18,6 +17,7 @@ namespace Igarashi
             Right
         }
         [Header("重力の方向")] public GravityType gravityType;
+        [SerializeField] [Header("減速値 0.1~1.0")] [Range(_lowerSpeedLimit, 1.0f)] private float deceleration;
 
         private GameObject _Gururin;
         private Rigidbody _GururinRb;
@@ -25,7 +25,6 @@ namespace Igarashi
         private GanGanKamen.GameController _gameController;
         private float _moveAngle;
         private const float _lowerSpeedLimit = 0.1f;
-        private bool _gravityChange; // 重力方向が変化しているかの判定
 
         // Start is called before the first frame update
         void Start()
@@ -38,7 +37,6 @@ namespace Igarashi
             if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
             {
                 CollisionSettings(other.gameObject);
-                _gravityChange = true;
             }
         }
 
@@ -48,7 +46,6 @@ namespace Igarashi
             {
                 if (_Gururin != null)
                 {
-                    _gravityChange = false;
                     _GururinRb.useGravity = true;
                     _gururinBase.SeparateGimmick();
                     _gururinBase = null;
@@ -68,7 +65,7 @@ namespace Igarashi
                 {
                     _moveAngle += -_gameController.InputAngle / 10.0f;
 
-                    if (gravityType == GravityType.Left || gravityType == GravityType.Right)
+                    if (gravityType != GravityType.Up)
                     {
                         _GururinRb.useGravity = false;
                     }
@@ -102,7 +99,7 @@ namespace Igarashi
 
         private void FixedUpdate()
         {
-            if (_Gururin != null && _gravityChange)
+            if (_Gururin != null)
             {
                 GravityChange();
             }

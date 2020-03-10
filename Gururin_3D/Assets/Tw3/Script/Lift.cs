@@ -86,15 +86,18 @@ public class Lift : MonoBehaviour
             gururinBase.isLift = true;
             if(moveMode == 0)
             {
-                gururinBase.liftSpeed = 0;
+                //gururinBase.liftSpeed = 0;
+                gururinBase.liftpos = new Vector3(0f, 0f, 0f);
             }
             else if(moveMode == 1)
             {
-                gururinBase.liftSpeed = speed;
+                //gururinBase.liftSpeed = speed;
+                gururinBase.liftpos = new Vector3(speed, 0f, 0f);
             }
             else if(moveMode == 2)
             {
-                gururinBase.liftSpeed = -speed;
+                //gururinBase.liftSpeed = -speed;
+                gururinBase.liftpos = new Vector3(-speed, 0, 0);
             }
 
             if(moveMode == 1 && Input.GetMouseButton(0) == false)
@@ -105,6 +108,7 @@ public class Lift : MonoBehaviour
             {
                 playerRb.AddForce(-50f * speed, 0, 0);
             }
+
         }
     }
     private void OnTriggerExit(Collider other)

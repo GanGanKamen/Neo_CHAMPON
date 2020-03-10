@@ -10,7 +10,7 @@ namespace Igarashi
 {
     public class HoistCrane : MonoBehaviour
     {
-        public bool Hoisting { get { return _hoisting; } } // 巻き上げているかどうかの判定
+        public bool HasHoisted { get { return  _hasHoisted; } } // 巻き上げているかどうかの判定
 
         [SerializeField] [Header("巻き上げるオブジェクト")] private GameObject hoistObject;
         [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("巻き上げ速度 0.1~2.0")] private float rollUpSpeed;
@@ -24,9 +24,9 @@ namespace Igarashi
         private GanGanKamen.GameController _gameController;
         private int _limit; // 1:UpperLimit、-1:LowerLimit、0:NotLimit
         private const float _lowerSpeedLimit = 0.1f;
-        private bool _clockwise; // コントローラーの回転方向
-        private bool _collisionLimit;
-        private bool _hoisting;
+        private bool _isClockwise; // コントローラーの回転方向
+        private bool _hasLimitCollided;
+        private bool  _hasHoisted;
 
 
         // Start is called before the first frame update
@@ -54,7 +54,7 @@ namespace Igarashi
             // 噛み合っているとき
             if (_Gururin != null && _gururinBase.IsAttachGimmick)
             {
-                if (_collisionLimit == false)
+                if (_hasLimitCollided == false)
                 {
                     _limit = 0;
                 }
@@ -67,7 +67,7 @@ namespace Igarashi
                         if (_gameController.InputAngle > 0)
                         {
                             Rotate(true);
-                            if (_clockwise == false)
+                            if (_isClockwise == false)
                             {
                                 Hoist(true);
                             }
@@ -76,7 +76,7 @@ namespace Igarashi
                         else if (_gameController.InputAngle < 0)
                         {
                             Rotate(false);
-                            if (_clockwise)
+                            if (_isClockwise)
                             {
                                 Hoist(true);
                             }
@@ -88,7 +88,7 @@ namespace Igarashi
                         Hoist(false);
 
                         // 巻き上げる方向と反対に回転
-                        switch (_clockwise)
+                        switch (_isClockwise)
                         {
                             case true:
                                 Rotate(true);
@@ -109,7 +109,7 @@ namespace Igarashi
                 Hoist(false);
 
                 // 巻き上げる方向と反対に回転
-                switch (_clockwise)
+                switch (_isClockwise)
                 {
                     case true:
                         Rotate(true);
@@ -147,7 +147,7 @@ namespace Igarashi
             // 巻き上げるオブジェクトの位置確認 巻き上げ機より右なら時計回りで巻き上げ
             if (hoistObject.transform.position.x > transform.position.x)
             {
-                _clockwise = true;
+                _isClockwise = true;
             }
 
             // 巻き上げるオブジェクトがRigidBodyを持っていなかったら付与
@@ -185,7 +185,7 @@ namespace Igarashi
             switch (hangingDirection)
             {
                 case true:
-                    _hoisting = true;
+                     _hasHoisted = true;
                     // 上限じゃなければ巻き上げ
                     if (_limit != 1)
                     {
@@ -196,7 +196,7 @@ namespace Igarashi
                     break;
 
                 case false:
-                    _hoisting = false;
+                     _hasHoisted = false;
                     // 下限じゃなければ巻き下げ
                     if (_limit != -1)
                     {
@@ -289,12 +289,12 @@ namespace Igarashi
                     _limit = -1;
                     break;
             }
-            _collisionLimit = true;
+            _hasLimitCollided = true;
         }
 
         public void CollisionLimitExit()
         {
-            _collisionLimit = false;
+            _hasLimitCollided = false;
         }
     }
 }

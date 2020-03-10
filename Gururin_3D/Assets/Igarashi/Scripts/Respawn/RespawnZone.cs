@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// 即死ギミック
+/// リスポーン&即死ゾーン
 /// </summary>
 
 namespace Igarashi
 {
-    public class DeadZone : MonoBehaviour
+    public class RespawnZone : MonoBehaviour
     {
         [SerializeField] [Header("電流棒・迫りくる炎時のみ選択")] private bool deadMode;
 

@@ -10,8 +10,8 @@ namespace Igarashi
 {
     public class Extrusion : MonoBehaviour
     {
-        [SerializeField] [Header("押し出す力")] private float extrusionPower;
         [SerializeField] private Piston piston;
+        [SerializeField] [Header("押し出す力")] private float extrusionPower;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -21,7 +21,7 @@ namespace Igarashi
                 var gururinBase = other.gameObject.GetComponent<GanGanKamen.GururinBase>();
                 var extrusionForce = new Vector3();
                 // ピストンによる押し出し
-                if (piston != null && piston.Pushing)
+                if (piston != null && piston.HasPushed)
                 {
                     // 移動操作停止
                     gururinBase.AttackToGimmick();
@@ -33,7 +33,7 @@ namespace Igarashi
                     extrusionForce = new Vector3(0.0f, 0.0f, -extrusionPower);
                 }
                 // 巻き上げオブジェクトによる押し出し
-                // 巻き上げオブジェクトによる押し出しでぐるりんが地面に埋まる可能性はあるので念のためリスポーンを配置しておくと〇
+                // ぐるりんが地面に埋まる可能性はあるので念のためRespwanZoneを配置しておくと〇
                 else
                 {
                     if (gururinBase.CanJump == false) return;
