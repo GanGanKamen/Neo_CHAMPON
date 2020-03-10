@@ -11,7 +11,7 @@ using Cinemachine;
 
 public class GoalDirecting : MonoBehaviour
 {
-    public bool ReachesGoaled { get { return _reachesGoal; } } // ゴールしたかどうかの判定
+    public bool ReachesGoal { get { return _reachesGoal; } } // ゴールしたかどうかの判定
 
     [SerializeField] private GameObject stageClearPrefab;
     [SerializeField] private CameraManager cameraSet;

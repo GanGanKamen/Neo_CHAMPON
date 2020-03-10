@@ -50,7 +50,7 @@ public class MoveDeadZone : MonoBehaviour
             {
                 case MoveType.Straight:
                     // スタートコール中またはゴールした時は移動しない
-                    if (startCall.HasStartCalled || goalDirecting.ReachesGoaled) return;
+                    if (startCall.HasStartCalled || goalDirecting.ReachesGoal) return;
                     transform.Translate(moveSpeed * 0.1f, 0.0f, 0.0f);
                     break;
 
