@@ -19,7 +19,7 @@ namespace Igarashi
         private float _pendulumSpeed;
         private float _pendulumTime;
         private float _timer;
-        private bool _raySkip;
+        private bool _isRayEnabled;
 
         // Start is called before the first frame update
         void Start()
@@ -36,7 +36,7 @@ namespace Igarashi
             _direction = 0;
             _pendulumSpeed = 0.0f;
             _pendulumTime = 0.0f;
-            _raySkip = false;
+            _isRayEnabled = true;
         }
 
         // 引力
@@ -54,7 +54,7 @@ namespace Igarashi
         // 非接触時、ぐるりんのVelocity.xを毎F取得(接触する1F前のVelocity.xを取得するため)
         public void GetGururinVelocity(Rigidbody GururinRb)
         {
-            if (aerialGearBase.IsCollision == false)
+            if (aerialGearBase.HasCollided == false)
             {
                 if (GururinRb.velocity.x != 0.0f)
                 {
@@ -96,17 +96,13 @@ namespace Igarashi
         }
 
         // 接触時回転終了後
-        public void RaySkip(GameObject Gururin, GameObject baseGear)
+        public void RayEnabled(GameObject Gururin, GameObject baseGear)
         {
             if (_enterGururinVelocity != 0.0f) return;
 
-            switch (_raySkip)
+            switch (_isRayEnabled)
             {
                 case true:
-                    Pendulum(baseGear, Gururin.transform.position.x);
-                    break;
-
-                case false:
                     if (_pendulumTime < 0.0f) return;
 
                     var rayDirection = (Gururin.transform.position - baseGear.transform.position).normalized;
@@ -116,7 +112,7 @@ namespace Igarashi
                     {
                         if (hit.collider.gameObject.GetComponent<RayCollision>())
                         {
-                            _raySkip = true;
+                            _isRayEnabled = false;
                         }
                         else
                         {
@@ -133,6 +129,10 @@ namespace Igarashi
                             }
                         }
                     }
+                    break;
+
+                case false:
+                    Pendulum(baseGear, Gururin.transform.position.x);
                     break;
             }
         }
@@ -152,7 +152,7 @@ namespace Igarashi
                 _pendulumTime -= _pendulumTime / 5.0f;
                 _timer = _pendulumTime;
                 _pendulumSpeed = 0.0f;
-                _raySkip = false;
+                _isRayEnabled = true;
             }
 
             _pendulumSpeed += Time.deltaTime * 0.2f;

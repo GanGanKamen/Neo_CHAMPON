@@ -16,7 +16,7 @@ namespace Igarashi
         {
             if (other.gameObject.GetComponent<HoistLimit>())
             {
-                switch (hoistCrane.Hoisting)
+                switch (hoistCrane.HasHoisted)
                 {
                     case true:
                         hoistCrane.CollisionLimitEnter(true);

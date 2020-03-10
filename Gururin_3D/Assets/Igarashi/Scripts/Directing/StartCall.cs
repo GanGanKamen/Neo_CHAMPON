@@ -11,7 +11,7 @@ using Cinemachine;
 
 public class StartCall : MonoBehaviour
 {
-    public bool IsStartCall { get { return _isStartCall; } } // スタートコール中かどうかの判定
+    public bool HasStartCalled { get { return _hasStartCalled; } } // スタートコール中かどうかの判定
 
     [SerializeField] private GameObject readyPrefab;
     [SerializeField] private GameObject startPrefab;
@@ -20,22 +20,22 @@ public class StartCall : MonoBehaviour
     [SerializeField] [Header("スタートまでの時間")] private float startTime;
     [SerializeField] [Header("スタートコールの表示終了時間")] private float endDisplayTime;
     [SerializeField] [Header("カメラが引く速度 1.0~30.0")] [Range(_limitLowerSpeed, 30.0f)] private float zoomOutSpeed;
-    [SerializeField] [Header("スタートコール演出をスキップ")] private bool startCallSkip;
+    [SerializeField] [Header("スタートコール演出をスキップ")] private bool canSkip;
 
     private GameObject _Gururin;
-    private List<GameObject> _images = new List<GameObject>(2); // 画像を一括で削除するために格納
+    private List<GameObject> _imageList = new List<GameObject>(2); // 画像を一括で削除するために格納
     private const float _limitLowerSpeed = 1.0f;
-    private bool _isStartCall;
+    private bool _hasStartCalled;
 
     // Start is called before the first frame update
     void Start()
     {
         _Gururin = GameObject.FindWithTag("Player");
 
-        switch (startCallSkip)
+        switch (canSkip)
         {
             case true:
-                _isStartCall = false;
+                _hasStartCalled = false;
 
                 var playerCtrl = _Gururin.GetComponent<GanGanKamen.PlayerCtrl>();
                 playerCtrl.PermitControll();
@@ -45,7 +45,7 @@ public class StartCall : MonoBehaviour
                 break;
 
             case false:
-                _isStartCall = true;
+                _hasStartCalled = true;
 
                 var readyCanvasGroup = ImageSetting(readyPrefab);
                 var startCanvasGroup = ImageSetting(startPrefab);
@@ -91,7 +91,7 @@ public class StartCall : MonoBehaviour
 
         // 操作許可
         playerCtrl.PermitControll();
-        _isStartCall = false;
+        _hasStartCalled = false;
 
         // Start画像を表示
         readyCanvasGroup.alpha = 0.0f;
@@ -100,9 +100,9 @@ public class StartCall : MonoBehaviour
         yield return new WaitForSeconds(endDisplayTime);
 
         // 画像を削除
-        for(int i = 0; i < _images.Count; i++)
+        for(int i = 0; i < _imageList.Count; i++)
         {
-            Destroy(_images[i]);
+            Destroy(_imageList[i]);
         }
     }
 
@@ -113,7 +113,7 @@ public class StartCall : MonoBehaviour
         image.transform.SetParent(transform);
         image.transform.localPosition = Vector3.zero;
         image.transform.localScale = Vector3.one;
-        _images.Add(image);
+        _imageList.Add(image);
 
         var canvasGroup = image.GetComponent<CanvasGroup>();
         canvasGroup.alpha = 0.0f;

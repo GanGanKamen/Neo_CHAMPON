@@ -6,47 +6,42 @@ using UnityEngine;
 /// リスポーン関係の設定
 /// </summary>
 
-namespace Igarashi
+public class Respawn : MonoBehaviour
 {
-    public class Respawn : MonoBehaviour
+    private GameObject _Gururin;
+    private Vector3 _respawnPoint;
+
+    // Start is called before the first frame update
+    void Start()
     {
-        private GameObject _Gururin;
-        [SerializeField] [Header("リスポーン地点(アタッチしなくてOK)")] private Transform _respawnPoint;
+        _Gururin = GameObject.FindWithTag("Player");
 
-        // Start is called before the first frame update
-        void Start()
+        // 初期リスポーン地点を設定
+        RespawnPointSetting(_Gururin.transform);
+    }
+
+    // リスポーン地点を設定
+    public void RespawnPointSetting(Transform respawnPoint)
+    {
+        if (respawnPoint.position != _respawnPoint)
         {
-            _Gururin = GameObject.FindWithTag("Player");
+            _respawnPoint = respawnPoint.position;
+            Debug.Log("現在のリスポーン地点" + _respawnPoint);
+        }
+    }
 
-            // 初期リスポーン地点を設定
-            RespawnPointSetting(_Gururin.transform);
+    // ぐるりんをリスポーンしたいときに呼ぶ
+    public void RespawnSetting()
+    {
+        var gururinBase = _Gururin.gameObject.GetComponent<GanGanKamen.GururinBase>();
+        // 移動操作が停止されていたら再開メソッドを呼ぶ
+        if (gururinBase.IsAttachGimmick)
+        {
+            gururinBase.SeparateGimmick();
         }
 
-        // ぐるりんをリスポーンしたいときに呼ぶ(仮)
-        public void RespawnSetting()
-        {
-            var gururinBase = _Gururin.gameObject.GetComponent<GanGanKamen.GururinBase>();
-            // 移動操作が停止されていたら再開メソッドを呼び出し
-            if (gururinBase.IsAttachGimmick)
-            {
-                gururinBase.SeparateGimmick();
-            }
-
-            var GururinRb = _Gururin.gameObject.GetComponent<Rigidbody>();
-
-            // 角度と位置を初期化
-            _Gururin.transform.rotation = Quaternion.Euler(Vector3.zero);
-            _Gururin.transform.position = new Vector3(_respawnPoint.transform.position.x, _respawnPoint.transform.position.y, 0.0f);
-        }
-
-        // リスポーン地点を設定
-        public void RespawnPointSetting(Transform respawnPoint)
-        {
-            if (respawnPoint != _respawnPoint)
-            {
-                _respawnPoint = respawnPoint;
-                Debug.Log("RespawnPointSet" + _respawnPoint.position);
-            }
-        }
+        // 角度と位置を初期化
+        _Gururin.transform.rotation = Quaternion.Euler(Vector3.zero);
+        _Gururin.transform.position = _respawnPoint;
     }
 }

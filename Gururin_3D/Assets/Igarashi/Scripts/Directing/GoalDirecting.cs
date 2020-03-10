@@ -11,7 +11,7 @@ using Cinemachine;
 
 public class GoalDirecting : MonoBehaviour
 {
-    public bool IsGoal { get { return _isGoal; } } // ゴールしたかどうかの判定
+    public bool ReachesGoaled { get { return _reachesGoal; } } // ゴールしたかどうかの判定
 
     [SerializeField] private GameObject stageClearPrefab;
     [SerializeField] private CameraManager cameraSet;
@@ -22,7 +22,7 @@ public class GoalDirecting : MonoBehaviour
     private GameObject _stageClearImage;
     private CanvasGroup _stageClearCanvasGroup;
     private const float _limitLowerSpeed = 1.0f;
-    private bool _isGoal;
+    private bool _reachesGoal;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +38,7 @@ public class GoalDirecting : MonoBehaviour
     {
         if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
         {
-            _isGoal = true;
+            _reachesGoal = true;
 
             _stageClearCanvasGroup = ImageSetting(stageClearPrefab);
 
@@ -56,7 +56,7 @@ public class GoalDirecting : MonoBehaviour
         // ゴール後、「3 !」でゴール演出削除
         if (Input.GetKeyDown(KeyCode.Alpha3) && _stageClearImage != null)
         {
-            _isGoal = false;
+            _reachesGoal = false;
 
             var goalCameraCVC = cameraSet.goalCamera.GetComponent<CinemachineVirtualCamera>();
             goalCameraCVC.m_Priority = 0;
