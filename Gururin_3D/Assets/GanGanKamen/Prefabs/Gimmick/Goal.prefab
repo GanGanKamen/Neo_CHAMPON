@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4452018593097608973}
   - component: {fileID: 4452018593097608972}
   m_Layer: 0
-  m_Name: TestGoal
+  m_Name: Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -106,6 +106,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageClearPrefab: {fileID: 5696257863176345469, guid: 295c5c0c650611b44932346b1279a8d1,
     type: 3}
-  mainVCamera: {fileID: 0}
-  goalCamera: {fileID: 0}
   zoomInSpeed: 10

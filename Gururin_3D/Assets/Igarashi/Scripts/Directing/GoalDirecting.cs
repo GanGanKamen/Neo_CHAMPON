@@ -14,13 +14,13 @@ public class GoalDirecting : MonoBehaviour
     public bool ReachesGoal { get { return _reachesGoal; } } // ゴールしたかどうかの判定
 
     [SerializeField] private GameObject stageClearPrefab;
-    [SerializeField] private CameraManager cameraSet;
     [SerializeField] [Header("カメラが近づく速度 1.0~30.0")] [Range(_limitLowerSpeed, 30.0f)] private float zoomInSpeed;
 
     private GameObject _Gururin;
     private GameObject _goalDirecting;
     private GameObject _stageClearImage;
     private CanvasGroup _stageClearCanvasGroup;
+    private CameraManager _cameraManager;
     private const float _limitLowerSpeed = 1.0f;
     private bool _reachesGoal;
 
@@ -29,9 +29,7 @@ public class GoalDirecting : MonoBehaviour
     {
         _Gururin = GameObject.FindWithTag("Player");
         _goalDirecting = GameObject.Find("StartGoalDirectingCanvas/GoalDirecting");
-
-        var goalCameraCVC = cameraSet.goalCamera.GetComponent<CinemachineVirtualCamera>();
-        goalCameraCVC.m_Priority = 0;
+        _cameraManager = GameObject.Find("CameraSet").GetComponent<CameraManager>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,9 +40,8 @@ public class GoalDirecting : MonoBehaviour
 
             _stageClearCanvasGroup = ImageSetting(stageClearPrefab);
 
-            // ☆もしメインカメラが切り替わっていたらどうするかは後で考える
-            var mainCameraCVC = cameraSet.mainVCamera.GetComponent<CinemachineVirtualCamera>();
-            var goalCameraCVC = GoalCameraSetting(mainCameraCVC);
+            var mainCameraCVC = _cameraManager.mainVCamera.GetComponent<CinemachineVirtualCamera>();
+            var goalCameraCVC = _cameraManager.CameraSetting(_cameraManager.goalCamera);
 
             StartCoroutine(Goal(mainCameraCVC, goalCameraCVC));
         }
@@ -58,7 +55,7 @@ public class GoalDirecting : MonoBehaviour
         {
             _reachesGoal = false;
 
-            var goalCameraCVC = cameraSet.goalCamera.GetComponent<CinemachineVirtualCamera>();
+            var goalCameraCVC = _cameraManager.goalCamera.GetComponent<CinemachineVirtualCamera>();
             goalCameraCVC.m_Priority = 0;
 
             Destroy(_stageClearImage);
@@ -108,17 +105,5 @@ public class GoalDirecting : MonoBehaviour
         canvasGroup.alpha = 0.0f;
 
         return canvasGroup;
-    }
-
-    // ゴールカメラの設定
-    private CinemachineVirtualCamera GoalCameraSetting(CinemachineVirtualCamera mainCameraCVC)
-    {
-        var goalCameraCVC = cameraSet.goalCamera.GetComponent<CinemachineVirtualCamera>();
-        goalCameraCVC.m_Follow = _Gururin.transform;
-        // goalCameraのPriorityをmainCameraより1高くする
-        goalCameraCVC.m_Priority = mainCameraCVC.m_Priority + 1;
-        goalCameraCVC.m_Lens.FieldOfView = mainCameraCVC.m_Lens.FieldOfView;
-
-        return goalCameraCVC;
     }
 }

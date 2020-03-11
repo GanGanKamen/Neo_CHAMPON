@@ -2,49 +2,95 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 /// <summary>
 /// リスポーン&即死ゾーン
 /// </summary>
 
-namespace Igarashi
+public class RespawnZone : MonoBehaviour
 {
-    public class RespawnZone : MonoBehaviour
+    public bool CanStop { get { return _canStop; } }
+
+    public enum ObjectType
     {
-        [SerializeField] [Header("電流棒・迫りくる炎時のみ選択")] private bool deadMode;
+        Respawn,
+        DeadZone
+    }
+    [Header("オブジェクトのタイプ")] public ObjectType objectType;
 
-        private Respawn _respawn;
-        private string _nowSceneName;
+    private GameObject _Gururin;
+    private CameraManager _cameraManager;
+    private StartCall _startCall;
+    private Respawn _respawn;
+    private bool _canStop;
 
-        // Start is called before the first frame update
-        void Start()
+    // Start is called before the first frame update
+    void Start()
+    {
+        switch (objectType)
         {
-            if (deadMode == false)
-            {
+            case ObjectType.Respawn:
                 _respawn = GameObject.Find("RespawnManager").GetComponent<Respawn>();
-            }
-            _nowSceneName = SceneManager.GetActiveScene().name;
-        }
+                break;
 
-        private void OnTriggerEnter(Collider other)
+            case ObjectType.DeadZone:
+                _cameraManager = GameObject.Find("CameraSet").GetComponent<CameraManager>();
+                _startCall = GameObject.Find("StartGoalDirectingCanvas/StartCall").GetComponent<StartCall>();
+                break;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
         {
-            if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
+            switch (objectType)
             {
-                switch (deadMode)
-                {
-                    case true:
-                        // ☆死亡演出
+                case ObjectType.Respawn:
+                    // リスポーン地点にリスポーン
+                    _respawn.RespawnSetting();
+                    break;
 
-                        // シーンをリロード
-                        SceneManager.LoadScene(_nowSceneName);
-                        break;
+                case ObjectType.DeadZone:
+                    _canStop = true;
 
-                    case false:
-                        // リスポーン地点にリスポーン
-                        _respawn.RespawnSetting();
-                        break;
-                }
+                    _Gururin = other.gameObject;
+                    var playerFace = _Gururin.GetComponentInChildren<PlayerFace>();
+                    // 驚き顔に変更
+                    playerFace.Surprise();
+
+                    var deadCameraCVC = _cameraManager.CameraSetting(_cameraManager.deadCamera);
+
+                    // 死亡演出
+                    StartCoroutine(DeadDirecting(deadCameraCVC));
+                    break;
             }
         }
+    }
+
+    IEnumerator DeadDirecting(CinemachineVirtualCamera deadCameraCVC)
+    {
+        var GururinRb = _Gururin.GetComponent<Rigidbody>();
+        // 移動停止
+        GururinRb.velocity = Vector3.zero;
+        GururinRb.angularVelocity = Vector3.zero;
+        GururinRb.isKinematic = true;
+
+        var playerCtrl = _Gururin.GetComponent<GanGanKamen.PlayerCtrl>();
+        // 操作不許可(リスタート時どこかでPlayerCtrl.PermitControll()を呼ぶ必要がある)
+        playerCtrl.ProhibitControll();
+
+        // カメラをズームイン
+        while (deadCameraCVC.m_Lens.FieldOfView > _cameraManager.deadCameraView)
+        {
+            deadCameraCVC.m_Lens.FieldOfView -= Time.deltaTime * _cameraManager.deadCameraZoomInSpeed;
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(2.0f);
+
+        // シーンをリロード
+        SceneManager.LoadScene(Respawn.nowSceneName);
     }
 }
