@@ -14,6 +14,7 @@ namespace GanGanKamen
         [SerializeField] private float _accel;
         [SerializeField] [Range(0, 10)] private float _brakePower;
 
+        private PlayerFace _playerFace;
         private GameController gameController;
 
         private bool canCtrl = false;
@@ -45,7 +46,7 @@ namespace GanGanKamen
 
         void Start()
         {
-
+            _playerFace = GetComponentInChildren<PlayerFace>();
         }
 
         // Update is called once per frame
@@ -79,7 +80,12 @@ namespace GanGanKamen
             }
             else if (gameController.InputLongPress)
             {
+                _playerFace.Angry();
                 Brake();
+            }
+            else
+            {
+                _playerFace.Nomal();
             }
         }
     }

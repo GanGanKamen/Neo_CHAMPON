@@ -23,6 +23,8 @@ public class PlayerFace : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, 0);
     }
 
+    // 以下現在の表情差分は旧Verのものなので最新Verが来次第差し替え
+    // 普段
     public void Nomal()
     {
         faces[0].SetActive(true);
@@ -32,15 +34,24 @@ public class PlayerFace : MonoBehaviour
         }
     }
 
-    public void Smile()
+    // 驚き
+    public void Surprise()
     {
         faces[0].SetActive(false);
         faces[1].SetActive(true);
     }
 
+    // 怒り
     public void Angry()
     {
         faces[0].SetActive(false);
         faces[2].SetActive(true);
+    }
+
+    // 笑顔(旧Ver無し)
+    public void Smile()
+    {
+        faces[0].SetActive(false);
+        faces[3].SetActive(true);
     }
 }

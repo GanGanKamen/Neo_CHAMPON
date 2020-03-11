@@ -21,6 +21,7 @@ namespace Igarashi
 
         private GameObject _Gururin;
         private Rigidbody _GururinRb;
+        private PlayerFace _playerFace;
         private GanGanKamen.GururinBase _gururinBase;
         private GanGanKamen.GameController _gameController;
         private float _moveAngle;
@@ -80,6 +81,7 @@ namespace Igarashi
                         {
                             // 踏ん張りで停止
                             case true:
+                                _playerFace.Angry();
                                 _GururinRb.velocity = Vector3.zero;
                                 _GururinRb.angularVelocity = Vector3.zero;
                                 _GururinRb.useGravity = false;
@@ -87,6 +89,7 @@ namespace Igarashi
 
                             // 踏ん張らなければ落下
                             case false:
+                                _playerFace.Nomal();
                                 _GururinRb.useGravity = true;
                                 break;
                         }
@@ -121,6 +124,7 @@ namespace Igarashi
         void CollisionSettings(GameObject colObj)
         {
             _Gururin = colObj.gameObject;
+            _playerFace = _Gururin.GetComponentInChildren<PlayerFace>();
 
             _GururinRb = _Gururin.GetComponent<Rigidbody>();
             _GururinRb.velocity = Vector3.zero;

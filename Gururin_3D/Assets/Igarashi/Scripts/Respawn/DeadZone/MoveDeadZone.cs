@@ -8,7 +8,6 @@ using UnityEngine;
 
 public class MoveDeadZone : MonoBehaviour
 {
-    [SerializeField] private StartCall startCall;
     [SerializeField] private GoalDirecting goalDirecting;
     public enum MoveType
     {
@@ -21,6 +20,8 @@ public class MoveDeadZone : MonoBehaviour
     [SerializeField] [Header("即死ゾーンの移動を停止")] private bool canStop;
 
     private Rigidbody _rigidbody;
+    private StartCall _startCall;
+    private RespawnZone _respawnZone;
     private Vector3 _startPos;
     private float _roopTimer;
     private bool _collidesLimitPos;
@@ -28,9 +29,12 @@ public class MoveDeadZone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        _startCall = GameObject.Find("StartGoalDirectingCanvas/StartCall").GetComponent<StartCall>();
+
         if (moveType == MoveType.Roop)
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _respawnZone = GetComponent<RespawnZone>();
             _startPos = transform.position;
 
             if (moveLimitPos != null)
@@ -44,30 +48,29 @@ public class MoveDeadZone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canStop == false)
+        if (canStop || _respawnZone.CanStop) return;
+
+        switch (moveType)
         {
-            switch (moveType)
-            {
-                case MoveType.Straight:
-                    // スタートコール中またはゴールした時は移動しない
-                    if (startCall.HasStartCalled || goalDirecting.ReachesGoal) return;
-                    transform.Translate(moveSpeed * 0.1f, 0.0f, 0.0f);
-                    break;
+            case MoveType.Straight:
+                // スタートコール中またはゴールした時は移動しない
+                if (_startCall.HasStartCalled || goalDirecting.ReachesGoal) return;
+                transform.Translate(moveSpeed * 0.1f, 0.0f, 0.0f);
+                break;
 
-                case MoveType.Roop:
-                    // ループ移動
-                    switch (_collidesLimitPos)
-                    {
-                        case true:
-                            RoopMove(moveLimitPos.position, _startPos);
-                            break;
+            case MoveType.Roop:
+                // ループ移動
+                switch (_collidesLimitPos)
+                {
+                    case true:
+                        RoopMove(moveLimitPos.position, _startPos);
+                        break;
 
-                        case false:
-                            RoopMove(_startPos, moveLimitPos.position);
-                            break;
-                    }
-                    break;
-            }
+                    case false:
+                        RoopMove(_startPos, moveLimitPos.position);
+                        break;
+                }
+                break;
         }
     }
 
@@ -103,17 +106,5 @@ public class MoveDeadZone : MonoBehaviour
     public void SpeedSetting(float resetSpeed)
     {
         moveSpeed = resetSpeed;
-    }
-
-    // 即死ゾーンの動きを止める
-    public void DeadZoneStop()
-    {
-        canStop = true;
-    }
-
-    // 再度即死ゾーンを動かす
-    public void DeadZoneReboot()
-    {
-        canStop = false;
     }
 }

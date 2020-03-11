@@ -15,7 +15,6 @@ public class StartCall : MonoBehaviour
 
     [SerializeField] private GameObject readyPrefab;
     [SerializeField] private GameObject startPrefab;
-    [SerializeField] private CameraManager cameraSet;
     [SerializeField] [Header("スタートコールの表示待機時間")] private float waitDisplayTime;
     [SerializeField] [Header("スタートまでの時間")] private float startTime;
     [SerializeField] [Header("スタートコールの表示終了時間")] private float endDisplayTime;
@@ -23,6 +22,7 @@ public class StartCall : MonoBehaviour
     [SerializeField] [Header("スタートコール演出をスキップ")] private bool canSkip;
 
     private GameObject _Gururin;
+    private CameraManager _cameraManager;
     private List<GameObject> _imageList = new List<GameObject>(2); // 画像を一括で削除するために格納
     private const float _limitLowerSpeed = 1.0f;
     private bool _hasStartCalled;
@@ -31,6 +31,13 @@ public class StartCall : MonoBehaviour
     void Start()
     {
         _Gururin = GameObject.FindWithTag("Player");
+        _cameraManager = GameObject.Find("CameraSet").GetComponent<CameraManager>();
+
+        // 即死ゾーンに触れてシーンがリロードされたらスタートコールをスキップ
+        if(Respawn.beforeSceneName == Respawn.nowSceneName)
+        {
+            canSkip = true;
+        }
 
         switch (canSkip)
         {
@@ -40,8 +47,7 @@ public class StartCall : MonoBehaviour
                 var playerCtrl = _Gururin.GetComponent<GanGanKamen.PlayerCtrl>();
                 playerCtrl.PermitControll();
 
-                var skipStartCameraCVC = cameraSet.startCamera.GetComponent<CinemachineVirtualCamera>();
-                skipStartCameraCVC.m_Priority = 0;
+                _cameraManager.CameraInit(_cameraManager.startCamera);
                 break;
 
             case false:
@@ -50,8 +56,8 @@ public class StartCall : MonoBehaviour
                 var readyCanvasGroup = ImageSetting(readyPrefab);
                 var startCanvasGroup = ImageSetting(startPrefab);
 
-                var mainCameraCVC = cameraSet.mainVCamera.GetComponent<CinemachineVirtualCamera>();
-                var startCameraCVC = StartCameraSetting(mainCameraCVC);
+                var mainCameraCVC = _cameraManager.mainVCamera.GetComponent<CinemachineVirtualCamera>();
+                var startCameraCVC = _cameraManager.CameraSetting(_cameraManager.startCamera);
 
                 // ☆フェードイン終了通知を受ける
 
@@ -83,7 +89,7 @@ public class StartCall : MonoBehaviour
         }
         if (startCameraCVC.m_Lens.FieldOfView >= mainCameraView)
         {
-            cameraSet.startCamera.SetActive(false);
+            _cameraManager.startCamera.SetActive(false);
         }
 
         // カメラが引き終わってからn秒待つ(待つ必要が無ければ消してretune)
@@ -119,17 +125,5 @@ public class StartCall : MonoBehaviour
         canvasGroup.alpha = 0.0f;
 
         return canvasGroup;
-    }
-
-    // スタートカメラの設定
-    private CinemachineVirtualCamera StartCameraSetting(CinemachineVirtualCamera mainCameraCVC)
-    {
-        var startCameraCVC = cameraSet.startCamera.GetComponent<CinemachineVirtualCamera>();
-        startCameraCVC.m_Follow = _Gururin.transform;
-        // startCameraのPriorityをmainCameraより1高くする
-        startCameraCVC.m_Priority = mainCameraCVC.m_Priority + 1;
-        startCameraCVC.m_Lens.FieldOfView = mainCameraCVC.m_Lens.FieldOfView / 2.0f;
-
-        return startCameraCVC;
     }
 }

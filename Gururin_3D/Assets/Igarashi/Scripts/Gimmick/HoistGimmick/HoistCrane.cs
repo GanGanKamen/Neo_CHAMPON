@@ -20,6 +20,7 @@ namespace Igarashi
         private GameObject _Gururin;
         private Rigidbody _GururinRb;
         private Rigidbody _hoistObjRb;
+        private PlayerFace _playerFace;
         private GanGanKamen.GururinBase _gururinBase;
         private GanGanKamen.GameController _gameController;
         private int _limit; // 1:UpperLimit、-1:LowerLimit、0:NotLimit
@@ -63,9 +64,15 @@ namespace Igarashi
                 {
                     // 操作入力時
                     case true:
+                        if (_gameController.InputLongPress)
+                        {
+                            _playerFace.Angry();
+                        }
+
                         // 左回転
                         if (_gameController.InputAngle > 0)
                         {
+                            _playerFace.Nomal();
                             Rotate(true);
                             if (_isClockwise == false)
                             {
@@ -75,6 +82,7 @@ namespace Igarashi
                         // 右回転
                         else if (_gameController.InputAngle < 0)
                         {
+                            _playerFace.Nomal();
                             Rotate(false);
                             if (_isClockwise)
                             {
@@ -85,6 +93,7 @@ namespace Igarashi
 
                     // 操作入力がなければ下げる
                     case false:
+                        _playerFace.Nomal();
                         Hoist(false);
 
                         // 巻き上げる方向と反対に回転
@@ -168,6 +177,7 @@ namespace Igarashi
         void CollisionSettings(GameObject colObj)
         {
             _Gururin = colObj.gameObject;
+            _playerFace = _Gururin.GetComponentInChildren<PlayerFace>();
 
             _GururinRb = _Gururin.GetComponent<Rigidbody>();
             _GururinRb.velocity = Vector3.zero;

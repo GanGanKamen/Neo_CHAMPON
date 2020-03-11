@@ -27,6 +27,7 @@ namespace Igarashi
         private GameObject _Gururin;
         private Rigidbody _rigidbody;
         private Rigidbody _GururinRb;
+        private PlayerFace _playerFace;
         private GanGanKamen.GururinBase _gururinBase;
         private GanGanKamen.GameController _gameController;
         private Vector3 _GururinPos;
@@ -51,6 +52,7 @@ namespace Igarashi
         {
             _gameController = GameObject.Find("GameController").GetComponent<GanGanKamen.GameController>();
 
+            /*
             if(gearType == GearType.Free)
             {
                 _GururinRb = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
@@ -58,6 +60,7 @@ namespace Igarashi
                 _rigidbody = GetComponent<Rigidbody>();
                 _rigidbody.isKinematic = true;
             }
+            */
         }
 
         private void OnCollisionEnter(Collision other)
@@ -74,10 +77,12 @@ namespace Igarashi
                     _rotDirection = 0;
                     _canSlowDown = false;
 
+                    /*
                     if(gearType == GearType.Free)
                     {
                         _aerialFreeGear.FreeGearInit();
                     }
+                    */
                 }
             }
         }
@@ -90,6 +95,8 @@ namespace Igarashi
             }
             else if (gearType == GearType.Free)
             {
+                Debug.LogError("他のGearTypeを選択してください");
+                /*
                 _aerialFreeGear.GetGururinVelocity(_GururinRb);
                 if(_Gururin != null)
                 {
@@ -97,6 +104,7 @@ namespace Igarashi
                     _aerialFreeGear.RayEnabled(_Gururin, gameObject);
                 }
                 return;
+                */
             }
             else if (gearType == GearType.GearPiston)
             {
@@ -156,10 +164,12 @@ namespace Igarashi
                 switch (_gameController.InputLongPress)
                 {
                     case true:
+                        _playerFace.Angry();
                         AerialGearBrake();
                         break;
 
                     case false:
+                        _playerFace.Nomal();
                         _hasBraked = false;
                         break;
                 }
@@ -181,10 +191,12 @@ namespace Igarashi
 
         private void FixedUpdate()
         {
+            /*
             if (_Gururin != null && gearType == GearType.Free)
             {
                 _aerialFreeGear.Gravitation(_Gururin, gameObject, _GururinRb, _rigidbody);
             }
+            */
         }
 
         private void LateUpdate()
@@ -202,10 +214,12 @@ namespace Igarashi
                         AerialGearJump(GururinPos, gearPos);
                     }
 
+                    /*
                     if(gearType == GearType.Free)
                     {
                         _hasCollided = false;
                     }
+                    */
 
                     _GururinRb.useGravity = true;
 
@@ -223,13 +237,16 @@ namespace Igarashi
         // 接触時にぐるりんのコンポーネント取得等あれこれ
         void CollisionSettings(GameObject colObj)
         {
+            /*
             if(gearType == GearType.Free)
             {
                 _hasCollided = true;
             }
+            */
 
             _Gururin = colObj.gameObject;
             _Gururin.transform.parent = transform;
+            _playerFace = _Gururin.GetComponentInChildren<PlayerFace>();
 
             if (_GururinRb == null)
             {

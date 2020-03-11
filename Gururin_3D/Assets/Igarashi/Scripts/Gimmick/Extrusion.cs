@@ -15,10 +15,11 @@ namespace Igarashi
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
+            if (other.GetComponent<GanGanKamen.PlayerCtrl>())
             {
-                var GururinRb = other.gameObject.GetComponent<Rigidbody>();
-                var gururinBase = other.gameObject.GetComponent<GanGanKamen.GururinBase>();
+                var GururinRb = other.GetComponent<Rigidbody>();
+                var playerFace = other.GetComponentInChildren<PlayerFace>();
+                var gururinBase = other.GetComponent<GanGanKamen.GururinBase>();
                 var extrusionForce = new Vector3();
                 // ピストンによる押し出し
                 if (piston != null && piston.HasPushed)
@@ -26,7 +27,6 @@ namespace Igarashi
                     // 移動操作停止
                     gururinBase.AttackToGimmick();
 
-                    //var GururinRb = other.gameObject.GetComponent<Rigidbody>();
                     GururinRb.velocity = Vector3.zero;
                     GururinRb.angularVelocity = Vector3.zero;
 
@@ -65,6 +65,7 @@ namespace Igarashi
                         }
                     }
                 }
+                playerFace.Surprise();
                 // 押し出し
                 GururinRb.AddForce(extrusionForce, ForceMode.VelocityChange);
             }

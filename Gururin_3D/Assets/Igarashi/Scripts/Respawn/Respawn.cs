@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// リスポーン関係の設定
@@ -8,8 +9,20 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
+    public static string beforeSceneName;
+    public static string nowSceneName;
+
     private GameObject _Gururin;
     private Vector3 _respawnPoint;
+
+    private void Awake()
+    {
+        if (nowSceneName != null)
+        {
+            beforeSceneName = nowSceneName;
+        }
+        nowSceneName = SceneManager.GetActiveScene().name;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,12 +46,15 @@ public class Respawn : MonoBehaviour
     // ぐるりんをリスポーンしたいときに呼ぶ
     public void RespawnSetting()
     {
-        var gururinBase = _Gururin.gameObject.GetComponent<GanGanKamen.GururinBase>();
+        var gururinBase = _Gururin.GetComponent<GanGanKamen.GururinBase>();
         // 移動操作が停止されていたら再開メソッドを呼ぶ
         if (gururinBase.IsAttachGimmick)
         {
             gururinBase.SeparateGimmick();
         }
+
+        var playerFace = _Gururin.GetComponentInChildren<PlayerFace>();
+        playerFace.Nomal();
 
         // 角度と位置を初期化
         _Gururin.transform.rotation = Quaternion.Euler(Vector3.zero);

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 9089970822936670345}
   - component: {fileID: 9089970822936670344}
   - component: {fileID: 9089970822936670389}
-  - component: {fileID: 9089970822936670388}
   - component: {fileID: 9089970822936670391}
+  - component: {fileID: 9089970822936670388}
   m_Layer: 0
   m_Name: FlameWall
   m_TagString: Untagged
@@ -110,24 +110,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &9089970822936670388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9089970822936670390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 221ca855eb61e784abd54f09ff5ebe36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveType: 0
-  moveSpeed: 0.3
-  moveLimitPos: {fileID: 0}
-  startCall: {fileID: 0}
-  goalDirecting: {fileID: 0}
-  _isDeadZoneStop: 0
 --- !u!114 &9089970822936670391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,4 +122,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bbeaf1683a326441b96e40faa3c08bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deadMode: 1
+  objectType: 1
+--- !u!114 &9089970822936670388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9089970822936670390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221ca855eb61e784abd54f09ff5ebe36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startCall: {fileID: 0}
+  goalDirecting: {fileID: 0}
+  moveType: 0
+  moveLimitPos: {fileID: 0}
+  moveSpeed: 0.3
+  canStop: 0
