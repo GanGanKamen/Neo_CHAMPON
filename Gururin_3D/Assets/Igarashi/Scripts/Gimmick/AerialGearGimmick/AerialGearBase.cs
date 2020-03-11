@@ -16,7 +16,7 @@ namespace Igarashi
         [SerializeField] private AerialFreeGear _aerialFreeGear;
         public enum GearType
         {
-            Nomal,
+            Normal,
             Rotating,
             Free,
             GearPiston
@@ -235,7 +235,7 @@ namespace Igarashi
         }
 
         // 接触時にぐるりんのコンポーネント取得等あれこれ
-        void CollisionSettings(GameObject colObj)
+        private void CollisionSettings(GameObject colObj)
         {
             /*
             if(gearType == GearType.Free)
@@ -261,7 +261,7 @@ namespace Igarashi
         }
 
         // 円運動
-        void CircularMotion(Vector3 direction)
+        private void CircularMotion(Vector3 direction)
         {
             if (direction == Vector3.back)
             {
@@ -286,7 +286,7 @@ namespace Igarashi
         }
 
         // 減速
-        void AerialGearSpeedDown()
+        private void AerialGearSpeedDown()
         {
             _canSlowDown = true;
             if (_canSlowDown)
@@ -303,7 +303,7 @@ namespace Igarashi
         }
 
         // 踏ん張り(ブレーキ)
-        void AerialGearBrake()
+        private void AerialGearBrake()
         {
             _inputAngleDirection = 0;
             _rotSpeed -= Time.deltaTime * _gururinBase.brakePower;
@@ -317,7 +317,7 @@ namespace Igarashi
         }
 
         // ジャンプの方向
-        void AerialGearJump(Vector3 GururinPos, Vector3 gearPos)
+        private void AerialGearJump(Vector3 GururinPos, Vector3 gearPos)
         {
             var jumpPower = _gururinBase.jumpPower;
             // 第一象限(右上)

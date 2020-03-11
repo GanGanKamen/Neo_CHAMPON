@@ -88,7 +88,7 @@ namespace Igarashi
         }
 
         // ピストンの移動あれこれ
-        void MovePiston(Vector3 pistonPos, Vector3 targetPos, float moveSpeed)
+        private void MovePiston(Vector3 pistonPos, Vector3 targetPos, float moveSpeed)
         {
             var movePos = Vector3.Lerp(pistonPos, targetPos, Mathf.Abs(moveSpeed * _moveTimer));
             _rigidbody.MovePosition(movePos);
