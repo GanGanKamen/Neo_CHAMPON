@@ -6,14 +6,24 @@ namespace GanGanKamen
 {
     public class StageManager : MonoBehaviour
     {
+        public bool Medal { get { return getMedal; } }
+        public float ElapsedTime { get { return elapsedTime; } }
+        public int ItemNum { get { return itemNum; } }
+        public float ClearTimeGoal { get { return clearTimeGoal; } }
+        public int AllItem { get { return allItemNum; } }
+        public int NowStageNumber { get { return nowStageNum; } }
         public SaveData saveData;
+
+        [SerializeField] private GameObject result;
 
         private bool getMedal = false;
         private float elapsedTime = 0;
         private int itemNum = 0;
         private bool timerOn = false;
         private bool stageMode = false;
-
+        private float clearTimeGoal;
+        private int allItemNum;
+        private int nowStageNum;
 
         public void CheckSaveData()
         {
@@ -29,11 +39,14 @@ namespace GanGanKamen
             }
         }
 
-        public void GoToStage()
+        public void GoToStage(float _clearTimeGoal,int _allItemNum,int stageNumber)
         {
             stageMode = true;
             getMedal = false;
             itemNum = 0;
+            clearTimeGoal = _clearTimeGoal;
+            allItemNum = _allItemNum;
+            nowStageNum = stageNumber;
         }
 
         public void StageGameStart()
@@ -57,7 +70,9 @@ namespace GanGanKamen
         {
             stageMode = false;
             timerOn = false;
-            
+            GameObject resultObj = Instantiate(result);
+            var resultManager = resultObj.GetComponent<ResultManagaer>();
+            resultManager.Init(this);
         }
 
         private void Update()

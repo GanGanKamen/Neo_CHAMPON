@@ -31,11 +31,8 @@ namespace GanGanKamen
                 Debug.LogError("不適切なステージ、セーブできない");
                 return;
             }
-            ES3.Save<int>("ClearStageNum", nowStageNum+1);
-            for(int i = 0;i<nowStageNum + 1; i++)
-            {
-                ES3.Save<int>("Assessment" + i.ToString(), assessment[i]);
-            }
+            if(nowStageNum >= ClearStageNum) ES3.Save<int>("ClearStageNum", nowStageNum+1);
+            if(assessment[nowStageNum] < thisAssessment) ES3.Save<int>("Assessment" + nowStageNum.ToString(), thisAssessment);
             Load();
         }
 
