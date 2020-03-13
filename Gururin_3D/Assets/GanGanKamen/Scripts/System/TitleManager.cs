@@ -16,7 +16,7 @@ namespace GanGanKamen
 
         void Start()
         {
-            GanGanKamen.GameStart.StartUpCount += 1;
+            GanGanKamen.GameSystem.StartUpCount += 1;
         }
 
         // Update is called once per frame

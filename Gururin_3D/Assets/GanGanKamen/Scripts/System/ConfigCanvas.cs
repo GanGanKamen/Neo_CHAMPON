@@ -53,10 +53,10 @@ namespace GanGanKamen
 
         private void GetSceneChange()
         {
-            if (GameStart.isSceneChange)
+            if (GameSystem.isSceneChange)
             {
                 MenuClose();
-                if(GameStart.nowSceneName == "Title")
+                if(GameSystem.nowSceneName == "Title")
                 {
                     backTitleButton.gameObject.SetActive(false);
                 }
@@ -67,7 +67,7 @@ namespace GanGanKamen
                 int count = 0;
                 for(int i = 0; i < ignoreScenes.Length; i++)
                 {
-                    if(GameStart.nowSceneName == ignoreScenes[i])
+                    if(GameSystem.nowSceneName == ignoreScenes[i])
                     {
                         count += 1;
                         break;

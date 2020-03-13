@@ -8,6 +8,7 @@ TagManager:
   - Jump
   - UICamera
   - Limit
+  - System
   layers:
   - Default
   - TransparentFX

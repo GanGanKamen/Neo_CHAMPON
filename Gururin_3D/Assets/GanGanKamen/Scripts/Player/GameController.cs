@@ -87,7 +87,7 @@ namespace GanGanKamen
 
         private void Controll()
         {
-            switch (GameStart.platform)
+            switch (GameSystem.platform)
             {
                 case Platform.Windows:
                     WindowsCtrl();
