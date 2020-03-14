@@ -22,8 +22,10 @@ namespace Igarashi
                 var gururinBase = other.GetComponent<GanGanKamen.GururinBase>();
                 var extrusionForce = new Vector3();
                 // ピストンによる押し出し
-                if (piston != null && piston.HasPushed)
+                if (piston != null)
                 {
+                    if (piston.HasPushed == false) return;
+
                     // 移動操作停止
                     gururinBase.AttackToGimmick();
 

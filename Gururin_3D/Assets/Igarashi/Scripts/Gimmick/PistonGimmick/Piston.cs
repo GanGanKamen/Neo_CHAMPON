@@ -13,9 +13,10 @@ namespace Igarashi
         public bool HasPushed { get { return _hasPushed; } }
 
         [SerializeField] [Header("押し出し限界地点")] private Transform pushLimitPos;
-        [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("ピストンの押し出し速度 0.1~2.0")] private float pushSpeed;
-        [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("ピストンの戻り速度 0.1~2.0")] private float pullSpeed;
-        [SerializeField] [Range(_lowerSpeedLimit, 20.0f)] [Header("ピストンの停止時間 0.1~20.0")] private float pistonStopTime;
+        [SerializeField] [Header("ピストンの押し出し速度 0.1~2.0")] [Range(_lowerSpeedLimit, 2.0f)] private float pushSpeed;
+        [SerializeField] [Header("ピストンの戻り速度 0.1~2.0")] [Range(_lowerSpeedLimit, 2.0f)] private float pullSpeed;
+        [SerializeField] [Header("ピストンの停止時間 0.1~20.0")] [Range(_lowerSpeedLimit, 20.0f)] private float pistonStopTime;
+        [SerializeField] [Header("初動遅延時間 0.0~20.0")] [Range(0.0f, 20.0f)] private float startDelayTime;
         [SerializeField] [Header("ピストンの動作を停止")] private bool canStop;
 
         private GameObject _Gururin;
@@ -23,8 +24,10 @@ namespace Igarashi
         private Vector3 _startPos;
         private float _moveTimer; // 移動所要時間
         private float _stopTimer; // 停止時間用タイマー
+        private float _delayTimer; // 初動遅延用タイマー
         private const float _lowerSpeedLimit = 0.1f; // 各速度の下限値
         private bool _canMove; // 移動許可
+        private bool _canDelayed;
         private bool _hasPushed;
         private bool  _hasStopped;
 
@@ -33,6 +36,10 @@ namespace Igarashi
             _startPos = transform.position;
             _canMove = true;
              _hasPushed = true;
+            if(startDelayTime > 0.0f)
+            {
+                _canDelayed = true;
+            }
         }
 
         // Start is called before the first frame update
@@ -45,6 +52,18 @@ namespace Igarashi
         void Update()
         {
             if (canStop) return;
+
+            // 遅延時間分停止
+            if (_canDelayed)
+            {
+                _delayTimer += Time.deltaTime;
+
+                if(_delayTimer >= startDelayTime)
+                {
+                    _canDelayed = false;
+                }
+                return;
+            }
 
             // ピストン移動
             if (_canMove)

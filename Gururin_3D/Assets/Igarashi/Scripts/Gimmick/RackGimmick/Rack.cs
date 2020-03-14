@@ -45,7 +45,7 @@ namespace Igarashi
         {
             if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
             {
-                if (_Gururin != null)
+                if (_Gururin != null && gravityType != GravityType.Up)
                 {
                     _GururinRb.useGravity = true;
                     _gururinBase.SeparateGimmick();
@@ -116,6 +116,14 @@ namespace Igarashi
                 if (_gameController.InputFlick)
                 {
                     RackJump();
+
+                    if (gravityType == GravityType.Up)
+                    {
+                        _GururinRb.useGravity = true;
+                        _gururinBase.SeparateGimmick();
+                        _gururinBase = null;
+                        _Gururin = null;
+                    }
                 }
             }
         }
