@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3e3fdc47c439140900fe29a337bfd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aerialGearBase: {fileID: 0}
+  aerialGearBase: {fileID: 2138435876818798001}
   acceleration: 1
   deceleration: 0.2
 --- !u!1 &8890599792449919151
@@ -256,7 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068f32839fd91fd499f164d99ee9efea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aerialGearBase: {fileID: 0}
+  aerialGearBase: {fileID: 2138435876818798001}
   gearRotationSpeed: 2.5
 --- !u!1001 &691219046373104047
 PrefabInstance:
