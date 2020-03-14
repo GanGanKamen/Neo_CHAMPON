@@ -88,8 +88,15 @@ public class GoalDirecting : MonoBehaviour
         // StageClear画像を表示
         _stageClearCanvasGroup.alpha = 1.0f;
 
+        yield return new WaitForSeconds(2f);
         // ☆リザルト画面表示
-        Debug.Log("リザルト画面表示");
+        //Debug.Log("リザルト画面表示");
+        if (GameObject.FindGameObjectWithTag("System") != null)
+        {
+            var stageMng = GameObject.FindGameObjectWithTag("System").GetComponent<GanGanKamen.StageManager>();
+            stageMng.StageClear();
+        }
+        yield break;
     }
 
     // 画像の設定

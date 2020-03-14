@@ -65,6 +65,12 @@ public class StartCall : MonoBehaviour
                 StartCoroutine(StartCalling(readyCanvasGroup, startCanvasGroup, mainCameraCVC, startCameraCVC));
                 break;
         }
+
+        if (GameObject.FindGameObjectWithTag("System") != null)
+        {
+            var stageMng = GameObject.FindGameObjectWithTag("System").GetComponent<GanGanKamen.StageManager>();
+            stageMng.StageGameStart();
+        }
     }
 
     IEnumerator StartCalling(CanvasGroup readyCanvasGroup, CanvasGroup startCanvasGroup,

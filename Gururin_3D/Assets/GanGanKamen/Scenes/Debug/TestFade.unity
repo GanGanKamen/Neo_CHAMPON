@@ -263,6 +263,125 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1336262057
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1336262061}
+  - component: {fileID: 1336262060}
+  - component: {fileID: 1336262059}
+  - component: {fileID: 1336262058}
+  m_Layer: 0
+  m_Name: Easy Save 3 Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1336262058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336262057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9107aee0ced90422da95f0b31680501f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: 5c90c663-d035-46ec-8020-cc4c0c83253e
+  saveEvent: 1
+  loadEvent: 1
+  settings:
+    _location: 0
+    path: SaveData.es3
+    encryptionType: 0
+    encryptionPassword: password
+    directory: 0
+    format: 0
+    bufferSize: 2048
+    saveChildren: 1
+    typeChecking: 1
+    safeReflection: 1
+    memberReferenceMode: 0
+    referenceMode: 2
+    assemblyNames:
+    - Assembly-CSharp
+    - Assembly-CSharp-firstpass
+    showAdvancedSettings: 0
+  autoSaves: []
+--- !u!114 &1336262059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336262057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a83408fcc9044c4fbc7e5d09a369ab6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openReferences: 0
+  openPrefabs: 0
+  idRef:
+    _Keys: c1b132796b378579418a7eff8d8d6942c67bb992b3395a434ad7115d51c25b58819a476a4c051b3d024469790a1c8b5b986a013568d4ff04f58a3cbdb61d347ed0da800cba010a3f617c95f8a3d34e669d9239183fda0f54271299984d5ed868ab1b5b5a5a7ab209cc17ef20dc4c1b60b2970105fd50bf5b289d9878c28d20134b2231e886aee075
+    _Values:
+    - {fileID: 595649700}
+    - {fileID: 595649703}
+    - {fileID: 595649702}
+    - {fileID: 595649701}
+    - {fileID: 636382239}
+    - {fileID: 636382241}
+    - {fileID: 636382240}
+    - {fileID: 1711173735}
+    - {fileID: 1711173737}
+    - {fileID: 1711173736}
+    - {fileID: 11500000, guid: a2ace560535441d4cac8c54f0d416049, type: 3}
+    - {fileID: 1159420388232394008, guid: 00f4e9fbcdb10974ca95877956ce8424, type: 3}
+    - {fileID: 1336262058}
+    - {fileID: 1336262059}
+    - {fileID: 1336262060}
+    - {fileID: 1336262061}
+    - {fileID: 1336262057}
+  prefabs: []
+--- !u!114 &1336262060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336262057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8714d999c5ae749538494c1347e5a3ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  message: 'The Easy Save 3 Manager is required in any scenes which use Easy Save,
+    and is automatically added to your scene when you enter Play mode.
+
+
+    To stop this from automatically being added to your scene, go to ''Window > Easy
+    Save 3 > Settings'' and deselect the ''Auto Add Manager to Scene'' checkbox.'
+--- !u!4 &1336262061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336262057}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1711173735
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ace560535441d4cac8c54f0d416049, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 1159420388232394008, guid: 00f4e9fbcdb10974ca95877956ce8424, type: 3}
 --- !u!4 &1711173737
 Transform:
   m_ObjectHideFlags: 0

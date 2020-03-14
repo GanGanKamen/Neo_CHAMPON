@@ -32,6 +32,11 @@ public class ItemScript : MonoBehaviour
             switch(itemNumber)
             {
                 case 0:
+                    if(GameObject.FindGameObjectWithTag("System") != null)
+                    {
+                        var stageMng = GameObject.FindGameObjectWithTag("System").GetComponent<GanGanKamen.StageManager>();
+                        stageMng.GetItem();
+                    }
                     playerStatus.oil += 1;
                     playerStatus.SpeedUp();
                     playerStatus.Smile();
@@ -39,6 +44,11 @@ public class ItemScript : MonoBehaviour
                     break;
 
                 case 1:
+                    if (GameObject.FindGameObjectWithTag("System") != null)
+                    {
+                        var stageMng = GameObject.FindGameObjectWithTag("System").GetComponent<GanGanKamen.StageManager>();
+                        stageMng.GetMedal();
+                    }
                     playerStatus.coin = true;
                     playerStatus.Smile();
                     Destroy();

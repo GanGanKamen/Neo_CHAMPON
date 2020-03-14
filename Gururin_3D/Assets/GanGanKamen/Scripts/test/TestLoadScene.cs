@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class TestLoadScene : MonoBehaviour
 {
+    [SerializeField] GameObject canvas;
     // Start is called before the first frame update
     void Start()
     {
-        Fader.FadeOut(3f);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Instantiate(canvas);
+        }
     }
 }

@@ -32,6 +32,7 @@ namespace GanGanKamen
                 SaveData newSaveData = new SaveData();
                 newSaveData.Init();
                 saveData = newSaveData;
+                saveData.Load();
             }
             else
             {

@@ -24,6 +24,7 @@ namespace GanGanKamen
             }
         }
 
+
         public void Save(int nowStageNum,int thisAssessment)
         {
             if(nowStageNum > allStageNum)
@@ -31,17 +32,17 @@ namespace GanGanKamen
                 Debug.LogError("不適切なステージ、セーブできない");
                 return;
             }
-            if(nowStageNum >= ClearStageNum) ES3.Save<int>("ClearStageNum", nowStageNum+1);
-            if(assessment[nowStageNum] < thisAssessment) ES3.Save<int>("Assessment" + nowStageNum.ToString(), thisAssessment);
+            if(nowStageNum >= ClearStageNum) PlayerPrefs.SetInt("ClearStageNum", nowStageNum+1);
+            if(assessment[nowStageNum] < thisAssessment) PlayerPrefs.SetInt("Assessment" + nowStageNum.ToString(), thisAssessment);
             Load();
         }
 
         public void Load()
         {
-            clearStageNum = ES3.Load<int>("ClearStageNum");
-            for(int i = 0; i < clearStageNum + 1; i++)
+            clearStageNum = PlayerPrefs.GetInt("ClearStageNum");
+            for(int i = 0; i < clearStageNum; i++)
             {
-                assessment[i] = ES3.Load<int>("Assessment" + i.ToString());
+                assessment[i] = PlayerPrefs.GetInt("Assessment" + i.ToString());
             }
         }
     }

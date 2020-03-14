@@ -13,6 +13,7 @@ namespace GanGanKamen
         [SerializeField]private bool isMove = false;
         [SerializeField]private int nowArea = 1;
         [SerializeField]private int preArea = 1;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -25,10 +26,16 @@ namespace GanGanKamen
             nowArea = nextArea;
         }
 
-        public void StartStage(string sceneName)
+        public void StartStage(GameObject targetButton)
         {
             if (isMove) return;
-            Fader.FadeIn(3f, sceneName);
+            var stageInfo = targetButton.GetComponent<StageInfo>();
+            if (GameObject.FindGameObjectWithTag("System") != null)
+            {
+                var stageMng = GameObject.FindGameObjectWithTag("System").GetComponent<GanGanKamen.StageManager>();
+                stageMng.GoToStage(stageInfo.clearTimeGoal, stageInfo.allItemNum, stageInfo.stageNumber);
+            }
+            Fader.FadeIn(3f, stageInfo.sceneName);
         }
 
         private void FlickAction()
