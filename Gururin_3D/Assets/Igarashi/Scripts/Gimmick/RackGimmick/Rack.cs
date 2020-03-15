@@ -58,45 +58,43 @@ namespace Igarashi
         // Update is called once per frame
         void Update()
         {
-            if (_Gururin != null && _gururinBase.IsAttachGimmick)
+            if (_Gururin == null) return;
+
+            RackGururinMove();
+
+            if (_gameController.InputAngle != 0.0f)
             {
-                RackGururinMove();
+                _moveAngle += -_gameController.InputAngle / 10.0f;
 
-                if (_gameController.InputAngle != 0)
+                if (gravityType != GravityType.Up)
                 {
-                    _moveAngle += -_gameController.InputAngle / 10.0f;
-
-                    if (gravityType != GravityType.Up)
-                    {
-                        _GururinRb.useGravity = false;
-                    }
+                    _GururinRb.useGravity = false;
                 }
-                else
+            }
+            else
+            {
+                _moveAngle = 0.0f;
+                // GravityTypeがLeft or Rightの時
+                if (gravityType != GravityType.Up)
                 {
-                    _moveAngle = 0.0f;
-                    // GravityTypeがLeft or Rightの時
-                    if (gravityType != GravityType.Up)
+                    _GururinRb.useGravity = _gameController.InputLongPress ? false : true;
+                    switch (_gameController.InputLongPress)
                     {
-                        switch (_gameController.InputLongPress)
-                        {
-                            // 踏ん張りで停止
-                            case true:
-                                _playerFace.Angry();
-                                _GururinRb.velocity = Vector3.zero;
-                                _GururinRb.angularVelocity = Vector3.zero;
-                                _GururinRb.useGravity = false;
-                                break;
+                        // 踏ん張りで停止
+                        case true:
+                            _playerFace.Angry();
+                            _GururinRb.velocity = Vector3.zero;
+                            _GururinRb.angularVelocity = Vector3.zero;
+                            break;
 
-                            // 踏ん張らなければ落下
-                            case false:
-                                _playerFace.Nomal();
-                                _GururinRb.useGravity = true;
-                                break;
-                        }
-                        return;
+                        // 踏ん張らなければ落下
+                        case false:
+                            _playerFace.Nomal();
+                            break;
                     }
-                    _GururinRb.velocity = Vector3.zero;
+                    return;
                 }
+                _GururinRb.velocity = Vector3.zero;
             }
         }
 
@@ -110,20 +108,19 @@ namespace Igarashi
 
         private void LateUpdate()
         {
-            if (_Gururin != null && _gururinBase.IsAttachGimmick)
-            {
-                // ジャンプ(歯車から離れる)時の処理
-                if (_gameController.InputFlick)
-                {
-                    RackJump();
+            if (_Gururin == null) return;
 
-                    if (gravityType == GravityType.Up)
-                    {
-                        _GururinRb.useGravity = true;
-                        _gururinBase.SeparateGimmick();
-                        _gururinBase = null;
-                        _Gururin = null;
-                    }
+            // ジャンプ(歯車から離れる)時の処理
+            if (_gameController.InputFlick)
+            {
+                RackJump();
+
+                if (gravityType == GravityType.Up)
+                {
+                    _GururinRb.useGravity = true;
+                    _gururinBase.SeparateGimmick();
+                    _gururinBase = null;
+                    _Gururin = null;
                 }
             }
         }

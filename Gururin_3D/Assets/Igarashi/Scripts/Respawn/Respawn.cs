@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Cinemachine;
 
 /// <summary>
 /// リスポーン関係の設定
@@ -13,6 +14,7 @@ public class Respawn : MonoBehaviour
     public static string nowSceneName;
 
     private GameObject _Gururin;
+    [SerializeField] private CameraManager _cameraManager;
     private Vector3 _respawnPoint;
 
     private void Awake()
@@ -56,8 +58,14 @@ public class Respawn : MonoBehaviour
         var playerFace = _Gururin.GetComponentInChildren<PlayerFace>();
         playerFace.Nomal();
 
+        // 押し出し時に掛かるAddforceを停止(カメラのブレ防止)
+        var GururinRb = _Gururin.GetComponent<Rigidbody>();
+        GururinRb.velocity = Vector3.zero;
+
         // 角度と位置を初期化
         _Gururin.transform.rotation = Quaternion.Euler(Vector3.zero);
         _Gururin.transform.position = _respawnPoint;
+
+        _cameraManager.MainCameraInit(_Gururin);
     }
 }

@@ -21,6 +21,7 @@ namespace Igarashi
                 var playerFace = other.GetComponentInChildren<PlayerFace>();
                 var gururinBase = other.GetComponent<GanGanKamen.GururinBase>();
                 var extrusionForce = new Vector3();
+
                 // ピストンによる押し出し
                 if (piston != null)
                 {
@@ -46,25 +47,11 @@ namespace Igarashi
 
                     if (GururinPosX < extrusionPosX)
                     {
-                        if (GururinPosX > extrusionPosX * -1.06f)
-                        {
-                            extrusionForce = new Vector3(-extrusionPower * 1.7f, 0.0f);
-                        }
-                        else
-                        {
-                            extrusionForce = new Vector3(-extrusionPower, 0.0f);
-                        }
+                        extrusionForce = GururinPosX > extrusionPosX * -1.06f ? new Vector3(-extrusionPower * 1.7f, 0.0f) : new Vector3(-extrusionPower, 0.0f);
                     }
                     else if (GururinPosX >= extrusionPosX)
                     {
-                        if (GururinPosX < extrusionPosX * 1.06f)
-                        {
-                            extrusionForce = new Vector3(extrusionPower * 1.7f, 0.0f);
-                        }
-                        else
-                        {
-                            extrusionForce = new Vector3(extrusionPower, 0.0f);
-                        }
+                        extrusionForce = GururinPosX < extrusionPosX * -1.06f ? new Vector3(extrusionPower * 1.7f, 0.0f) : new Vector3(extrusionPower, 0.0f);
                     }
                 }
                 playerFace.Surprise();

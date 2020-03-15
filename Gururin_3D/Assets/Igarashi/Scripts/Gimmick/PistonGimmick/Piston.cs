@@ -89,16 +89,7 @@ namespace Igarashi
                 {
                     _stopTimer = 0.0f;
                     // 移動方向を反転
-                    switch ( _hasPushed)
-                    {
-                        case true:
-                             _hasPushed = false;
-                            break;
-
-                        case false:
-                             _hasPushed = true;
-                            break;
-                    }
+                    _hasPushed = !_hasPushed;
                     // 移動再開
                     _canMove = true;
                      _hasStopped = false;

@@ -10,7 +10,7 @@ namespace Igarashi
 {
     public class HoistCrane : MonoBehaviour
     {
-        public bool HasHoisted { get { return  _hasHoisted; } } // 巻き上げているかどうかの判定
+        public bool HasHoisted { get { return _hasHoisted; } } // 巻き上げているかどうかの判定
 
         [SerializeField] [Header("巻き上げるオブジェクト")] private GameObject hoistObject;
         [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("巻き上げ速度 0.1~2.0")] private float rollUpSpeed;
@@ -25,9 +25,9 @@ namespace Igarashi
         private GanGanKamen.GameController _gameController;
         private int _limit; // 1:UpperLimit、-1:LowerLimit、0:NotLimit
         private const float _lowerSpeedLimit = 0.1f;
-        private bool _isClockwise; // コントローラーの回転方向
+        private bool _isClockwise; // 巻き上げる回転方向
         private bool _hasLimitCollided;
-        private bool  _hasHoisted;
+        private bool _hasHoisted;
 
 
         // Start is called before the first frame update
@@ -53,7 +53,7 @@ namespace Igarashi
         void Update()
         {
             // 噛み合っているとき
-            if (_Gururin != null && _gururinBase.IsAttachGimmick)
+            if (_Gururin != null)
             {
                 if (_hasLimitCollided == false)
                 {
@@ -64,89 +64,45 @@ namespace Igarashi
                 {
                     // 操作入力時
                     case true:
-                        if (_gameController.InputLongPress)
-                        {
-                            _playerFace.Angry();
-                        }
-
-                        // 左回転
-                        if (_gameController.InputAngle > 0)
-                        {
-                            _playerFace.Nomal();
-                            Rotate(true);
-                            if (_isClockwise == false)
-                            {
-                                Hoist(true);
-                            }
-                        }
-                        // 右回転
-                        else if (_gameController.InputAngle < 0)
-                        {
-                            _playerFace.Nomal();
-                            Rotate(false);
-                            if (_isClockwise)
-                            {
-                                Hoist(true);
-                            }
-                        }
+                        ControllerOperation();
                         break;
 
                     // 操作入力がなければ下げる
                     case false:
                         _playerFace.Nomal();
                         Hoist(false);
-
-                        // 巻き上げる方向と反対に回転
-                        switch (_isClockwise)
-                        {
-                            case true:
-                                Rotate(true);
-                                break;
-
-                            case false:
-                                Rotate(false);
-                                break;
-                        }
+                        Rotate(_isClockwise);
                         break;
                 }
             }
-            // 噛み合っていないとき下限でなければ下げる
+            // 噛み合っていないとき
             else
             {
-                if (_limit == -1) return;
-
-                Hoist(false);
-
-                // 巻き上げる方向と反対に回転
-                switch (_isClockwise)
+                // LowerLimit(下限)と接触していなければLowerLimitまで下げる
+                if (_limit != -1)
                 {
-                    case true:
-                        Rotate(true);
-                        break;
-
-                    case false:
-                        Rotate(false);
-                        break;
+                    _limit = 0;
+                    Hoist(false);
+                    Rotate(_isClockwise);
                 }
             }
         }
 
         private void LateUpdate()
         {
-            if (_Gururin != null && _gururinBase.IsAttachGimmick)
-            {
-                var GururinPos = _Gururin.transform.position;
-                var gearPos = transform.position;
+            if (_Gururin == null) return;
 
-                // ジャンプ(歯車から離れる)時の処理
-                if (_gameController.InputFlick)
-                {
-                    Jump(GururinPos, gearPos);
-                    _GururinRb.useGravity = true;
-                    _gururinBase.SeparateGimmick();
-                    _gururinBase = null;
-                    _Gururin = null;
-                }
+            var GururinPos = _Gururin.transform.position;
+            var gearPos = transform.position;
+
+            // ジャンプ(歯車から離れる)時の処理
+            if (_gameController.InputFlick)
+            {
+                Jump(GururinPos, gearPos);
+                _GururinRb.useGravity = true;
+                _gururinBase.SeparateGimmick();
+                _gururinBase = null;
+                _Gururin = null;
             }
         }
 
@@ -188,6 +144,40 @@ namespace Igarashi
             _gururinBase.AttackToGimmick();
         }
 
+        // コントローラーの回転操作
+        private void ControllerOperation()
+        {
+            if (_gameController.InputLongPress)
+            {
+                _playerFace.Angry();
+            }
+
+            // 左回転
+            if (_gameController.InputAngle > 0.0f)
+            {
+                _playerFace.Nomal();
+                Rotate(true);
+                if (_isClockwise == false)
+                {
+                    Hoist(true);
+                }
+            }
+            // 右回転
+            else if (_gameController.InputAngle < 0.0f)
+            {
+                _playerFace.Nomal();
+                Rotate(false);
+                if (_isClockwise)
+                {
+                    Hoist(true);
+                }
+            }
+            else if (_gameController.InputAngle == 0.0f)
+            {
+                return;
+            }
+        }
+
         // 巻き上げ
         void Hoist(bool hangingDirection)
         {
@@ -195,75 +185,57 @@ namespace Igarashi
             switch (hangingDirection)
             {
                 case true:
-                     _hasHoisted = true;
                     // 上限じゃなければ巻き上げ
                     if (_limit != 1)
                     {
                         hoistObjPos.y += Time.deltaTime * rollUpSpeed;
-                        var rollUp = new Vector3(hoistObjPos.x, hoistObjPos.y, hoistObjPos.z);
-                        _hoistObjRb.MovePosition(rollUp);
                     }
                     break;
 
                 case false:
-                     _hasHoisted = false;
                     // 下限じゃなければ巻き下げ
                     if (_limit != -1)
                     {
                         // 噛み合っているときと噛み合っていないときで落下速度を変化
-                        if (_gururinBase != null)
-                        {
-                            hoistObjPos.y -= Time.deltaTime * rollDownSpeed / 4.0f;
-                        }
-                        else
-                        {
-                            hoistObjPos.y -= Time.deltaTime * rollDownSpeed / 2.0f;
-                        }
-                        var rollDown = new Vector3(hoistObjPos.x, hoistObjPos.y, hoistObjPos.z);
-                        _hoistObjRb.MovePosition(rollDown);
+                        hoistObjPos.y -= _Gururin == null ? Time.deltaTime * rollDownSpeed / 2.0f : Time.deltaTime * rollDownSpeed / 4.0f;
                     }
                     break;
             }
+            _hasHoisted = hangingDirection;
+            _hoistObjRb.MovePosition(hoistObjPos);
         }
 
         // 回転処理
         void Rotate(bool rotationDirection)
         {
-            if (_limit == 0)
-            {
-                switch (rotationDirection)
-                {
-                    case true:
-                        if (_Gururin == null)
-                        {
-                            transform.Rotate(0.0f, 0.0f, -rotationSpeed * 2.0f);
-                        }
-                        else
-                        {
-                            transform.Rotate(0.0f, 0.0f, -rotationSpeed);
-                            _Gururin.transform.Rotate(0.0f, 0.0f, rotationSpeed);
-                        }
-                        break;
+            if (_limit != 0) return;
 
-                    case false:
-                        if (_Gururin == null)
-                        {
-                            transform.Rotate(0.0f, 0.0f, rotationSpeed * 2.0f);
-                        }
-                        else
-                        {
-                            transform.Rotate(0.0f, 0.0f, rotationSpeed);
-                            _Gururin.transform.Rotate(0.0f, 0.0f, -rotationSpeed);
-                        }
-                        break;
-                }
+            // 噛み合っているときと噛み合っていないときで回転速度を変化
+            var baseGearRotationSpeed = _Gururin == null ? rotationSpeed * 2.0f : rotationSpeed;
+            switch (rotationDirection)
+            {
+                case true:
+                    transform.Rotate(0.0f, 0.0f, -baseGearRotationSpeed);
+                    if (_Gururin != null)
+                    {
+                        _Gururin.transform.Rotate(0.0f, 0.0f, rotationSpeed);
+                    }
+                    break;
+
+                case false:
+                    transform.Rotate(0.0f, 0.0f, baseGearRotationSpeed);
+                    if (_Gururin != null)
+                    {
+                        _Gururin.transform.Rotate(0.0f, 0.0f, -rotationSpeed);
+                    }
+                    break;
             }
         }
 
         // ジャンプの方向
         void Jump(Vector3 GururinPos, Vector3 gearPos)
         {
-            var jumpPower = _gururinBase.jumpPower / 2.0f;
+            var jumpPower = _gururinBase.jumpPower;
             // 第一象限(右上)
             if (GururinPos.x > gearPos.x && GururinPos.y > gearPos.y)
             {
