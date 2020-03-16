@@ -34,7 +34,7 @@ public class StartCall : MonoBehaviour
         _cameraManager = GameObject.Find("CameraSet").GetComponent<CameraManager>();
 
         // 即死ゾーンに触れてシーンがリロードされたらスタートコールをスキップ
-        if(Respawn.beforeSceneName == Respawn.nowSceneName)
+        if(GanGanKamen.GameSystem.beforeSceneName == GanGanKamen.GameSystem.nowSceneName)
         {
             canSkip = true;
         }

@@ -91,6 +91,6 @@ public class RespawnZone : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
         // シーンをリロード
-        SceneManager.LoadScene(Respawn.nowSceneName);
+        SceneManager.LoadScene(GanGanKamen.GameSystem.nowSceneName);
     }
 }
