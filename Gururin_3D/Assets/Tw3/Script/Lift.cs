@@ -108,7 +108,6 @@ public class Lift : MonoBehaviour
             {
                 playerRb.AddForce(-50f * speed, 0, 0);
             }
-
         }
     }
     private void OnTriggerExit(Collider other)
