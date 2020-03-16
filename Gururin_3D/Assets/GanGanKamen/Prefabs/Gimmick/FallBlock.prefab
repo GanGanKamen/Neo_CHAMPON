@@ -90,13 +90,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 209de67b656ab234c8b1a95b1101354d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endurance: 3
+  endurance: 1
   targets:
   - {fileID: 7088355969177802153}
   shakeSpeed: 10
   shakeWidth: 0.2
   fallSpeed: 3
-  startShakeWaitTime: 2
+  startShakeWaitTime: 4
   colliders:
   - {fileID: 5746195961126107404}
   status: 0

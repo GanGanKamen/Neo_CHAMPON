@@ -28,7 +28,7 @@ namespace GanGanKamen
         // Start is called before the first frame update
         void Start()
         {
-            MenuClose();
+            MenuInit();
             DontDestroyOnLoad(gameObject);
         }
 
@@ -40,12 +40,34 @@ namespace GanGanKamen
 
         private void MenuOpen()
         {
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+            {
+                var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>();
+                if (player.CanCtrl == false) return;
+            }
             menuWindow.SetActive(true);
             menuWindowCloseNutton.gameObject.SetActive(true);
             menubutton.gameObject.SetActive(false);
+            if(GameObject.FindGameObjectWithTag("Player") != null)
+            {
+                var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>();
+                player.ProhibitControll();
+            }
         }
 
         private void MenuClose()
+        {
+            menuWindow.SetActive(false);
+            menuWindowCloseNutton.gameObject.SetActive(false);
+            menubutton.gameObject.SetActive(true);
+            if (GameObject.FindGameObjectWithTag("Player") != null)
+            {
+                var player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCtrl>();
+                player.PermitControll();
+            }
+        }
+
+        private void MenuInit()
         {
             menuWindow.SetActive(false);
             menuWindowCloseNutton.gameObject.SetActive(false);
@@ -54,19 +76,19 @@ namespace GanGanKamen
 
         private void BackToTitle()
         {
-            MenuClose();
+            MenuInit();
             Fader.FadeIn(2f, "Title");
         }
 
         private void BackToStageSelect()
         {
-            MenuClose();
+            MenuInit();
             Fader.FadeInBlack(2f, "StageSelect");
         }
 
         private void Retry()
         {
-            MenuClose();
+            MenuInit();
             Fader.FadeInBlack(2f, GameSystem.nowSceneName);
         }
 
@@ -74,10 +96,9 @@ namespace GanGanKamen
         {
             if (GameSystem.isSceneChange)
             {
-                MenuClose();
+                MenuInit();
                 for(int i = 0; i < notStageScenes.Length; i++)
                 {
-                    Debug.Log(GameSystem.nowSceneName);
                     if (GameSystem.nowSceneName == notStageScenes[i])
                     {
                         retryButton.interactable = false;
