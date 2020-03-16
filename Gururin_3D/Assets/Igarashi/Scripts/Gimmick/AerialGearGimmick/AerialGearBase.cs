@@ -10,22 +10,17 @@ namespace Igarashi
 {
     public class AerialGearBase : MonoBehaviour
     {
-        public bool HasCollided { get { return _hasCollided; } }
-
         [SerializeField] private AerialRotatingGear _aerialRotatingGear;
-        [SerializeField] private AerialFreeGear _aerialFreeGear;
         public enum GearType
         {
             Normal,
             Rotating,
-            Free,
             GearPiston
         }
         [Header("空中歯車のタイプ")] public GearType gearType;
         [SerializeField] [Header("回転移動時の速さの上限値")] private float maxSpeed;
 
         private GameObject _Gururin;
-        private Rigidbody _rigidbody;
         private Rigidbody _GururinRb;
         private PlayerFace _playerFace;
         private GanGanKamen.GururinBase _gururinBase;
@@ -35,10 +30,8 @@ namespace Igarashi
         private int _rotDirection; // ぐるりんの回転方向
         private float _moveAngle;
         private float _rotSpeed;
-        private bool _canSlowDown; // 減速判定
         private bool _canKeepSpeed;
         private bool _hasBraked; // ブレーキ判定
-        private bool _hasCollided;
         private bool _hasSeparated;
 
         private void Awake()
@@ -51,16 +44,6 @@ namespace Igarashi
         void Start()
         {
             _gameController = GameObject.Find("GameController").GetComponent<GanGanKamen.GameController>();
-
-            /*
-            if(gearType == GearType.Free)
-            {
-                _GururinRb = GameObject.FindWithTag("Player").GetComponent<Rigidbody>();
-                gameObject.AddComponent<Rigidbody>();
-                _rigidbody = GetComponent<Rigidbody>();
-                _rigidbody.isKinematic = true;
-            }
-            */
         }
 
         private void OnCollisionEnter(Collision other)
@@ -75,175 +58,106 @@ namespace Igarashi
                     _moveAngle = 0.0f;
                     _inputAngleDirection = 0;
                     _rotDirection = 0;
-                    _canSlowDown = false;
-
-                    /*
-                    if(gearType == GearType.Free)
-                    {
-                        _aerialFreeGear.FreeGearInit();
-                    }
-                    */
                 }
             }
         }
 
         void Update()
         {
-            if (gearType == GearType.Rotating)
+            switch (gearType)
             {
-                _aerialRotatingGear.RotatingGear(gameObject);
-            }
-            else if (gearType == GearType.Free)
-            {
-                Debug.LogError("他のGearTypeを選択してください");
-                /*
-                _aerialFreeGear.GetGururinVelocity(_GururinRb);
-                if(_Gururin != null)
-                {
-                    _aerialFreeGear.RotatingGear(gameObject);
-                    _aerialFreeGear.RayEnabled(_Gururin, gameObject);
-                }
-                return;
-                */
-            }
-            else if (gearType == GearType.GearPiston)
-            {
-                // ぐるりんと歯車のZ軸が異なった時(ピストン作動時)に強制分離
-                if (_Gururin != null && _GururinPos.z != transform.position.z)
-                {
-                    _hasSeparated = true;
-                }
-            }
+                case GearType.Rotating:
+                    _aerialRotatingGear.RotatingGear(gameObject);
+                    break;
 
-            if (_Gururin != null && _gururinBase.IsAttachGimmick)
-            {
-                if (_hasBraked == false)
-                {
-                    switch (_gameController.InputIsPress)
+                case GearType.GearPiston:
+                    // ぐるりんと歯車のZ軸が異なった時(ピストン作動時)に強制分離
+                    if (_Gururin != null && _GururinPos.z != transform.position.z)
                     {
-                        // 操作入力時
-                        case true:
-                            // 左回転
-                            if (_gameController.InputAngle > 0)
-                            {
-                                if (_inputAngleDirection == -1)
-                                {
-                                    AerialGearSpeedDown();
-                                }
-                                else
-                                {
-                                    _canKeepSpeed = false;
-                                    _inputAngleDirection = 1;
-                                    CircularMotion(Vector3.forward);
-                                }
-                            }
-                            // 右回転
-                            else if (_gameController.InputAngle < 0)
-                            {
-                                if (_inputAngleDirection == 1)
-                                {
-                                    AerialGearSpeedDown();
-                                }
-                                else
-                                {
-                                    _canKeepSpeed = false;
-                                    _inputAngleDirection = -1;
-                                    CircularMotion(Vector3.back);
-                                }
-                            }
-                            break;
-
-                        // 操作入力なし
-                        case false:
-                            _canKeepSpeed = true;
-                            break;
+                        _hasSeparated = true;
                     }
-                }
+                    break;
 
-                // ブレーキ操作
-                switch (_gameController.InputLongPress)
+                default:
+                    break;
+            }
+
+            if (_Gururin == null) return;
+
+            if (_hasBraked == false)
+            {
+                switch (_gameController.InputIsPress)
                 {
+                    // 操作入力あり
                     case true:
-                        _playerFace.Angry();
-                        AerialGearBrake();
+                        ControllerOperation();
                         break;
 
+                    // 操作入力なし
                     case false:
-                        _playerFace.Nomal();
-                        _hasBraked = false;
+                        _canKeepSpeed = true;
                         break;
                 }
+            }
 
-                // 入力がない時に最終操作時の入力速度で回転
-                if (_canKeepSpeed)
+            // ブレーキ操作
+            switch (_gameController.InputLongPress)
+            {
+                case true:
+                    _playerFace.Angry();
+                    AerialGearBrake();
+                    break;
+
+                case false:
+                    _playerFace.Nomal();
+                    _hasBraked = false;
+                    break;
+            }
+
+            // 入力がない時に最終操作時の入力速度で回転
+            if (_canKeepSpeed)
+            {
+                if (_rotDirection == 1)
                 {
-                    if (_rotDirection == 1)
-                    {
-                        CircularMotion(Vector3.back);
-                    }
-                    else if (_rotDirection == -1)
-                    {
-                        CircularMotion(Vector3.forward);
-                    }
+                    CircularMotion(Vector3.back);
+                }
+                else if (_rotDirection == -1)
+                {
+                    CircularMotion(Vector3.forward);
                 }
             }
-        }
-
-        private void FixedUpdate()
-        {
-            /*
-            if (_Gururin != null && gearType == GearType.Free)
-            {
-                _aerialFreeGear.Gravitation(_Gururin, gameObject, _GururinRb, _rigidbody);
-            }
-            */
         }
 
         private void LateUpdate()
         {
-            if (_Gururin != null && _gururinBase.IsAttachGimmick)
+            if (_Gururin == null) return;
+
+            var GururinPos = _Gururin.transform.position;
+            var gearPos = transform.position;
+
+            // ジャンプ(歯車から離れる)時の処理
+            if (_gameController.InputFlick || _hasSeparated)
             {
-                var GururinPos = _Gururin.transform.position;
-                var gearPos = transform.position;
-
-                // ジャンプ(歯車から離れる)時の処理
-                if (_gameController.InputFlick || _hasSeparated)
+                if (_hasSeparated == false)
                 {
-                    if (_hasSeparated == false)
-                    {
-                        AerialGearJump(GururinPos, gearPos);
-                    }
-
-                    /*
-                    if(gearType == GearType.Free)
-                    {
-                        _hasCollided = false;
-                    }
-                    */
-
-                    _GururinRb.useGravity = true;
-
-                    _gururinBase.SeparateGimmick();
-                    _gururinBase = null;
-
-                    _Gururin.transform.parent = null;
-                    _Gururin = null;
-
-                    _hasSeparated = false;
+                    AerialGearJump(GururinPos, gearPos);
                 }
+
+                _GururinRb.useGravity = true;
+
+                _gururinBase.SeparateGimmick();
+                _gururinBase = null;
+
+                _Gururin.transform.parent = null;
+                _Gururin = null;
+
+                _hasSeparated = false;
             }
         }
 
         // 接触時にぐるりんのコンポーネント取得等あれこれ
         private void CollisionSettings(GameObject colObj)
         {
-            /*
-            if(gearType == GearType.Free)
-            {
-                _hasCollided = true;
-            }
-            */
-
             _Gururin = colObj.gameObject;
             _Gururin.transform.parent = transform;
             _playerFace = _Gururin.GetComponentInChildren<PlayerFace>();
@@ -260,16 +174,58 @@ namespace Igarashi
             _gururinBase.AttackToGimmick();
         }
 
+        // コントローラーの回転操作
+        private void ControllerOperation()
+        {
+            _canKeepSpeed = false;
+            // 左回転
+            if (_gameController.InputAngle > 0.0f)
+            {
+                switch (_inputAngleDirection)
+                {
+                    case -1:
+                        AerialGearSpeedDown();
+                        break;
+
+                    default:
+                        _inputAngleDirection = 1;
+                        CircularMotion(Vector3.forward);
+                        break;
+                }
+            }
+            // 右回転
+            else if (_gameController.InputAngle < 0.0f)
+            {
+                switch (_inputAngleDirection)
+                {
+                    case 1:
+                        AerialGearSpeedDown();
+                        break;
+
+                    default:
+                        _inputAngleDirection = -1;
+                        CircularMotion(Vector3.back);
+                        break;
+                }
+            }
+            else if(_gameController.InputAngle == 0.0f)
+            {
+                _moveAngle = 0.0f;
+            }
+        }
+
         // 円運動
         private void CircularMotion(Vector3 direction)
         {
             if (direction == Vector3.back)
             {
                 _rotDirection = 1;
+                _Gururin.transform.Rotate(0.0f, 0.0f, -_rotSpeed);
             }
             else
             {
                 _rotDirection = -1;
+                _Gururin.transform.Rotate(0.0f, 0.0f, _rotSpeed);
             }
 
             _moveAngle += -_gameController.InputAngle / 10.0f;
@@ -288,17 +244,12 @@ namespace Igarashi
         // 減速
         private void AerialGearSpeedDown()
         {
-            _canSlowDown = true;
-            if (_canSlowDown)
+            _canKeepSpeed = true;
+            _rotSpeed -= Time.deltaTime;
+            // 回転方向を反転
+            if (_rotSpeed <= 0.1f)
             {
-                _canKeepSpeed = true;
-                _rotSpeed -= Time.deltaTime;
-                // 回転方向を反転
-                if (_rotSpeed <= 0.1f)
-                {
-                    _inputAngleDirection *= -1;
-                    _canSlowDown = false;
-                }
+                _inputAngleDirection *= -1;
             }
         }
 

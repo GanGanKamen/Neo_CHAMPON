@@ -7,8 +7,6 @@ using Cinemachine;
 /// ゴール演出の動作処理
 /// </summary>
 
-// ☆は未実装の処理部分
-
 public class GoalDirecting : MonoBehaviour
 {
     public bool ReachesGoal { get { return _reachesGoal; } } // ゴールしたかどうかの判定
@@ -89,8 +87,7 @@ public class GoalDirecting : MonoBehaviour
         _stageClearCanvasGroup.alpha = 1.0f;
 
         yield return new WaitForSeconds(2f);
-        // ☆リザルト画面表示
-        //Debug.Log("リザルト画面表示");
+        // リザルト画面表示
         if (GameObject.FindGameObjectWithTag("System") != null)
         {
             var stageMng = GameObject.FindGameObjectWithTag("System").GetComponent<GanGanKamen.StageManager>();

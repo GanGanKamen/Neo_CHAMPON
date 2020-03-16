@@ -20,10 +20,7 @@ public class CameraManager : MonoBehaviour
         _firstMaincamera = mainVCamera;
 
         var Gururin = GameObject.FindWithTag("Player");
-        var mainCameraCVC = mainVCamera.GetComponent<CinemachineVirtualCamera>();
-        mainCameraCVC.m_Follow = Gururin.transform;
-        mainCameraCVC.m_LookAt = Gururin.transform;
-
+        MainCameraInit(Gururin);
         CameraInit(goalCamera);
         CameraInit(deadCamera);
     }
@@ -32,6 +29,13 @@ public class CameraManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void MainCameraInit(GameObject Gururin)
+    {
+        var mainCameraCVC = mainVCamera.GetComponent<CinemachineVirtualCamera>();
+        mainCameraCVC.m_Follow = Gururin.transform;
+        mainCameraCVC.m_LookAt = Gururin.transform;
     }
 
     // メインカメラ以外のカメラのPriorityを0にする

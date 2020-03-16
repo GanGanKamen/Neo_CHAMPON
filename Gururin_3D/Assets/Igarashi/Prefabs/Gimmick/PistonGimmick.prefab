@@ -46,6 +46,7 @@ MonoBehaviour:
   pushSpeed: 2
   pullSpeed: 0.5
   pistonStopTime: 3
+  startDelayTime: 0
   canStop: 0
 --- !u!1 &2144518569274030243
 GameObject:
@@ -275,7 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   piston: {fileID: 4923994745680586994}
-  extrusionPower: 70
+  extrusionPower: 20
 --- !u!1001 &1267860408461301557
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -85,16 +85,7 @@ public class MoveDeadZone : MonoBehaviour
         {
             _roopTimer = 0.0f;
             // 移動方向を反転
-            switch (_collidesLimitPos)
-            {
-                case true:
-                    _collidesLimitPos = false;
-                    break;
-
-                case false:
-                    _collidesLimitPos = true;
-                    break;
-            }
+            _collidesLimitPos = !_collidesLimitPos;
         }
         else
         {
