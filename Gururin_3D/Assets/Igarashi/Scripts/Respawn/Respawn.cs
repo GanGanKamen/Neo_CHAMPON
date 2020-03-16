@@ -10,22 +10,20 @@ using Cinemachine;
 
 public class Respawn : MonoBehaviour
 {
-    [SerializeField] private int blinkNum; // 点滅回数
-    [SerializeField] private float interval;  // 点滅周期
+    [SerializeField] [Header("リスポーン時の点滅回数 2~20")] [Range(2, 20)] private int blinkNum;
+    [SerializeField] [Header("リスポーン時の点滅時間 0.1~2.0")] [Range(0.1f, 2.0f)] private float blinkInterval;
 
     private GameObject _Gururin;
     private List<Renderer> _rendererList = new List<Renderer>();
     private CameraManager _cameraManager;
     private Vector3 _respawnPoint;
-    [SerializeField] private int count;
-    private float nextTime;
-    [SerializeField] private bool _canBlink;
+    private int _blinkNumCount;
+    private float _blinkTime;
+    private bool _canBlink;
 
     // Start is called before the first frame update
     void Start()
     {
-        nextTime = Time.time;
-
         _Gururin = GameObject.FindWithTag("Player");
         // 初期リスポーン地点を設定
         RespawnPointSetting(_Gururin.transform);
@@ -34,6 +32,7 @@ public class Respawn : MonoBehaviour
 
         var GururinGear = _Gururin.transform.Find("gururin").gameObject; 
         var GururinFaces = _Gururin.transform.Find("FaceManager").gameObject;
+        // ぐるりんのRendererをListに格納
         var GururinRenderer = GururinGear.GetComponent<Renderer>();
         _rendererList.Add(GururinRenderer);
         foreach (Transform faceTransform in GururinFaces.transform)
@@ -66,6 +65,7 @@ public class Respawn : MonoBehaviour
     public void RespawnSetting()
     {
         var gururinBase = _Gururin.GetComponent<GanGanKamen.GururinBase>();
+        gururinBase.StandStill();
         // 移動操作が停止されていたら再開メソッドを呼ぶ
         if (gururinBase.IsAttachGimmick)
         {
@@ -83,28 +83,33 @@ public class Respawn : MonoBehaviour
         _Gururin.transform.rotation = Quaternion.Euler(Vector3.zero);
         _Gururin.transform.position = _respawnPoint;
 
-        count = 0;
+        _blinkNumCount = 0;
+        _blinkTime = Time.time;
         _canBlink = true;
 
         _cameraManager.MainCameraInit(_Gururin);
     }
 
+    // リスポーン時の点滅処理
     private void Blink()
     {
-        if (Time.time > nextTime)
+        if (_blinkNumCount >= blinkNum) return;
+
+        if (Time.time > _blinkTime)
         {
             for (int i = 0; i < _rendererList.Count; i++)
             {
                 _rendererList[i].enabled = !_rendererList[i].enabled;
-                if (count == blinkNum - 1)
+
+                if (_blinkNumCount == blinkNum - 1)
                 {
+                    _blinkTime = 0.0f;
                     _rendererList[i].enabled = true;
                     _canBlink = false;
                 }
             }
-
-            nextTime += interval;
-            count++;
+            _blinkTime += blinkInterval;
+            _blinkNumCount++;
         }
     }
 }
