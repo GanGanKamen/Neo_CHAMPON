@@ -177,7 +177,6 @@ namespace Igarashi
         // コントローラーの回転操作
         private void ControllerOperation()
         {
-            _canKeepSpeed = false;
             // 左回転
             if (_gameController.InputAngle > 0.0f)
             {
@@ -188,6 +187,7 @@ namespace Igarashi
                         break;
 
                     default:
+                        _canKeepSpeed = false;
                         _inputAngleDirection = 1;
                         CircularMotion(Vector3.forward);
                         break;
@@ -203,14 +203,11 @@ namespace Igarashi
                         break;
 
                     default:
+                        _canKeepSpeed = false;
                         _inputAngleDirection = -1;
                         CircularMotion(Vector3.back);
                         break;
                 }
-            }
-            else if(_gameController.InputAngle == 0.0f)
-            {
-                _moveAngle = 0.0f;
             }
         }
 
