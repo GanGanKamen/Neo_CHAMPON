@@ -10,6 +10,7 @@ namespace GanGanKamen
     {
         static public bool isSceneChange;
         static public Platform platform;
+        static public string beforeSceneName;
         static public string nowSceneName;
         static public int StartUpCount = 0;
         static public Camera mainCamera;
@@ -29,6 +30,11 @@ namespace GanGanKamen
         void Start()
         {
             DontDestroyOnLoad(this.gameObject);
+            // 即死ゾーンに当たってシーンをリロードしたとき格納
+            if (nowSceneName != null)
+            {
+                beforeSceneName = nowSceneName;
+            }
             nowSceneName = SceneManager.GetActiveScene().name;
             preSceneName = nowSceneName;
             stageManager = GetComponent<StageManager>();
