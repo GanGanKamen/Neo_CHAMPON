@@ -23,7 +23,7 @@ namespace GanGanKamen
         public bool InputLongPress { get { return InputLongPressCheck(); } }
         public FlickDirection InputFlickDirection { get { return flickDirection; } }
         public bool Enable { get; set; }
-
+        [SerializeField] private GameObject tutorialObj;
         [SerializeField] private GameObject tapUI;
         [SerializeField] private GameObject controllerObject;
         [SerializeField] private GameObject controller;
@@ -178,7 +178,10 @@ namespace GanGanKamen
                     tapPosition.z = 10;
                     tapUI.transform.position = uiCamera.ScreenToWorldPoint(tapPosition);
                 }
-
+                if(tutorialObj != null)
+                {
+                    tutorialObj.transform.localEulerAngles = controller.transform.localEulerAngles;
+                }
             }
 
             if (Input.GetMouseButtonUp(0))
