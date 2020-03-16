@@ -43,6 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c1472c82e223c4196b8d49af5c2c58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blinkNum: 6
-  interval: 0.3
-  _cameraManager: {fileID: 0}
+  blinkNum: 8
+  blinkInterval: 0.3
