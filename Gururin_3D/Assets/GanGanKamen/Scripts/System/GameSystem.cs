@@ -30,11 +30,6 @@ namespace GanGanKamen
         void Start()
         {
             DontDestroyOnLoad(this.gameObject);
-            // 即死ゾーンに当たってシーンをリロードしたとき格納
-            if (nowSceneName != null)
-            {
-                beforeSceneName = nowSceneName;
-            }
             nowSceneName = SceneManager.GetActiveScene().name;
             preSceneName = nowSceneName;
             stageManager = GetComponent<StageManager>();

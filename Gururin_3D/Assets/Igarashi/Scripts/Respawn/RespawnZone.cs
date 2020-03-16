@@ -90,6 +90,8 @@ public class RespawnZone : MonoBehaviour
 
         yield return new WaitForSeconds(2.0f);
 
+        // 即死ゾーンと接触したシーン名を格納
+        GanGanKamen.GameSystem.beforeSceneName = SceneManager.GetActiveScene().name;
         // シーンをリロード
         SceneManager.LoadScene(GanGanKamen.GameSystem.nowSceneName);
     }
