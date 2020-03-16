@@ -13,11 +13,13 @@ public class OptionChange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         gameOption.SetActive(true);
         soundOption.SetActive(false);
         optionWindow.SetActive(false);
         openButton.SetActive(true);
         closeButton.SetActive(false);
+        */
     }
 
     // Update is called once per frame
