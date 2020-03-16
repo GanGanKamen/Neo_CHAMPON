@@ -632,6 +632,8 @@ MonoBehaviour:
   nextButton: {fileID: 1159420388486459289}
   retryButton: {fileID: 1159420389271771955}
   overButton: {fileID: 1159420387903801310}
+  flowerMaxSize: 5
+  flowerInSpeed: 10
 --- !u!1 &1159420388486459271
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,29 +11,109 @@ namespace GanGanKamen
         [SerializeField] Button nextButton;
         [SerializeField] Button retryButton;
         [SerializeField] Button overButton;
-        // Start is called before the first frame update
+        [SerializeField] float flowerMaxSize;
+        [SerializeField] float flowerInSpeed;
+
+        /*
+        private void Start()
+        {
+            StartCoroutine(TestReviewProcess());
+        }
+        */
         public void Init(StageManager stageManager)
         {
+            StartCoroutine(ReviewProcess(stageManager));
+        }
+        
+        private IEnumerator ReviewProcess(StageManager stageManager)
+        {
             var assessment = 0;
+
+            nextButton.onClick.AddListener(() => NextButton());
+            retryButton.onClick.AddListener(() => RetryButton());
+            overButton.onClick.AddListener(() => OverButton());
+            nextButton.gameObject.SetActive(false);
+            retryButton.gameObject.SetActive(false);
+            overButton.gameObject.SetActive(false);
+
+            for (int i = 0; i < flowers.Length; i++)
+            {
+                flowers[i].SetActive(false);
+            }
+            var assessments = new bool[3];
+            for (int i = 0; i < assessments.Length; i++) assessments[i] = false;
             if (stageManager.ElapsedTime <= stageManager.ClearTimeGoal)
             {
-                flowers[0].SetActive(true);
+                assessments[0] = true;
                 assessment += 1;
             }
-            if(stageManager.ItemNum >= stageManager.AllItem)
+            if (stageManager.ItemNum >= stageManager.AllItem)
             {
-                flowers[1].SetActive(true);
+                assessments[1] = true;
                 assessment += 1;
             }
             if (stageManager.Medal)
             {
-                flowers[2].SetActive(true);
+                assessments[2] = true;
                 assessment += 1;
             }
-            stageManager.saveData.Save(stageManager.NowStageNumber,assessment);
-            nextButton.onClick.AddListener(() => NextButton());
-            retryButton.onClick.AddListener(() => RetryButton());
-            overButton.onClick.AddListener(() => OverButton());
+
+            for (int i = 0; i < assessments.Length; i++)
+            {
+                if (assessments[i])
+                {
+                    FlowerInit(i);
+                    do
+                    {
+                        assessments[i] = FlowerIn(flowers[i].GetComponent<RectTransform>());
+                        yield return null;
+                    } while (assessments[i] == false);
+                }
+            }
+            stageManager.saveData.Save(stageManager.NowStageNumber, assessment);
+            nextButton.gameObject.SetActive(true);
+            retryButton.gameObject.SetActive(true);
+            overButton.gameObject.SetActive(true);
+            yield break;
+        }
+        
+
+        private IEnumerator TestReviewProcess()
+        {
+            for (int i = 0; i < flowers.Length; i++)
+            {
+                flowers[i].SetActive(false);
+            }
+            FlowerInit(0);
+            var assessment0 = true;
+
+            do
+            {
+                assessment0 = FlowerIn(flowers[0].GetComponent<RectTransform>());
+                yield return null;
+            } while (assessment0 == false);
+
+            yield break;
+        }
+
+        private void FlowerInit(int num)
+        {
+            flowers[num].SetActive(true);
+            flowers[num].GetComponent<RectTransform>().localScale = Vector3.one * flowerMaxSize;
+        }
+
+        private bool FlowerIn(RectTransform rect)
+        {
+            if(rect.localScale.x > 1)
+            {
+                rect.localScale -= Vector3.one * Time.deltaTime * flowerInSpeed;
+                return false;
+            }
+            else
+            {
+                rect.localScale = Vector3.one;
+                return true;
+            }
         }
 
         private void NextButton()

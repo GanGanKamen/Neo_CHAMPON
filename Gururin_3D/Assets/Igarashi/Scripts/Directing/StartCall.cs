@@ -36,6 +36,7 @@ public class StartCall : MonoBehaviour
         // 即死ゾーンに触れてシーンがリロードされたらスタートコールをスキップ
         if(GanGanKamen.GameSystem.beforeSceneName == GanGanKamen.GameSystem.nowSceneName)
         {
+            Debug.Log(GanGanKamen.GameSystem.beforeSceneName + "\n" + GanGanKamen.GameSystem.nowSceneName);
             canSkip = true;
         }
 
