@@ -23,6 +23,7 @@ public class StartCall : MonoBehaviour
 
     private GameObject _Gururin;
     private CameraManager _cameraManager;
+    private Respawn _respawn;
     private List<GameObject> _imageList = new List<GameObject>(2); // 画像を一括で削除するために格納
     private const float _limitLowerSpeed = 1.0f;
     private bool _hasStartCalled;
@@ -32,12 +33,14 @@ public class StartCall : MonoBehaviour
     {
         _Gururin = GameObject.FindWithTag("Player");
         _cameraManager = GameObject.Find("CameraSet").GetComponent<CameraManager>();
+        _respawn = GameObject.Find("RespawnManager").GetComponent<Respawn>();
 
         // 即死ゾーンに触れてシーンがリロードされたらスタートコールをスキップ
-        if(GanGanKamen.GameSystem.beforeSceneName == GanGanKamen.GameSystem.nowSceneName)
+        if (GanGanKamen.GameSystem.beforeSceneName == GanGanKamen.GameSystem.nowSceneName)
         {
-            Debug.Log(GanGanKamen.GameSystem.beforeSceneName + "\n" + GanGanKamen.GameSystem.nowSceneName);
             canSkip = true;
+            // 初期化
+            GanGanKamen.GameSystem.beforeSceneName = null;
         }
 
         switch (canSkip)
