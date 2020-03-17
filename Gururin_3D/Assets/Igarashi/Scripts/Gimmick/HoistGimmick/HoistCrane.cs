@@ -116,11 +116,7 @@ namespace Igarashi
             }
 
             // 巻き上げるオブジェクトがRigidBodyを持っていなかったら付与
-            if (hoistObject.GetComponent<Rigidbody>() == null)
-            {
-                hoistObject.AddComponent<Rigidbody>();
-            }
-            _hoistObjRb = hoistObject.GetComponent<Rigidbody>();
+            _hoistObjRb = hoistObject.GetComponent<Rigidbody>() == null ? hoistObject.AddComponent<Rigidbody>() : hoistObject.GetComponent<Rigidbody>();
             _hoistObjRb.isKinematic = true;
 
             // 巻き上げるオブジェクトに衝突判定用のスクリプトを付与
@@ -261,16 +257,7 @@ namespace Igarashi
         // 巻き上げオブジェクトの上下限接触判定
         public void CollisionLimitEnter(bool limitDirection)
         {
-            switch (limitDirection)
-            {
-                case true:
-                    _limit = 1;
-                    break;
-
-                case false:
-                    _limit = -1;
-                    break;
-            }
+            _limit = limitDirection ? 1 : -1;
             _hasLimitCollided = true;
         }
 

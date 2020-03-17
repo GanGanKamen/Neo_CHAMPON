@@ -13,11 +13,19 @@ public class ChangeDeadZoneSpeed : MonoBehaviour
     [SerializeField] [Multiline(2)] private string memo = "即死ゾーンの速度を変更したい場所に\n" +
                                                                                      "このオブジェクトを配置してください";
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Rigidbodyを付与
+        var _rigidbody = GetComponent<Rigidbody>() == null ? gameObject.AddComponent<Rigidbody>() : GetComponent<Rigidbody>();
+        _rigidbody.isKinematic = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<MoveDeadZone>())
+        if (other.gameObject.GetComponent<MoveObject>())
         {
-            var moveDeadZone = other.GetComponent<MoveDeadZone>();
+            var moveDeadZone = other.GetComponent<MoveObject>();
             moveDeadZone.SpeedSetting(changeSpeed);
         }
     }
