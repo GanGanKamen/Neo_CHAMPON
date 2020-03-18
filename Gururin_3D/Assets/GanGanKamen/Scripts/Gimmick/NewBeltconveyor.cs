@@ -39,7 +39,7 @@ namespace GanGanKamen
                 else
                 {
                     player.Brake();
-                    player.gear.transform.Rotate(0, 0, scrollSpeed * direction * 180f * Time.deltaTime);
+                    player.gear.transform.Rotate(0, 0, scrollSpeed * -direction * 180f * Time.deltaTime);
                 }
             }
 

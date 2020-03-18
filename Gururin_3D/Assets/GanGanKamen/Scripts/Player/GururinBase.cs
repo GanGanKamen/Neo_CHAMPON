@@ -70,6 +70,12 @@ namespace GanGanKamen
             rigidbody.AddForce(moveVecSpeed, ForceMode.Acceleration);
         }
 
+        public float GetMoveVelocity()
+        {
+            var rigidbody = GetComponent<Rigidbody>();
+            return rigidbody.velocity.x;
+        }
+
         public bool GetIsAccelMove()
         {
             if (preMoveAngle != moveAngle)
