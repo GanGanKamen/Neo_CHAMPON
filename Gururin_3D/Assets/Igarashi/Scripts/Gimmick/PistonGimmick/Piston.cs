@@ -29,7 +29,7 @@ namespace Igarashi
         private bool _canMove; // 移動許可
         private bool _canDelayed;
         private bool _hasPushed;
-        private bool  _hasStopped;
+        private bool _hasStopped;
 
         private void Awake()
         {

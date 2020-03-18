@@ -115,7 +115,7 @@ PrefabInstance:
     - target: {fileID: 2138435876818798001, guid: e84f78d251e9f164589c19348d6c926d,
         type: 3}
       propertyPath: gearType
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e84f78d251e9f164589c19348d6c926d, type: 3}
@@ -198,11 +198,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4923994745680586994, guid: e22148970fd1b9844a5f8c140d9e6ad7,
-        type: 3}
-      propertyPath: pistonStopTime
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 2234114396539130186, guid: e22148970fd1b9844a5f8c140d9e6ad7,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -212,6 +207,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4923994745680586994, guid: e22148970fd1b9844a5f8c140d9e6ad7,
+        type: 3}
+      propertyPath: pistonStopTime
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e22148970fd1b9844a5f8c140d9e6ad7, type: 3}
