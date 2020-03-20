@@ -36,6 +36,9 @@ EditorBuildSettings:
     path: Assets/GanGanKamen/Scenes/PlayerTest4.unity
     guid: ac9005efa1da17b4fae2896d099573ab
   - enabled: 1
-    path: Assets/Tw3/Scene/Lift.unity
-    guid: f564dbb375946c144b8cb6b3724e324c
+    path: Assets/GanGanKamen/Scenes/PlayerTest5.unity
+    guid: acfa34cb8664a0f469af232f9c7e94fe
+  - enabled: 1
+    path: Assets/GanGanKamen/Scenes/PlayerTest6.unity
+    guid: e1f6256b84c07ee49bae37233ada04ac
   m_configObjects: {}

@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Lift : MonoBehaviour
 {
-    [SerializeField] private GanGanKamen.GururinBase gururinBase;
-    [SerializeField] private GameObject player;
+     private GanGanKamen.GururinBase gururinBase;
     //move 動き 
-    [SerializeField] private int move, moveMode, interval;
+    [SerializeField] private int move;
     [SerializeField] private float speed, distance;
-
+    private int moveMode, interval;
     private int count, countMax, intervalcount;
     private bool firsttime, isInterval;
     private Vector3 firstpos;
@@ -18,6 +17,7 @@ public class Lift : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gururinBase = GameObject.FindGameObjectWithTag("Player").GetComponent<GanGanKamen.GururinBase>();
         count = 0;
         firsttime = true;
         firstpos = this.gameObject.transform.position;
@@ -28,7 +28,7 @@ public class Lift : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Liftmove();
     }
@@ -200,10 +200,9 @@ public class Lift : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-
-        var playerRb = player.GetComponent<Rigidbody>();
         if (other.CompareTag("Player"))
         {
+            var playerRb = gururinBase.gameObject.GetComponent<Rigidbody>();
             gururinBase.isLift = true;
             if(moveMode == 0)
             {

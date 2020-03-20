@@ -14,6 +14,7 @@ namespace GanGanKamen
         [SerializeField]private int nowArea = 1;
         [SerializeField]private int preArea = 1;
 
+        private StageManager stageManager;
         // Start is called before the first frame update
         void Start()
         {
