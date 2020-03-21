@@ -301,6 +301,11 @@ namespace GanGanKamen
                     tapPosition.z = 10;
                     tapUI.transform.position = uiCamera.ScreenToWorldPoint(tapPosition);
                 }
+
+                if (tutorialObj != null)
+                {
+                    tutorialObj.transform.localEulerAngles = controller.transform.localEulerAngles;
+                }
             }
 
             if (Input.GetMouseButtonUp(0))
