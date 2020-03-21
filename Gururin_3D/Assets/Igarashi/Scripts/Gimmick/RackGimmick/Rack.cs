@@ -43,15 +43,12 @@ namespace Igarashi
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
+            if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>() && _Gururin != null)
             {
-                if (_Gururin != null && gravityType != GravityType.Up)
-                {
-                    _GururinRb.useGravity = true;
-                    _gururinBase.SeparateGimmick();
-                    _gururinBase = null;
-                    _Gururin = null;
-                }
+                _GururinRb.useGravity = true;
+                _gururinBase.SeparateGimmick();
+                _gururinBase = null;
+                _Gururin = null;
             }
         }
 
@@ -114,14 +111,6 @@ namespace Igarashi
             if (_gameController.InputFlick)
             {
                 RackJump();
-
-                if (gravityType == GravityType.Up)
-                {
-                    _GururinRb.useGravity = true;
-                    _gururinBase.SeparateGimmick();
-                    _gururinBase = null;
-                    _Gururin = null;
-                }
             }
         }
 

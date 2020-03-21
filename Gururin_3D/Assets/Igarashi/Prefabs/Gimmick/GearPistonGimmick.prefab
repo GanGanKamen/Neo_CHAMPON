@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bf3b883023ad0f409dfa24470920cc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followPos: {fileID: 2783431297543550564}
+  followPos: {fileID: 148015972405436340}
 --- !u!1001 &2038581524729823035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -221,9 +221,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3979181330508397521}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2783431297543550564 stripped
+--- !u!4 &148015972405436340 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 1267860408460905909, guid: e22148970fd1b9844a5f8c140d9e6ad7,
+  m_CorrespondingSourceObject: {fileID: 3834040924608848997, guid: e22148970fd1b9844a5f8c140d9e6ad7,
     type: 3}
   m_PrefabInstance: {fileID: 3979181330508397521}
   m_PrefabAsset: {fileID: 0}

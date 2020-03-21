@@ -11,6 +11,7 @@ namespace Igarashi
     public class HoistCrane : MonoBehaviour
     {
         public bool HasHoisted { get { return _hasHoisted; } } // 巻き上げているかどうかの判定
+        public bool HasHoistObjRb { get { return _hasHoistObjRb; } }
 
         [SerializeField] [Header("巻き上げるオブジェクト")] private GameObject hoistObject;
         [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("巻き上げ速度 0.1~2.0")] private float rollUpSpeed;
@@ -28,6 +29,7 @@ namespace Igarashi
         private bool _isClockwise; // 巻き上げる回転方向
         private bool _hasLimitCollided;
         private bool _hasHoisted;
+        private bool _hasHoistObjRb;
 
 
         // Start is called before the first frame update
@@ -115,9 +117,13 @@ namespace Igarashi
                 _isClockwise = true;
             }
 
-            // 巻き上げるオブジェクトがRigidBodyを持っていなかったら付与
-            _hoistObjRb = hoistObject.GetComponent<Rigidbody>() == null ? hoistObject.AddComponent<Rigidbody>() : hoistObject.GetComponent<Rigidbody>();
-            _hoistObjRb.isKinematic = true;
+            if (hoistObject.GetComponentInChildren<AerialGearBase>() == null)
+            {
+                // 巻き上げるオブジェクトがRigidBodyを持っていなかったら付与
+                _hoistObjRb = hoistObject.GetComponent<Rigidbody>() == null ? hoistObject.AddComponent<Rigidbody>() : hoistObject.GetComponent<Rigidbody>();
+                _hoistObjRb.isKinematic = true;
+            }
+            _hasHoistObjRb = _hoistObjRb == null ? false : true;
 
             // 巻き上げるオブジェクトに衝突判定用のスクリプトを付与
             hoistObject.AddComponent<HoistObject>();
@@ -198,7 +204,14 @@ namespace Igarashi
                     break;
             }
             _hasHoisted = hangingDirection;
-            _hoistObjRb.MovePosition(hoistObjPos);
+            if (_hoistObjRb != null)
+            {
+                _hoistObjRb.MovePosition(hoistObjPos);
+            }
+            else
+            {
+                hoistObject.transform.position = hoistObjPos;
+            }
         }
 
         // 回転処理

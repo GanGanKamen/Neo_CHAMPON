@@ -21,7 +21,7 @@ namespace Igarashi
         [SerializeField] [Header("回転移動時の速さの上限値")] private float maxSpeed;
 
         private GameObject _Gururin;
-        [SerializeField] private Rigidbody _GururinRb;
+        private Rigidbody _GururinRb;
         private PlayerFace _playerFace;
         private GanGanKamen.GururinBase _gururinBase;
         private GanGanKamen.GameController _gameController;
@@ -162,7 +162,7 @@ namespace Igarashi
             _Gururin.transform.parent = transform;
             _playerFace = _Gururin.GetComponentInChildren<PlayerFace>();
 
-            _GururinRb = _Gururin.GetComponent <Rigidbody>() ?? null;
+            _GururinRb = _Gururin.GetComponent<Rigidbody>();
             _GururinRb.velocity = Vector3.zero;
             _GururinRb.angularVelocity = Vector3.zero;
             _GururinRb.useGravity = false;

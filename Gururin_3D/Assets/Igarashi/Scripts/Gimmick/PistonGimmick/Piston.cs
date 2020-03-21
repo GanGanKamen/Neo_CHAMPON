@@ -29,7 +29,6 @@ namespace Igarashi
         private bool _canMove; // 移動許可
         private bool _canDelayed;
         private bool _hasPushed;
-        private bool _hasStopped;
 
         private void Awake()
         {
@@ -65,35 +64,35 @@ namespace Igarashi
                 return;
             }
 
-            // ピストン移動
-            if (_canMove)
+            switch (_canMove)
             {
-                switch ( _hasPushed)
-                {
-                    case true:
-                        MovePiston(_startPos, pushLimitPos.position, pushSpeed);
-                        break;
+                // ピストン移動
+                case true:
+                    switch (_hasPushed)
+                    {
+                        case true:
+                            MovePiston(_startPos, pushLimitPos.position, pushSpeed);
+                            break;
 
-                    case false:
-                        MovePiston(pushLimitPos.position, _startPos, pullSpeed);
-                        break;
-                }
-            }
+                        case false:
+                            MovePiston(pushLimitPos.position, _startPos, pullSpeed);
+                            break;
+                    }
+                    break;
 
-            // ピストン停止
-            if ( _hasStopped)
-            {
-                _stopTimer += Time.deltaTime;
+                // ピストン停止
+                case false:
+                    _stopTimer += Time.deltaTime;
 
-                if (_stopTimer >= pistonStopTime)
-                {
-                    _stopTimer = 0.0f;
-                    // 移動方向を反転
-                    _hasPushed = !_hasPushed;
-                    // 移動再開
-                    _canMove = true;
-                     _hasStopped = false;
-                }
+                    if (_stopTimer >= pistonStopTime)
+                    {
+                        _stopTimer = 0.0f;
+                        // 移動方向を反転
+                        _hasPushed = !_hasPushed;
+                        // 移動再開
+                        _canMove = true;
+                    }
+                    break;
             }
         }
 
@@ -106,9 +105,8 @@ namespace Igarashi
             // ピストンがtargetPosに着いたらタイマーを初期化、ピストンを一時停止
             if (transform.position == targetPos)
             {
-                 _hasStopped = true;
-                _canMove = false;
                 _moveTimer = 0.0f;
+                _canMove = false;
             }
             else
             {

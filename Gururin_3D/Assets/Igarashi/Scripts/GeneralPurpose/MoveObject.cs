@@ -23,7 +23,7 @@ public class MoveObject : MonoBehaviour
     private RespawnZone _respawnZone;
     private Vector3 _startPos;
     private float _moveTimer;
-    private bool _collidesLimitPos;
+    private bool _reachesLimitPos;
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +61,7 @@ public class MoveObject : MonoBehaviour
 
             case MoveType.Roop:
                 // ループ移動
-                switch (_collidesLimitPos)
+                switch (_reachesLimitPos)
                 {
                     case true:
                         RoopMove(moveLimitPos.position, _startPos);
@@ -86,7 +86,7 @@ public class MoveObject : MonoBehaviour
         {
             _moveTimer = 0.0f;
             // 移動方向を反転
-            _collidesLimitPos = !_collidesLimitPos;
+            _reachesLimitPos = !_reachesLimitPos;
         }
         else
         {
