@@ -27,7 +27,7 @@ namespace GanGanKamen
 
         public void Save(int nowStageNum,int thisAssessment)
         {
-            if(nowStageNum > allStageNum)
+            if(nowStageNum >= allStageNum)
             {
                 Debug.LogError("不適切なステージ、セーブできない");
                 return;
