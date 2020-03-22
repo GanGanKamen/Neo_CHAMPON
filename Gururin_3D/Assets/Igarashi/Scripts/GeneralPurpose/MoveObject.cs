@@ -14,7 +14,7 @@ public class MoveObject : MonoBehaviour
         Straight,
         Roop
     }
-    [Header("オブジェクトの動き方")] public MoveType moveType;
+    [SerializeField] [Header("オブジェクトの動き方")] MoveType moveType;
     [SerializeField] [Header("オブジェクトの移動限界地点")] private Transform moveLimitPos;
     [SerializeField] [Header("オブジェクトの移動速度 0.1~2.0")] [Range(0.1f, 2.0f)] private float moveSpeed;
     [SerializeField] [Header("オブジェクトの移動を停止")] private bool canStop;
@@ -41,7 +41,7 @@ public class MoveObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // 即死ゾーンにアタッチされているときぐるりんが即死ゾーンと接触したら移動を停止
+        // RespawnZone.csがAddComponentされている時ぐるりんが即死ゾーンと接触したら移動を停止
         var deadZoneStop = _respawnZone != null ? _respawnZone.CanStop : false;
         if (canStop || deadZoneStop) return;
 
@@ -50,27 +50,21 @@ public class MoveObject : MonoBehaviour
             case MoveType.Straight:
                 // スタートコール中またはゴールした時は移動しない
                 if (_startCall.HasStartCalled || goalDirecting.ReachesGoal) return;
+
                 if (transform.position != moveLimitPos.position)
                 {
                     _moveTimer += Time.deltaTime;
                 }
                 // moveLimitPosに向けて移動
-                var movePos = Vector3.Lerp(_startPos, moveLimitPos.position, moveSpeed * 0.1f * _moveTimer);
+                var movePos = Vector3.Lerp(_startPos, moveLimitPos.position, moveSpeed * _moveTimer * 0.1f);
                 transform.position = movePos;
                 break;
 
             case MoveType.Roop:
+                var startPos = _reachesLimitPos ? moveLimitPos.position : _startPos;
+                var targetPos = _reachesLimitPos ? _startPos : moveLimitPos.position;
                 // ループ移動
-                switch (_reachesLimitPos)
-                {
-                    case true:
-                        RoopMove(moveLimitPos.position, _startPos);
-                        break;
-
-                    case false:
-                        RoopMove(_startPos, moveLimitPos.position);
-                        break;
-                }
+                RoopMove(startPos, targetPos);
                 break;
         }
     }

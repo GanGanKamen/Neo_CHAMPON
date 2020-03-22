@@ -69,16 +69,10 @@ namespace Igarashi
             {
                 // ピストン移動
                 case true:
-                    switch (_hasPushed)
-                    {
-                        case true:
-                            MovePiston(_startPos, pushLimitPos.position, pushSpeed);
-                            break;
-
-                        case false:
-                            MovePiston(pushLimitPos.position, _startPos, pullSpeed);
-                            break;
-                    }
+                    var pistonPos = _hasPushed ? _startPos : pushLimitPos.position;
+                    var targetPos = _hasPushed ? pushLimitPos.position : _startPos;
+                    var moveSpeed = _hasPushed ? pushSpeed : pullSpeed;
+                    MovePiston(pistonPos, targetPos, moveSpeed);
                     break;
 
                 // ピストン停止

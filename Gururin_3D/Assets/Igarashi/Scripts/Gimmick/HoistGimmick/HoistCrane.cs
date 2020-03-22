@@ -204,6 +204,7 @@ namespace Igarashi
                     break;
             }
             _hasHoisted = hangingDirection;
+            // hoistObjectがRigidbodyを持っているかいないかで移動方法を変化
             if (_hoistObjRb != null)
             {
                 _hoistObjRb.MovePosition(hoistObjPos);

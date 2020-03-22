@@ -86,7 +86,7 @@ public class GoalDirecting : MonoBehaviour
         // StageClear画像を表示
         _stageClearCanvasGroup.alpha = 1.0f;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.0f);
 
         // リザルト画面表示
         if (GameObject.FindGameObjectWithTag("System") != null)
