@@ -45,7 +45,8 @@ MonoBehaviour:
   pushLimitPos: {fileID: 7438236559068898175}
   pushSpeed: 2
   pullSpeed: 0.5
-  pistonStopTime: 3
+  pushStopTime: 0
+  pullStopTime: 0
   startDelayTime: 0
   canStop: 0
 --- !u!1 &2144518569274030243
@@ -281,6 +282,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &4180373242745618054
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3834040924608493637}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100, z: 700}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &218748738472274852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -296,22 +310,10 @@ MonoBehaviour:
   pushLimitPos: {fileID: 7438236559068898175}
   pushSpeed: 2
   pullSpeed: 0.5
-  pistonStopTime: 3
+  pushStopTime: 3
+  pullStopTime: 3
   startDelayTime: 0
   canStop: 0
---- !u!65 &4180373242745618054
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3834040924608493637}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 100, y: 100, z: 700}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &6711725002764827677
 BoxCollider:
   m_ObjectHideFlags: 0
