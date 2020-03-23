@@ -243,6 +243,16 @@ PrefabInstance:
       propertyPath: pullStopTime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3111504127607010747, guid: e22148970fd1b9844a5f8c140d9e6ad7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1346606888686321040, guid: e22148970fd1b9844a5f8c140d9e6ad7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e22148970fd1b9844a5f8c140d9e6ad7, type: 3}
 --- !u!4 &3633064116382661192 stripped
