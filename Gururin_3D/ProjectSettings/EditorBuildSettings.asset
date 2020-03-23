@@ -6,39 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/GanGanKamen/Scenes/GameStart.unity
+    path: Assets/Scenes/GameStart.unity
     guid: 2e78c941c0bb3054aa00cec692c3cdae
   - enabled: 1
-    path: Assets/GanGanKamen/Scenes/Title.unity
+    path: Assets/Scenes/Title.unity
     guid: d8d939fba07eb144fb5ca24bed4dae20
   - enabled: 1
     path: Assets/GanGanKamen/Scenes/Manga.unity
     guid: e98e31ee02a64c448bdef7e892cfad10
   - enabled: 1
-    path: Assets/GanGanKamen/Scenes/StageSelect.unity
+    path: Assets/Scenes/StageSelect.unity
     guid: 0d365cb4aea5c2345a2e6de46f2da589
   - enabled: 1
-    path: Assets/GanGanKamen/Scenes/PlayerTest.unity
-    guid: ccfd3ae8f98bf9e4b8e31073f9c5ccae
-  - enabled: 1
-    path: Assets/GanGanKamen/Scenes/PlayerItemTest.unity
-    guid: fdd98b12bf550a84dba536e391976b06
-  - enabled: 1
-    path: Assets/GanGanKamen/Scenes/PlayerTest1.unity
-    guid: a5fe1474360ca14408dfc37ea0c91a41
-  - enabled: 1
-    path: Assets/GanGanKamen/Scenes/PlayerTest2.unity
-    guid: 52f2945018fdff04485a09a95e49a629
-  - enabled: 1
-    path: Assets/GanGanKamen/Scenes/PlayerTest3.unity
-    guid: 749ab2db1ef8e434b9bda1e7dcd03da0
-  - enabled: 1
-    path: Assets/GanGanKamen/Scenes/PlayerTest4.unity
-    guid: ac9005efa1da17b4fae2896d099573ab
-  - enabled: 1
-    path: Assets/GanGanKamen/Scenes/PlayerTest5.unity
-    guid: acfa34cb8664a0f469af232f9c7e94fe
-  - enabled: 1
-    path: Assets/GanGanKamen/Scenes/PlayerTest6.unity
-    guid: e1f6256b84c07ee49bae37233ada04ac
+    path: Assets/Scenes/Area1/1-1.unity
+    guid: 54dc5781ba873104997ef9bf692aaf14
   m_configObjects: {}

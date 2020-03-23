@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 399612664}
   - component: {fileID: 399612663}
-  - component: {fileID: 399612662}
   m_Layer: 0
   m_Name: StartCam
   m_TagString: Untagged
@@ -70,23 +69,6 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 2053205587}
---- !u!114 &399612662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 399612661}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ConfineMode: 1
-  m_BoundingVolume: {fileID: 2210972641487410683}
-  m_BoundingShape2D: {fileID: 0}
-  m_ConfineScreenEdges: 1
-  m_Damping: 0
 --- !u!1 &532569237
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +253,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1164085620}
   - component: {fileID: 1164085619}
-  - component: {fileID: 1164085618}
   m_Layer: 0
   m_Name: GoalCam
   m_TagString: Untagged
@@ -331,23 +312,6 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1741569044}
---- !u!114 &1164085618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1164085617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ConfineMode: 1
-  m_BoundingVolume: {fileID: 2210972641487410683}
-  m_BoundingShape2D: {fileID: 0}
-  m_ConfineScreenEdges: 1
-  m_Damping: 0
 --- !u!1 &1741569043
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,7 +627,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213929118526429270}
   m_LocalRotation: {x: 0.07410845, y: -0, z: -0, w: 0.9972502}
-  m_LocalPosition: {x: -2.5, y: 3, z: -7}
+  m_LocalPosition: {x: 0, y: 3, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8340218413814647645}

@@ -96,21 +96,18 @@ namespace GanGanKamen
 
         public void AttackToGimmick()
         {
-            Debug.Log("attach");
             isAttachGimmick = true;
             moveAngle = 0;
         }
 
         public void SeparateGimmick()
         {
-            Debug.Log("Separate");
             isAttachGimmick = false;
         }
 
         public void Brake()
         {
             if (isCollideWall) return;
-            Debug.Log("Brake");
             moveAngle = 0;
             var rigidbody = GetComponent<Rigidbody>();
             var velocity = Mathf.Abs(rigidbody.velocity.x);
@@ -125,7 +122,6 @@ namespace GanGanKamen
 
         public void Brake(float power)
         {
-            Debug.Log("PowerBrake");
             moveAngle = 0;
             var rigidbody = GetComponent<Rigidbody>();
             var velocity = Mathf.Abs(rigidbody.velocity.x);
@@ -141,7 +137,6 @@ namespace GanGanKamen
 
         public void MoveStop()
         {
-            Debug.Log("MoveStop");
             moveAngle = 0;
             var rigidbody = GetComponent<Rigidbody>();
             var frictionalForce = Vector3.Scale(rigidbody.velocity, new Vector3(-1, 0, 0));
