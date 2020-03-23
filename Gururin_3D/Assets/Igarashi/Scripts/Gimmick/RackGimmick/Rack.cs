@@ -16,7 +16,7 @@ namespace Igarashi
             Left,
             Right
         }
-        [Header("重力の方向")] public GravityType gravityType;
+        [SerializeField] [Header("重力の方向")] GravityType gravityType;
         [SerializeField] [Header("減速値 0.1~1.0")] [Range(_lowerSpeedLimit, 1.0f)] private float deceleration;
 
         private GameObject _Gururin;

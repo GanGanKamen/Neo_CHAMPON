@@ -15,7 +15,8 @@ namespace Igarashi
         [SerializeField] [Header("押し出し限界地点")] private Transform pushLimitPos;
         [SerializeField] [Header("ピストンの押し出し速度 0.1~2.0")] [Range(_lowerSpeedLimit, 2.0f)] private float pushSpeed;
         [SerializeField] [Header("ピストンの戻り速度 0.1~2.0")] [Range(_lowerSpeedLimit, 2.0f)] private float pullSpeed;
-        [SerializeField] [Header("ピストンの停止時間 0.1~20.0")] [Range(_lowerSpeedLimit, 20.0f)] private float pistonStopTime;
+        [SerializeField] [Header("押し出し時の停止時間 0.1~20.0")] [Range(_lowerSpeedLimit, 20.0f)] private float pushStopTime;
+        [SerializeField] [Header("戻り時の停止時間 0.1~20.0")] [Range(_lowerSpeedLimit, 20.0f)] private float pullStopTime;
         [SerializeField] [Header("初動遅延時間 0.0~20.0")] [Range(0.0f, 20.0f)] private float startDelayTime;
         [SerializeField] [Header("ピストンの動作を停止")] private bool canStop;
 
@@ -68,22 +69,16 @@ namespace Igarashi
             {
                 // ピストン移動
                 case true:
-                    switch (_hasPushed)
-                    {
-                        case true:
-                            MovePiston(_startPos, pushLimitPos.position, pushSpeed);
-                            break;
-
-                        case false:
-                            MovePiston(pushLimitPos.position, _startPos, pullSpeed);
-                            break;
-                    }
+                    var pistonPos = _hasPushed ? _startPos : pushLimitPos.position;
+                    var targetPos = _hasPushed ? pushLimitPos.position : _startPos;
+                    var moveSpeed = _hasPushed ? pushSpeed : pullSpeed;
+                    MovePiston(pistonPos, targetPos, moveSpeed);
                     break;
 
                 // ピストン停止
                 case false:
                     _stopTimer += Time.deltaTime;
-
+                    var pistonStopTime = _hasPushed ? pushStopTime : pullStopTime;
                     if (_stopTimer >= pistonStopTime)
                     {
                         _stopTimer = 0.0f;

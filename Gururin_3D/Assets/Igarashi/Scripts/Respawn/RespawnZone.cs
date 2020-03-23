@@ -17,7 +17,7 @@ public class RespawnZone : MonoBehaviour
         Respawn,
         DeadZone
     }
-    [Header("オブジェクトのタイプ")] public ObjectType objectType;
+    [SerializeField] [Header("オブジェクトのタイプ")] ObjectType objectType;
 
     private GameObject _Gururin;
     private CameraManager _cameraManager;
@@ -61,7 +61,6 @@ public class RespawnZone : MonoBehaviour
                     playerFace.Surprise();
 
                     var deadCameraCVC = _cameraManager.CameraSetting(_cameraManager.deadCamera);
-
                     // 死亡演出
                     StartCoroutine(DeadDirecting(deadCameraCVC));
                     break;
