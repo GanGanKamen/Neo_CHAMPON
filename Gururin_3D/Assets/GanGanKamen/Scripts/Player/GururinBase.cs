@@ -22,11 +22,11 @@ namespace GanGanKamen
         public float accel { get; set; }
 
 
-        private float moveAngle = 0;
+        [SerializeField]private float moveAngle = 0;
         private float preMoveAngle = 0;
         private bool canJump = false;
         private bool isAttachGimmick = false;
-        private bool isCollideWall = false;
+        [SerializeField]private bool isCollideWall = false;
         public bool isLift = false;
         public Vector3 liftpos;
 
@@ -110,6 +110,7 @@ namespace GanGanKamen
         public void Brake()
         {
             if (isCollideWall) return;
+            Debug.Log("Brake");
             moveAngle = 0;
             var rigidbody = GetComponent<Rigidbody>();
             var velocity = Mathf.Abs(rigidbody.velocity.x);
@@ -124,6 +125,7 @@ namespace GanGanKamen
 
         public void Brake(float power)
         {
+            Debug.Log("PowerBrake");
             moveAngle = 0;
             var rigidbody = GetComponent<Rigidbody>();
             var velocity = Mathf.Abs(rigidbody.velocity.x);
@@ -133,11 +135,13 @@ namespace GanGanKamen
 
         public void StandStill()
         {
+            Debug.Log("StandStill");
             moveAngle = 0;
         }
 
         public void MoveStop()
         {
+            Debug.Log("MoveStop");
             moveAngle = 0;
             var rigidbody = GetComponent<Rigidbody>();
             var frictionalForce = Vector3.Scale(rigidbody.velocity, new Vector3(-1, 0, 0));

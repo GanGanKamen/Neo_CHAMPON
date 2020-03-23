@@ -65,6 +65,16 @@ public class FadeCanvas : MonoBehaviour
         StartCoroutine(StartFadeIn(time,sceneName));
     }
 
+    public void FadeIn(float time)
+    {
+        StartCoroutine(SimpleFadeIn(time));
+    }
+
+    public void FadeInAndOut(float fadeIn,float wait,float fadeOut)
+    {
+        StartCoroutine(InAndOutProcess(fadeIn, wait, fadeOut));
+    }
+
     private IEnumerator StartFadeOut(float time)
     {
         alpha = 1;
@@ -75,7 +85,8 @@ public class FadeCanvas : MonoBehaviour
         {
             yield return null;
         }
-
+        Destroy(gameObject);
+        yield break;
     }
 
     private IEnumerator StartFadeIn(float time,string sceneName)
@@ -98,5 +109,46 @@ public class FadeCanvas : MonoBehaviour
             if(icon !=null)icon.rectTransform.Rotate(0, 0, 60f * Time.deltaTime);
             yield return null;
         }
+    }
+
+    private IEnumerator SimpleFadeIn(float time)
+    {
+        alpha = 0;
+        fadeDelta = Time.deltaTime / time;
+
+        fadeSwitch = 2;
+        yield return null;
+        while (fadeSwitch != 0)
+        {
+            yield return null;
+        }
+        Destroy(gameObject);
+        yield break;
+    }
+
+    private IEnumerator InAndOutProcess(float fadeIn, float wait, float fadeOut)
+    {
+        alpha = 0;
+        fadeDelta = Time.deltaTime / fadeIn;
+
+        fadeSwitch = 2;
+        yield return null;
+        while (fadeSwitch != 0)
+        {
+            yield return null;
+        }
+        alpha = 1;
+
+        yield return new WaitForSeconds(wait); 
+        
+        fadeDelta = Time.deltaTime / fadeOut;
+        fadeSwitch = 1;
+        yield return null;
+        while (fadeSwitch != 0)
+        {
+            yield return null;
+        }
+        Destroy(gameObject);
+        yield break;
     }
 }
