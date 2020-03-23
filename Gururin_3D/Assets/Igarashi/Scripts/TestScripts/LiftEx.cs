@@ -13,14 +13,14 @@ public class LiftEx : MonoBehaviour
     /// 斜め方向にもリフトが移動できるように修正
     /// </summary>
 
-    [SerializeField] private GanGanKamen.GururinBase gururinBase;
-    [SerializeField] private GameObject player;
+    private GanGanKamen.GururinBase gururinBase;
+    private GanGanKamen.GameController gameController;
     [SerializeField] [Header("リフトの移動速度")] private float speed;
 
     private Vector3 firstpos;
 
     // 以下追加変数
-    [SerializeField] private GanGanKamen.GameController gameController;
+    [SerializeField] [Header("対象リフト")]private GameObject liftObject;
     [SerializeField] [Header("移動限界地点")] private Transform moveLimitPos; // ここのPositionに向かってリフトが移動する
     [SerializeField] [Header("移動停止時間 0.1~20.0")] [Range(0.1f, 20.0f)] private float moveStopTime;
     [SerializeField] [Header("リフトの移動を完全停止")] private bool canStop;
@@ -34,19 +34,19 @@ public class LiftEx : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindWithTag("Player");
-        gururinBase = player.GetComponent<GanGanKamen.GururinBase>();
+        gururinBase = GameObject.FindGameObjectWithTag("Player").GetComponent<GanGanKamen.GururinBase>();
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GanGanKamen.GameController>();
         // 移動限界地点のMeshを非表示にする
         var limitPosMesh = moveLimitPos.GetComponent<MeshRenderer>();
         limitPosMesh.enabled = false;
 
-        _rigidbody = GetComponent<Rigidbody>();
-        firstpos = transform.position;
+        _rigidbody = liftObject.GetComponent<Rigidbody>();
+        firstpos = liftObject.transform.position;
         _canMove = true;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (canStop) return;
 
@@ -69,7 +69,7 @@ public class LiftEx : MonoBehaviour
 
             // リフトを一時停止
             case false:
-                _stopTimer += Time.deltaTime;
+                _stopTimer += 0.02f;
 
                 if (_stopTimer >= moveStopTime)
                 {
@@ -85,13 +85,14 @@ public class LiftEx : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        var playerRb = player.GetComponent<Rigidbody>();
         // ブレーキ操作時
         if (other.CompareTag("Player") && gameController.InputLongPress)
         {
             // ぐるりんとリフトの速度を同じにする(リフトに追従する)
             // speedが高いとカメラがガクガクするので要修正
-            playerRb.velocity = _rigidbody.velocity;
+            //var playerRb = gururinBase.gameObject.GetComponent<Rigidbody>();
+            //playerRb.velocity = _rigidbody.velocity;
+            gururinBase.MoveStop();
         }
     }
 
@@ -103,7 +104,7 @@ public class LiftEx : MonoBehaviour
         _rigidbody.MovePosition(movePos);
 
         // リフトが移動限界点に着いたらタイマーを初期化
-        if (transform.position == targetPos)
+        if (liftObject.transform.position == targetPos)
         {
             _moveTimer = 0.0f;
             // リフトを停止
@@ -111,7 +112,7 @@ public class LiftEx : MonoBehaviour
         }
         else
         {
-            _moveTimer += Time.deltaTime;
+            _moveTimer += 0.02f;
         }
     }
 }
