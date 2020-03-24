@@ -57,8 +57,6 @@ namespace Igarashi
         {
             if (_Gururin == null) return;
 
-            RackGururinMove();
-
             if (_gameController.InputAngle != 0.0f)
             {
                 _moveAngle += -_gameController.InputAngle / 10.0f;
@@ -99,6 +97,7 @@ namespace Igarashi
         {
             if (_Gururin != null)
             {
+                RackGururinMove();
                 GravityChange();
             }
         }
