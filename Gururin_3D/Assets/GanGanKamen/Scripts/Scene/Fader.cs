@@ -22,15 +22,45 @@ public class Fader : MonoBehaviour
         fader.GetComponent<FadeCanvas>().FadeOut(time);
     }
 
+    static public void FadeOutBlack(float time)
+    {
+        GameObject fader = Instantiate(Resources.Load<GameObject>("FadeCanvasBlack"));
+        fader.GetComponent<FadeCanvas>().FadeOut(time);
+    }
+
     static public void FadeIn(float time,string sceneName)
     {
         GameObject fader = Instantiate(Resources.Load<GameObject>("FadeCanvas"));
         fader.GetComponent<FadeCanvas>().FadeIn(time,sceneName);
     }
 
+    static public void FadeIn(float time)
+    {
+        GameObject fader = Instantiate(Resources.Load<GameObject>("FadeCanvas"));
+        fader.GetComponent<FadeCanvas>().FadeIn(time);
+    }
+
     static public void FadeInBlack(float time, string sceneName)
     {
         GameObject fader = Instantiate(Resources.Load<GameObject>("FadeCanvasBlack"));
         fader.GetComponent<FadeCanvas>().FadeIn(time, sceneName);
+    }
+
+    static public void FadeInBlack(float time)
+    {
+        GameObject fader = Instantiate(Resources.Load<GameObject>("FadeCanvasBlack"));
+        fader.GetComponent<FadeCanvas>().FadeIn(time);
+    }
+
+    static public void FadeInAndOut(float inTime,float waitTime,float outTime)
+    {
+        GameObject fader = Instantiate(Resources.Load<GameObject>("FadeCanvas"));
+        fader.GetComponent<FadeCanvas>().FadeInAndOut(inTime, waitTime, outTime);
+    }
+
+    static public void FadeInAndOutBlack(float inTime, float waitTime, float outTime)
+    {
+        GameObject fader = Instantiate(Resources.Load<GameObject>("FadeCanvasBlack"));
+        fader.GetComponent<FadeCanvas>().FadeInAndOut(inTime, waitTime, outTime);
     }
 }

@@ -56,7 +56,6 @@ namespace GanGanKamen
         // Update is called once per frame
         void FixedUpdate()
         {
-            Debug.Log(Mathf.Abs(gururin.GetMoveVelocity()));
             DeltaUpdate();
             FootSmokeAction();
             if (Mathf.Abs(gururin.GetMoveVelocity()) > transAmLimitSpeed) TransAm();

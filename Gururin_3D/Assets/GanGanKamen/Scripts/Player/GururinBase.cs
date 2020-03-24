@@ -22,11 +22,11 @@ namespace GanGanKamen
         public float accel { get; set; }
 
 
-        private float moveAngle = 0;
+        [SerializeField]private float moveAngle = 0;
         private float preMoveAngle = 0;
         private bool canJump = false;
         private bool isAttachGimmick = false;
-        private bool isCollideWall = false;
+        [SerializeField]private bool isCollideWall = false;
         public bool isLift = false;
         public Vector3 liftpos;
 
@@ -96,14 +96,12 @@ namespace GanGanKamen
 
         public void AttackToGimmick()
         {
-            Debug.Log("attach");
             isAttachGimmick = true;
             moveAngle = 0;
         }
 
         public void SeparateGimmick()
         {
-            Debug.Log("Separate");
             isAttachGimmick = false;
         }
 
@@ -133,6 +131,7 @@ namespace GanGanKamen
 
         public void StandStill()
         {
+            Debug.Log("StandStill");
             moveAngle = 0;
         }
 
