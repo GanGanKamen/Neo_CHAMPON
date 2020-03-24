@@ -89,10 +89,8 @@ public class LiftEx : MonoBehaviour
         if (other.CompareTag("Player") && gameController.InputLongPress)
         {
             // ぐるりんとリフトの速度を同じにする(リフトに追従する)
-            // speedが高いとカメラがガクガクするので要修正
-            //var playerRb = gururinBase.gameObject.GetComponent<Rigidbody>();
-            //playerRb.velocity = _rigidbody.velocity;
-            gururinBase.MoveStop();
+            var playerRb = gururinBase.gameObject.GetComponent<Rigidbody>();
+            playerRb.velocity = _rigidbody.velocity;
         }
     }
 
