@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gururinBase: {fileID: 8995134417268156700}
   playerFace: {fileID: 0}
-  delta: 0.05
+  delta: 0.02
   oil: 0
   coin: 0
   facecount: 0
@@ -464,6 +464,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9307704073175594aa6bcb3983e0cbd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveAngle: 0
+  isCollideWall: 0
   isLift: 0
   liftpos: {x: 0, y: 0, z: 0}
   _maxSpeed: 4
