@@ -48,8 +48,7 @@ namespace Igarashi
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void FixedUpdate()
         {
             if (canStop) return;
 
