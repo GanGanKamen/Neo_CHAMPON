@@ -58,7 +58,16 @@ namespace Igarashi
                     _moveAngle = 0.0f;
                     _inputAngleDirection = 0;
                     _rotDirection = 0;
+                    _hasSeparated = false;
                 }
+            }
+        }
+
+        private void OnCollisionExit(Collision other)
+        {
+            if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
+            {
+                _hasSeparated = true;
             }
         }
 

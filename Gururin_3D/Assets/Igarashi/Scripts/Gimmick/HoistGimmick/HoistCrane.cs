@@ -126,8 +126,7 @@ namespace Igarashi
             _hasHoistObjRb = _hoistObjRb == null ? false : true;
 
             // 巻き上げるオブジェクトに衝突判定用のスクリプトを付与
-            hoistObject.AddComponent<HoistObject>();
-            var hoistObjCs = hoistObject.GetComponent<HoistObject>();
+            var hoistObjCs = hoistObject.GetComponent<HoistObject>() == null ? hoistObject.AddComponent<HoistObject>() : hoistObject.GetComponent<HoistObject>();
             hoistObjCs.hoistCrane = GetComponent<HoistCrane>();
         }
 
