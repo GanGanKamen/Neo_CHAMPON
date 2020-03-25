@@ -122,12 +122,19 @@ namespace Igarashi
                 // 巻き上げるオブジェクトがRigidBodyを持っていなかったら付与
                 _hoistObjRb = hoistObject.GetComponent<Rigidbody>() == null ? hoistObject.AddComponent<Rigidbody>() : hoistObject.GetComponent<Rigidbody>();
                 _hoistObjRb.isKinematic = true;
+
+                // 巻き上げるオブジェクトに衝突判定用のスクリプトを付与
+                var hoistObjCs = hoistObject.GetComponent<HoistObject>() == null ? hoistObject.AddComponent<HoistObject>() : hoistObject.GetComponent<HoistObject>();
+                hoistObjCs.hoistCrane = GetComponent<HoistCrane>();
+            }
+            else
+            {
+                // 巻き上げるオブジェクトが空中歯車ギミックの場合
+                var hoistAerialGear = hoistObject.transform.Find("AerialGear").gameObject;
+                var hoistObjCs = hoistAerialGear.GetComponent<HoistObject>() == null ? hoistAerialGear.AddComponent<HoistObject>() : hoistAerialGear.GetComponent<HoistObject>();
+                hoistObjCs.hoistCrane = GetComponent<HoistCrane>();
             }
             _hasHoistObjRb = _hoistObjRb == null ? false : true;
-
-            // 巻き上げるオブジェクトに衝突判定用のスクリプトを付与
-            var hoistObjCs = hoistObject.GetComponent<HoistObject>() == null ? hoistObject.AddComponent<HoistObject>() : hoistObject.GetComponent<HoistObject>();
-            hoistObjCs.hoistCrane = GetComponent<HoistCrane>();
         }
 
         // 接触時にぐるりんのコンポーネント取得等あれこれ
