@@ -15,7 +15,7 @@ public class LiftEx : MonoBehaviour
 
     private GanGanKamen.GururinBase gururinBase;
     private GanGanKamen.GameController gameController;
-    [SerializeField] [Header("リフトの移動速度")] private float speed;
+    [SerializeField] [Header("リフトの移動速度 0.01~10.0")] [Range(0.01f, 10.0f)] private float speed;
 
     private Vector3 firstpos;
 
@@ -101,22 +101,21 @@ public class LiftEx : MonoBehaviour
         var movePos = Vector3.Lerp(startPos, targetPos, speed * _moveTimer);
         _rigidbody.MovePosition(movePos);
 
-        // リフトが移動限界点に着いたらタイマーを初期化
         /*
+        if (Vector3.Distance(liftObject.transform.position ,targetPos) <=  0.1f)
+        {
+            _moveTimer = 0.0f;
+            // リフトを停止
+            _canMove = false;
+        }
+         */
+        // リフトが移動限界点に着いたらタイマーを初期化
         if (liftObject.transform.position == targetPos)
         {
             _moveTimer = 0.0f;
             // リフトを停止
             _canMove = false;
         }
-        */
-        if(Vector3.Distance(liftObject.transform.position ,targetPos) <=  0.1f)
-        {
-            _moveTimer = 0.0f;
-            // リフトを停止
-            _canMove = false;
-        }
-
         else
         {
             _moveTimer += 0.02f;
