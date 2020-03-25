@@ -102,12 +102,21 @@ public class LiftEx : MonoBehaviour
         _rigidbody.MovePosition(movePos);
 
         // リフトが移動限界点に着いたらタイマーを初期化
+        /*
         if (liftObject.transform.position == targetPos)
         {
             _moveTimer = 0.0f;
             // リフトを停止
             _canMove = false;
         }
+        */
+        if(Vector3.Distance(liftObject.transform.position ,targetPos) <=  0.1f)
+        {
+            _moveTimer = 0.0f;
+            // リフトを停止
+            _canMove = false;
+        }
+
         else
         {
             _moveTimer += 0.02f;

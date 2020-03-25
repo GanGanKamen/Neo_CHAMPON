@@ -16,7 +16,7 @@ namespace GanGanKamen
         // Start is called before the first frame update
         void Start()
         {
-
+            destination.gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
 
         // Update is called once per frame

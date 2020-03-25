@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gururinBase: {fileID: 8995134417268156700}
   playerFace: {fileID: 0}
-  delta: 0.02
+  delta: 0.2
   oil: 0
   coin: 0
   facecount: 0
@@ -489,7 +489,7 @@ MonoBehaviour:
   footSmokeLimitSpeed: 2
   transAmGururin: {fileID: 8440138857181813168, guid: 7dedb279d79cd1f4b819bcd71d857138,
     type: 3}
-  transAmLimitSpeed: 6
+  transAmLimitSpeed: 8
   transAmOutput: 4
   transAmDensity: 2
 --- !u!1001 &290884483972043130
@@ -588,10 +588,6 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 30211f136e4935343ad811ecd58b2f5c, type: 3}
       propertyPath: m_Name
       value: gururin
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 30211f136e4935343ad811ecd58b2f5c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 30211f136e4935343ad811ecd58b2f5c, type: 3}
       propertyPath: m_LocalPosition.x
