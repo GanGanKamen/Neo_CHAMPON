@@ -43,7 +43,7 @@ namespace GanGanKamen
             yield return new WaitForSeconds(fadeinTime + waitTime / 2);
             var pos = new Vector3(destination.position.x, destination.position.y, 0);
             player.transform.position = pos;
-            yield return new WaitForSeconds(waitTime / 2 + fadeoutTime);
+            yield return new WaitForSeconds(fadeoutTime);
             if (extra) nowPart.SetActive(false);
             else Destroy(nowPart);
             player.PermitControll();

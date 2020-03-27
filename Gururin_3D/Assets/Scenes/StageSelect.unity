@@ -910,7 +910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &376033140
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1024,9 +1024,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageNumber: 2
-  clearTimeGoal: 0
-  allItemNum: 0
-  sceneName: PlayerTest1
+  clearTimeGoal: 120
+  sceneName: 1-3
   lockObj: {fileID: 706734257}
 --- !u!1 &380248600
 GameObject:
@@ -1157,7 +1156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNumber: 7
   clearTimeGoal: 0
-  allItemNum: 0
   sceneName: PlayerTest6
   lockObj: {fileID: 526858461}
 --- !u!114 &449025188
@@ -2062,7 +2060,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNumber: 5
   clearTimeGoal: 0
-  allItemNum: 0
   sceneName: PlayerTest4
   lockObj: {fileID: 2094911389}
 --- !u!1001 &723929589
@@ -2170,7 +2167,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &750690918
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2284,9 +2281,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageNumber: 3
-  clearTimeGoal: 0
-  allItemNum: 0
-  sceneName: PlayerTest2
+  clearTimeGoal: 180
+  sceneName: 2-1
   lockObj: {fileID: 1354863272}
 --- !u!1 &816919969
 GameObject:
@@ -2373,7 +2369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &973284256
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2487,9 +2483,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageNumber: 1
-  clearTimeGoal: 0
-  allItemNum: 0
-  sceneName: PlayerItemTest
+  clearTimeGoal: 60
+  sceneName: 1-2
   lockObj: {fileID: 1036888786}
 --- !u!1 &1036888786
 GameObject:
@@ -3000,7 +2995,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNumber: 0
   clearTimeGoal: 60
-  allItemNum: 0
   sceneName: 1-1
   lockObj: {fileID: 295620162}
 --- !u!1 &1574521271
@@ -3058,7 +3052,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNumber: 8
   clearTimeGoal: 0
-  allItemNum: 0
   sceneName: PlayerTest4
   lockObj: {fileID: 1657785096}
 --- !u!114 &1574521274
@@ -3429,7 +3422,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNumber: 6
   clearTimeGoal: 0
-  allItemNum: 0
   sceneName: PlayerTest5
   lockObj: {fileID: 380248600}
 --- !u!114 &1843582796
@@ -3645,7 +3637,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageNumber: 4
   clearTimeGoal: 0
-  allItemNum: 0
   sceneName: PlayerTest3
   lockObj: {fileID: 1791401638}
 --- !u!1 &2004407268

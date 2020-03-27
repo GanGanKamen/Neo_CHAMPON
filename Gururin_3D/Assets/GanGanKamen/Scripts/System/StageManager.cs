@@ -10,7 +10,6 @@ namespace GanGanKamen
         public float ElapsedTime { get { return elapsedTime; } }
         public int ItemNum { get { return itemNum; } }
         public float ClearTimeGoal { get { return clearTimeGoal; } }
-        public int AllItem { get { return allItemNum; } }
         public int NowStageNumber { get { return nowStageNum; } }
         public SaveData saveData;
 
@@ -40,13 +39,12 @@ namespace GanGanKamen
             }
         }
 
-        public void GoToStage(float _clearTimeGoal,int _allItemNum,int stageNumber)
+        public void GoToStage(float _clearTimeGoal,int stageNumber)
         {
             stageMode = true;
             getMedal = false;
             itemNum = 0;
             clearTimeGoal = _clearTimeGoal;
-            allItemNum = _allItemNum;
             nowStageNum = stageNumber;
         }
 

@@ -8,7 +8,7 @@ namespace GanGanKamen
     {
         [Header("ステージ番号(0～8)")]public int stageNumber;
         [Header("理想的なクリア時間")]public float clearTimeGoal;
-        [Header("合計アイテム数")] public int allItemNum;
+        //[Header("合計アイテム数")] public int allItemNum;
         public string sceneName; 
         [SerializeField] GameObject lockObj;
 

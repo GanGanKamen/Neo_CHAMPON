@@ -47,7 +47,7 @@ namespace GanGanKamen
                 assessments[0] = true;
                 assessment += 1;
             }
-            if (stageManager.ItemNum >= stageManager.AllItem)
+            if (stageManager.ItemNum >= 20)
             {
                 assessments[1] = true;
                 assessment += 1;

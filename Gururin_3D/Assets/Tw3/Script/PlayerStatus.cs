@@ -36,13 +36,14 @@ public class PlayerStatus : MonoBehaviour
                 playerFace.Nomal();
             }
         }
-
     }
 
     public void SpeedUp()
     {
-        gururinBase.maxSpeed = gururinBase.DefultSpeed * (1f + delta * (float)oil);
-        gururinBase.accel = gururinBase.DefultAccel * (1f + delta * (float)oil);
+        Debug.Log("SpeedUp");
+        Debug.Log("defultSpeed = " + gururinBase.DefultSpeed);
+        gururinBase.maxSpeed = gururinBase.DefultSpeed + oil * delta;
+        gururinBase.accel = gururinBase.DefultAccel + oil * delta;
     }
 
     public void Smile()

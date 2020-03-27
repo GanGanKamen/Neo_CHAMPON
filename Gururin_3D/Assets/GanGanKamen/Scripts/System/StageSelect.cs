@@ -103,7 +103,7 @@ namespace GanGanKamen
             if (GameObject.FindGameObjectWithTag("System") != null)
             {
                 var stageMng = GameObject.FindGameObjectWithTag("System").GetComponent<GanGanKamen.StageManager>();
-                stageMng.GoToStage(stageInfo.clearTimeGoal, stageInfo.allItemNum, stageInfo.stageNumber);
+                stageMng.GoToStage(stageInfo.clearTimeGoal,stageInfo.stageNumber);
             }
             Fader.FadeIn(3f, stageInfo.sceneName);
         }
