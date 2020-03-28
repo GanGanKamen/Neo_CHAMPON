@@ -10,6 +10,8 @@ namespace Igarashi
 {
     public class AerialGearBase : MonoBehaviour
     {
+        public bool HasSeparated { get { return _hasSeparated; } }
+
         [SerializeField] private AerialRotatingGear _aerialRotatingGear;
         public enum GearType
         {
@@ -38,6 +40,7 @@ namespace Igarashi
         {
             _inputAngleDirection = 0;
             _rotDirection = 0;
+            _hasSeparated = true;
         }
 
         // Start is called before the first frame update
@@ -159,8 +162,6 @@ namespace Igarashi
 
                 _Gururin.transform.parent = null;
                 _Gururin = null;
-
-                _hasSeparated = false;
             }
         }
 

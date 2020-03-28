@@ -17,7 +17,7 @@ public class RespawnZone : MonoBehaviour
         Respawn,
         DeadZone
     }
-    [SerializeField] [Header("オブジェクトのタイプ")] ObjectType objectType;
+    [SerializeField] [Header("オブジェクトのタイプ")] private ObjectType objectType;
 
     private GameObject _Gururin;
     private CameraManager _cameraManager;

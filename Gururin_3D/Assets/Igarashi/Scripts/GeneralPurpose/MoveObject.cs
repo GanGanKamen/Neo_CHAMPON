@@ -14,7 +14,8 @@ namespace Igarashi
         public enum MoveType
         {
             Straight,
-            Roop
+            Roop,
+            OneWay
         }
         [SerializeField] [Header("オブジェクトの動き方")] MoveType moveType;
         [SerializeField] [Header("オブジェクトの移動限界地点")] private Transform moveLimitPos;
@@ -22,21 +23,39 @@ namespace Igarashi
         [SerializeField] [Header("オブジェクトの移動を停止")] private bool canStop;
 
         private StartCall _startCall;
+        private Respawn _respawn;
         private RespawnZone _respawnZone;
+        private AerialGearBase _aerialGearBase;
         private Vector3 _startPos;
         private float _moveTimer;
         private bool _reachesLimitPos;
+        private bool _engagesWithGear;
 
         // Start is called before the first frame update
         void Start()
         {
             _startCall = GameObject.Find("StartGoalDirectingCanvas/StartCall").GetComponent<StartCall>();
             _startPos = transform.position;
+            _respawn = GameObject.Find("RespawnManager").GetComponent<Respawn>();
             _respawnZone = GetComponent<RespawnZone>() ?? null;
             if (moveLimitPos != null)
             {
                 var moveLimitPosMesh = moveLimitPos.GetComponent<MeshRenderer>();
                 moveLimitPosMesh.enabled = false;
+            }
+            if (gameObject.GetComponent<AerialGearBase>())
+            {
+                _aerialGearBase = GetComponent<AerialGearBase>();
+            }
+
+            // nullチェック
+            if(moveType == MoveType.Straight && goalDirecting == null)
+            {
+                Debug.LogError("金ゴールをGoalDirectingにアタッチしてください");
+            }
+            if(moveType == MoveType.OneWay && _aerialGearBase == null)
+            {
+                Debug.LogError("OneWay以外を選択してください");
             }
         }
 
@@ -58,8 +77,8 @@ namespace Igarashi
                         _moveTimer += Time.deltaTime;
                     }
                     // moveLimitPosに向けて移動
-                    var movePos = Vector3.Lerp(_startPos, moveLimitPos.position, moveSpeed * _moveTimer * 0.1f);
-                    transform.position = movePos;
+                    var straightMove = Vector3.Lerp(_startPos, moveLimitPos.position, moveSpeed * _moveTimer * 0.1f);
+                    transform.position = straightMove;
                     break;
 
                 case MoveType.Roop:
@@ -68,6 +87,32 @@ namespace Igarashi
                     var targetPos = _reachesLimitPos ? _startPos : moveLimitPos.position;
                     // ループ移動
                     RoopMove(startPos, targetPos);
+                    break;
+
+                case MoveType.OneWay:
+                    if (_aerialGearBase != null)
+                    {
+                        _engagesWithGear = _aerialGearBase.HasSeparated ? true : false;
+                    }
+
+                    // リスポーンゾーンにぐるりんが当たった時、初期地点に戻る
+                    if (_respawn.HasRespawn)
+                    {
+                        transform.position = _startPos;
+                        _moveTimer = 0.0f;
+                        _respawn.EndRespawn();
+                    }
+
+                    // 歯車と噛み合っていないときは動かない
+                    if (_engagesWithGear) return;
+
+                    if (transform.position != moveLimitPos.position)
+                    {
+                        _moveTimer += Time.deltaTime;
+                    }
+                    // moveLimitPosに向けて移動
+                    var oneWayMove = Vector3.Lerp(_startPos, moveLimitPos.position, moveSpeed * _moveTimer);
+                    transform.position = oneWayMove;
                     break;
             }
         }

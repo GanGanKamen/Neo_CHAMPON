@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class Respawn : MonoBehaviour
 {
+    public bool HasRespawn { get { return _hasRespawn; } } // リスポーンしたかどうかの判定
+
     [SerializeField] [Header("リスポーン時の点滅回数 2~20")] [Range(2, 20)] private int blinkNum;
     [SerializeField] [Header("リスポーン時の点滅時間 0.1~2.0")] [Range(0.1f, 2.0f)] private float blinkInterval;
 
@@ -18,6 +20,7 @@ public class Respawn : MonoBehaviour
     private int _blinkNumCount;
     private float _blinkTime;
     private bool _canBlink;
+    private bool _hasRespawn;
 
     // Start is called before the first frame update
     void Start()
@@ -84,6 +87,7 @@ public class Respawn : MonoBehaviour
         _blinkNumCount = 0;
         _blinkTime = Time.time;
         _canBlink = true;
+        _hasRespawn = true;
 
         _cameraManager.MainCameraInit(_Gururin);
     }
@@ -109,5 +113,10 @@ public class Respawn : MonoBehaviour
             _blinkTime += blinkInterval;
             _blinkNumCount++;
         }
+    }
+
+    public void EndRespawn()
+    {
+        _hasRespawn = false;
     }
 }

@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   goalDirecting: {fileID: 0}
-  moveType: 1
+  moveType: 2
   moveLimitPos: {fileID: 5005030286098592862}
   moveSpeed: 0.5
   canStop: 0
