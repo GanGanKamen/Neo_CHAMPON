@@ -17,7 +17,8 @@ public class ObjectAppearance : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        var appearanceMesh = GetComponent<MeshRenderer>();
+        appearanceMesh.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,11 +43,5 @@ public class ObjectAppearance : MonoBehaviour
                     */
             }
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
