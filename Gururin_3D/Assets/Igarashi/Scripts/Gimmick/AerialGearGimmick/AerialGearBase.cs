@@ -13,6 +13,7 @@ namespace Igarashi
         public bool HasSeparated { get { return _hasSeparated; } }
 
         [SerializeField] private AerialRotatingGear _aerialRotatingGear;
+        [SerializeField] private AudioClip engageSE;
         public enum GearType
         {
             Normal,
@@ -27,6 +28,7 @@ namespace Igarashi
         private PlayerFace _playerFace;
         private GanGanKamen.GururinBase _gururinBase;
         private GanGanKamen.GameController _gameController;
+        private GimmickSoundEffect _gimmickSoundEffect;
         private Vector3 _GururinPos;
         private int _inputAngleDirection; // コントローラーの回転入力方向
         private int _rotDirection; // ぐるりんの回転方向
@@ -47,6 +49,7 @@ namespace Igarashi
         void Start()
         {
             _gameController = GameObject.Find("GameController").GetComponent<GanGanKamen.GameController>();
+            _gimmickSoundEffect = GameObject.Find("GimmickSoundEffector").GetComponent<GimmickSoundEffect>();
         }
 
         private void OnCollisionEnter(Collision other)
@@ -179,6 +182,8 @@ namespace Igarashi
 
             _gururinBase = _Gururin.GetComponent<GanGanKamen.GururinBase>();
             _gururinBase.AttackToGimmick();
+
+            _gimmickSoundEffect.GimmickSE(engageSE);
         }
 
         // コントローラーの回転操作

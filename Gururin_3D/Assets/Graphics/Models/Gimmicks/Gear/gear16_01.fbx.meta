@@ -1,20 +1,57 @@
 fileFormatVersion: 2
-guid: 00363fc4241a0e84b97d403d679c09cb
+guid: 25f54a8d4093a8943abf6d9bd45a4817
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
+    100002: polySurface14
+    100004: polySurface17
+    100006: polySurface18
+    100008: polySurface19
+    100010: polySurface20
+    100012: polySurface21
+    100014: polySurface22
+    100016: polySurface23
+    100018: polySurface24
     400000: //RootNode
+    400002: polySurface14
+    400004: polySurface17
+    400006: polySurface18
+    400008: polySurface19
+    400010: polySurface20
+    400012: polySurface21
+    400014: polySurface22
+    400016: polySurface23
+    400018: polySurface24
     2100000: lambert2
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCube1
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: lambert2
-    second: {fileID: 2100000, guid: f77604cf042f29a4aa1731f29d29631f, type: 2}
+    2300000: polySurface14
+    2300002: polySurface17
+    2300004: polySurface18
+    2300006: polySurface19
+    2300008: polySurface20
+    2300010: polySurface21
+    2300012: polySurface22
+    2300014: polySurface23
+    2300016: polySurface24
+    3300000: polySurface14
+    3300002: polySurface17
+    3300004: polySurface18
+    3300006: polySurface19
+    3300008: polySurface20
+    3300010: polySurface21
+    3300012: polySurface22
+    3300014: polySurface23
+    3300016: polySurface24
+    4300000: polySurface14
+    4300002: polySurface17
+    4300004: polySurface18
+    4300006: polySurface19
+    4300008: polySurface20
+    4300010: polySurface21
+    4300012: polySurface22
+    4300014: polySurface23
+    4300016: polySurface24
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
