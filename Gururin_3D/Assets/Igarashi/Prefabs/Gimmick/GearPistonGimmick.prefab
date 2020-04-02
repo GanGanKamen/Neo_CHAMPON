@@ -198,16 +198,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 218748738472274852, guid: e22148970fd1b9844a5f8c140d9e6ad7,
-        type: 3}
-      propertyPath: pistonStopTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 218748738472274852, guid: e22148970fd1b9844a5f8c140d9e6ad7,
-        type: 3}
-      propertyPath: pushStopTime
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 3834040924608493637, guid: e22148970fd1b9844a5f8c140d9e6ad7,
         type: 3}
       propertyPath: m_IsActive
@@ -227,6 +217,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 218748738472274852, guid: e22148970fd1b9844a5f8c140d9e6ad7,
+        type: 3}
+      propertyPath: pistonStopTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 218748738472274852, guid: e22148970fd1b9844a5f8c140d9e6ad7,
+        type: 3}
+      propertyPath: pushStopTime
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4923994745680586994, guid: e22148970fd1b9844a5f8c140d9e6ad7,
         type: 3}
@@ -252,16 +252,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Radius
       value: 0.45
-      objectReference: {fileID: 0}
-    - target: {fileID: 4799093350616331784, guid: e22148970fd1b9844a5f8c140d9e6ad7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8538408888479865583, guid: e22148970fd1b9844a5f8c140d9e6ad7,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e22148970fd1b9844a5f8c140d9e6ad7, type: 3}

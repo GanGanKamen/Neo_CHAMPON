@@ -26,7 +26,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _aerialRotatingGear: {fileID: 644498893432602373}
-  engageSE: {fileID: 8300000, guid: 7dc83a677d4478b43b8f774531233db6, type: 3}
+  _aerialFreeGear: {fileID: 0}
   gearType: 0
   maxSpeed: 4
 --- !u!1 &3468850352043461628
