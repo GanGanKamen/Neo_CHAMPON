@@ -12,8 +12,8 @@ namespace Igarashi
     {
         public bool HasSeparated { get { return _hasSeparated; } }
 
+        [SerializeField] private AudioClip engagementSE;
         [SerializeField] private AerialRotatingGear _aerialRotatingGear;
-        [SerializeField] private AudioClip engageSE;
         public enum GearType
         {
             Normal,
@@ -23,12 +23,12 @@ namespace Igarashi
         [Header("空中歯車のタイプ")] public GearType gearType;
         [SerializeField] [Header("回転移動時の速さの上限値")] private float maxSpeed;
 
+        private AudioSource _audioSource;
         private GameObject _Gururin;
         private Rigidbody _GururinRb;
         private PlayerFace _playerFace;
         private GanGanKamen.GururinBase _gururinBase;
         private GanGanKamen.GameController _gameController;
-        private GimmickSoundEffect _gimmickSoundEffect;
         private Vector3 _GururinPos;
         private int _inputAngleDirection; // コントローラーの回転入力方向
         private int _rotDirection; // ぐるりんの回転方向
@@ -48,8 +48,8 @@ namespace Igarashi
         // Start is called before the first frame update
         void Start()
         {
+            _audioSource = GetComponent<AudioSource>();
             _gameController = GameObject.Find("GameController").GetComponent<GanGanKamen.GameController>();
-            _gimmickSoundEffect = GameObject.Find("GimmickSoundEffector").GetComponent<GimmickSoundEffect>();
         }
 
         private void OnCollisionEnter(Collision other)
@@ -61,6 +61,7 @@ namespace Igarashi
                 if (_GururinPos.z == transform.position.z)
                 {
                     CollisionSettings(other.gameObject);
+                    _audioSource.PlayOneShot(engagementSE);
                     _moveAngle = 0.0f;
                     _inputAngleDirection = 0;
                     _rotDirection = 0;
@@ -94,6 +95,7 @@ namespace Igarashi
                     break;
 
                 default:
+                    _aerialRotatingGear = null;
                     break;
             }
 
@@ -182,8 +184,6 @@ namespace Igarashi
 
             _gururinBase = _Gururin.GetComponent<GanGanKamen.GururinBase>();
             _gururinBase.AttackToGimmick();
-
-            _gimmickSoundEffect.GimmickSE(engageSE);
         }
 
         // コントローラーの回転操作
