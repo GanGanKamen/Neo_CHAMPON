@@ -10,14 +10,18 @@ namespace Igarashi
 {
     public class HoistCrane : MonoBehaviour
     {
+        public int Limit { get { return _limit; } }
+        public bool EngagesWithGear { get { return _engagesWithGear; } }
         public bool HasHoisted { get { return _hasHoisted; } } // 巻き上げているかどうかの判定
         public bool HasHoistObjRb { get { return _hasHoistObjRb; } }
 
+        [SerializeField] private AudioClip engagementSE;
         [SerializeField] [Header("巻き上げるオブジェクト")] private GameObject hoistObject;
         [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("巻き上げ速度 0.1~2.0")] private float rollUpSpeed;
         [SerializeField] [Range(_lowerSpeedLimit, 2.0f)] [Header("巻き下げ速度 0.1~2.0")] private float rollDownSpeed;
         [SerializeField] [Header("ぐるりんと歯車の回転速度")] private float rotationSpeed;
 
+        private AudioSource _audioSource;
         private GameObject _Gururin;
         private Rigidbody _GururinRb;
         private Rigidbody _hoistObjRb;
@@ -26,6 +30,8 @@ namespace Igarashi
         private GanGanKamen.GameController _gameController;
         private int _limit; // 1:UpperLimit、-1:LowerLimit、0:NotLimit
         private const float _lowerSpeedLimit = 0.1f;
+        private bool _playsSE;
+        private bool _engagesWithGear;
         private bool _isClockwise; // 巻き上げる回転方向
         private bool _hasLimitCollided;
         private bool _hasHoisted;
@@ -35,6 +41,7 @@ namespace Igarashi
         // Start is called before the first frame update
         void Start()
         {
+            _audioSource = GetComponent<AudioSource>();
             _gameController = GameObject.Find("GameController").GetComponent<GanGanKamen.GameController>();
 
             if (hoistObject != null)
@@ -48,6 +55,8 @@ namespace Igarashi
             if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
             {
                 CollisionSettings(other.gameObject);
+                _audioSource.PlayOneShot(engagementSE);
+                _engagesWithGear = true;
             }
         }
 
@@ -101,6 +110,7 @@ namespace Igarashi
             if (_gameController.InputFlick)
             {
                 Jump(GururinPos, gearPos);
+                _engagesWithGear = false;
                 _GururinRb.useGravity = true;
                 _gururinBase.SeparateGimmick();
                 _gururinBase = null;
@@ -159,30 +169,28 @@ namespace Igarashi
             {
                 _playerFace.Angry();
             }
-
-            // 左回転
-            if (_gameController.InputAngle > 0.0f)
+            else
             {
-                _playerFace.Nomal();
-                Rotate(true);
-                if (_isClockwise == false)
+                // 左回転
+                if (_gameController.InputAngle > 0.0f)
                 {
-                    Hoist(true);
+                    _playerFace.Nomal();
+                    Rotate(true);
+                    if (_isClockwise == false)
+                    {
+                        Hoist(true);
+                    }
                 }
-            }
-            // 右回転
-            else if (_gameController.InputAngle < 0.0f)
-            {
-                _playerFace.Nomal();
-                Rotate(false);
-                if (_isClockwise)
+                // 右回転
+                else if (_gameController.InputAngle < 0.0f)
                 {
-                    Hoist(true);
+                    _playerFace.Nomal();
+                    Rotate(false);
+                    if (_isClockwise)
+                    {
+                        Hoist(true);
+                    }
                 }
-            }
-            else if (_gameController.InputAngle == 0.0f)
-            {
-                return;
             }
         }
 
