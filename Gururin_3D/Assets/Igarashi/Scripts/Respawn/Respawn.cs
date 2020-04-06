@@ -13,8 +13,8 @@ public class Respawn : MonoBehaviour
     [SerializeField] [Header("リスポーン時の点滅回数 2~20")] [Range(2, 20)] private int blinkNum;
     [SerializeField] [Header("リスポーン時の点滅時間 0.1~2.0")] [Range(0.1f, 2.0f)] private float blinkInterval;
 
-    private GameObject _Gururin;
     private List<Renderer> _rendererList = new List<Renderer>();
+    private GameObject _Gururin;
     private CameraManager _cameraManager;
     private Vector3 _respawnPoint;
     private int _blinkNumCount;

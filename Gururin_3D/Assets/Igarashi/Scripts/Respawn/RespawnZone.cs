@@ -12,13 +12,16 @@ public class RespawnZone : MonoBehaviour
 {
     public bool CanStop { get { return _canStop; } }
 
+    [SerializeField] private AudioClip weldingRodSE;
     public enum ObjectType
     {
         Respawn,
+        WeldingRod,
         DeadZone
     }
     [SerializeField] [Header("オブジェクトのタイプ")] private ObjectType objectType;
 
+    private AudioSource _audioSource;
     private GameObject _Gururin;
     private CameraManager _cameraManager;
     private StartCall _startCall;
@@ -28,16 +31,23 @@ public class RespawnZone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        switch (objectType)
+        if (objectType == ObjectType.Respawn || objectType == ObjectType.WeldingRod)
         {
-            case ObjectType.Respawn:
-                _respawn = GameObject.Find("RespawnManager").GetComponent<Respawn>();
-                break;
+            _respawn = GameObject.Find("RespawnManager").GetComponent<Respawn>();
 
-            case ObjectType.DeadZone:
-                _cameraManager = GameObject.Find("CameraSet").GetComponent<CameraManager>();
-                _startCall = GameObject.Find("StartGoalDirectingCanvas/StartCall").GetComponent<StartCall>();
-                break;
+            if (objectType == ObjectType.Respawn) return;
+
+            // 電磁棒ギミックで有れば以下を実行
+            _audioSource = GetComponent<AudioSource>();
+            _audioSource.clip = weldingRodSE;
+            _audioSource.loop = true;
+            _audioSource.spatialBlend = 1.0f;
+            _audioSource.Play();
+        }
+        else if (objectType == ObjectType.DeadZone)
+        {
+            _cameraManager = GameObject.Find("CameraSet").GetComponent<CameraManager>();
+            _startCall = GameObject.Find("StartGoalDirectingCanvas/StartCall").GetComponent<StartCall>();
         }
     }
 
@@ -45,25 +55,23 @@ public class RespawnZone : MonoBehaviour
     {
         if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
         {
-            switch (objectType)
+            if (objectType == ObjectType.Respawn || objectType == ObjectType.WeldingRod)
             {
-                case ObjectType.Respawn:
-                    // リスポーン地点にリスポーン
-                    _respawn.RespawnSetting();
-                    break;
+                // リスポーン地点にリスポーン
+                _respawn.RespawnSetting();
+            }
+            else if (objectType == ObjectType.DeadZone)
+            {
+                _canStop = true;
 
-                case ObjectType.DeadZone:
-                    _canStop = true;
+                _Gururin = other.gameObject;
+                var playerFace = _Gururin.GetComponentInChildren<PlayerFace>();
+                // 驚き顔に変更
+                playerFace.Surprise();
 
-                    _Gururin = other.gameObject;
-                    var playerFace = _Gururin.GetComponentInChildren<PlayerFace>();
-                    // 驚き顔に変更
-                    playerFace.Surprise();
-
-                    var deadCameraCVC = _cameraManager.CameraSetting(_cameraManager.deadCamera);
-                    // 死亡演出
-                    StartCoroutine(DeadDirecting(deadCameraCVC));
-                    break;
+                var deadCameraCVC = _cameraManager.CameraSetting(_cameraManager.deadCamera);
+                // 死亡演出
+                StartCoroutine(DeadDirecting(deadCameraCVC));
             }
         }
     }

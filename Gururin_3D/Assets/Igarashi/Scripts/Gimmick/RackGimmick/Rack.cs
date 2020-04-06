@@ -10,6 +10,7 @@ namespace Igarashi
 {
     public class Rack : MonoBehaviour
     {
+        [SerializeField] private AudioClip engagementSE;
         public enum GravityType
         {
             Up,
@@ -19,6 +20,7 @@ namespace Igarashi
         [SerializeField] [Header("重力の方向")] GravityType gravityType;
         [SerializeField] [Header("減速値 0.1~1.0")] [Range(_lowerSpeedLimit, 1.0f)] private float deceleration;
 
+        private AudioSource _audioSource;
         private GameObject _Gururin;
         private Rigidbody _GururinRb;
         private PlayerFace _playerFace;
@@ -30,6 +32,7 @@ namespace Igarashi
         // Start is called before the first frame update
         void Start()
         {
+            _audioSource = GetComponent<AudioSource>();
             _gameController = GameObject.Find("GameController").GetComponent<GanGanKamen.GameController>();
         }
 
@@ -38,6 +41,7 @@ namespace Igarashi
             if (other.gameObject.GetComponent<GanGanKamen.PlayerCtrl>())
             {
                 CollisionSettings(other.gameObject);
+                _audioSource.PlayOneShot(engagementSE);
             }
         }
 
