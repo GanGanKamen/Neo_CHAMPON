@@ -15,6 +15,8 @@ namespace GanGanKamen
 
         [SerializeField] private GameObject result;
 
+        static private StageManager instance = null;
+
         private bool getMedal = false;
         private float elapsedTime = 0;
         private int itemNum = 0;
@@ -39,7 +41,7 @@ namespace GanGanKamen
             }
         }
 
-        public void GoToStage(float _clearTimeGoal,int stageNumber)
+        public void GoToStage(float _clearTimeGoal, int stageNumber)
         {
             stageMode = true;
             getMedal = false;

@@ -3522,7 +3522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1961817646
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3636,8 +3636,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageNumber: 4
-  clearTimeGoal: 0
-  sceneName: PlayerTest3
+  clearTimeGoal: 210
+  sceneName: 2-2
   lockObj: {fileID: 1791401638}
 --- !u!1 &2004407268
 GameObject:

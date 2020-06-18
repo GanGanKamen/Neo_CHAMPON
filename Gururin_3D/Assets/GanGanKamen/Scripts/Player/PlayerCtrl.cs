@@ -52,7 +52,6 @@ namespace GanGanKamen
         // Update is called once per frame
         void Update()
         {
-            Debug.Log("MaxSpeed  " + maxSpeed);
             if (IsAttachGimmick == false && canCtrl)
             {
                 GururinMove();

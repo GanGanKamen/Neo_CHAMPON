@@ -9,6 +9,7 @@ TagManager:
   - UICamera
   - Limit
   - System
+  - StageManager
   layers:
   - Default
   - TransparentFX

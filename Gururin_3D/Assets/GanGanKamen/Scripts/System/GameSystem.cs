@@ -8,6 +8,8 @@ namespace GanGanKamen
 {
     public class GameSystem : MonoBehaviour
     {
+        static private GameSystem instance = null;
+
         static public bool isSceneChange;
         static public Platform platform;
         static public string beforeSceneName;
@@ -15,29 +17,36 @@ namespace GanGanKamen
         static public int StartUpCount = 0;
         static public Camera mainCamera;
 
-        public string NextSceneName;
-
         private string preSceneName;
 
         private float width = 1080f;
         private float height = 1920f;
 
-        public string[] ignoreScenes;
+        private string[] ignoreScenesName;
 
         private bool sceneHasChanged = false;
-        private StageManager stageManager;
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        static private void CreateInstance()
+        {
+            var obj = new GameObject("GameSystem");
+            obj.tag = "System";
+            obj.AddComponent<GameSystem>();
+            obj.AddComponent<StageManager>();
+        }
+
+        
         // Start is called before the first frame update
         void Start()
         {
-            DontDestroyOnLoad(this.gameObject);
-            nowSceneName = SceneManager.GetActiveScene().name;
-            preSceneName = nowSceneName;
-            stageManager = GetComponent<StageManager>();
-            stageManager.CheckSaveData();
-            SceneManager.LoadSceneAsync(NextSceneName);
-            mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-            ScreenSet();
-            GetPlatform();
+            if (instance == null)
+            {
+                instance = this;
+                DontDestroyOnLoad(this.gameObject);
+
+                Init();
+            }
+            else Destroy(gameObject);
         }
 
         // Update is called once per frame
@@ -45,6 +54,29 @@ namespace GanGanKamen
         {
             GetSceneChange();
             isSceneChange = GetIsSceneChange();
+        }
+
+        private void Init()
+        {
+            nowSceneName = SceneManager.GetActiveScene().name;
+            preSceneName = nowSceneName;
+            mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+            ScreenSet();
+            GetPlatform();
+
+            var para = Resources.Load<IgnoreScenes>("Paramaters/IgnoreScenes");
+            var ignoreScenes = para.Scenes;
+            ignoreScenesName = new string[ignoreScenes.Length];
+            for(int i = 0; i < ignoreScenes.Length; i++)
+            {
+                ignoreScenesName[i] = ignoreScenes[i];
+                Debug.Log(i + " : " + ignoreScenesName[i]);
+            }
+
+            var stageMng = GetComponent<StageManager>();
+            stageMng.CheckSaveData();
+
+            if (nowSceneName == "GameStart") SceneManager.LoadSceneAsync("Title");
         }
 
         private void ScreenSet()
@@ -126,7 +158,7 @@ namespace GanGanKamen
                 sceneHasChanged = true;
                 mainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
                 var isIgnore = false;
-                foreach (string name in ignoreScenes)
+                foreach (string name in ignoreScenesName)
                 {
                     if (name == nowSceneName)
                     {
