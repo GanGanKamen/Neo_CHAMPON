@@ -23,10 +23,12 @@ namespace GanGanKamen
         public bool InputLongPress { get { return InputLongPressCheck(); } }
         public FlickDirection InputFlickDirection { get { return flickDirection; } }
         public bool Enable { get; set; }
+        [SerializeField] private bool useLineEffect;
         [SerializeField] private GameObject tutorialObj;
         [SerializeField] private GameObject tapUI;
         [SerializeField] private GameObject controllerObject;
         [SerializeField] private GameObject controller;
+        [SerializeField] private GameObject lines;
         [SerializeField] private float jumpInterval;
         [SerializeField] private float flickDistance;
         [SerializeField] private Vector2 poslimit;
@@ -96,6 +98,7 @@ namespace GanGanKamen
                     SmartPhoneCtrl();
                     break;
             }
+            if (useLineEffect) LineEffect();
         }
 
         private void WindowsCtrl()
@@ -390,7 +393,15 @@ namespace GanGanKamen
             }
         }
 
-        float GetAngle(Vector2 start, Vector2 target)
+        private void LineEffect()
+        {
+            if (lines != null)
+            {
+                lines.SetActive(InputLongPress);
+            }
+        }
+
+        private float GetAngle(Vector2 start, Vector2 target)
         {
             Vector2 dt = target - start;
             float rad = Mathf.Atan2(dt.y, dt.x);
